@@ -1,0 +1,338 @@
+%!TEX encoding = utf-8
+\documentclass{article}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+	\geometry{
+		top = 30mm,
+		left = 30mm,
+		right = 30mm,
+	}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.4}
+\newcommand*{\trans}{^{\mathrm{\mathbf{t}}}}%
+\newcommand*{\basisB}{\mathfrak{B}}%
+\newcommand*{\basisC}{\mathfrak{C}}%
+\newcommand*{\basisD}{\mathfrak{D}}%
+
+\begin{document}
+\begin{center}
+\textbf{\Large선형대수학 과제 2}\\
+\large 2017-18570 이성찬
+\end{center}
+
+\begin{itemize}
+\item[\textbf{116쪽 추가증명}] 
+\textbf{(나-ii')} $\left[M\right]_{\basisD}^{\basisC}\cdot \left[L\right]_{\basisC}^{\basisB} = \left[M\circ L \right]_{\basisD}^{\basisB}$ 임을 보이면 된다. 정의 5.3.2 에 의하여 
+$$\left[L \right] _{\basisC} ^{\basisB} = \big( \left[ L(v_1) \right] _{\basisC}, \cdots, \left[ L(v_n) \right] _{\basisC} \big), \quad L(v_j)=\sum_{i=1}^m a_{ij}w_i, \quad (j=1, \cdots, n)$$
+$$\left[M \right] _{\basisD} ^{\basisC} = \big( \left[M(w_1) \right] _{\basisD}, \cdots, \left[ M(w_m) \right] _{\basisD} \big), \quad M(w_i)=\sum_{k=1}^r b_{ki}u_k, \quad (i=1, \cdots, m)$$
+라고 두면, $[M]_{\mathfrak{D}} ^{\mathfrak{C}} = (b_{ki})$ 이고, $[L]_{\mathfrak{C}} ^{\mathfrak{B}}=(a_{ij})$ 인 셈이다.
+$$\Big(\left[M\right]_{\mathfrak{D}}^{\mathfrak{C}}\cdot \left[L\right]_{\mathfrak{C}}^{\mathfrak{B}}\text{의 } (k, j)\text{-성분} \Big)= \sum_{i=1}^m b_{ki}a_{ij}$$
+이므로, 
+$$\Big(\left[M\right]_{\mathfrak{D}}^{\mathfrak{C}}\cdot \left[L\right]_{\mathfrak{C}}^{\mathfrak{B}}\text{의 } j\text{-번째 column} \Big) = \sum_{k=1}^{r} \left(\sum_{i=1}^{m} b_{ki}a_{ij}\right)u_k$$
+가 된다. 한편, $\left[M\circ L \right]_{\mathfrak{D}}^{\mathfrak{B}}$의 $j$-번째 column도
+$$(M\circ L)(v_j) = M\left(\sum_{i=1}^{m}a_{ij}w_i\right) = \sum_{i=1}^{m}a_{ij}M(w_i)=\sum_{i=1}^{m}a_{ij} \left(\sum_{k=1}^r b_{ki}u_k\right)=\sum_{k=1}^{r} \left(\sum_{i=1}^{m} b_{ki}a_{ij}\right)u_k$$
+이므로, $\left[M\right]_{\mathfrak{D}}^{\mathfrak{C}}\cdot \left[L\right]_{\mathfrak{C}}^{\mathfrak{B}} = \left[M\circ L \right]_{\mathfrak{D}}^{\mathfrak{B}}$ 이다. \\
+
+\item[\textbf{5.3.6}] \textbf{(가)}
+(Ordered) basis $\basisB$, $\basisC$의 원소들을 차례대로 $v_1, v_2, v_3$, 그리고 $w_1, w_2, w_3$라고 하자. \\\\
+(i) $[L]_{\basisC}^{\basisB}$
+$$
+\begin{aligned}
+L(v_1) = (0, 0, 0)\trans = a_{11}w_1 + a_{21}w_2 + a_{31}w_3\\
+L(v_2) = (1, 1, 2)\trans = a_{12}w_1 + a_{22}w_2 + a_{32}w_3\\
+L(v_3) = (-1, 1, 2)\trans = a_{13}w_1 + a_{23}w_2 + a_{33}w_3
+\end{aligned}
+$$
+를 만족하는 $a_{ij} \in F$를 찾아주면 된다. 계산을 해보면
+$$
+[L]_{\basisC}^{\basisB} = 
+	\begin{pmatrix}
+		0 & 0 & -2\\
+		0 &-1 & -1\\
+		0 & 2 & 2
+	\end{pmatrix}
+$$
+이다.
+
+(ii) $[L]^{\basisC}_{\basisB}$
+$$
+	\begin{aligned}
+		L(w_1) = (1, 0, 0)\trans = b_{11}v_1 + b_{21}v_2 + b_{31}v_3\\
+		L(w_2) = (0, 0, 0)\trans = b_{12}v_1 + b_{22}v_2 + b_{32}v_3\\
+		L(w_3) = (0, 2, 2)\trans = b_{13}v_1 + b_{23}v_2 + b_{33}v_3
+	\end{aligned}
+$$
+를 만족하는 $b_{ij} \in F$를 찾아주면 된다. 계산을 해보면
+$$
+[L]_{\basisB}^{\basisC} = 
+	\begin{pmatrix}
+		1/2 & 0 & -1/2\\
+		1/2 & 0 & 1/2\\
+		-1/2 & 0 & 3/2 
+	\end{pmatrix}
+$$ 이다.
+
+(iii) $[L^2]^{\basisB}_{\basisB}$
+$$L^2((x, y, z)\trans) = L((x-y, z, 2z)\trans)=(x-y-z, 2z, 4z)\trans$$
+이므로,
+$$
+	\begin{aligned}
+		L^2(v_1) = (0, 0, 0)\trans = c_{11}v_1 + c_{21}v_2 + c_{31}v_3\\
+		L^2(v_2) = (0, 2, 4)\trans = c_{12}v_1 + c_{22}v_2 + c_{32}v_3\\
+		L^2(v_3) = (-2, 2, 4)\trans = c_{13}v_1 + c_{23}v_2 + c_{33}v_3
+	\end{aligned}
+$$
+를 만족하는 $c_{ij} \in F$를 찾아주면 된다. 계산을 해보면
+$$
+[L^2]_{\basisB}^{\basisB} = 
+	\begin{pmatrix}
+		0 & -1 & -2\\
+		0 & 1 & 0\\
+		0 & 3 & 4 
+	\end{pmatrix}
+$$
+이다.
+
+\item[\textbf{5.5.5}] \textbf{(나)}
+$\basisB, \basisC$가 $F^3$의 basis 이므로 각각 원소 $3$개를 찾는다.
+(가)에서 $\basisB=\{v_1, v_2, v_3\}$ 라 할 때,
+$$[I]_{\mathcal{E}}^{\basisB} = \big([I(v_1)]_{\mathcal{E}}, [I(v_2)]_{\mathcal{E}}, [I(v_3)]_{\mathcal{E}}\big)=A$$
+이므로, $A$의 $j$-번째 column 이 $v_j$가 됨을 알 수 있다.
+따라서, $\basisB=\{(1, 1, 1)\trans, (1, 1, 0)\trans, (1, 0, 0)\trans \}$.\\
+이제 $\basisC = \{w_1, w_2, w_3\}$로 두면 $[L_A]_{\basisC}^{\basisB} = I$ 이어야 하므로,
+$$
+	\begin{aligned}
+		L_A(v_1) = (3, 2, 1)\trans = 1\cdot c_1 + 0\cdot c_2 + 0\cdot c_3\\
+		L_A(v_2) = (2, 2, 1)\trans = 0\cdot c_1 + 1\cdot c_2 + 0\cdot c_3\\
+		L_A(v_3) = (1, 1, 1)\trans = 0\cdot c_1 + 0\cdot c_2 + 1\cdot c_3\\
+	\end{aligned}
+$$
+가 되어 $\basisC = \{(3, 2, 1)\trans, (2, 2, 1)\trans, (1, 1, 1)\trans\}$ 임을 알 수 있다.
+
+\item[\textbf{5.5.18}] 두 선형사상 $L, M$의 rank를 $r$로 두자. $V$와 $W$의 기저를 $\basisB, \basisC$라고 할 때, 선형사상에 대응하는 행렬 $\left[L\right]_{\basisC}^{\basisB}, \left[M\right]_{\basisC}^{\basisB}$을 생각할 수 있다. 관찰 5.5.15에 의하면 $$\left[L\right]_{\basisC}^{\basisB} \asymp 
+\begin{pmatrix}
+	I_r & \mathbf{0}\\
+	\mathbf{0} & \mathbf{0}
+\end{pmatrix}, \left[M\right]_{\basisC}^{\basisB} \asymp \begin{pmatrix}
+	I_r & \mathbf{0}\\
+	\mathbf{0} & \mathbf{0}
+\end{pmatrix}$$ 이므로 $\begin{pmatrix}
+	I_r & \mathbf{0}\\
+	\mathbf{0} & \mathbf{0}
+\end{pmatrix}$에 대응하는 선형사상을 $I'$이라고 하면 $I'=\psi_L \circ L \circ \varphi_L, I' = \psi_M \circ M \circ \varphi_M$이 되게 하는 bijection $\psi_L, \varphi_L, \psi_M, \varphi_M$이 존재한다. 이제 $$\psi = \psi_M^{-1} \circ \psi_L \qquad \varphi = \varphi_M \circ \varphi_L^{-1}$$와 같이 두면 $\psi \circ L = \psi_M^{-1} \circ \psi_L \circ L = \psi_M^{-1} \circ \psi_L \circ L \circ (\varphi_L \circ \varphi_L^{-1}) = \psi_M^{-1} \circ (\psi_L \circ L \circ \varphi_L) \circ \varphi_L^{-1} \\ = \psi_M^{-1} \circ (\psi_M \circ M \circ \varphi_M) \circ \varphi_L^{-1} = M \circ \varphi_M \circ \varphi_L^{-1} = M\circ \varphi$ 가 된다.
+
+\item[\textbf{6.2.15}] 
+	\begin{enumerate}
+		\item[\textbf{(가)}] (Injective) $\sigma_1, \sigma_2 \in A_n$에 대하여 $\rho_\tau (\sigma_1) = \rho_\tau (\sigma_2)$이면 $\sigma_1 \circ \tau = \sigma_2\circ\tau$ 이고, $\tau$가 transposition이므로 역원 $\tau^{-1}$이 존재한다. 이 역원을 오른쪽에 합성해주면, 함수의 합성에는 결합법칙이 성립하므로, $\sigma_1 \circ (\tau \circ \tau^{-1}) = \sigma_2 \circ (\tau \circ \tau^{-1})$ 이고 $\tau \circ \tau^{-1} = id$ 이므로 $\sigma_1 = \sigma_2$. \\
+		(Surjective) $A_n \circ \tau$의 정의에 의하면 임의의 $A_n \circ \tau$의 원소 $\sigma_1$에 대해 $\sigma_1 = \sigma \circ \tau$인 $\sigma$가 $A_n$에 존재한다.\\
+		따라서 $\rho_\tau$는 bijection 이다.
+		\item[\textbf{(나)}] (Disjoint) 우선 $A_n$의 정의는 $\mathrm{sgn}(\sigma) = 1$인 $\sigma$들의 집합이다. 따라서 $\sigma$는 짝수개의 transposition의 합성으로 표현할수 있다. 그런데 이 $A_n$의 원소 $\sigma$들에 transposition $\tau$를 합성한 $A_n \circ \tau$의 원소 $\sigma \circ \tau$들은 홀수개의 transposition의 합성으로 나타내어지므로, $\mathrm{sgn}(\sigma \circ \tau) = -1$이 된다. 따라서 $A_n \cap (A_n\circ\tau) = \varnothing$. \\
+		(Union) 이제 $S_n = A_n \cup (A_n\circ\tau)$임을 보이자. $A_n, A_n\circ\tau$는 정의에 의해 이미 $S_n$의 부분집합인 데다가, $S_n$의 원소들 중에서 $\mathrm{sgn}$의 값이 $1$인 모든 원소들은 $A_n$의 정의에 의해 $A_n$의 원소가 된다. 그러므로 $\mathrm{sgn}$의 값이 $-1$인 원소들이 전부 $A_n\circ\tau$의 원소임을 확인하면 된다.\\ 만약 $\mathrm{sgn}(\sigma)=-1$이고 $\sigma \notin A_n\circ\tau$인 $\sigma \in S_n$가 존재한다고 해보자. 그러면 $\mathrm{sgn}(\sigma\circ\tau^{-1})=1$이므로 $\sigma\circ\tau^{-1}\in A_n$이다. 이제 $\rho_\tau(\sigma\circ\tau^{-1}) = \sigma\circ\tau^{-1}\circ\tau=\sigma\circ id = \sigma$이고 $\rho_\tau$는 bijection 이므로 $\rho_\tau(\sigma\circ\tau^{-1}) = \sigma \in A_n\circ\tau$가 되어 모순이다. 따라서 $\mathrm{sgn}$의 값이 $-1$인 permutation들은 전부 $A_n\circ\tau$에 있다. \\ $\therefore S_n = A_n \amalg (A_n\circ\tau)$.
+		\item[\textbf{(다)}] $\rho_\tau$가 bijection 이고, 정의역과 공역(치역)이 유한집합이므로 비둘기집의 원리에 의해 $\left|A_n\right| = \left|A_n\circ\tau\right|$임을 알수 있고, (나)로부터 $S_n = A_n \amalg (A_n\circ\tau)$ 이므로 $n! = \left|S_n\right| = \left|A_n\right| + \left|A_n\circ\tau\right| = 2 \left|A_n\right|$이다. 따라서 $\left|A_n\right| = n!/2$.
+		\end{enumerate}
+		
+\item[\textbf{6.2.26}] 보기 6.2.24 (가) 로부터 $\left[ L \right]_{\basisB_\sigma}^{\basisB_\sigma} = \left(I_\sigma\right)^{-1} \cdot \left[L\right]_{\basisB}^{\basisB} \cdot I_\sigma$ 이므로 $\left[ L \right]_{\basisB}^{\basisB} \sim  \left[L\right]_{\basisB_\sigma}^{\basisB_\sigma}$ 임을 알 수 있다. 이제 $\left[L\right]_{\basisB}^{\basisB} = \mathrm{diag}(\lambda_1, \cdots, \lambda_n)$ 일 때, $\left[ L \right]_{\basisB_\sigma}^{\basisB_\sigma} = \mathrm{diag}(\lambda_{\sigma(1)}, \cdots, \lambda_{\sigma(n)})$ 임을 보이면 원하는 결론을 얻는다. \\\\
+$V$의 basis를 하나 택하여 $\basisB = \{v_1, \cdots, v_n\}$라고 할 때, 다음과 같은 선형사상 $L \in \mathfrak{L}(V, V)$을 생각할 수 있다. (단, $\mathrm{dim}V = n$.) (Linear Extension Theorem)$$L(v_i) = \lambda_iv_i, ~ \lambda_i \in F \qquad \text{for} \:\: i = 1, \cdots, n$$ 
+그러면 $\left[L(v_i)\right]_\basisB$는 $i$-번째 좌표가 $\lambda_i$이고 나머지 좌표들은 $0$이 되므로, 이 선형사상 $L$에 대하여 $$\left[L\right]_{\basisB}^{\basisB} = \mathrm{diag}(\lambda_1, \cdots, \lambda_n)$$가 됨을 알 수 있다. \\이제 주어진 $\sigma\in S_n$에 대하여 $\basisB_\sigma = \{v_{\sigma(1)} \cdots, v_{\sigma(n)}\}$으로 두면, $\sigma(j)$ $(j = 1, \cdots, n)$ 는 (permutation의 정의로부터) $i$가 택할 수 있는 값들 $1, \cdots, n$ 중에 존재하므로 $$L(v_{\sigma(j)}) = \lambda_{\sigma(j)} v_{\sigma(j)} \qquad \text{for} \:\: j = 1, \cdots, n$$
+이 된다. 그러므로 $\left[L(v_{\sigma(j)})\right]_{\basisB_\sigma}$는 $j$-번째 좌표가 $\lambda_{\sigma(j)}$이고 나머지 좌표들은 모두 $0$이다. 따라서
+$$\left[ L \right]_{\basisB_\sigma}^{\basisB_\sigma} = \mathrm{diag}(\lambda_{\sigma(1)}, \cdots, \lambda_{\sigma(n)})$$
+가 되고, $\left[ L \right]_{\basisB}^{\basisB} \sim  \left[L\right]_{\basisB_\sigma}^{\basisB_\sigma}$ 이므로 $\mathrm{diag}(\lambda_1, \cdots, \lambda_n) \sim \mathrm{diag}(\lambda_{\sigma(1)}, \cdots, \lambda_{\sigma(n)})$ 이라는 결론을 얻는다.
+
+\item[\textbf{6.4.9}] 정리 6.4.7 에 의하면 [$A$ is invertible if and only if $\det{A} \neq 0$] 이고, [$A$ is invertible]과 [$A$의 행들이 일차독립]인 것은 동치이므로, $A$의 행들이 일차종속일 필요충분조건은 $\det{A} = 0$인 것이다. (대우)
+	\begin{itemize}
+		\item[\textbf{(가)}] 우선 $S$의 원소들을 차례로 행렬 $A$의 $i$-번째 column 이라고 하면,
+			$$ A = 
+			\begin{pmatrix}
+				a & c & b \\
+				b & a & c \\
+				c & b & a
+			\end{pmatrix} 
+			$$ 이므로 $\det{A} = a^3+b^3+c^3-3abc$ 임을 계산을 통해 알 수 있다.\\
+			$S$가 일차종속\\
+			$\iff \det{A} = a^3+b^3+c^3-3abc = 0$ \\
+			$\iff (a+b+c)(a^2+b^2+c^2-ab-bc-ca)=0$ \\
+			$\iff a+b+c=0 \text{ or } a^2+b^2+c^2-ab-bc-ca=0$.
+		\item[\textbf{(나)}] (가)에서 더 이어나가면,\\
+			$a+b+c=0 \text{ or } a^2+b^2+c^2-ab-bc-ca=0$ \\
+			$\iff a+b+c=0 \text{ or } \frac{1}{2}\{(a-b)^2+(b-c)^2+(c-a)^2\} = 0$ \\
+			$\iff a+b+c=0 \text{ or } a=b=c \quad (\because F = \mathbb{R})$.
+	\end{itemize}
+
+\item[\textbf{6.5.8}]
+	\begin{itemize}
+		\item[\textbf{(가)}] 다음과 같이 귀납적으로 정의하자.
+			$$
+				A_n = \left(\begin{array}{c|c}
+				2 & -1 \quad 0 \quad \cdots \quad 0 \\ \hline
+				-1 \\
+				\vdots & A_{n-1}
+				\\0 
+				\end{array}\right) \qquad (n \geq 2)
+			$$ 그러면, $n \geq 3$일 때,
+			$$
+				A_n = \left(\begin{array}{c|c|cc}
+				2 & -1 & 0 & 0 \quad \cdots \quad 0 \\ \hline
+				-1 & 2 & -1 & 0 \quad \cdots \quad 0 \\ \hline
+				0 & -1 \\
+				0 & 0 \\			
+				\vdots & \vdots & & A_{n-2}\\
+				0 & 0
+				\end{array}\right)
+			$$ 와 같이 쓸 수 있다. 이제 첫 번째 행에 대해 전개하면,
+			$$\det{A_n} = 2 \cdot \det A_{n-1} - (-1) \cdot \det \left(
+				\begin{array}{c|c}
+					-1 & -1 \quad 0 \quad \cdots \quad 0 \\ \hline
+					0 \\
+					\vdots & A_{n-2} \\
+					0
+				\end{array}
+			\right)$$ 를 얻고, 마지막 항의 행렬식 부분에서 첫 번째 열에 대해 전개하면 $(-1)\det{A_{n-2}}$ 이므로
+			$$
+				\det{A_n} = 2\det A_{n-1} - \det{A_{n-2}}, \qquad (n\geq 3)		
+			$$
+			직접 계산해 보면 $\det A_1 = 2, \det A_2 = 3$ 임을 알 수 있다. 
+			\\이 점화식을 풀어주면 $\det A_n = n+1$ 임을 얻는다.
+			
+		\item[\textbf{(나)}] 우선 $n=2$ 일때, 행렬식을 직접 계산해 보면 $\det B_2 = 2$이다. \\ $n \geq 3$일 때, $B_n$의 마지막 행에 대해 전개하면,
+			$$
+				\det B_n = -(-1) \det \left(
+					\begin{array}{c|c}
+						& 0 \\
+						A_{n-2} & \vdots \\
+						& 0 \\ \hline
+						0 \quad \cdots \quad 0 \quad -1 & -2
+					\end{array}
+				\right) + 2\det A_{n-1}
+			$$ 을 얻고 첫 항의 행렬식 부분에서 마지막 열에 대해 전개하면 $-2\det A_{n-2}$이므로, 
+			$$
+				\det B_n = 2\det A_{n-1} - 2\det A_{n-2}, \qquad (n \geq 3)
+			$$ 임을 알 수 있고, (가)의 결과를 대입하면 $\det B_n = 2 \: (n\geq 2)$ ($n=2$ 일때도 성립)를 얻는다.
+			
+		\item[\textbf{(다)}] $n=4$일 때, 행렬식을 직접 계산해 보면 $\det D_4 = 4$ 임을 알 수 있다. \\ $D_n$의 마지막 행에 대해 전개하면,
+		$$
+			\det D_n = 2\det A_{n-1} + (-1) \det \left(
+			\begin{array}{c|cc}
+				&0 & 0 \\
+				A_{n-3}&\vdots &\vdots \\
+				&0 &0 \\
+				\hline
+				0 \quad \cdots \quad 0 \quad -1 &-1 &-1 \\
+				0\quad \cdots \quad 0 \quad ~~~0 &2 &0 \\
+			\end{array}\right)
+		$$ 을 얻고 이제 마지막 항의 행렬식을 마지막 열에 대해 전개하면,
+		$$
+			-(-1)\det \left( 
+				\begin{array}{c|c}
+				A_{n-3} & \mathbf{0} \\ \hline
+				\mathbf{0} & 2
+				\end{array}
+			\right) = 2\det A_{n-3}
+		$$ 이므로,
+		$$\det D_n = 2 \det A_{n-1} - 2 \det A_{n-3}, \qquad (n \geq 4)$$
+		임을 알 수 있고, (가)의 결과를 대입하면 $\det D_n = 4 \: (n \geq 4)$를 얻는다.
+	\end{itemize}
+
+\item[\textbf{6.5.11}] 행렬에 elementary column operation 을 유한 번 시행해도 행렬식의 값은 바뀌지 않는다. 문제에서 행렬식을 구하고자 하는 행렬을 $V_n$ 이라고 하자. \\
+귀납법을 사용한다. $n=2$ 일때, (좌변)$=a_2-a_1$, (우변)$=a_2-a_1$ 이므로 성립한다. \\
+$n-1 \:(\geq 1)$일 때, $\det V_{n-1} = \displaystyle\prod _{i\leq i <j \leq n-1} (a_j-a_i)$ 라고 가정하자.\\
+$$
+	\det V_n = \left|
+		\begin{array}{ccccc}
+			1& a_1 & a_1^2 & \cdots & a_1^{n-1} \\
+			1& a_2& a_2^2& \cdots&a_2^{n-1} \\
+			\vdots& \vdots& \vdots& \ddots& \vdots\\
+			1& a_{n}& a_n^2& \cdots&a_n^{n-1}
+		\end{array}
+	\right|
+$$ 에서 $j = 1, \cdots, n$ 에 대해 $V_n$의 $j$-번째 column에 $V_n$의 $(j-1)$-번째 column의 $-a_n$배를 더한다. 그러면,\\
+$\displaystyle
+\begin{aligned}
+	=& \left|
+		\begin{array}{ccccc}
+		1& a_1 - a_n & a_1^2 - a_1a_n & \cdots & a_1^{n-1} - a_n a_{1}^{n-2} \\
+			1& a_2 - a_n& a_2^2 - a_2a_n& \cdots&a_2^{n-1} - a_n a_{2}^{n-2} \\
+			\vdots& \vdots& \vdots& \ddots& \vdots\\
+			1& 0& 0& \cdots&0
+		\end{array} \right| \\
+   =& \left| 
+		\begin{array}{ccccc}
+		1& a_1 - a_n & (a_1 - a_n)a_1 & \cdots & (a_1-a_n)a_1^{n-2}\\
+			1& a_2 - a_n& (a_2 - a_n)a_2& \cdots& (a_1-a_n)a_2^{n-2}\\
+			\vdots& \vdots& \vdots& \ddots& \vdots\\
+			1& 0& 0& \cdots&0
+		\end{array} \right| \\
+	=& (-1)^{n-1} \left| 
+		\begin{array}{cccc}
+		a_1 - a_n & (a_1 - a_n)a_1 & \cdots & (a_1-a_n)a_1^{n-2}\\
+		a_2 - a_n& (a_2 - a_n)a_2& \cdots& (a_2-a_n)a_2^{n-2}\\
+		\vdots& \vdots& \ddots& \vdots\\
+		a_{n-1} - a_n& (a_{n-1} - a_n)a_{n-1}& \cdots&(a_{n-1}-a_n)a_{n-1}^{n-2}
+		\end{array} \right| (\text{마지막 행에 대한 전개})\\
+		=& (-1)^{n-1} \prod_{k=1}^{n-1}(a_k-a_n) \left| 
+		\begin{array}{ccccc}
+		1& a_1 & a_1^2 & \cdots & a_1^{n-2} \\
+			1& a_2& a_2^2& \cdots&a_2^{n-2} \\
+			\vdots& \vdots& \vdots& \ddots& \vdots\\
+			1& a_{n-1}& a_{n-1}^2& \cdots&a_{n-1}^{n-2}
+		\end{array} \right| \: (\det \text{는 linear form}) \\
+\end{aligned}$
+\\
+		$\displaystyle \begin{aligned}
+	=& (-1)^{n-1} \det V_{n-1} \prod_{k=1}^{n-1}(a_k-a_n)  \\	
+	=&	(-1)^{n-1} \left(\prod _{i\leq i <j \leq n-1} (a_j-a_i) \right) \left(\prod_{k=1}^{n-1}(a_k-a_n)\right) = \left(\prod _{i\leq i <j \leq n-1} (a_j-a_i) \right) \left(\prod_{k=1}^{n-1}(a_n-a_k)\right)\\
+	=& \prod _{i\leq i <j \leq n} (a_j-a_i)
+\end{aligned}
+$ \\
+ 이 되어 $n$일 때도 성립한다. 따라서 
+$$\left| \begin{array}{ccccc}
+			1& a_1 & a_1^2 & \cdots & a_1^{n-1} \\
+			1& a_2& a_2^2& \cdots&a_2^{n-1} \\
+			\vdots& \vdots& \vdots& \ddots& \vdots\\
+			1& a_{n}& a_n^2& \cdots&a_n^{n-1}
+		\end{array} \right|= \prod _{i\leq i <j \leq n} (a_j-a_i)$$
+
+\item[\textbf{6.5.13}]
+	\begin{itemize}
+		\item[\textbf{(가)}] $a_0, a_1, \cdots, a_{n-1} \in \mathbb{R}$ 일 때, $a_0f_0 + a_1f_1+\cdots+a_{n-1}f_{n-1} = 0$ 이라고 하자. 서로 다른 실수 $x_1, \cdots, x_n$을 잡아주면 이는 $$a_0+x_ia_1+x_i^2a_2 +\cdots + x_i^{n-1}a_{n-1} =0, \quad (i = 0, 1, \cdots, n-1)$$과 같은 식이다. 이 $a_i$들에 대한 $n$개의 연립일차방정식은 Vandermonde matrix를 coefficient matrix로 갖는다. 그런데 $x_i$는 서로 다른 실수들이므로 연습문제 6.5.11에 의하면 coefficient matrix의 행렬식이 $0$이 아니다. 따라서 coefficient matrix는 invertible 이므로 왼쪽에 역행렬을 곱해주면 우변은 $0$이므로 모든 $i$에 대하여 $a_i = 0$이다. 따라서 일차독립이다.
+		\item[\textbf{(나)}]  $a_0, a_1, \cdots, a_{n-1} \in \mathbb{R}$ 일 때, $a_0g_0 + a_1g_1+\cdots+a_{n-1}g_{n-1} = 0$ 이라고 하자. 이는 다음과 동치이다.
+		$$a_0+a_1\exp(x)+a_2\exp(2x)+\cdots+a_{n-1}\exp((n-1)x) = 0$$
+		이제 위 식에 $x= 0, 1, 2\cdots, n-1$을 대입하면, 다음 연립방정식을 얻는다.
+		$$
+			\begin{pmatrix}
+			1 & (\exp(0))^1 & (\exp(0))^2 & \cdots & (\exp(0))^{n-1}\\
+			1 & (\exp(1))^1 & (\exp(1))^2 & \cdots & (\exp(1))^{n-1}\\
+			1 & (\exp(2))^1 & (\exp(2))^2 & \cdots & (\exp(2))^{n-1}\\
+			\vdots & \vdots & \vdots & \ddots & \vdots\\
+			1 & (\exp(n-1))^1 & (\exp(n-1))^2 & \cdots & (\exp(n-1))^{n-1} 
+			\end{pmatrix} 
+			\begin{pmatrix}
+				a_0 \\ a_1 \\ a_2 \\ \vdots \\ a_{n-1}
+			\end{pmatrix} = 0
+		$$ coefficient matrix가 Vandermonde matrix이고 $\exp(i), \: (i = 0, 1, \cdots, n-1)$은 모두 다른 실수이므로 coefficient matrix의 행렬식 값이 $0$이 아니다. 따라서 invertible 이고 왼쪽에 역행렬을 곱해주면 우변이 $0$이 되므로 모든 $i$에 대하여 $a_i = 0$이다. 따라서 일차독립이다.
+		\item[\textbf{(다)}] $a_0, a_1, \cdots, a_{n-1}, b_0, b_1, \cdots, b_{n-1} \in \mathbb{R}$일 때, $$a_0f_0 + a_1f_1+\cdots+a_{n-1}f_{n-1} + b_0g_0 + b_1g_1+\cdots+b_{n-1}g_{n-1} = 0$$ 이라고 하자. 이 식은 $x$에 대한 항등식이므로, 이 식을 $n$번 미분하면 $$b_0g_0 + b_1g_1+\cdots+b_{n-1}g_{n-1} = 0$$ 을 얻는다. (나)의 결과에 의해 $b_0 = b_1 = \cdots = b_{n-1} = 0$이어야 한다. 이제 이 $b_i$의 값들을 미분하기 전 식에 대입해 주면, $a_0f_0 + a_1f_1+\cdots+a_{n-1}f_{n-1} = 0$이 되고, (가)에 의해 $a_0 = a_1 = \cdots = a_{n-1} = 0$이 된다. 따라서 일차독립이다.
+	\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{itemize}
+
+\end{document}
