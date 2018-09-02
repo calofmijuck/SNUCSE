@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+	\geometry{
+		top = 30mm,
+		left =30mm,
+		right = 30mm,
+		}
+		
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand*{\qed}{\hfill\ensuremath{\square\\}}%
+\newcommand*{\tab}{\hspace*{5mm}}%
+
+\begin{document}
+\begin{center}
+\textbf{\Large Discrete Mathematics Homework \#4}
+\end{center}
+\begin{flushright}
+{\large 2017-18570 이성찬}\\
+\end{flushright}
+
+\begin{itemize}
+\item[\large \textbf{5.1.12}] ~\\
+\textbf{(Proof by Induction)} When \(n = 0\), LHS \(= 1\) and RHS \(= 1\). True. \\ Suppose the given statement holds for some \(n \in \mathbb{N}\), \(n \geq 0\). Then we have
+\begin{equation*}
+\begin{aligned}
+\sum_{j=0}^{n+1} \left(-\frac{1}{2}\right)^j 
+&= \sum_{j=0}^{n} \left(-\frac{1}{2}\right)^j + \left(-\frac{1}{2}\right)^{n+1} \overset{I.H.}{=} \frac{2^{n+1}+(-1)^n}{3\cdot 2^n} + \left(-\frac{1}{2}\right)^{n+1} \\
+&= \frac{2^{n+2}+2\cdot (-1)^n}{3\cdot 2^{n+1}}+\frac{3\cdot (-1)^{n+1}}{3\cdot 2^{n+1}} = \frac{2^{n+2}+2\cdot (-1)^n}{3\cdot 2^{n+1}}+\frac{-3\cdot (-1)^{n}}{3\cdot 2^{n+1}} \\
+&=\frac{2^{n+2}-(-1)^n}{3\cdot 2^{n+1}} = \frac{2^{n+2}+(-1)^{n+1}}{3\cdot 2^{n+1}} 
+\end{aligned}
+\end{equation*}
+Thus the given statement also holds for \(n+1\). Thus the given statement holds for all non-negative integers \(n\). \qed
+
+\item[\large \textbf{5.1.18}] ~
+	\begin{enumerate}
+		\item[\textbf{(a)}] \(P(2): 2! < 2^2\)
+		\item[\textbf{(b)}] \(2 = 2! < 2^2 = 4\). Thus \(P(2)\) is true.
+		\item[\textbf{(c)}] Inductive Hypothesis: \(P(k): k! < k^k\) is true for some \(k\in \mathbb{N}, k > 1\).
+		\item[\textbf{(d)}] I need to prove that \(P(k+1): (k+1)! < (k+1)^{k+1}\) is true when \(P(k)\) is true.   
+		\item[\textbf{(e)}] Given the inductive hypothesis is true,
+			\[
+			\begin{aligned}
+				(k+1)! &= (k+1)\cdot k! < (k+1) \cdot k^k \qquad (\because \text{Inductive Hypothesis}) \\
+				&<(k+1) \cdot (k+1)^k = (k+1)^{k+1}
+			\end{aligned}
+			\]
+			Thus \(P(k+1)\) is also true.
+		\item[\textbf{(f)}] 	We first showed that \(P(2)\) is true, and the inductive step shows that \(P(3)\) is also true. Then the inductive step also implies that \(P(4)\) is also true. Continuing on, \(P(n)\) is true for integers greater than \(1\). \qed
+	\end{enumerate}
+	
+\item[\large \textbf{5.1.60}] ~\\
+Let \(P(n): \neg(p_1 \vee p_2 \vee \cdots \vee p_n) \text{ is equivalent to } \neg p_1 \wedge \neg p_2 \wedge \cdots \wedge \neg p_n\). \\
+It is trivial that \(P(1)\) is true. \(P(2)\) is true by De Morgan's Law.\\
+Now suppose \(P(n)\) is true. We will show that \(P(n+1)\) is also true.\\
+Let \(q : p_1 \vee p_2 \vee \cdots \vee p_n\). Then we have
+\[
+\begin{aligned}
+	\neg(p_1 \vee p_2 \vee \cdots \vee p_n \vee p_{n+1}) &= \neg(q \vee p_{n+1}) \overset{P(2)}{=} \neg q \wedge \neg p_{n+1}\\
+	&= (\neg p_1 \wedge \neg p_2 \wedge \cdots \wedge \neg p_n) \wedge \neg p_{n+1} \\
+	&= \neg p_1 \wedge \neg p_2 \wedge \cdots \wedge \neg p_n \wedge \neg p_{n+1}
+\end{aligned}
+\]
+Note that \(\neg q = \neg p_1 \wedge \neg p_2 \wedge \cdots \wedge \neg p_n \) by the Inductive Hypothesis, and the last line follows directly from the associativity of \(\wedge\) operators.\\Thus \(P(n+1)\) is true, proving the statement for all \(n\). \qed
+
+\item[\large \textbf{5.2.8}] ~ \\
+Let \(P(n)\): We can form total amounts of the form \(5n\) for all \(n\geq 28\), using the given certificates.
+Define \((x, y)\) as amount of money when we have \(x\) \$25 certificates, \(y\) \$40 certificates. Then \((x, y) = 25x + 40y\). Now we know that if there exists non-negative integers such that \((x, y) = 5n, \: P(n)\) is true.  \\
+\(P(n)\) is true for \(n=28, 29, 30, 31, 32\) because setting \((x, y)\) to \((4, 1), (1, 3), (6, 0), (3, 2), (0, 4)\) will let us pay the amount we want. \\
+Now to use strong induction, assume that \(P(j)\) is true for all \(j \: (28\leq j \leq k\) where \(k \in \mathbb{N}, k \geq 32\). We will now show that \(P(k+1)\) is also true. \\
+Since \(k-4\geq 28\), we know that \(P(k-4)\) is true. Then we can form \$\(5(k-4)\). We add one more \$25 certificate here to form \$\(5(k+1)\), which was what we wanted.\qed
+
+
+\item[\large \textbf{5.2.28}] ~\\
+We use strong induction here. We already know that $P(n)$ is true for $b\leq n\leq b+j$. Now set the inductive hypothesis as ``$P(n)$ is true for all $n$ such that $b\leq n \leq k$, where $k$ is an integer with $k\geq b+j$''. Since it is already given that under the assumption of the inductive hypothesis, $P(k+1)$ is true.
+Thus by strong induction, $P(n)$ is true for all integers $n$ with $n\geq b$. \qed 
+
+\item[\large \textbf{5.3.10}] ~\\
+Define $S_m(n) = S_m(n-1) + 1$ and $S_m(0)=m$. Then it follows directly that $S_m(n) = m + n$. \qed
+
+\item[\large \textbf{5.3.24}] ~
+	\begin{enumerate}
+		\item[\textbf{(a)}] Let the wanted set be $S$. Set $1\in S$ as the base case, and the recursive case as: If $a\in S, a+2 \in S$. Then this will generate the set of all odd positive integers.
+		\item[\textbf{(b)}] Let the wanted set be $P$. Set $3\in P$ as the base case, and the recursive case as: If $a\in P, 3a \in P$. Then this will generate the set of all positive integer powers of $3$.
+		\item[\textbf{(c)}] Let the wanted set be $P[t]$. Set $1\in P[t]$ as the base case, and the recursive cases as the following. \\
+		1. If $p(t)\in P[t], \: tp(t)\in P[t]$. \\
+		2. If $p(t), q(t)\in P[t], \: np(t) + q(t)\in P[t]$, for any $n\in \mathbb{Z}$. \\
+		Then this will generate the set of polynomials with integer coefficients, since $P[t]$ is a vector space. \qed 
+	\end{enumerate}
+
+\item[\large \textbf{5.4.8}] ~\\
+Let $S_n$ denote the sum of the first $n$ positive integers. Then $$S_n = S_{n-1} + n, \quad S_1 = 1$$
+Changing the recurrence relation to an algorithm gives us \\
+\textbf{sum}($n$)\\
+\tab if($n == 1$) //\textit{ base case}\\
+\tab\tab \textbf{return} $1$\\
+\tab else // \textit{ recursive case}\\
+\tab\tab \textbf{return} $n \:+ \:$\textbf{sum}($n-1$) \qed
+
+
+\item[\large \textbf{5.4.16}] ~\\
+\textbf{(Proof by Induction)} When $n=1$, the algorithm returns $1$, so it is correct. \\
+Suppose the algorithm returns the correct answer for some positive integer $n$. Now we have to show that the algorithm is also correct for $n+1$. \\
+\textbf{sum}($n+1$) will return $n+1$ + \textbf{sum}($n$). Since \textbf{sum}($n$) will correctly return the answer (by I.H.), when $n+1$ is added to it, it will represent the sum of the first $n+1$ positive integers. Therefore \textbf{sum}($n+1$) will return the correct answer. \\
+By the principle of mathematical induction, the algorithm is correct. \qed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{itemize}
+\end{document}
