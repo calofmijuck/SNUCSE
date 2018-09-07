@@ -1,0 +1,43 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{kotex}
+\usepackage{geometry}
+	\geometry{
+		top = 30mm,
+		left = 40mm,
+		right = 40mm,
+	}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+
+\begin{document}
+\begin{center}
+\textbf{Quiz 1 (9월 15일)}\\
+{[고급수학 및 연습 2 - 2017학년도 2학기]}\\
+(제한시간: 20분, 만점: 20점)\\
+\end{center}
+
+* 답안지에 학번과 이름을 쓰시오. 답안 작성시 풀이과정을 명시하시오.\\
+
+\begin{enumerate}
+\item 연속함수
+$$
+	f(x, y) = \begin{cases}
+    \dfrac{x^4+y^4}{x^2+y^2},       & \quad (x, y) \neq (0, 0)\\
+    0,  & \quad (x, y) = (0, 0)
+  \end{cases}
+$$ 의 미분가능성을 조사하시오. (7점) 
+~\\
+\item 함수 $f(x, y, z)=x^y+y^z+z^x$ 의 $3$ - 등위면에 대하여, 점 $(1, 1, 1)$에서의 접평면의 방정식을 구하시오. (4점)
+~\\
+\item 함수 $$f(x, y)= \int_{xy}^{\sqrt{x^2+y^2}} \log{(1+t^2)} dt$$ 에 대하여 $\displaystyle \frac{\partial f}{\partial x}(1, 0)$ 과 $\displaystyle \frac{\partial f}{\partial y}(0, 1)$ 을 구하시오. (4점)
+~\\\\
+\item 모든 점 $P\in \mathbb{R}^3$ 에 대하여, 일급함수 $f$ 의 기울기 벡터 $\text{grad} f(P)$ 는 단위벡터이고, 원점을 중심으로 하는 $P$ 를 지나는 구면에 수직이다. 함수 $f$ 를 구하시오. (5점)
+
+\end{enumerate}
+
+\end{document}
