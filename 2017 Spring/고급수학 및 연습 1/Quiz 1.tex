@@ -1,0 +1,51 @@
+%!TEX encoding = utf-8
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{kotex}
+\usepackage{geometry}
+	\geometry{
+		top = 30mm,
+		left = 40mm,
+		right = 40mm,
+	}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+
+\begin{document}
+\begin{center}
+\textbf{Quiz 1}\\
+제한시간: 20분, 만점: 20점\\
+{[고급수학 및 연습 1 (003) - 2017학년도 1학기]}\\
+\end{center}
+
+* 답안지에 학번과 이름을 쓰시오. 답안 작성 시 풀이과정을 명시하시오.
+
+\begin{enumerate}
+\item 수열 $\left\{ a_n \right\} _{n \geq 1}$이 다음과 같이 주어져 있을 때, 급수 $\displaystyle\sum\limits_{n=1}^{\infty}a_n$의 수렴 혹은 발산 여부를 확인하시오.
+\\
+(a) (4점) $\displaystyle a_n=\frac{1}{3n^2-20}$.
+\\\\
+(b) (4점) $\displaystyle a_n=\left(\frac{1}{n} - 1\right) ^n$.
+\\
+
+\item (6점) 다음 급수가 수렴함을 증명하시오.
+\begin{equation*}
+\sum_{n=1}^{\infty}a_n, \quad\quad a_n=\left\{
+                \begin{array}{rl}
+                  \dfrac{2}{n}, &\, n\text{은 }  3\text{의 배수}\\ \\
+ 			-\dfrac{1}{n}, &\, n\text{은 } 3\text{의 배수가 아닌 자연수.}
+                \end{array}
+              \right.
+\end{equation*}
+\\
+\item (a) (3점) $f(x)=\dfrac{1}{\sqrt{x}}$의 그래프를 이용하여 임의의 자연수 $n$에 대해
+$$\frac{1}{\sqrt{2}}+\frac{1}{\sqrt{3}}+\cdots+\frac{1}{\sqrt{n}}<2\sqrt{n}-2<\frac{1}{\sqrt{1}}+\frac{1}{\sqrt{2}}+\cdots+\frac{1}{\sqrt{n-1}}$$
+임을 확인하시오.\\\\
+(b) (3점) 위의 결과를 사용하여 극한값
+$$\delta := \lim_{n \rightarrow \infty} \left(\sum_{k=1}^n \frac{1}{\sqrt{k}}-2\sqrt{n}\right)$$
+이 존재함을 보여라.
+\end{enumerate}
+
+\end{document}
