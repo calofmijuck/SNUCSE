@@ -1,0 +1,35 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{kotex}
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\usepackage{mathtools}
+\usepackage{geometry}
+	\geometry{
+		top = 60mm,
+		left =10mm,
+		right = 10mm,
+		bottom = 80mm,
+		}
+		
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+
+\begin{document}
+군(group)의 표기법에 관한 우리의 \textbf{관습}.\\
+\begin{center}
+	\begin{tabular}{c | c | c}
+		& \textbf{Multiplicative Notation} & \textbf{Additive Notation} \\ \hline
+		Group & $G, H, K, \cdots$ & $A, B, C, \cdots$ \\ \hline
+		Element & $g, h, \cdots$ & $a, b, c, \cdots$ \\ \hline
+		이항연산 & $\cdot$ (곱셈) & $+$ (덧셈) \\ \hline
+		항등원 & $1$ & $0$ \\ \hline
+		역원 & $g^{-1}$ & $-a$ \\ \hline &&\\[-1em]
+		가환 & commutative group & \parbox[c]{8cm}{\centering abelian group\\(tacitly assume the binary operation as $+$)} \\[1em] \hline &&\\[-1em]
+		지수(정수)\footnote{지수가 $-1$일 때의 정의에서 왼쪽의 $-1$은 정수, 오른쪽은 하나의 symbol 이다.} & \parbox[c]{8cm}{\centering $g^n = g \cdot g \cdot \cdots \cdot g$ ($n$개) ($n \geq 1$) \\ $g^0 = 1$ \\ $g^{-1} = g^{-1}$ \\ $g^{-n} = g^{-1} \cdot \cdots \cdot g^{-1}$ ($n$개) ($n \geq 1$)} & \parbox[c]{8cm}{\centering $na = a + a + \cdots + a$ ($n$개) ($n \geq 1$) \\ $0a = 0$ \\ $-1a = -a$ \\ $-na = (-a) + \cdots + (-a)$ ($n$개) ($n \geq 1$)} \\[3em] \hline &&\\[-1em]
+		\parbox[c]{2cm}{\centering 지수법칙\\$m, n\in\mathbb{Z}$} & \parbox[c]{8cm}{\centering $g^mg^n = g^{m+n}$ \\ $(g^m)^n = g^{mn}$ \\ if $G$ is commutative, $g^nh^n = (gh)^n$ } & \parbox[c]{8cm}{\centering $ma+na=(m+n)a$ \\ $n(ma) = (mn)a$ \\ if $A$ is abelian, $na+nb = n(a+b)$} \\[2em] \hline
+	\end{tabular}
+
+\end{center}
+\end{document}
