@@ -1,0 +1,152 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\numl}[1]{\item[\large\textbf{\sffamily #1}]}
+\newcommand{\num}[1]{\item[\textbf{\sffamily #1}]}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\trans}{^{\mathrm{\mathbf{t}}}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\renewcommand{\span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\im}{\text{im}\:}
+\renewcommand{\star}{\text{*}}
+\newcommand{\nsub}{\mathrel{\unlhd}}
+\newcommand{\pnsub}{\mathrel{\lhd}}
+
+
+\begin{document}
+\begin{center}
+\textbf{\Large 선형대수학 2 숙제 \#2}\\
+\large 2017-18570 컴퓨터공학부 이성찬
+\end{center}
+~
+\begin{itemize}
+\numl{11.3.18}
+	\begin{itemize}
+		\num{(가)} $(\bb{Z}, +) =\span{1}$ 임은 자명하다. $(\bb{Z}, +)$ 에 $0$ 은 당연히 있고, $1$ 이 있으니 $-1$ 도 있고, 반복해서 더하면 임의의 정수를 만들 수 있으므로 $\cdots\cdots$. 이때, 가능한 generator 는 $1, -1$ 뿐이다. 만약 $a \in \bb{Z} - \{0\}$ ($|a| \neq 1$) 가 generator 였다면, 지수법칙으로부터 $na=1$ 이 되는 정수 $n$ 이 존재해야만 한다. 하지만 이러한 정수 $n$ 은 존재하지 않으므로 모순.
+		\num{(다)} $-2 + 3 = 1$ 이므로, 양변을 $k$배 하면 $(-k)2+(k)3=k$ 가 되어 임의의 정수를 생성할 수 있다. 마찬가지로 $(-26)4+(7)15=1$ 으로부터 양변을 $k$배 하여 임의의 정수를 생성할 수 있다. ($k\in\bb{Z}$) 그리고 $S = \{6x+9y \; | \; x, y\in\bb{Z} \text{ and } 6x+9y>0\}$ 에는 $1$ 이 없다. 이 집합의 원소들은 전부 $\gcd(6, 9)=3$의 배수 꼴이다.\footnote{This is a proof of Bezout's Lemma.} \\$6\in S$ 이므로 $S$ 는 nonempty 이고, well-ordering principle 에 의해 $S$ 에는 최소의 원소 $d=6s+9t$ 가 존재한다. 이제 $d=\gcd(6, 9)$ 임을 보이자. $6$ 을 $d$ 로 나누면 $6=dq+r$, $0\leq r <d$ 이고 $r = 6-qd = 6-q(6s+9t) = 6(1-qs)-9qt$ 인데 $r \neq 0$ 이면 $d$ 의 최소성에 모순이므로 $r=0$. 따라서 $d\;|\; 6$ 이고 마찬가지로 $d\;|\;9$. 이제 $c$ 가 $6, 9$ 의 공약수라고 하자. 그러면 $6=cu, 9=cv$ 인 $u, v$ 가 존재한다. 따라서 $d=6s+9t=cus+cvt=c(us+vt)$ 이므로 $c\;|\;d$ 가 되어 $c\leq d$. 따라서 $d = \gcd(6, 9)$.
+	\end{itemize}
+	
+\numl{11.3.20} 
+	\begin{itemize}
+		\num{(가)} 우선 $\{id\}$. 그리고 2-cycle 들이 포함된 $\{id, (1, 2)\}, \{id, (2, 3)\}, \{id, (1, 3)\}$. 그리고 3-cycle 들이 포함된 $\{id, (1, 2, 3), (1, 3, 2)\}$, 그리고 마지막으로 $S_3$.\footnote{$|S_3|=6$ 이므로 subgroup 의 원소 수로 가능한 것은 6의 약수인 1, 2, 3, 6 뿐이다.}
+		\num{(나)} No. $S_3$ 가 cyclic 이었다면, $S_3$는 commutative group 이다. 하지만 우리는 $S_3$ 에서 일반적으로 교환법칙이 성립하지 않음을 잘 안다. 당장 서로 다른 두 transposition 을 잡아 계산해봐도 성립하지 않는다.
+		\num{(다)} $\sigma_1 = (1, 2), \sigma_2=(2, 3)$ 으로 두면, $(1, 3) = \sigma_2\circ\sigma_1\circ\sigma_2$, $(1, 3, 2) = \sigma_2\circ\sigma_1$ 이고 $(1, 2, 3) = (1, 3, 2)^2$ 이며 $id$ 는 이미 포함되어 있으므로 $S_3$ 를 생성했다.\\
+		$\sigma =(1, 2), \tau = (1, 2, 3)$ 으로 두면, $(1, 3, 2) = \tau^2$ 이고, $(1, 3) = \tau\,\circ\, \sigma$, $(2, 3) = \sigma \circ (1, 3) \circ \sigma$ 이고 $id$ 는 이미 포함되어 있으므로 $S_3$ 를 생성했다.
+	\end{itemize}
+
+\numl{11.8.15}
+	\begin{itemize}
+		\num{(가)} $\mu_3\times\mu_3$ 의 모든 원소는 3-제곱 하면 $(1, 1)$ 이 된다. 하지만 $\mu_9$ 에는 order 가 9 인 원소가 존재한다. Group 의 구조가 다르므로 not isomorphic.
+		\num{(나)} Let $\mu_2 = \{1,\, -1\}, \mu_3 = \{1,\, \zeta_3,\, \zeta_3^2\}, \mu_6 = \{1,\, \zeta_6, \dots,\, \zeta_6^5\}$. Define $\varphi : \mu_2\times\mu_3 \rightarrow \mu_6$ as $$\varphi((-1)^r, \zeta_3^s) = \zeta_6^{(3r+2s) \text{ mod } 6}, \qquad \text{where }r = 0, 1, \: s = 0, 1, 2$$ 그리고 정의역의 6개의 원소들에 대하여 $\varphi$ 가 bijective homomorphism 임을 확인할 수 있다. 따라서 $\mu_2\times\mu_3 \approx \mu_6$.
+	\end{itemize}
+
+\numl{11.9.12} $A, B\in \rmbf{SL}_n(\bb{R})$ 일 때, \\
+$\det(CAC^{-1})=1$ 이므로 공역은 $\rmbf{SL}_n(\bb{R})$. $\varphi$ 는 homomorphism 인가? $\varphi(AB) = CABC^{-1} = CAC^{-1}CBC^{-1} = \varphi(A)\varphi(B)$. 모든 $B$ 에 대해 $\varphi(A)=B$ 인 $A$ 가 존재하는가? $A = C^{-1}BC$. $\varphi(A)=\varphi(B)$ 이면 $A=B$ 인가? 양변에서 $C^{-1}, C$ 를 cancel 하면 당연. 따라서 $\varphi$ 는 $\rmbf{SL}_n(\bb{R})$ 의 automorphism. \\
+$\det(A\trans)^{-1} = 1$ 이므로 공역은 $\rmbf{SL}_n(\bb{R})$. $\psi$ 는 homomorphism 인가? $\psi(AB) = ((AB)\trans)^{-1} = (B\trans A\trans)^{-1} = (A\trans)^{-1}(B\trans)^{-1} = \psi(A)\psi(B)$. 모든 $B$ 에 대해 $\psi(A)=B$ 인 $A$ 가 존재하는가? $A = (B^{-1})\trans$. $\psi(A)=\psi(B)$ 이면 $A=B$ 인가? 역행렬은 유일하므로 당연. 따라서 $\psi$ 는 $\rmbf{SL}_n(\bb{R})$ 의 automorphism.\\ 이제 $C \notin \rmbf{SL}_n(\bb{R})$ 인 경우를 살펴보자. (잘 모르겠습니다...) \\
+우선 $\varphi$ 의 경우 $n$이 홀수이거나 $\det C>0$ 이면 inner. $C$ 를 적당히 상수배하여 $\rmbf{SL}_n(\bb{R})$ 의 원소가 되게 할 수 있고 이 상수는 $C^{-1}$ 과 곱해지는 과정에서 사라진다. 결국 $C\in\rmbf{SL}_n(\bb{R})$인 경우와 동일. 반면 $n$이 짝수이거나 행렬식이 0보다 작은 경우, $n=2$ 인 경우만 살펴봐도 충분하다. (Block Matrix 를 생각하여 왼쪽 위 block에 $2\times 2$ 행렬을, 오른쪽 아래 block에 $I$를, 나머지는 0을 넣는다) 이제 $C = \left(
+\begin{matrix}1 & 0 \\ 0 & -1\end{matrix}
+\right)$ 를 생각하면 $\varphi$ 가 outer automorphism.\\
+$n=1$ 인 경우에만 trivial 하게 inner. $n=2$ 인 경우 모든 $A \in \rmbf{SL}_2(\bb{R})$ 에 대해 $(A\trans)^{-1}X=XA$ 인 $X$는 0 뿐이다. 이제 $n>2$ 인 경우에는 $B = \left( \begin{matrix}
+	1 & 1 & 0 \\ 1 & 1 & 0 \\ -1 & 0 & 0
+\end{matrix} \right)$ 에 대해서 생각하고 나머지는 위처럼 block matrix 를 생각해주면 trace 가 달라진다. (Inner automorphism 이면 trace 가 보존되어야 한다) 따라서 outer automorphism 이다. 
+
+\numl{11.9.21} 우선 $S_n \approx S = \{I_\sigma \in \mf{M}_{n, n}(F) \, | \, \sigma \in S_n\}$ 인 것은, 함수 $\varphi: S_n \rightarrow S$, $\varphi(\sigma) = I_\sigma$ 로부터 알 수 있다. $\sigma_1, \sigma_2\in S_n$ 일 때,
+$\varphi(\sigma_1 \circ \sigma_2) = I_{\sigma_1\circ\sigma_2} = I_{\sigma_1}I_{\sigma_2} = \varphi(\sigma_1)\varphi(\sigma_2)$. Surjectivity 는 자명. $\varphi(\sigma_1)=\varphi(\sigma_2)$ 이면 $I_{\sigma_1}=I_{\sigma_2}$ 이므로 $\sigma_1 = \sigma_2$. $\varphi$ 는 group isomorphism.\\
+이제 $S$ 의 행렬들에 대응하는 선형사상을 $\{P_\sigma \in \mf{L}(V, V) \, | \, \sigma \in S_n\}$ 로 정의했고 행렬과 선형사상은 같으므로 두 group 은 isomorphic. Isomorphism 은 equivalence relation 이므로 세 group 은 서로 isomorphic.
+
+\numl{11.9.25} 
+	\begin{itemize}
+		\num{(가)} 정5각형을 그려 꼭짓점에 1, $\dots$, 5 로 numbering 하고, $\sigma = (2, 5)(3, 4)$ 를 생각하면 이는 1번 꼭짓점을 고정하고, 2, 5번 꼭짓점과 3, 4 번 꼭짓점을 서로 바꾸어 주므로 reflection 이다. 그리고 $\tau = (1, 2, 3, 4, 5)$ 는 rotation 으로 생각하면, 5번 회전하면 $id$ 이다. 따라서 $G_5$는 reflection 과 $2\pi/n$ rotation 으로 생성되었으므로, dihedral group의 정의와 일치한다. $G_5\approx D_5$.
+		\num{(나)} 정6각형을 그리고 마찬가지로 numbering 하고, $(2, 6)(3, 5)$ 를 생각하면 이는 1, 4번 꼭짓점을 고정하고, 2, 6번 꼭짓점과 3, 5번 꼭짓점을 서로 바꾸어 주는 reflection 이다. 그리고 $(1, 2, 3, 4, 5, 6)$ 은 6번 회전하면 $id$ 가 되는 rotation 이다. (가)에서와 마찬가지 논리로 $G_6\approx D_6$.
+		\num{(다)} 정$n$각형의 꼭짓점을 1, $\dots$, $n$ 으로 numbering 하고, 우선 $\tau = (1, \dots, n)$ 으로 잡는다. 그리고 $n$이 짝수이면 $1, (n/2+1)$번 꼭짓점을 지나는 직선을 대칭축으로 하는 reflection 으로 $\sigma = (2, n)(3, n-1)\cdots(n/2, n/2+2)$ 를 생각한다. $n$이 홀수이면, $1$번 꼭짓점과 $(n+1)/2, (n+1)/2+1$번 꼭짓점의 중점을 지나는 직선을 대칭축으로 하는 reflection 으로 $\sigma = (2, n)(3, n-1)\cdots((n+1)/2, (n+1)/2+1)$ 을 생각한다.
+	\end{itemize}
+
+\numl{12.2.20}
+	\begin{itemize}
+		\num{(가)} $A\in Z(\rmbf{GL}_n(F))$ 라고 하자. Any elementary matrix $X$ 에 대해서 $AX=XA$ 를 만족해야 한다. $X$ 가 만약 $i$번째 열 (또는 행 - 왼쪽/오른쪽 중 어디에 곱하느냐에 따라)를 $a (\neq 0)$배 해주는 elementary matrix 라고 해보자. A의 $i$열에 $a$배를 해도 $AX=XA$ 가 성립하려면, 그 열의 $i$행 성분을 제외하고는 전부 $0$ 이어야 한다. 마찬가지 논리를 적용하면 $A$는 최소한 diagonal matrix 이어야 한다. $A=\text{diag}(a_{1}, \dots, a_{n})$ 으로 두고, $\det$ 가 0이 아니므로 $a_i\neq 0$. 이제 $X=I_\sigma$ ($\sigma = (i, j)$ is any transposition in $S_n$)를 잡아 $AX=XA$ 를 계산하면 $a_i = a_j$ 를 얻는다. 이상으로부터 $Z(\rmbf{GL}_n(F)) = \{\lambda I_n\; | \; \lambda \in F^{\times}\}$.
+		\num{(나)} $\{\lambda I_n \; | \; \lambda \in F^{\times}\}$ 에 포함되지 않은 $Z(\rmbf{SL}_n(F))$ 의 원소가 존재한다면, $\rmbf{SL}_n(F) \subset \rmbf{GL}_n(F)$ 이므로 그 원소는 $Z(\rmbf{GL}_n(F))$ 에 있어야 하므로 모순이다. 따라서 $\lambda I$ 꼴만 고려하면 되며, 이 경우 $\det$ 가 1 이므로 $\lambda^n=1$ 인 경우만 가능하다. 따라서 $Z(\rmbf{SL}_n(F)) = \{\lambda I_n \; | \; \lambda^n=1, \lambda \in F^{\times}\}$.
+	\end{itemize}
+
+\numl{12.4.7} 
+	\begin{itemize}
+		\num{(가)} $\overline{A} = \overline{B} \in \rmbf{GL}_n(F)/\rmbf{SL}_n(F) \Leftrightarrow B^{-1}A\in \rmbf{SL}_n(F) \Leftrightarrow \det(B^{-1}A) = 1 \Leftrightarrow \det A = \det B$
+		\num{(나)} $\rmbf{GL}_n(F) / \rmbf{SL}_n(F) \approx F^{\times}$ 이므로 $F^{\times}$ 에서 적절하게 원소를 뽑아오면 된다. $$\rmbf{GL}_n(F) = \coprod_{\lambda \in F^{\times}} \lambda I_n \cdot \rmbf{SL}_n(F)$$ 
+		\num{(다)} $\rmbf{U}(n)/\rmbf{SU}(n) \approx S^1$ 이므로 $S^1$ 에서 적절하게 원소를 뽑아오면 된다.
+		$$\rmbf{U}(n) \coprod_{0\leq \theta < 2\pi} e^{\frac{\rmbf{i}\theta}{n}} I_n\cdot \rmbf{SU}(n)$$
+	\end{itemize}
+
+\numl{12.4.11}
+	\begin{itemize}
+		\num{(가)} For $g, h\in G$, $\text{Int}(gh) = \text{Int}(g)\circ \text{Int}(h)$ 인지 확인하면 된다. 이제 $x\in G$ 에서 evaluate 하면, $\text{Int}(gh)(x) = (gh)x(gh)^{-1} = ghxh^{-1}g^{-1} = g\text{Int}(h)(x)g^{-1} = (\text{Int}(g)\circ \text{Int}(h))(x)$.
+		\num{(나)} $\text{Int}(G) \leq \text{Aut}(G)$.\\
+		$g \in G,\varphi \in \text{Aut}(G)$ 일 때, $\varphi \circ\text{Int}(g)\circ \varphi^{-1} \in \text{Int}(G)$ 를 보인다. Evaluate at $x\in G$. $$(\varphi \circ\text{Int}(g)\circ \varphi^{-1}) (x) = \varphi(g \varphi^{-1}(x)g^{-1}) = \varphi(g)x\varphi(g^{-1}) = \varphi(g)x\varphi(g)^{-1}$$ 그런데 $\varphi(g)\in G$ 이므로 $ \varphi \circ\text{Int}(g)\circ \varphi^{-1} \in \text{Int}(G)$. 따라서 $\text{Int}(G) \nsub \text{Aut}(G)$.
+		\num{(다)} $\text{Aut}(G)$ 의 항등원은 $id$ (항등사상) 이므로 $$\begin{aligned}
+			g \in \ker(\text{Int}) \Leftrightarrow \text{Int}(g)=id \Leftrightarrow gxg^{-1}=x, \text{for } x \in G \Leftrightarrow gx=xg \Leftrightarrow  g\in Z(G)
+		\end{aligned}$$
+		따라서 $\ker(\text{Int}) = Z(G)$ 이고, First Isomorphism Thm. 에 의하여 $G/Z(G) \approx \text{Int}(G)$.	
+	\end{itemize}
+
+\numl{12.4.12}
+	\begin{itemize}
+		\num{(가)} (나)에서 $\psi$ 가 group homomorphism 인 것을 보일 것이다. 그리고 $ad-bc = 1$ 임을 이용하여 다음을 계산한다. $$\det \left(
+			\begin{matrix}
+				a^2 & -2ac & -c^2 \\
+				-ab & ad+bc & cd\\
+				-b^2 & 2bd & d^2
+			\end{matrix}
+		\right) = (ad-bc)^3 = 1$$
+		그러므로 사실 공역은 $\rmbf{SL}_n(F)$ 이고 group homomorphism 에 대하여 image 가 공역의 subgroup 인 것은 당연하다. 
+		\num{(나)} $A, B\in \rmbf{SL}_2(F)$ 라고 하자. 다음과 같이 두고 계산한다. $$A = \left(\begin{matrix}
+			a & c \\ b & d
+		\end{matrix}\right), B = \left(\begin{matrix}
+		e & g \\ f & h
+		\end{matrix}\right), AB = \left(\begin{matrix}
+			ae+cf & ag+ch \\ be+df & bg+dh
+		\end{matrix}\right)$$
+		$$\begin{aligned}
+		\psi(A)\psi(B) &= \left(\begin{matrix}
+		a^2 & -2ac & -c^2 \\
+		-ab & ad+bc & cd\\
+		-b^2 & 2bd & d^2
+		\end{matrix}\right) \left(\begin{matrix}
+		e^2 & -2eg & -g^2 \\
+		-ef & eh+gf & gh \\
+		-f^2 & 2fh & h^2
+		\end{matrix}\right) \\
+		&=\left(\begin{matrix}
+			(ae+cf)^2 & -2(ae+cf)(ag+ch) & -(ag+ch)^2 \\-(ae+cf)(be+df) & \scriptstyle (ae+cf)(bg+dh) + (ag+ch)(be+df) & (ag+ch)(bg+dh) \\ -(be+df)^2 & 2(be+df)(bg+dh) & (bg+dh)^2
+		\end{matrix}\right) \\
+		&= \psi(AB) 
+		\end{aligned}$$
+		따라서 group homomorphism 이고, $\ker \psi$ 의 원소는 $\psi$ 에 의해 $I_3$ 로 map 된다. $a^2 = 1, ad+bc = 1, d^2=1, b = c = 0$ 이므로 $a = \pm 1, d = \pm 1$. $\ker\psi = \{\pm I_2\}$. 그리고 이 집합이 $Z(\rmbf{SL}_2(F))$ 와 같은 것은 당연.
+	\end{itemize}
+
+
+
+
+
+
+
+
+      
+\end{itemize}
+\end{document}

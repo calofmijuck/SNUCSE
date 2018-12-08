@@ -1,0 +1,172 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\numl}[1]{\item[\large\textbf{\sffamily #1}]}
+\newcommand{\num}[1]{\item[\textbf{\sffamily #1}]}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\trans}{^{\mathrm{\mathbf{t}}}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\renewcommand{\span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\im}{\text{im}\:}
+\newcommand{\rk}{\text{rk}\:}
+\newcommand{\tr}{\text{tr}\:}
+\newcommand{\diag}{\text{diag}}
+\renewcommand{\star}{\text{*}}
+\renewcommand{\inv}{^{-1}}
+\newcommand{\tperp}{^\text{\sffamily perp}}
+\newcommand{\nsub}{\mathrel{\unlhd}}
+\newcommand{\pnsub}{\mathrel{\lhd}}
+
+
+\begin{document}
+\begin{center}
+\textbf{\Large 선형대수학 2 숙제 \#3}\\
+\large 2017-18570 컴퓨터공학부 이성찬
+\end{center}
+
+\begin{itemize}
+\numl{13.3.11} Let 
+	$A = \begin{pmatrix}
+		a & b \\ c & d
+	\end{pmatrix}$.\\
+	$\begin{aligned}
+		A \in \rmbf{SL}_2(F) &\iff \det A = ad-bc = 1 \\ & \iff A\trans\cdot JA = \begin{pmatrix}
+		0 & ad-bc \\ bc-ad & 0
+		\end{pmatrix} = \begin{pmatrix}
+		0 & 1 \\ -1 & 0
+		\end{pmatrix} = J \\ & \iff A\in \rmbf{Sp}_2^J(F)
+	\end{aligned}\\ ~\hfill \therefore \rmbf{SL}_2(F) = \rmbf{Sp}_2^J(F).$
+	
+\numl{13.4.4} $\rmbf{SO}^{\circ} (1, 1)$ is a normal subgroup of $\rmbf{O}(1, 1)$. For any $A\in \rmbf{O}(1, 1)$, $S\in \rmbf{SO}^\circ (1, 1)$, we know that $A\inv S A \in \rmbf{SO}(1, 1)$. Since all elements of $\rmbf{SO}^\circ (1, 1)$ have positive trace, and $\tr (A\inv S A) = \tr S > 0$, $A\inv S A \in \rmbf{SO}^\circ (1, 1)$. $\hfill \therefore \rmbf{SO}^\circ (1, 1) \pnsub \rmbf{O}(1, 1)$. 
+
+\numl{13.4.6} Suppose there existed an isomorphism $\varphi : \rmbf{O}(2) \rightarrow \rmbf{O}(1, 1)$. Take $R = R_{2\pi/3} \in \rmbf{O}(2)$. Then $R^3 = I$, so $I = \varphi(I) = \varphi(R^3) = (\varphi(R))^3$, and $\varphi(R)\in \rmbf{O}(1, 1)$. Since $\varphi$ is an isomorphism, there exists $I\neq\varphi(R)\in\rmbf{O}(1, 1)$. Now we show that this $S=\varphi(R) \neq I$ doesn't exist.\\
+First, we see that $S^3=I$, and since $S$ is a real matrix, its determinant must be $1$. Using the coset decomposition of $\rmbf{O}(1, 1)$,\\
+\textbf{\sffamily Case 1}. $S\in \rmbf{SO}^\circ(1, 1)$. Let $S = \begin{pmatrix}
+\cosh t & \sinh t \\ \sinh t & \cosh t
+\end{pmatrix}$, then $S^3 = \begin{pmatrix}
+\cosh 3t & \sinh 3t \\ \sinh 3t & \cosh 3t
+\end{pmatrix} = I$ then $t = 0$, so $S = I$, contradiction.\\
+\textbf{\sffamily Case 2}. $S \in -I\cdot \rmbf{SO}^\circ(1, 1)$. Let $S = \begin{pmatrix}
+-\cosh t & -\sinh t \\ -\sinh t & -\cosh t
+\end{pmatrix}$, then $S^3 = \begin{pmatrix}
+-\cosh 3t & -\sinh 3t \\ -\sinh 3t & -\cosh 3t
+\end{pmatrix} = I$ then $t$ does not exist since $\cosh 3t \geq 1$. Such $S$ doesn't exist.\\
+\textbf{\sffamily Case 3}. $S \in \diag (1, -1)\cdot \rmbf{SO}^\circ(1, 1)$ or $S \in \diag(-1, 1)\cdot \rmbf{SO}^\circ(1, 1)$. In both cases, since all matrices in $\rmbf{SO}^\circ(1, 1)$ have determinant $1$, $\det S = -1$, contradiction.\\
+Thus, such $I\neq S \in \rmbf{O}(1, 1)$ does not exist, and $\varphi$ cannot be an isomorphism.
+\\ $~\hfill \therefore \rmbf{O}(2) \not\approx \rmbf{O}(1, 1)$.
+
+\numl{13.5.7} Define a linear map $\varphi_w : V \rightarrow \bb{R}$ as $$\varphi_w(x) = B(w, x) \qquad (x\in V)$$ Since $\varphi_w(w) \neq 0$, $\varphi_w$ is surjective. (You can scale $w$ by any scalar $c$ then $\varphi_w(cw)$ will span $\bb{R}$.) Now, by Dimension Theorem, $\dim \span{w}^\perp = \dim \ker \varphi_w = \dim V - \dim \im \varphi_w = \dim V - 1 = \dim V - \dim \span{w}  \hfill \therefore \dim \span{w}^\perp = \dim V -\dim\span{w}$.
+
+\numl{13.5.13}
+	\begin{itemize}
+		\num{(나)} Suppose $x\in (U+W)^\perp$. $\forall u\in U, \forall w\in W$, $B(u + w, x) = 0$. Now if we set $u = 0$, then $B(w, x) = 0$. If we set $w = 0$, we have $B(u, x) = 0$. We conclude that $x\in U^\perp$ and $x\in W^\perp$. Therefore $x\in U^\perp \cap W^\perp$. $~\hfill\therefore (U+W)^\perp \subseteq U^\perp \cap W^\perp$ \\
+		Now suppose $x\in U^\perp \cap W^\perp$. Then $B(w, x) = 0$ and $B(u, x) = 0$. Since $B$ is bilinear, $B(u+w, x) = 0$. Thus $x\in (U+W)^\perp$. $~\hfill \therefore U^\perp \cap W^\perp \subseteq (U+W)^\perp$
+		$$(U+W)^\perp = U^\perp \cap W^\perp$$
+		\num{(다)} From the result above, replace $U$ with $U^\perp$, $W$ with $W^\perp$ and take $\perp$ on both sides. Then we have $$((U^\perp +W^\perp)^\perp)^\perp = ((U^\perp)^\perp \cap (W^\perp)^\perp)^\perp$$ Using the fact that $(W^\perp)^\perp = W$ ($\forall\: W\leq V$), $$U^\perp +W^\perp = (U \cap W)^\perp$$
+	\end{itemize}
+\numl{13.5.20}
+	\begin{itemize}
+		\num{(나)} $B^J_\mc{E}(Y, Y) = \begin{pmatrix}
+		\cosh\frac{t}{2} & -\sinh\frac{t}{2}
+		\end{pmatrix} \begin{pmatrix}
+		1 & 0 \\ 0 & -1
+		\end{pmatrix} \begin{pmatrix}
+		\cosh\frac{t}{2} \\ -\sinh\frac{t}{2}
+		\end{pmatrix} = \cosh^2\frac{t}{2} - \sinh^2\frac{t}{2} = 1 \neq 0$. For the standard basis $\{\rmbf{e}_1, \rmbf{e}_2\}$, $$S_Y(\rmbf{e}_1) = \rmbf{e}_1 - 2\frac{B_\mc{E}^J(\rmbf{e}_1, Y)}{B_\mc{E}^J(Y, Y)}Y = \begin{pmatrix}
+			1-2\cosh^2\frac{t}{2} \\ 2\cosh{t}\sinh{t}
+		\end{pmatrix} = \begin{pmatrix}
+		-\cosh{t} \\ \sinh{t}
+		\end{pmatrix}$$
+		$$S_Y(\rmbf{e}_2) = \rmbf{e}_2 - 2\frac{B_\mc{E}^J(\rmbf{e}_2, Y)}{B_\mc{E}^J(Y, Y)}Y = \begin{pmatrix}
+		 -2\cosh{t}\sinh{t} \\ 1+2\sinh^2\frac{t}{2}
+		\end{pmatrix} = \begin{pmatrix}
+		-\sinh{t} \\ \cosh{t}
+		\end{pmatrix}$$ Therefore, $$\left[ S_Y \right]^\mc{E}_\mc{E} = \begin{pmatrix}
+		-\cosh t & -\sinh t \\ \sinh t & \cosh t 
+		\end{pmatrix} \in \rmbf{O}(1, 1)$$
+		Since $S_Y(Y) = -Y$ and for $v = \left(\sinh\frac{t}{2}, \cosh\frac{t}{2}\right)\trans$, $S_Y(v) = v$. (This $v$ was found by solving $B_\mc{E}^J(Y, v) = 0$.)   $~\hfill \therefore S_Y$ is a reflection of $\rmbf{O}(1, 1)$.
+	\end{itemize}
+
+\numl{13.7.5}
+	\begin{itemize}
+		\num{(가)} $\forall w \in W$, if $f\in W^{\tperp}$, $\varepsilon(w, f) = 0$. $w\in \left(W\tperp\right)\tperp$. $\hfill\therefore W \leq \left(W\tperp\right)\tperp$.\\$\dim W = \dim V - \dim W\tperp = \dim \left(W\tperp\right)\tperp$, and now the result directly follows by dimension argument. $~\hfill \therefore W = \left(W\tperp\right)\tperp$.
+	\end{itemize}
+
+\numl{13.7.7}
+	\begin{itemize}
+		\num{(가)} Use definitions.\\$\begin{aligned}
+			g \in \ker L^* &\iff L^*(g) = g\circ L =  0 \\
+			&\iff 0 = (g\circ L)(v) = g(Lv) = \varepsilon(Lv, g) \quad (v\in V)\\
+			&\iff g \in (\im L)\tperp \quad (Lv\in \im L)
+		\end{aligned}$\\
+		$~\hfill\therefore \ker L^* = (\im L)\tperp$.
+		\num{(나)} If $f \in \im L^*$,  $\exists\: g\in W^*$ s.t. $L^*(g) = g \circ L= f$. Now we have $0 = g(Lv) = (g\circ L)(v)  = f(v) = \varepsilon(v, f) \: (v\in \ker L)$. $f\in (\ker L)\tperp$, \hfill $\therefore \im L^* \leq (\ker L)\tperp$.\\ Now we show $(\im L^*)\tperp \leq \ker L$ instead. If $v\in (\im L^*)\tperp$, $\varepsilon(v, L^*(g)) = 0$ for any $L^*(g)\in \im L^*$, where $g\in W^*$. Since $0 = \varepsilon(v, g\circ L) = (g\circ L)(v) = g(Lv)$ for any $g$, $Lv$ must be 0. $v\in \ker L$. Take {\sffamily perp} on both sides, \hfill $\therefore (\ker L)\tperp \leq \im L^*$.\\
+		$~\hfill$  $\therefore \im L^* = (\ker L)\tperp$.
+	\end{itemize}
+
+\numl{13.8.7}
+	\begin{itemize}
+		\num{(가)} Let $v = (v_1, v_2)\trans \in \bb{R}^2$. Since $\varphi_B^V(v) = f$, we evaluate at $w = (x, y)\in \bb{R}^2$. $$B_\mc{E}^J(w, v)=\varphi_B^V(v)(w) = f(w) = x+y$$ and $$B_\mc{E}^J(w, v) = \begin{pmatrix}
+			x & y
+		\end{pmatrix} \begin{pmatrix}
+		1 & 0 \\ 0 & -1
+		\end{pmatrix} \begin{pmatrix}
+		v_1\\v_2
+		\end{pmatrix} = v_1x - v_2y = x+ y$$This must hold for all $x, y$, thus $v_1 = 1, v_2 = -1$. $~\hfill \therefore v = (1, -1)\trans$.
+		\num{(나)} In a similar fashion, we now easily see that $$\begin{pmatrix}
+		x & y
+		\end{pmatrix} \begin{pmatrix}
+		2 & -1 \\ -1 & 2
+		\end{pmatrix} \begin{pmatrix}
+		v_1\\v_2
+		\end{pmatrix} = (2v_1-v_2)x + (-v_1+2v_2)y = x+ y \quad(x, y\in \bb{R})$$
+		Thus $2v_1 -v_2 = 1$ and $-v_1+2v_2=1$. $\Rightarrow v_1 = 1, v_2 = 1$. $~\hfill \therefore v=(1, 1)\trans$.
+	\end{itemize}
+
+\numl{13.8.8} Let $w_j = (\varphi_B^V)\inv(v_j^*)$. ($(\varphi_B^V)\inv$ exists since $B$ is non-degenerate) Then $$B(v_i, w_j) = \varphi_B^V(w_j)(v_i) = v_j^*(v_i) = \delta_{ij} \qquad (1\leq i, j\leq n=\dim V)$$ Because $\varphi_B^V$ is an isomorphism, and $\{v_i^*\}$ is a basis, $\{w_j\}$ is also a basis (of $V$). \\Now we check if $\left[I\right]_\mf{C}^\mf{B} = \left[B\right]_{\mf{B}}$. This is equivalent to $$v_i = \sum_k B(v_k, v_i)w_k, \quad (i = 1, \dots, n)$$ Suppose we let $$v_i = \sum_k b_{ki}w_k, \quad (i = 1, \dots, n)$$ We will show that $b_{ki} = B(v_k, v_i)$. With a bit of calculation, for all $i, j$, $$\begin{aligned}B(v_j, v_i) &= \varphi_B^V(v_i)(v_j) = \varphi_B^V\left(\sum_k b_{ki}w_k\right)\left(v_j\right) \\&= \left(\sum_k b_{ki}\varphi_B^V(w_k)\right)(v_j)
+= \left(\sum_k b_{ki}v_k^*\right)(v_j) \\ &= b_{ji}\end{aligned}$$ Which was what we wanted.
+
+\numl{13.9.6} 
+	\begin{itemize}
+		\num{(가)} Consider the standard basis $\mc{E}$ of $\bb{R}^4$. $x = (x_1, x_2, x_3, x_4)\trans \in \bb{R}^4$. $$[L\trans (x)]_\mc{E}^\mc{E}= [L\trans] ^\mc{E}_\mc{E} \cdot [x]_\mc{E}= \left([L]^\mc{E}_\mc{E}\right)\trans \cdot [x]_\mc{E}= \begin{pmatrix}
+		0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0\\
+		0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0
+		\end{pmatrix}\trans \begin{pmatrix}
+		x_1\\x_2\\x_3\\x_4
+		\end{pmatrix} = \begin{pmatrix}
+		x_2\\x_3\\x_4\\x_1
+		\end{pmatrix}$$
+		$~\hfill \therefore L\trans\big((x_1, x_2, x_3, x_4)\trans\big) = (x_2, x_3, x_4, x_1)\trans$.
+		\num{(나)} In a similar fashion, $x = (x, y)\trans \in \bb{R}^2$ $$\begin{aligned}
+			[L\trans (x)]_\mc{E}^\mc{E}&= [L\trans] ^\mc{E}_\mc{E} \cdot [x]_\mc{E}= J\inv \left([L]^\mc{E}_\mc{E}\right)\trans J \cdot [x]_\mc{E} \\&= \diag(1, -1)\cdot \begin{pmatrix}
+			1&1\\-1&3
+			\end{pmatrix}\trans \cdot \diag(1, -1) \cdot \begin{pmatrix}
+			x \\ y
+			\end{pmatrix} = \begin{pmatrix}
+				x + y\\-x +3y
+			\end{pmatrix}
+		\end{aligned}$$
+		$~\hfill \therefore L\trans\big((x_1, x_2)\trans\big) = (x +y, -x + 3y)\trans$.
+	\end{itemize}      
+\end{itemize}
+\end{document}
