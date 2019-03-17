@@ -54,7 +54,7 @@
 \numl{3}
 \begin{enumerate}
 	\num{(1)} $A$, $B$가 유계이므로 적당한 실수 $a, b, c, d$ 가 존재하여 모든 $x \in A$, $y\in B$ 에 대해 다음이 성립한다. $$a\leq x\leq b, \qquad c\leq y\leq d$$ 따라서 다음이 성립하고 $$a-d\leq x-y\leq b-c$$ $A-B$ 또한 유계임을 알 수 있다.
-	\num{(2)} \textbf{Claim}. $\sup(A-B) = \sup A-\inf B$. ???
+	\num{(2)} \textbf{Claim}. $\sup(A-B) = \sup A-\inf B$.\\ \textbf{Proof}. 우선 다음과 같이 적을 수 있다. $$\inf A\leq x\leq \sup A, \qquad \inf B\leq y\leq \sup B$$ 모든 $u \in A-B$ 에 대해 $u \leq \sup A - \inf B$ 이므로 $\sup(A-B) \leq \sup A - \inf B$.\\ 이제 $k = \sup A - \inf B$ 가 $A-B$ 의 최소 상계임을 보인다. $\forall \epsilon > 0$, $k - \epsilon$ 가 $A-B$ 의 상계라고 가정하자. 그런데, 상한과 하한의 정의로부터 다음을 만족하는 $x \in A, y \in B$ 가 존재한다. $$\sup A - \frac{\epsilon}{2} < x \leq \sup A, \qquad \inf B \leq y < \inf B + \frac{\epsilon}{2}$$ 따라서 $k - \epsilon < x-y \leq k$ 가 되어 상계라는 가정에 모순이므로 원하는 등식을 얻는다.
 \end{enumerate}
 
 \numl{4} $\ds \lim_{n \ra \infty} a_n = 0$ 이므로 임의의 주어진 $\epsilon > 0$ 에 대해 $N\in\bb{N}$ 이 존재하여 $n>N$ 인 모든 $n\in \bb{N}$ 에 대해 $\abs{a_n} < \epsilon$ 이다. $n>N$ 일 때도 $0\leq\abs{s_n-s} < a_n$ 이므로 $\abs{s_n-s} < \abs{a_n} <\epsilon$ 이다. 따라서 $\ds \lim_{n \ra \infty} s_n = s$.
