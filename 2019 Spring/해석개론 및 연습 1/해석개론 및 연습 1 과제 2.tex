@@ -38,6 +38,68 @@
 \end{center}
 \begin{enumerate}
 \numl{1} 
+\begin{enumerate}
+	\item[(1)] Given $\forall M > 0$, set $N = \dfrac{M + 3}{2}$. Then for all $n>N$, $2n - 3 > M$. Thus $-2n+3 < -M$. ($-2n+3$ can be made an arbitrarily small negative number)\\ $\ds \therefore \lim_{n\rightarrow \infty} (-2n+3) = -\infty$
+	\item[(2)] Given $\forall M > 0$, set $\ds N = \frac{\tan^{-1}M}{\pi - 2\tan^{-1}M} > 0$.\footnote{$0 < \tan^{-1}x < \pi/2$ for $x > 0$.} Then for all $n>N$, $n > \dfrac{\tan^{-1}M}{\pi - 2\tan^{-1}M}$. Simplify with respect to $M$ which leads to $n\pi>(2n+1)\tan^{-1}M$. $$\frac{\pi}{2} > \frac{n\pi}{2n+1} > \tan^{-1}M$$Since $\tan x$ is an increasing function on $(0, \pi/2)$, $$M < \tan{\frac{n\pi}{2n+1}} \quad \text{for all } M > 0$$
+	$\therefore \ds \lim_{n\rightarrow \infty} \tan\frac{n\pi}{2n+1} = \infty$
+\end{enumerate}
+
+\numl{2} Since every convergent sequence is bounded, there exists $A\in \bb{R}$ such that $\abs{a_n} < A$ for all $n\in \bb{N}$.  $\therefore -A < a_n < A$.
+\begin{enumerate}
+	\item[(1)] $\ds \lim_{n\rightarrow \infty} b_n = \infty$ $\implies \forall M>0, \exists N\in \bb{N}$ such that ($n \geq N \Rightarrow b_n > M$).\\ 
+	$\implies$ $\forall M > A$, $\exists N\in \bb{N}$ such that ($n\geq N$ $\Rightarrow$ $b_n>M$).\\
+	$\implies$ $\forall M' = M - A > 0$, $\exists N \in \bb{N}$ such that ($n \geq N$ $\Rightarrow$ $a_n+b_n > M - A = M' > 0$).\\
+	$\implies$ $\ds \lim_{n\rightarrow \infty} (a_n+b_n) =\infty$.
+	\item[(2)] 
+	\begin{enumerate}
+		\item[(i)] Suppose $a > 0$. \\For any $0 < \epsilon < a$, there exists $N_1 \in \bb{N}$ such that ($n > N_1 \Rightarrow \abs{a_n-a} < \epsilon$).\\
+		$\therefore$ $0 < a - \epsilon < a_n < a + \epsilon$.\\
+		Also for any $M > 0$, there exists $N_2\in\bb{N}$ such that ($n > N_2 \Rightarrow b_n > M$). Take $N = \max\{N_1, N_2\}$. Then if $n > N$, we have $a_nb_n > M(a-\epsilon) > 0$, and $M(a-\epsilon)$ can be chosen arbitrarily large. $\therefore \ds \lim_{n\rightarrow \infty} a_nb_n = +\infty = a \cdot \infty = \lim_{n\rightarrow \infty} a_n \lim_{n\rightarrow \infty} b_n$. The desired result holds for this case.
+		\item[(ii)]	Suppose $a < 0$.\\For any $0 < \epsilon < -a$, there exists $N_1 \in \bb{N}$ such that ($n > N_1 \Rightarrow \abs{a_n-a} < \epsilon$).\\
+		$\therefore$ $a - \epsilon < a_n < a + \epsilon < 0$.\\
+		Also for any $M > 0$, there exists $N_2\in\bb{N}$ such that ($n > N_2 \Rightarrow b_n > M$). Take $N = \max\{N_1, N_2\}$. Then if $n > N$, we have $a_nb_n < Ma_n < M(a+\epsilon) < 0$, and $M(a+\epsilon)$ can be any negative real. $\therefore \ds \lim_{n\rightarrow \infty} a_nb_n = -\infty = a \cdot \infty = \lim_{n\rightarrow \infty} a_n \lim_{n\rightarrow \infty} b_n$. \\The desired result also holds for this case.
+	\end{enumerate}
+	\item[(3)] Set $a_n = \ds (-1)^n\frac{1}{n}$, and $b_n = n$. We see that $\ds \lim_{n\rightarrow \infty} a_n = 0$ from the following inequality and taking limits on all sides. ($1/n$ can be made arbitrarily close to 0)$$-\frac{1}{n} \leq a_n \leq \frac{1}{n} \implies 0 \leq \lim_{n\rightarrow \infty} a_n \leq 0$$
+	$\ds\lim_{n\rightarrow \infty}b_n = \infty$ since $n$ can be made arbitrarily large. But $a_nb_n = (-1)^n$, and we have shown in class that $(-1)^n$ diverges and oscillates between $\pm 1$.
+\end{enumerate}
+
+\numl{3}
+\begin{enumerate}
+	\item[(1)] If a sequence $\span{a_n}$ is not bounded below, we define $\ds \liminf_{n\rightarrow \infty} a_n = -\infty$. Otherwise, let us define $z_n = \inf\{a_k: k \geq n\}$ for each $n\in\bb{N}$. If the increasing sequence $\span{z_n}$ is not bounded above, we define $\ds \liminf_{n\rightarrow \infty} a_n = \infty$. If $\span{z_n}$ is bounded above, $\ds \liminf_{n\rightarrow \infty} a_n = \lim_{n\rightarrow \infty} z_n$.
+	\item[(2)] ($\implies$) Since $\ds \lim_{n\rightarrow \infty}a_n \!=\! \infty$, $\forall M \!>\! 0$, $\exists N\in\bb{N}$ such that ($a_n > M$ for all $n > N$) $\cdots (*)$
+	\begin{enumerate}
+		\item $\span{a_n}$ \textit{is not bounded above}.\\
+		\textit{Proof.} Suppose $a_n$ is bounded above. Then there exists $M_* > 0$ such that $a_n < M_*$ for all $n$. This contradicts $(*)$. Thus $\ds \limsup_{n\rightarrow \infty}a_n = \infty$.
+		\item $\span{z_n}$ \textit{is an increasing sequence}.\\
+		\textit{Proof.} $z_n \!= \inf\{a_k: k \geq n \}\! = \inf\{a_n, \inf\{a_k: k \geq n + 1 \} \}\! = \inf\{a_n, z_{n+1} \}\leq z_{n+1}$.
+		\item $\span{z_n}$ \textit{is not bounded above}.\\
+		\textit{Proof}. If $z_n$ is bounded, there exists $M' >0$ such that $z_n < M'$ for all $n$. But from $(*)$, one can find $N'\in \bb{N}$ for given $M'$ so that $a_n > M'$ for all $n > N'$. Thus for any $n>N'$, $z_n = \inf\{a_k: k \geq n \}$ is at least $M'$. We have a contradiction, and $\ds\liminf_{n\rightarrow \infty} a_n = \infty$.
+	\end{enumerate}
+	($\impliedby$) ???
+	\item[(3)] $a_n = (-1)^nn$. $a_n$ is neither bounded above nor bounded below. Suppose such bound $M_1, M_2$ existed so that $M_1 < a_n < M_2$. To violate the first inequality, choose an odd number from $n \geq \max\{M_1, M_2 \}$, and choose an even number to violate the second inequality. Thus by definition, $\ds \limsup_{n\rightarrow \infty}a_n = \infty$ and $\ds \liminf_{n\rightarrow \infty}a_n = -\infty$.
+\end{enumerate}
+
+\numl{4} 
+\begin{enumerate}
+	\item[(1)] (0.1) If either the limit superior of $\span{a_n}, \span{b_n}$ is $\infty$, there is nothing to prove. And if... (How to handle the case: one of them is -inf, both are -inf)
+	
+	(0.2) 
+\end{enumerate}
+\numl{5}
+
+\numl{6}
+
+\numl{7}
+\begin{enumerate}
+	\item[(1)] For any $z = (a, b)\in A$, set $\epsilon = \min\left\{\ds \frac{a+b-1}{\sqrt{2}}, \frac{2-a-b}{\sqrt{2}} \right\}$. These two expressions were obtained from the distance formula. Each expression is the distance from point $z$ to $x+y=1$ and $x+y=2$, respectively. Now we must show $N(z, \epsilon) \subset A$. Since $N(z, \epsilon) = \{(x, y)\in \bb{R}^2: (x - a)^2 + (y - b)^2 < \epsilon^2 \}$, ...
+	\item[(2)] For any $\alpha = (a, b, c)\in B$, set $\epsilon = \min\{r-2, 3-r \}$ where $r^2 = a^2+b^2+c^2$. Then for any $\beta = (x, y, z) \in N(\alpha, \epsilon)$, $\norm{\beta - \alpha} < \epsilon$. And we have $2 < \norm{\alpha} = r <3 $. $$\norm{\beta} = \norm{\beta - \alpha + \alpha}\leq \norm{\beta - \alpha} +\norm{\alpha} < \epsilon + r \leq 3-r + r = 3$$
+	$$2 = r + 2-r \leq \norm{\alpha} - \epsilon < \norm{\alpha} -\norm{\beta-\alpha} \leq \norm{\alpha + \beta - \alpha} = \norm{\beta}$$ 
+	Thus $\beta \in B$, $N(\alpha, \epsilon) \subset B$. Therefore $B$ is open in $\bb{R}^3$.
+	\item[(3)] For any $\alpha = (x_1, \dots, x_n) \in C$, set 
+\end{enumerate}
+
+\numl{8}
+
 
 \end{enumerate}
 \end{document}
