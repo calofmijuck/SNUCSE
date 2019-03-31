@@ -81,13 +81,64 @@
 
 \numl{4} 
 \begin{enumerate}
-	\item[(1)] (0.1) If either the limit superior of $\span{a_n}, \span{b_n}$ is $\infty$, there is nothing to prove. And if... (How to handle the case: one of them is -inf, both are -inf)
+	\item[(1)] (0.1) If either the limit superior of $\span{a_n}, \span{b_n}$ is $\infty$, there is nothing to prove. And for the case where either one of them is $-\infty$, suppose $\ds\limsup_{n\rightarrow \infty}a_n=-\infty$, without loss of generality. Then the sequence $y_n=\sup_{k\geq n}a_k$ is not bounded below. Thus $\sup_{k\geq n}(a_k+b_k)$ is also not bounded below.\footnote{Except for the case where $\sup_{k\geq n}b_k$ diverges to $\infty$.}, which gives us $\ds \limsup_{n\rightarrow \infty}(a_n+b_n) = -\infty$, satisfying the inequality.\\
+	Now suppose $\ds\limsup_{n\rightarrow \infty}a_n = \alpha$, $\ds \limsup_{n\rightarrow \infty} b_n = \beta$. ($\alpha, \beta \in \bb{R}$) $\forall \epsilon > 0$, there exists $N\in \bb{N}$ such that for all $n\geq N$, $a_n < \alpha + \epsilon/2$ and $b_n < \beta + \epsilon /2$. \\Then we have $a_n+b_n < \alpha + \beta + \epsilon$ for $n\geq N$, thus $\ds\limsup_{n\rightarrow \infty}(a_n+b_n)$ is at most $\alpha+\beta$.\\
 	
-	(0.2) 
+	(0.2) If either the limit inferior of $\span{a_n}, \span{b_n}$ is $-\infty$, there is nothing to prove. And for the case where either one of them is $\infty$, suppose $\ds\liminf_{n\rightarrow \infty}a_n=\infty$, without loss of generality. Then the sequence $z_n=\inf_{k\geq n}a_k$ is not bounded above. Thus $\inf_{k\geq n}(a_k+b_k)$ is also not bounded above.\footnote{Except for the case where $\inf_{k\geq n}b_k$ diverges to $-\infty$.}, which gives us $\ds \liminf_{n\rightarrow \infty}(a_n+b_n) = \infty$, satisfying the inequality.\\
+	Now suppose $\ds\liminf_{n\rightarrow \infty}a_n = \alpha$, $\ds \liminf_{n\rightarrow \infty} b_n = \beta$. ($\alpha, \beta \in \bb{R}$) $\forall \epsilon > 0$, there exists $N\in \bb{N}$ such that for all $n\geq N$, $a_n > \alpha - \epsilon/2$ and $b_n > \beta - \epsilon /2$. \\Then we have $a_n+b_n > \alpha + \beta - \epsilon$ for $n\geq N$, thus $\ds\liminf_{n\rightarrow \infty}(a_n+b_n)$ is at least $\alpha+\beta$.
+	\item[(2)] Take $a_n = (-1)^n, b_n = -(-1)^n$ for both inequalities. We have $\ds\limsup_{n\rightarrow \infty}(a_n+b_n) = \liminf_{n\rightarrow \infty}(a_n+b_n)= 0$, $\ds \limsup_{n\rightarrow \infty}a_n = \limsup_{n\rightarrow \infty}b_n = 1$, $\ds \liminf_{n\rightarrow \infty}a_n = \liminf_{n\rightarrow \infty}b_n=-1$. The equality parts do not hold for this case.
+	\item[(3)] Yes. It is enough to show (0.1), (0.2) with each of their inequality signs reversed. Since $\span{b_n}$ is convergent, $\limsup_{n\rightarrow \infty} b_n = \liminf_{n\rightarrow \infty} b_n = \beta \in \bb{R}$. For all $ \epsilon > 0 $, $\exists N\in\bb{N}$ such that for all $n\geq N$, $\abs{b_n-\beta} < \epsilon$. Then we have $$a_n+\beta-\epsilon < a_n+b_n < a_n+\beta+\epsilon$$From the first inequality, $\sup_{k\geq n}(a_k+b_k) \geq \sup_{k\geq n}(a_k) + \beta-\epsilon$. $$\therefore \limsup_{n\rightarrow \infty}(a_n+b_n)\geq \limsup_{n\rightarrow \infty}a_n + \limsup_{n\rightarrow \infty}b_n$$ 
+	From the second inequality, $\inf_{k\geq n}(a_k+b_k) < \liminf_{n\rightarrow \infty}(a_k) + \beta+\epsilon$.
+	$$\therefore \liminf_{n\rightarrow \infty}(a_n+b_n)\leq \liminf_{n\rightarrow \infty}a_n + \liminf_{n\rightarrow \infty}b_n$$
+	Hence the equality holds.
+	\item[(4)] The statement is false. Let $a_n = -1$, $b_n = (-1)^n$. $\ds\limsup_{n\rightarrow \infty}a_nb_n = 1$ while $\ds\limsup_{n\rightarrow \infty}a_n \cdot \limsup_{n\rightarrow \infty}b_n = -1 \cdot 1 = -1$.
 \end{enumerate}
-\numl{5}
+
+\numl{5} $\forall\epsilon > 0$, $\exists N\in\bb{N}$ such that for all $n\geq N$, $\abs{a_n-a} < \epsilon$. Since $\abs{\abs{a_n} - \abs{a}} < \abs{a_n-a}$, we have $$-\epsilon < \abs{a_n}-\abs{a} < \epsilon$$and obviously, $-\abs{a_n}\leq b_n\leq \abs{a_n}$. So the following holds.
+$$-\abs{a}-\epsilon < -\abs{a_n} \leq b_n\leq \abs{a_n}<\abs{a}+\epsilon \qquad \cdots (*)$$ We can also see that $b_n$ is a bounded sequence, since $a_n$ is bounded.
+\begin{enumerate}
+	\item $\ds\limsup_{n\rightarrow \infty} b_n = \abs{a}$.\\Given $\forall \epsilon>0$, $b_n<\abs{a}+\epsilon$ for large enough $n$ (from $(*)$)\\Now we must show that there are infinitely many $n$ that satisfy $\abs{a}-\epsilon < b_n$. 
+	\begin{enumerate}
+		\item $a\geq 0$: Since $a-\epsilon < a_n$ and $a_n=b_n$ whenever $n$ is even, there are infinitely many $n$.
+		\item $a < 0$: Since $a_n < a +\epsilon$ and $a_n = -b_n$ whenever $n$ is odd, we have $-b_n < a+\epsilon$, $b_n > -a-\epsilon$. There are infinitely many $n$.
+	\end{enumerate}
+	By \textsf{Prop 1.4.3}, $\ds \limsup_{n\rightarrow \infty} b_n = \abs{a}$.
+	\item $\ds\liminf_{n\rightarrow \infty} b_n = -\abs{a}$.\\Given $\forall \epsilon>0$, $-\abs{a}-\epsilon <b_n$ for large enough $n$ (from $(*)$)\\Now we must show that there are infinitely many $n$ that satisfy $b_n < -\abs{a}+\epsilon $. 
+	\begin{enumerate}
+		\item $a\geq 0$: Since $a-\epsilon < a_n$ and $a_n=-b_n$ whenever $n$ is odd, we have $a-\epsilon<-b_n$, $b_n < -a+\epsilon$. There are infinitely many $n$.
+		\item $a < 0$: Since $a_n < a +\epsilon$ and $a_n = b_n$ whenever $n$ is even. There are infinitely many $n$.
+	\end{enumerate}
+	By \textsf{Prop 1.4.4}, $\ds \liminf_{n\rightarrow \infty} b_n = -\abs{a}$.
+\end{enumerate}
 
 \numl{6}
+\begin{enumerate}
+	\item $\abs{a_n} \leq \abs{\frac{(n+2)(-1)^n+n}{n+1}} \leq \frac{\abs{n+2}+\abs{n}}{n+1} \leq 2$. $a_n$ is bounded. And observe that $$a_n = \begin{cases}
+		2 & (n \text{ even})\\
+		-\dfrac{2}{n+1} & (n \text{ odd})
+	\end{cases}$$
+	\begin{enumerate}
+		\item Given $\forall \epsilon>0$, $a_n < 2 + \epsilon$ for all $n$. For all even $n$, $2-\epsilon < a_n$. \\By \textsf{Prop 1.4.3}, $\limsup a_n = 2$.
+		\item Given $\forall \epsilon>0$, $a_n > 0 - \epsilon$ for $n \geq \max\{2/\epsilon - 1, 0\}$. For all odd $n$, $a_n < 0 + \epsilon$. \\
+		By \textsf{Prop 1.4.4}, $\liminf a_n = 0$.
+	\end{enumerate}
+
+	\item $a_n$ is obviously bounded since $\cos$ is bounded.
+	\begin{enumerate}
+		\item Given $\forall \epsilon > 0$, $a_n < 1+\epsilon$ for all $n$. Now we show that $a_n > 1-\epsilon$.\\
+		We want to show that for any given $\delta > 0$, there exists $n, k\in \bb{N}$ such that $\abs{\sqrt{2019+\pi^2n^2} - (2k\pi)} \leq \delta$.
+		Set $n' = \sqrt{2019+\pi^2n^2} = 2k\pi + r$, $0\leq r < 2\pi$. Such $k\in \bb{N}, r\in\bb{R}$ are unique.
+		Define $$f(n) = r = n' - \left \lfloor\frac{n'}{2\pi}\right \rfloor n'$$Then we can find $n_1, n_2\in\bb{N}$ such that $f(n_1), f(n_2)$ are arbitrarily close. This is because $2\pi/m$ can be made arbitrarily smaller than $\delta$ for some $m\in \bb{N}$. Partition the interval $[0, 2\pi)$ into $\left [\frac{2i}{m}\pi, \frac{2i+2}{m}\pi\right )$ ($i=0, \cdots, m-1$) and by pigeonhole principle there exists $n_1, n_2$ such that $f(n_1), f(n_2)$ belong to the same interval.\\
+		Without loss of generality, assume $f(n_1)\leq f(n_2)$, $n_i = 2k_i\pi + r_i$ ($i=1, 2$), $r_1\leq r_2$. Then $n_2-n_1 = 2(k_2-k_1)\pi + r_2-r_1$. Since $f(n_2)-f(n_1) = r_2 - r_1 < 2\pi/m \leq 2\pi$, $f(n_2-n_1) = r_2-r_1 < 2\pi/m < \delta$ $\cdots (*)$.\\Now, for $l\in \bb{N}$, if $lf(n) < 2\pi, f(ln)= lf(n)$. ($\because$ $n = 2k\pi + r$, then $ln = 2kl\pi+lr$, $f(ln) = lr = lf(n) < 2\pi$.)\\
+		\textbf{Claim}. There exists $l\in\bb{N}$ such that $lf(n_2-n_1) \in \left[- \delta, \delta \right]$.\\
+		\textbf{Proof}. (by contradiction) Suppose that such $l$ does not exist. Then there exists $l_1\in \bb{N}$ such that $$\overset{(1)}{\overbrace{l_1f(n_2-n_1) < -\delta}}<\overset{(2)}{\overbrace{\delta < (l_1+1)f(n_2-n_1)}}$$
+		Add (1), (2) to get $2\delta < f(n_2-n_1)$, contradicting $(*)$.\\
+		Thus we have $f(l(n_2-n_1)) = lf(n_2-n_1) \in \left[-\delta, \delta\right]$, and $a_n\geq 1-\epsilon$.\footnote{$\cos$ is a continuous function ...}
+		\\By \textsf{Prop 1.4.3}, $\limsup a_n = 1$.
+		
+		\item $\liminf a_n = -\limsup (-a_n) = -\limsup a_n = -1$. ($\cos$ is an even function.)
+	\end{enumerate}
+\end{enumerate}
 
 \numl{7}
 \begin{enumerate}
