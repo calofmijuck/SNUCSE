@@ -75,7 +75,7 @@
 		\item $\span{z_n}$ \textit{is not bounded above}.\\
 		\textit{Proof}. If $z_n$ is bounded, there exists $M' >0$ such that $z_n < M'$ for all $n$. But from $(*)$, one can find $N'\in \bb{N}$ for given $M'$ so that $a_n > M'$ for all $n > N'$. Thus for any $n>N'$, $z_n = \inf\{a_k: k \geq n \}$ is at least $M'$. We have a contradiction, and $\ds\liminf_{n\rightarrow \infty} a_n = \infty$.
 	\end{enumerate}
-	($\impliedby$) ???
+	($\impliedby$) $\ds\liminf_{n\ra \infty}a_n = \infty \implies$For all $M>0$, there exists $N\in\bb{N}$ such that $z_n = \inf \{a_k: k\geq n \} > M$ if $n\geq N$. But by definition, $z_n = \inf\{a_k:k\geq n \} \leq a_n$, so $a_n\geq M$ for $n\geq N$. $\ds \lim_{n\ra \infty} a_n = \infty$.
 	\item[(3)] $a_n = (-1)^nn$. $a_n$ is neither bounded above nor bounded below. Suppose such bound $M_1, M_2$ existed so that $M_1 < a_n < M_2$. To violate the first inequality, choose an odd number from $n \geq \max\{M_1, M_2 \}$, and choose an even number to violate the second inequality. Thus by definition, $\ds \limsup_{n\rightarrow \infty}a_n = \infty$ and $\ds \liminf_{n\rightarrow \infty}a_n = -\infty$.
 \end{enumerate}
 
@@ -128,12 +128,12 @@ $$-\abs{a}-\epsilon < -\abs{a_n} \leq b_n\leq \abs{a_n}<\abs{a}+\epsilon \qquad 
 		\item Given $\forall \epsilon > 0$, $a_n < 1+\epsilon$ for all $n$. Now we show that $a_n > 1-\epsilon$.\\
 		We want to show that for any given $\delta > 0$, there exists $n, k\in \bb{N}$ such that $\abs{\sqrt{2019+\pi^2n^2} - (2k\pi)} \leq \delta$.
 		Set $n' = \sqrt{2019+\pi^2n^2} = 2k\pi + r$, $0\leq r < 2\pi$. Such $k\in \bb{N}, r\in\bb{R}$ are unique.
-		Define $$f(n) = r = n' - \left \lfloor\frac{n'}{2\pi}\right \rfloor n'$$Then we can find $n_1, n_2\in\bb{N}$ such that $f(n_1), f(n_2)$ are arbitrarily close. This is because $2\pi/m$ can be made arbitrarily smaller than $\delta$ for some $m\in \bb{N}$. Partition the interval $[0, 2\pi)$ into $\left [\frac{2i}{m}\pi, \frac{2i+2}{m}\pi\right )$ ($i=0, \cdots, m-1$) and by pigeonhole principle there exists $n_1, n_2$ such that $f(n_1), f(n_2)$ belong to the same interval.\\
+		Define $$f(n) = r = n' - \left \lfloor\frac{n'}{2\pi}\right \rfloor n'$$For any large enough $N$, we can find $N < n_1, n_2\in\bb{N}$ such that $f(n_1), f(n_2)$ are arbitrarily close. This is because $2\pi/m$ can be made arbitrarily smaller than $\delta$ for some $m\in \bb{N}$. Partition the interval $[0, 2\pi)$ into $\left [\frac{2i}{m}\pi, \frac{2i+2}{m}\pi\right )$ ($i=0, \cdots, m-1$) and by pigeonhole principle there exists $n_1, n_2$ such that $f(n_1), f(n_2)$ belong to the same interval.\\
 		Without loss of generality, assume $f(n_1)\leq f(n_2)$, $n_i = 2k_i\pi + r_i$ ($i=1, 2$), $r_1\leq r_2$. Then $n_2-n_1 = 2(k_2-k_1)\pi + r_2-r_1$. Since $f(n_2)-f(n_1) = r_2 - r_1 < 2\pi/m \leq 2\pi$, $f(n_2-n_1) = r_2-r_1 < 2\pi/m < \delta$ $\cdots (*)$.\\Now, for $l\in \bb{N}$, if $lf(n) < 2\pi, f(ln)= lf(n)$. ($\because$ $n = 2k\pi + r$, then $ln = 2kl\pi+lr$, $f(ln) = lr = lf(n) < 2\pi$.)\\
 		\textbf{Claim}. There exists $l\in\bb{N}$ such that $lf(n_2-n_1) \in \left[- \delta, \delta \right]$.\\
 		\textbf{Proof}. (by contradiction) Suppose that such $l$ does not exist. Then there exists $l_1\in \bb{N}$ such that $$\overset{(1)}{\overbrace{l_1f(n_2-n_1) < -\delta}}<\overset{(2)}{\overbrace{\delta < (l_1+1)f(n_2-n_1)}}$$
 		Add (1), (2) to get $2\delta < f(n_2-n_1)$, contradicting $(*)$.\\
-		Thus we have $f(l(n_2-n_1)) = lf(n_2-n_1) \in \left[-\delta, \delta\right]$, and $a_n\geq 1-\epsilon$.\footnote{$\cos$ is a continuous function ...}
+		Thus we have $f(l(n_2-n_1)) = lf(n_2-n_1) \in \left[-\delta, \delta\right]$, and there exists infinitely many $n$ that satisfy $a_n\geq 1-\epsilon$.\footnote{$\cos$ is a continuous function ...} 
 		\\By \textsf{Prop 1.4.3}, $\limsup a_n = 1$.
 		
 		\item $\liminf a_n = -\limsup (-a_n) = -\limsup a_n = -1$. ($\cos$ is an even function.)
@@ -142,14 +142,57 @@ $$-\abs{a}-\epsilon < -\abs{a_n} \leq b_n\leq \abs{a_n}<\abs{a}+\epsilon \qquad 
 
 \numl{7}
 \begin{enumerate}
-	\item[(1)] For any $z = (a, b)\in A$, set $\epsilon = \min\left\{\ds \frac{a+b-1}{\sqrt{2}}, \frac{2-a-b}{\sqrt{2}} \right\}$. These two expressions were obtained from the distance formula. Each expression is the distance from point $z$ to $x+y=1$ and $x+y=2$, respectively. Now we must show $N(z, \epsilon) \subset A$. Since $N(z, \epsilon) = \{(x, y)\in \bb{R}^2: (x - a)^2 + (y - b)^2 < \epsilon^2 \}$, ...
+	\item[(1)] For any $z = (a, b)\in A$, set $\epsilon = \min\left\{\ds \frac{a+b-1}{\sqrt{2}}, \frac{2-a-b}{\sqrt{2}} \right\}$. These two expressions were obtained from the distance formula. Each expression is the distance from point $z$ to $x+y=1$ and $x+y=2$, respectively. Now we must show $N(z, \epsilon) \subset A$. Since $N(z, \epsilon) = \{(x, y)\in \bb{R}^2: (x - a)^2 + (y - b)^2 < \epsilon^2 \}$, we must show that $1<x+y<2$. From Cauchy-Schwarz inequality, $$(1^2+1^2)\left( (x-a)^2+(y-b)^2\right)\geq (x+y-a-b)^2 $$
+	Now we have $$\frac{1}{2}(x+y-a-b)^2\leq (x-a)^2+(y-b)^2 < \epsilon ^2 $$
+	By the choice of $\epsilon$, the following holds. $$\frac{1}{2}(x+y-a-b)^2\leq \left(\frac{a+b-1}{\sqrt{2}}\right)^2 \qquad \frac{1}{2}(x+y-a-b)^2\leq \left(\frac{2-a-b}{\sqrt{2}}\right)^2$$
+	Solving for $x+y$ gives $1<x+y<2$. Therefore $A$ is open in $\bb{R}^2$.
 	\item[(2)] For any $\alpha = (a, b, c)\in B$, set $\epsilon = \min\{r-2, 3-r \}$ where $r^2 = a^2+b^2+c^2$. Then for any $\beta = (x, y, z) \in N(\alpha, \epsilon)$, $\norm{\beta - \alpha} < \epsilon$. And we have $2 < \norm{\alpha} = r <3 $. $$\norm{\beta} = \norm{\beta - \alpha + \alpha}\leq \norm{\beta - \alpha} +\norm{\alpha} < \epsilon + r \leq 3-r + r = 3$$
 	$$2 = r + 2-r \leq \norm{\alpha} - \epsilon < \norm{\alpha} -\norm{\beta-\alpha} \leq \norm{\alpha + \beta - \alpha} = \norm{\beta}$$ 
 	Thus $\beta \in B$, $N(\alpha, \epsilon) \subset B$. Therefore $B$ is open in $\bb{R}^3$.
-	\item[(3)] For any $\alpha = (x_1, \dots, x_n) \in C$, set 
+	\item[(3)] For $\alpha \in \bb{R}^n, r>0$, define $$N_4\left(\alpha, r\right) = \{ \rmbf{x} = (x_1, \dots, x_n)\in \bb{R}^n : \norm{\rmbf{x} - \alpha}_4 < r  \}$$.  The given set $C$ is equal to $N_4(\rmbf{0}, 1)$. For any $\alpha = (x_1, \dots, x_n) \in C$, consider $X = N_4\left(\alpha,  {1-\norm{\alpha}_4}\right)$.
+	\begin{enumerate}
+		\item $X\subset N_4(\rmbf{0}, 1)$.\\
+		For any $x\in X$, $\norm{x - \alpha}_4 < 1-\norm{\alpha}_4$. By Minkowski's inequality, $\norm{x}_4\leq \norm{x-\alpha}_4 + \norm{\alpha}_4 < 1$. $\therefore x\in N_4(\rmbf{0}, 1)$.
+		\item $N(\alpha, \epsilon) \subset X$, where $\epsilon = 1-\norm{\alpha}_4$.\\\textbf{Lemma}. Since $x_i^2\geq 0$, $$\sum_{i=1}^nx_i^4 \leq \left(\sum_{i=1}^{n}x_i^2\right)^2$$\\
+		\textbf{Proof}. RHS $-$ LHS $= 2 \sum_{i\neq j} x_i^2x_j^2 \geq 0$.\\
+		Now suppose $x\in N(\alpha, \epsilon)$. Then $ \norm{x-\alpha} < \epsilon$, and $(\norm{x-\alpha}_4)^4 \leq \left(\norm{x-\alpha}\right)^4$ by the lemma.$$\norm{x-\alpha}_4 \leq \norm{x-\alpha} < 1-\norm{\alpha}_4$$
+		Therefore $x$ is also in $X$.
+	\end{enumerate}
+	Now we see that for all $\alpha \in C$ there exists $\epsilon > 0$ such that  $N(\alpha, \epsilon) \subset X\subset C$. $C$ is open in $\bb{R}^n$.
+	\item[(4)] For $z = (x, y)\in D$, we can write $$N(z, \epsilon) = \{(x +r\cos\theta, y + r\sin\theta) : 0\leq r<\epsilon, 0\leq \theta < 2\pi \}$$
+	Now we want to show that there exists some $\epsilon>0$ such that $N(z, \epsilon) \subset D$. To show this, it is enough to show that there exists some $r_0$ such that for all $r < r_0$, $0\leq \theta<2\pi$, $(x+r\cos\theta)(y + r\sin\theta) > 1$. We will show the following.
+	$$xy + r(x\cos\theta + y\sin\theta) + r^2\cos\theta\sin\theta -1 >0$$
+	Set $\ds r_0 = \min\left\{ \frac{xy-1}{\abs{x}+\abs{y} + 1}, 1 \right\}$. For $r<r_0$,
+	$$\begin{aligned}
+		\text{LHS} &= xy - 1  - \abs{r(x\cos\theta + y\sin\theta) + r^2\cos\theta\sin\theta}\\ &\overset{(*)}{\geq} xy-1-r(\abs{x}+\abs{y} + 1) > 0\qquad  (\text{by the choice of } r_0)
+	\end{aligned}$$
+	\textbf{Proof of $(*)$}. $\abs{r(x\cos\theta + y\sin\theta) + r^2\cos\theta\sin\theta} \leq r(\abs{x}+\abs{y} +r) < r(\abs{x}+\abs{y}+1)$. The last inequality is from $r < 1$.\\
+	$\therefore N(z, \epsilon) \subset D$. $D$ is open in $\bb{R}^2$. 
 \end{enumerate}
 
-\numl{8}
+\numl{8} 
+\begin{enumerate}
+	\item[(1)] $A = \bb{N}$. Check if $\bb{N}^C$ is open. We will show that for all $x\in \bb{N}^C$, $N(x, \epsilon)\subset \bb{N}^C$ where $\epsilon = \min\{x - \lfloor x \rfloor, \lceil x\rceil - x  \}$. Because $N(x, \epsilon) = (x - \epsilon, x +\epsilon)$,
+	$$x + \epsilon < x + \lceil x\rceil - x < \lceil x\rceil \qquad x - \epsilon > x-x + \lfloor x \rfloor>  \lfloor x \rfloor $$
+	Thus for any $n\in \bb{N}$, $n\notin N(x, \epsilon)$. $\therefore N(x, \epsilon) \subset \bb{N}^C$. $\bb{N}^C$ is open thus $\bb{N}$ is closed.
+	\item [(2)] $B^C = \{(x, y)\in \bb{R}^2: xy\neq 0 \}$. We will show that for all $z = (x_0, y_0)\in B^C$, $N(z, \epsilon) \subset B^C$ where $\epsilon = \min\{\abs{x_0}, \abs{y_0} \}$.
+	For all $z'=(x, y)\in N(z, \epsilon)$, suppose $x-\epsilon < 0 < x+ \epsilon$. Then $x < \epsilon$, $-\epsilon < x$ which gives us $\abs{x}<\epsilon$. Contradiction; Thus either $x <x +\epsilon \leq 0$ or $x > x - \epsilon \geq 0$. Similarily, $y < y +\epsilon \leq 0$ or $y > y - \epsilon \geq 0$. For all cases, $xy \neq 0$.\\
+	Thus $z'\in B^C$ and $B^C$ is open. Hence $B$ is closed.
+	\item[(3)] $C^C = \{(x, y)\in \bb{R}^2: 3x+2y\neq 1 \}$. For $z = (x_0, y_0)\in C^C$, set $\epsilon = \ds\frac{\abs{3x_0 +2y_0-1}}{\sqrt{13}}$. Then by Cauchy-Schwarz, if $z'=(x, y)\in N(z, \epsilon)$, $$(3x-3x_0+2y-2y_0)^2 \leq 13\left((x-x_0)^2 + (y-y_0)^2\right) < 13\epsilon^2 = (3x_0+2y_0-1)^2$$
+	Solving this gives, $$(3x+2y-6x_0-4y_0+1)(3x+2y-1)\leq 0$$
+	\begin{enumerate}
+		\item $3x+2y - 1 > 0$\\
+		$\implies 0 \geq 3x+2y-6x_0-4y_0+1 > 2 - 6x_0-4y_0$\\
+		$\implies 3x_0+2y_0>1$
+		\item $3x+2y - 1<0$\\
+		$\implies 0 \leq 3x+2y-6x_0-4y_0+1 < 2 - 6x_0-4y_0$\\
+		$\implies 3x_0+2y_0 <1$	
+	\end{enumerate}
+	Therefore $z'\in C^C$. $N(z, \epsilon) \subset C^C$, $C$ is closed.
+	\item[(4)] Take $\alpha = (x_0, y_0, z_0) \in D^C$. Then $x_0^2+y_0^2>1$. Consider $\beta = (x, y, z) \in N(\alpha, \epsilon)$ where $\epsilon = \sqrt{x_0^2+y_0^2} - 1$. Now take $\gamma = (0, 0, z_0), \gamma' = (0, 0, z) \in D$. Then we have $\norm{\beta-\alpha} <\epsilon$, $\norm{\alpha-\gamma} = 1 + \epsilon$. Using the triangle inequality twice gives $$\norm{\alpha-\beta} + \norm{\beta-\gamma'}\geq \norm{\alpha-\gamma'}\geq \norm{\gamma - \gamma'} + \norm{\gamma-\alpha} \geq \norm{\gamma-\alpha} = 1+\epsilon$$
+	Now we know that $\sqrt{x^2+y^2} = \norm{\beta - \gamma'} \geq 1+\epsilon - \norm{\alpha-\beta} > 1$, which implies that $\beta \in D^C$. Thus $N(\alpha, \epsilon) \subset D^C$, and $D^C$ is open. Thus $D$ is closed.
+
+\end{enumerate}
 
 
 \end{enumerate}
