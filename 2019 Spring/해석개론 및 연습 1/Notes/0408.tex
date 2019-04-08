@@ -1,0 +1,90 @@
+\section*{April 8th, 2019}
+Section 2.3: Bolzano-Weierstrass Theorem, Cauchy Convergent Theorem\\
+In section 2.4, we will be studying about Convergence Tests.\\정
+\\
+\textbf{2.4 급수의 수렴판정}\\
+\textbf{Cor 2.3.9}. $ \sum_{n=1}^{\infty} a_n $ is convergent $\iff$ $s_n = \sum_{k=1}^n a_k$, $\span{s_n}$ is convergent $\iff$ $\span{s_n}$ is Cauchy.
+\begin{enumerate}
+	\item $\sum_{n=1}^\infty a_n$ is convergent $\imp$ $\lim_{n\ra \infty} a_n = 0$.
+	\item $\sum_{n=1}^\infty \abs{a_n}$ is convergent $\imp$ $\sum_{n=1}^\infty a_n$ convergent.
+\end{enumerate}~\\
+\thm{ 2.4.3} (Comparison Test) Suppose $\sum b_n$ converges. If $0\leq a_n\leq b_n$ for all $n\in \bb{N}$, $\sum a_n$ converges.\\
+\pf Let $M = \sum b_n$, $s_n = \sum_{k=1}^n a_k$. $s_n$ is increasing and $s_n$ is bounded by $M$. $s_n$ is convergent by Monotone Convergence Theorem.\\
+\\
+\thm{}. Suppose sequences $a_n, b_n$ satisfy $0\leq \abs{a_n}\leq b_n$\footnote{Note that this condition can fail for finitely many $n$.} and $\sum b_n$ converges. Then $\sum a_n$ is convergent.\footnote{$a_n$ may be a very complex expression, but we want $b_n$ to be simple, an expression we know that it is convergent.}\\
+\pf. By comparison test and absolute convergence.\\
+\\
+\prop{ 2.4.4} (Root Test) Suppose $\alpha = \limsup_{n\ra\infty} \abs{a_n}^{1/n}$.\\
+If $\alpha < 1$, $\sum a_n$ converges. If $\alpha>1$, $\sum a_n$ diverges.\\
+\pf.
+\begin{enumerate}
+	\item $\alpha < 1$. Take $\epsilon > 0$ such that $\alpha < \alpha+\epsilon<1$. Then there exists $N$ such that $\abs{a_n}^{1/n} < \alpha+\epsilon$ for all $n\geq N$. Therefore
+	$\abs{a_n} < (\alpha+\epsilon)^n$. Since $\alpha+\epsilon < 1$, $\sum (\alpha + \epsilon)^n$ converges. Apply the comparison test to see that $\sum a_n <\infty$.
+	\item $\alpha > 1$. Take $\epsilon >0$ such that $\alpha > \alpha - \epsilon > 1$. Then $\abs{a_n}^{1/n} > \alpha-\epsilon$ for infinitely many $n$. Then $\abs{a_n} > (\alpha -\epsilon)^n > 1$. Therefore $\lim a_n \neq 0$. $\sum a_n$ diverges.
+\end{enumerate}
+\prop{ 2.4.5} (Ratio Test) Suppose $a_n \neq 0$. Let $\beta = \limsup \abs{a_{n+1}/a_n}$, $\gamma = \liminf \abs{a_{n+1}/a_n}$.\\
+If $\beta < 1$, $\sum a_n$ converges. If $\beta > 1$, $\sum a_n$ diverges.\\
+\pf.
+\begin{enumerate}
+	\item $\beta < 1$. Take $\epsilon>0$ such that $\beta < \beta + \epsilon < 1$. Then $\exists N$ s.t. $\abs{a_{n+1}/a_n} < \beta + \epsilon$ for $n\geq N$. $\imp \abs{a_n} = \abs{a_N} \abs{a_{N+1}/a_N} \cdots \abs{a_n/a_{n-1}} < \abs{a_N}(\beta+\epsilon)^{n-N}$.\\
+	Set $b_n = \abs{a_N}(\beta + \epsilon)^{n-N}$ and apply comparison test to see that $\sum a_n < \infty$.
+	\item $\gamma > 1$. Take $\epsilon > 0$ such that $\gamma > \gamma - \epsilon > 1$. Then $\exists N$ s.t. $\abs{a_{n+1}/a_n} > \gamma - \epsilon$ for $n\geq N$. Then we see that $\abs{a_n}$ is increasing for $n\geq N$. Thus $a_n$ cannot converge to 0. $\sum a_n$ is divergent.
+\end{enumerate}
+\rmk. If the above limits (ratio, root) exist, elementary tests can be applied. But if the limits turn out to be 1, the test fails. (ND: Non-Deterministic) Check it for $\sum 1/n, \sum 1/n^2$.\\
+Also, these are \textit{weak tests}. For most of the series, the limit is 1. Moreover...\\
+\\
+\thm{ 2.4.6} Suppose $a_n \neq 0$. $$\liminf \abs{\frac{a_{n+1}}{a_n}} \leq \liminf \abs{a_n}^{\frac{1}{n}} \leq \limsup \abs{a_n}^{\frac{1}{n}}  \leq \limsup \abs{\frac{a_{n+1}}{a_n}}$$ Thus if the root test works, ratio test also works.\footnote{The limit for the ratio test is much easier to calculate than the root test. That's why we use the ratio test.}\\
+\pf. We only need to prove the last inequality.\\
+Let $\beta =  \limsup\abs{a_{n+1}/a_n} $, $\forall \epsilon > 0$. $\imp\exists N$ s.t. $\abs{a_{n+1}/a_n} \leq \beta + \epsilon$ for $n\geq N$. Then if $n\geq N$, $\abs{a_n} \leq \abs{a_N}(\beta+\epsilon)^{n-N}$. (Similar to proof of 2.4.5) Then $$\abs{a_n}^{1/n} \leq (\beta + \epsilon) \left(\frac{\abs{a_n}}{(\beta +\epsilon)^N}\right)^{1/n}$$ and take $\limsup$ on both sides, then $\limsup \abs{a_n}^{1/n} \leq \beta + \epsilon$.\\
+\\
+\ex. $\span{a_n} = \begin{cases}
+	1/2^{n} & n \text{ odd}\\
+	1/2^{n-2} & n \text{ even}
+\end{cases}$\\
+Check that $\limsup \abs{a_n}^{1/n} = 1/2 < 1$, and the series $ \sum a_n $ converges by the root test.\\
+But if we use the ratio test here, $\limsup$ value is 2 and $\liminf$ value is 1/8.\footnote{The ratios are: 2, 1/8, 2, 1/8 ...} The ratio test does not tell us anything about the convergence. Also note that the series converges to 2.\\
+\\
+\prop{ 2.4.1} (Rearrangement) $a_n\geq 0$.\footnote{This is the important condition.} Suppose a bijection $r: \bb{N} \ra \bb{N}$ exists. 
+\begin{enumerate}
+	\item $\ds \sum_{n=1}^\infty a_n = s \iff \sum_{n=1}^\infty a_{r(n)} = s$
+	\item $\ds \sum_{n=1}^\infty = \infty \iff \sum_{n=1}^\infty a_{r(n)} = s$
+\end{enumerate}
+\pf.
+\begin{enumerate}
+	\item ($\imp$) Let $t_n=\sum_{k=1}^n a_{r(k)}$. Then $t_n$ is increasing and bounded by $s$. Thus $t_n$ converges by MCT, and $\lim t_n \leq s$.\\
+	$s_n = \sum_{k=1}^n a_k \leq \sum_{n=1}^\infty a_{r(n)} = t = \lim t_n$. ($a_n\geq 0$ was used here.)\\
+	($\impliedby$) Use $r^{-1}(n)$. 
+	\item Contraposition of (1).
+\end{enumerate}~\\
+\prop{ 2.4.2} (Alternating Series Test) For a given sequence $x_n$, suppose the following holds.
+\begin{itemize}
+	\item $x_n$ is decreasing.
+	\item $\lim x_n = 0$.
+\end{itemize}
+Then the series $\sum_{k=1}^\infty (-1)^{n-1}x_n$ is convergent.\\
+\pf. Let $s_n = \sum_{k=1}^n (-1)^{k-1}x_k$. For $m<n$, $$\abs{s_n-s_m} = \abs{(-1)^m x_{m+1} +\cdots + (-1)^{n-1} x_n} = \abs{x_{m+1} - x_{m+2}+\cdots \pm x_n} \overset{(*)}{\in} [0, x_{m+1}]$$
+$\begin{aligned}
+	(*): x_{m+1} - x_{m+2} + \cdots + x_n &= (x_{m+1} - x_{m+2}) + \cdots + (x_{n-2} - x_{n-1}) + x_n \geq 0\\
+	&=x_{m+1} - (x_{m+2} - x_{m+3}) - \cdots -(x_{n-1}-x_n) \leq x_{m+1}
+\end{aligned}$ \\
+Check for the case with last term $-$.\\
+Now, $\forall\epsilon>0$, find $N$ such that $\abs{x_n}<\epsilon$ for $n\geq N$. Then for $n> m\geq N$, $\abs{s_n-s_m} \leq x_{m+1} < \epsilon$. Thus $\span{s_n}$ is a Cauchy sequence and the given series converges.\\
+\\
+\ex. $a_n = (-1)^{n-1}/n$. $\sum a_n$ converges by alternating series test and converges to $\log 2$.\\
+\\
+\rmk. The rearrangement of the above example may not converge, or converge to a different value than $\log 2$.\\
+\\
+Exam: 1.1 - 2.6\\
+\\
+After the midterms we will be covering functions and continuity.\\
+Chapter 1 has been about $\bb{R}$, and in Chapter 2, we have talked about subsets of $\bb{R}^n$.\\
+2.1: What is $\bb{R}^n$ ? Vector Space, IPS, Metric Space, Normed Space...\\
+2.2: Open, closed sets\\
+2.3: Bounded sets and Cauchy sequences\\
+(2.4: Convergence Tests)\\
+2.5: Compact Sets\\
+2.6: Connect Sets\\
+
+
+
+\pagebreak

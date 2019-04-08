@@ -1,0 +1,28 @@
+\section*{April 5th, 2019}
+\textbf{Theorem}. $\overline{A}\cup \overline{B} = \overline{A\cup B}$\\
+\textbf{Proof}. $(\subset)$ Trivial.\\
+$(\supset)$ $A\subset \overline{A}$, $B\subset \overline{B} \imp A\cup B \subset \overline{A}\cup\overline{B} \imp \overline{A\cup B} \subset \overline{\overline{A}\cup \overline{B}} = \overline{A}\cup\overline{B}$. The closure of a closed set is itself.\\
+\\
+\textbf{6. (2)} $ a_n = \cos\sqrt{2019+n^2\pi^2}$\\
+Consider $\delta > 0$, such that $$(n\pi - \delta)^2 < 2019+n^2\pi^2 <(n\pi +\delta)^2$$
+$$-2n\pi < \frac{2019}{\delta} \pm \delta < 2n\pi$$
+We can find large enough $N$ such that the above inequality holds for $n\geq N$.\\
+Now we want $b_n = \sqrt{2019 + n^2\pi^2}$ bounded by $n\pi \pm \delta$.\\
+$n\geq N$, $n$ even $\imp n\pi-\delta < b_n < n\pi + \delta$\\
+$\imp 1 \geq a_n > 1-\epsilon$\\
+$n\geq N$, $n$ odd $\imp -1 \leq a_n < -1+\epsilon$\\
+\\
+\textbf{Problem 2.3.5} 
+\begin{enumerate}
+	\item[(1)] $x_{n+2} = \dfrac{x_n+x_{n+1}}{2}$
+	\item[(2)] $x_{n+1} = x_n + x(-1)^n \dfrac{1}{3n+1}$
+\end{enumerate}
+\textbf{Solution}.
+\begin{enumerate}
+	\item[(1)] Write $x_{n+2} - x_{n+1} = a(x_{n+1} - x_n)$ and observe that $a = -1/2$. Write as $$x_n = x_{n-1} + \left(-\frac{1}{2}\right)^{n-2}(x_2-x_1)$$
+	Then we have $$x_n = x_2 + \sum_{k=1}^{n-2} \left(-\frac{1}{2}\right)^{k}(x_2-x_1)$$
+	This series converges to $\dfrac{2x_2+x_1}{3}$.
+	\item[(2)] This is an alternating series. Write as $$x_n = x_1 + \sum_{k=1}^{n-1}(-1)^k \frac{x}{3n+1}$$
+	By alternating series test, the second summation term converges, and the series converges to $x_1$.
+\end{enumerate}
+Since a converging sequence is a Cauchy sequence, $x_1, x_2$ can be any real number.

@@ -1,0 +1,115 @@
+\section*{April 1st, 2019}
+$ \inte A : x\in A$ s.t. $N(x, \epsilon) \subset A$ for some $\epsilon > 0$.\\
+$A': x\in \bb{R}^d$ s.t. $N(x, \epsilon) \cap (A\backslash\{x\})\neq \emptyset$ for $\forall \epsilon >0$\\
+$\overline{A}: x\in \bb{R}^d$ s.t. $N(x, \epsilon) \cap A\neq\emptyset$, $\forall \epsilon>0$, $\overline{A} = A\cup A'$\\
+\\
+\textbf{Example}. $A=[0, 1)\cup \{2\}$. $ 1\in A' $, $ 2\notin A' $, $ 2\in \overline{A} $\\
+\\
+\textbf{Prop 2.3.3} $ x\in A' \implies N(x, \epsilon)\cap (A\backslash \{x\})$ 는 무한집합이다.\\
+\textbf{Proof}. 유한집합이라고 가정하자. $N(x, \epsilon) \cap (A\backslash \{x\}) = \{x_1, \dots, x_n\}$ 이라 할 수 있다.
+Set $\delta = \min\{\norm{x-x_i}: \forall i\}$. Then $ N(x, \delta) \cap (A\backslash \{x\})=\emptyset $. 모순.\\
+그래서 사실은 공집합이 아닌 것으로 정의했지만 \textbf{사실은} 무한집합이다.\\
+\\
+\textbf{Remark}. $A'\neq\emptyset\implies A$는 무한집합.\\
+(대우) $A$가 유한집합이면 극한점이 존재하지 않는다. (2.2 보기 4)\\
+(역) \textbf{거짓}. $A = \{1, 2, \cdots\}$ 이면 $A'=\emptyset$.\\
+그러면 역이 언제 성립하나요? 다음 단원 내용!\\
+\\
+\textbf{Definition}. Convergence in $\bb{R}^d$\\
+Let $\span{x_n}$ be a sequence in $\bb{R}^d$. $$\lim_{n\rightarrow \infty} x_n= x \iff \forall \epsilon>0, \exists N \text{ s.t. } \left (n\geq N \implies \norm{x_n-x}<\epsilon\right )$$\\
+\\
+\textbf{Exercise}. $x_n = (x_n^{(1)}, \dots)$, $x = (x^{(1)}, \dots)$ 일 때, $x_n\rightarrow x \iff \forall i, x_n^{(i)} \rightarrow x^{(i)} $\\
+\\
+\textbf{Notation}. $A\subset \bb{R}^d$; $\span{x_n}$ is a sequence in $A$ $\iff \forall n, x_n\in A $\\
+\\
+\thm{ 2.2.2}
+\begin{enumerate}
+	\item $x\in A' \iff \exists \span{x_n}$ in $A\backslash \{x\}$ such that $x_n\rightarrow x$
+	\item $x\in \overline{A} \iff \exists \span{x_n}$ in $A$ such that $x_n\rightarrow x$ 
+\end{enumerate}
+\textbf{Proof}.
+\begin{enumerate}
+	\item ($\imp$) $x_n\in N\left(x, \frac{1}{n} \right) \cap (A\backslash \{x\})$ 이라 하자. (공집합이 아니므로 이러한 원소가 존재한다.) 그러면 $\norm{x_n-x}<1/n$ 이므로 $x_n$ 은 $x$ 로 수렴한다. 그리고 $x_n\in A\backslash\{x\}$ 이므로 수열이 $A\backslash\{x\}$ 에 있다.
+	\item Left as exercise. Replace $A\bs \{x\} $ with $A$.
+\end{enumerate}~\\
+\\
+\textbf{Theorem 2.2.3}. The following are equivalent.
+\begin{enumerate}
+	\item $F$ is closed.
+	\item $F'\subset F$.
+	\item $F =\overline{F}$
+	\item For a sequence $\span{x_n}$ in $F$, $\ds\lim_{n\rightarrow \infty} x_n = x$ $\imp$ $x\in F$.
+\end{enumerate}
+\textbf{Proof}. \\
+(1)$\iff$(3) ($\overline{F}$: smallest closed set containing $F$.)\\
+(2)$\iff$(3) 은 자명.\\
+(1)$\iff$(4) by the above theorem. (Thm 2.2.2)\\
+\\
+\textbf{Applications}.
+\begin{enumerate}
+	\item $A'$ is closed.\\
+	\textit{Proof}. We want to show that $(A')' \subset A'$.\\
+	We want to show: $x\in (A')' \imp x\in A'$.\\
+	($A'$ 이 공집합이면 자명. 공집합이 아니라고 가정하고...)\\
+	Given $\epsilon>0$, $N(x, \epsilon)\cap (A'\bs \{x\}) \neq \emptyset$. Take an element $y\in A'$ from this set. Now set $\delta = \min\{\norm{x-y}, \epsilon - \norm{x-y} \}$ then we have $N(y, \delta) \cap (A\bs \{y\}) \neq \emptyset$. ($\because y\in A'$)\\
+	$z \in N(y, \delta) \cap (A\bs \{y\})$ 라 하자.
+	\begin{enumerate}
+		\item $z\in A\bs \{y\} \subset A$.
+		\item $\norm{x-z} \leq \norm{x-y} + \norm{y-z} < \norm{x-y} +\delta \leq \epsilon$ ($z\in N(y, \delta)$)
+		\item $\norm{x-z} \geq \norm{x-y}-\norm{y-z}>\norm{x-y}-\delta \geq 0$ (By the choice of $\delta$.) Thus $x\neq z$.
+	\end{enumerate}
+	Therefore $z\in N(x, \epsilon)$ (by (b)), $z\in A\bs \{x\}$ (by (a), (c)).\\
+	$x\in A'$ since $N(x, \epsilon)\cap (A\bs \{x\})$ is not empty.
+	\item $A\subset \bb{R}$: closed and bounded $\imp$ $\inf A = \min A$, $\sup A = \max A$. (Existence)\\
+	\textit{Proof}. Let $\sup A=x\notin A$. ($\sup A\in A$ 이면 자명)\\
+	\textit{Claim}. $x\in A'$.\\
+	\textit{Proof of Claim}. $\forall \epsilon>0$, $N(x, \epsilon) = (x-\epsilon, x+\epsilon)$\\
+	$x = \sup A$ 이므로 $x-\epsilon$ is not an upper bound.\\
+	$\exists y$ such that $y \in (x-\epsilon, x)$\\
+	$y\in N(x, \epsilon) \cap (A\bs \{x\})\neq \emptyset$ 이므로 $x$ 는 극한점.\\
+	따라서 $x\in A' \subset A$ (closed set 이므로 Thm 2.2.3 (2)) 모순. \\
+	$\sup A\in A$ 이므로 이 값이 최댓값이다. 
+\end{enumerate}
+\pagebreak
+\textbf{2.3 유계집합과 코시수열}\\
+핵심: Thm 2.3.4, Thm 2.3.7\\
+\textbf{Definition}. $\span{x_n}$: 유계수열(bounded sequence) $\iff$ $\exists M>0$ s.t. $\norm{x_n}\leq M$ for all $n\in \bb{N}$.\\
+\\
+\textbf{Definition}. $n_1<n_2<\cdots$ : sequence in $\bb{N}$ 이라 하자. $\span{x_{n_k}}_{k=1}^\infty = (x_{n_1}, x_{n_2}, \dots)$ 를 $\span{x_n}$의 부분수열(subsequence)이라 한다. \\
+\\
+\textbf{Theorem 2.3.4} (Bolzano-Weierstrass Theorem)\\
+If $\span{x_n}$ is bounded, there exists a convergent subsequence of $\span{x_n}$.\\
+\\
+\textbf{Idea of Proof}. Equivalent formulation for sets.\\
+\\
+\textbf{Definition}. Set $A$ is bounded $\iff$ $\exists M>0$ such that $\norm{x}<M$ for all $x\in A$.\\
+\\
+\textbf{Theorem 2.3.2} (Equivalent of 2.3.4) $A$가 유계이고 무한집합이면, $A'\neq \emptyset$.\\
+\\
+\textbf{Remark}. $A'\neq \emptyset \imp A$: 무한집합.\\
+역이 성립하기 위해서는 $A$가 유계라는 조건이 필요하다.\\
+\\
+극한점이 중요한 이유는 계속 수열과 관련이 있기 때문이다.\\
+\textbf{Example}. $A = \{1/n: n\in \bb{N}\}$ 을 고려하는 것은 수열 $x_n=1/n$ 을 고려하는 것이나 마찬가지이다. 이 수열 $x_n$ 이 $x$ 로 수렴하는 것은 $A'=\{x\}$ 와 동치이다. (Hence the name ``limit point")\\
+이로부터 $x\in A' \iff $ Exists a subsequence of $\span{x_n}$ in $A\bs \{x\}$ converging to $x$.\\
+\\
+\textbf{Proof of 2.3.2}
+\begin{enumerate}
+	\item \textbf{Lemma 2.3.1} 축소구간정리 in $\bb{R}^d$.\\
+	$B$ is a closed box in $\bb{R}^d$ $\iff$ $B = I_1\times I_2 \times \cdots \times I_d$, where $I_i = [a_i, b_i]$ for $i = 1, \dots, d$. ($I_i$ is a closed and bounded interval.)\\
+	$$B_1\supset B_2\supset \cdots \imp \bigcap_{n=1}^\infty B_n \neq \emptyset$$\\
+	\textbf{Proof}. 각 `좌표' $I_i$ 별로 1차원 축소구간정리를 적용하면 된다.
+	\item \textbf{Divide and Conquer Strategy}\\
+	B: Box 일 때, $\diam(B) = \sup\{\norm{x-y}: x, y\in B \} = \sqrt{(a_1-b_1)^2 + \cdots + (a_d-b_d)^2}$\\
+	\textbf{Claim}. There exists closed boxes $B_1, B_2, \dots$ s.t. 
+	\begin{enumerate}
+		\item $B_1\supset B_2\supset \cdots$
+		\item $\diam B_n = \dfrac{1}{2^n}\diam B_1$
+		\item $B_n\cap A$: 무한집합
+	\end{enumerate}
+	\textbf{Proof}. (Induction) $n = 1$; $B_1$: 충분히 커서 $A\subset B_1$ 인 box 를 잡으면 된다.\\
+	Suppose we have $B_1, \dots, B_n$; $B_n$을 $2^d$ 등분하면 적어도 하나는 $A$의 원소를 무한개 포함하고 있다. 그 집합을 $B_{n+1}$ 으로 잡는다. (비둘기집의 원리)\\
+	이제 $x\in \bigcap_{n=1}^\infty B_n$ 으로 잡으면 (축소구간정리에 의해 잡을 수 있다) $x\in A'$. ($A'\neq \emptyset$)
+	$\because \forall \epsilon>0$, $\diam B_n <\epsilon$ 인 $N\in \bb{N}$ 을 찾아 $n\geq N$ 일 때 부등식이 성립하도록 할 수 있다. 이러한 $n$ 들에 대하여 $B_n\subset N(x, \epsilon)$. 그러면 $N(x, \epsilon)\cap (A\bs \{x\}) \supset B_n\cap (A\bs \{x\})$.
+\end{enumerate}
+\pagebreak

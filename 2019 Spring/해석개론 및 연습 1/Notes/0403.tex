@@ -1,0 +1,77 @@
+\section*{April 3rd, 2019}
+우리가 지금 2.3 을 하고 있는데, 2 가지 중요한 결과가 있어요.\\
+\\
+\textbf{Theorem 2.3.4} $\span{x_n}$ 이 bounded 이면 수렴하는 부분수열을 갖는다.\footnote{증명이 가장 테크니컬 해요!}\\
+\\
+\textbf{Theorem 2.3.2} $A$가 유계인 집합이고 무한집합이면 극한점을 가진다. $A'\neq \emptyset$ \\
+증명은 축소구간정리를 박스로 확장해가지고 분할 정복하면 된다.\\
+\\
+\textbf{Recall 2.3.3} $x \in A' \imp$ $N(x, \epsilon)\cap (A\bs \{x\}) $ 는 무한집합이다.\\
+\\
+\textbf{Proof of 2.3.4}. $ A = \{x_1, x_2, \dots, x_n\} $ 라고 하면 이 집합은 유계이다. (수열이 유계이므로)
+\begin{enumerate}
+	\item $A$가 유한집합: 자명.\\
+	$ \exists x$ such that $x$ appears infinitely many times in $\span{x_n}$. (PHP) 이 경우에는 부분수열을 $x, x, \dots$ 로 잡으면 된다. 이는 수렴하는 부분수열이다.
+	\item $ A $가 무한집합\footnote{이제 Thm 2.3.2 를 사용할 수 있다. 사실 경우를 나눈 것은 예외적인 case 를 처리하기 위한 것이었다.}\\
+	$A'\neq \emptyset$ 이므로 $\alpha\in A'$ 이라 하자.\\
+	\textbf{Claim}. $\exists n_1<n_2<\dots$ such that $\norm{x_{n_k}-\alpha} < 1/k$.\\
+	\textbf{Proof}. (첨자들이 증가하면서 가까워져야 한다는 것이 유일하게 tricky 한 부분이다. 귀납법을 사용하자.) $k=1$: $x_{n_1} \in N(\alpha, 1)\cap (A\bs \{\alpha\})$ 로 잡으면 된다.\\
+	$x_{n_1}, \cdots, x_{n_k}$를 잡았다고 가정: $N(\alpha, \frac{1}{k+1})\cap (A\bs \{\alpha\})$ 에서 $x_{n_{k+1}}$를 잡아야 하는데 이 집합은 무한집합이다. (Recall 2.3.3) 이 집합에서 첨자가 $n_k$보다 큰 항이 반드시 존재하므로 그 중 하나를 $x_{n_{k+1}}$ 이라 잡으면 된다.\\
+	따라서 $\ds \lim_{k\rightarrow \infty} x_{n_k} = \alpha$ (Check as exercise)
+\end{enumerate}~\\
+\textbf{Application}. (Characterization of $\limsup$ and $\liminf$)\\
+$x_n$ 이 bounded 이면, $A = \{x:\exists \text{ subsequence of } x_n \text{ converging to } x \}$. 이 때 Theorem 2.3.4에 의해 $A \neq \emptyset$ 임을 증명하였다.
+\begin{enumerate}
+	\item $A$: closed and bounded $\imp$ $\max(A), \min(A)$ 가 존재한다.\\
+	\textbf{Proof}. $B= \{x_1, x_2, \dots \}$, $C = \{ \span{x_n} \text{에 무한 번 나타나는 수} \}$ 로 잡자. $A = B'\cup C, C\subset B, C'\subset B'$ 임을 확인해보라! 이를 이용하면 $B'\cup C = (B'\cup C')\cup C = B'\cup (C'\cup C) = B'\cup \overline{C}$ 가 되어 닫힌집합의 합집합은 닫힌 집합이다. $A$는 closed and bounded 이다.
+	\item $\limsup x_n = \max(A)$, $\liminf x_n=\min(A)$\\
+	(부분수열이 가질 수 있는 극한값들 중 가장 큰 값이 $ \limsup $, 가장 작은 값이 $ \liminf $)\\
+	\textbf{Proof}. Recall\\
+	$$ \limsup x_n = \alpha \iff \begin{cases}
+		\text{(i) } \forall\epsilon > 0, \exists N \text{ s.t } (n\geq N\imp x_n<\alpha+\epsilon) \\
+		\text{(ii) } \forall \epsilon>0, x_n>\alpha-\epsilon \text{ for infinitely many }n
+	\end{cases} $$
+	\begin{enumerate}
+		\item 부분수열 $\span{x_{n_k}}\ra \beta$ 이면 (i)에 의해 $k\geq N \imp x_{n_k}<\alpha+\epsilon$ 이 되어 $\beta \leq \alpha + \epsilon$. $\beta \leq \alpha$. 그러므로 $\max(A) \leq \alpha$ 이다.
+		\item $\forall \epsilon>0$, (i), (ii)에 의해 $x_n\in (\alpha-\epsilon, \alpha+\epsilon)$ 인 $n$ 이 무한히 많다. 이 유계인 구간에 속하는 수열의 항들에 대해 부분수열을 잡아 (further subsequence) $\gamma$ 로 수렴하도록 할 수 있다. (Theorem 2.3.4) 그러면 $\span{x_{m_k}} \ra \gamma \in [\alpha-\epsilon, \alpha+\epsilon]$. 따라서 $\alpha-\epsilon\leq \gamma\leq \max(A)$ 가 되어 $\alpha \leq \max(A)$.
+	\end{enumerate}
+	따라서 $\max(A) = \alpha$.
+\end{enumerate}~\\
+\\
+\textbf{Definition}. $\span{x_n}$: \textbf{Cauchy Sequence} $\iff$ $\forall\epsilon>0$, $\exists N$ s.t. $[m, n\geq N \imp \norm{x_m-x_n}<\epsilon]$\\
+\\
+\textbf{Prop 2.3.6, Thm 2.3.8} $\span{x_n}$: convergent $\iff$ $\span{x_n}$: Cauchy sequence\footnote{중간고사 전 까지 가장 중요한 정리.}\\
+\textbf{Proof}. ($\imp$) 자명. $\norm{x_m-x_n} \leq \norm{x_m-\alpha} + \norm{x_n-\alpha} < \epsilon/2+\epsilon/2 = \epsilon$ 인 $m, n\geq N$ 존재.\\
+($\impliedby$) 수렴 값이 없는 상태에서 증명해야 한다. 먼저 수렴 값을 찾아보자.
+\begin{enumerate}
+	\item $\span{x_n}$ is bounded.\\
+	\textbf{Proof}. $\exists N$ s.t. $\norm{x_m-x_n} < 1$ for all $m, n\geq N$.\\
+	Set $M = \max\{\norm{x_1}, \dots, \norm{x_{N-1}}, \norm{x_N}+1 \}$. ($\norm{x_m} < \norm{x_N}+1$)\\
+	따라서 $\norm{x_n}\leq M$ for all $n\in\bb{N}$.
+	\item There exists a subsequence $\span{x_{n_k}}$ converging to some $\alpha$. (Thm 2.3.4)
+	\item $\span{x_n}$ converges to $\alpha$.\\
+	\textbf{Proof}. $\epsilon>0$ 에 대해, 
+	\begin{enumerate}
+		\item 코시 수열의 성질에 의해 $\exists N_1$ s.t. $\norm{x_m-x_n}<\epsilon/2$ for all $m, n\geq N_1$.
+		\item 부분수열이 $\alpha$로 수렴하므로 $\exists N_2$ s.t. $\norm{x_{n_k} -\alpha} < \epsilon/2$ for all $k\geq N_2$. 
+	\end{enumerate}
+	Let $N = \max\{N_1, N_2 \}$. $ n\geq N_1, n_N\geq n_{N_1} \geq N_1 $ 이므로,\\
+	$$n>N \imp \norm{x_n - \alpha}\leq \norm{x_n-x_{n_N}} + \norm{x_{n_N} - \alpha} < \frac{\epsilon}{2} + \frac{\epsilon}{2} < \epsilon$$
+\end{enumerate}
+\pagebreak
+\textbf{Remark}. 우리의 여정을 돌아보자. 
+\begin{enumerate}
+	\item Archimedes' Principle 을 가정하면\\
+	Completeness Axiom $\imp$ Monotone Convergence Theorem $\imp$ 축소구간정리 $\imp$ Bolzano-Weierstrass Theorem $\imp$ \textbf{Cauchy Convergent Theorem}\footnote{In any metric spaces, this is the condition for completeness.} \\
+	(Exercise) $\imp$ Completeness Axiom
+	\item \textbf{Example}. $X = C([0, 1])$. (Set of functions that are continuous in $[0, 1]$) How would we define $\norm{f-g}$? $\int_0^1 \abs{f(x)-g(x)}dx$ ? $\max\{\abs{f(x)-g(x)}: x\in[0, 1]\}$ ? Only the second choice gives completeness for $X$.
+	\item \textbf{Convergence Test} without limit value. (\textbf{Theorem 2.3.9}) \\
+	$\sum_{n=1}^{\infty} a_n$ is convergent $\iff$ $\forall\epsilon > 0$, $\exists N$ s.t. ($n > m \geq N \imp \abs{a_{m+1} + \cdots + a_n} < \epsilon$)\\
+	\textbf{Proof}. Trivial.
+\end{enumerate}~\\
+\textbf{Definition}. $\sum a_n$ is \textbf{absolutely convergent} $\iff$ $\sum \abs{a_n}$ is convergent\\
+\\
+\textbf{Theorem}. An absolutely convergent series converges.\\
+\textbf{Proof}. Suppose $\sum \abs{a_n}$ converges. For $\forall\epsilon>0$, there exists $N$ such that $\abs{\abs{a_{m+1}}+\cdots + \abs{a_n}}<\epsilon$ for all $m, n\geq N$. Therefore, for $m, n\geq N$, $$\abs{a_{m+1}+\cdots + a_n} \leq \abs{a_{m+1}}+\cdots + \abs{a_n} < \epsilon$$
+and $\sum a_n$ converges.
+\pagebreak

@@ -1,0 +1,46 @@
+\section*{March 29th, 2019}
+\textbf{Remark}. $\limsup$ is the limit of $\sup$. If $\sup$ is easy to calculate, find $\sup$ and take the limit.\\\\
+\textbf{Quiz 1 Solutions}\\
+\#1. Given set $A$, $\inte(A)$, $A'$, determine whether the set is open or closed.
+\begin{enumerate}
+	\item $A = \bb{N}\subset \bb{R}$. $\inte(A) = \emptyset$, $A' = \emptyset$, $A$ is closed.
+	\item $\bb{Q} \subset \bb{R}$. $\inte(\bb{Q}) = \emptyset$, $\bb{Q}' = \bb{R}$, $\bb{Q}$ is neither open nor closed.
+	\item $C = [0, 1]\cup (2, 3)\cap \{4\}\subset \bb{R}$. $\inte(C) = (0, 1)\cup (2, 3)$, $C' = [0, 1]\cup [2, 3]$, $C$ is neither open nor closed.
+	\item $D = \bigcup_{n=1}^\infty \{(\frac{1}{n}, y) : 0\leq y\leq 1 \}\subset \bb{R}^2$. $\inte(D) = \emptyset$, $D'=D\cup \{(0, y) :0\leq y\leq 1 \}$, $D$ is neither open nor closed. ($\because \inte D \neq D$, $\overline{D}\neq D$)
+\end{enumerate}~\\
+\#2. Find a limit point of given set.
+\begin{enumerate}
+	\item $A = \bb{Q}\subset\bb{R}$. $0$ is a limit point. (Directly follows from Archimedes' principle)
+	\item $B = \{\frac{1}{n}: n\in \bb{N} \}\subset\bb{R}$. $0$ is a limit point of $B$. (Also directly follows from Archimedes')
+	\item $C = \{2^{-n} + 3^{-m}: n, m\in \bb{N} \} \subset \bb{R}$. $0$ is a limit point of $C$. Given $\epsilon > 0$, exists $N\in \bb{N}$ such that for $n, m\geq N$, $2^{-n} < \epsilon/2$, $3^{-m} < \epsilon / 2$. Then $0\neq 2^{-n} + 3^{-m} < \epsilon$.
+\end{enumerate}~\\
+\#3. True or False? If false, find a counterexample.
+\begin{enumerate}
+	\item $\overline{A\cup B} = \overline{A} \cup \overline{B}$ \textbf{True}
+	\item $ \overline{A\cap B} = \overline{A} \cap \overline{B} $ \textbf{False}. Set $A = (0, 1), B = (1, 2)$. \\\textbf{Correct Statement}: $ \overline{A\cap B} \subset \overline{A} \cap \overline{B}$
+	\item $ \inte(A\cup B) = \inte(A) \cup \inte(B) $ \textbf{False}. Set $A = [0, 1], B = [1, 2]$. \\\textbf{Correct Statement}: $\inte(A) \cup \inte(B) \subset \inte(A\cup B)$
+	\item $ \inte(A\cap B) = \inte(A) \cap \inte(B) $ \textbf{True}
+\end{enumerate}
+\pagebreak
+\textbf{Thm}. $A\subset B \implies \overline{A}\subset \overline{B}, \inte(A)\subset \inte(B)$.\\
+\textbf{Proof}. 
+\begin{itemize}
+	\item We need to show $A'\subset B'$. Let $x\in A'$.\\
+	$\implies$$\forall \epsilon > 0$, $N(x, \epsilon)\cap (A\backslash \{x\}) \neq\emptyset$. \\
+	$\implies \forall \epsilon > 0, N(x, \epsilon)\cap (B\backslash \{x\})\neq \emptyset$\\
+	$\implies x\in B'$.
+	\item Let $x\in \inte(A)$\\
+	$\implies \exists \epsilon > 0, N(x, \epsilon) \subset A \implies N(x, \epsilon) \subset B \implies x\in \inte(B)$.
+\end{itemize}
+~\\
+\textbf{Proof of (c).} $A, B\subset A\cup B$ \\$\implies \inte(A), \inte(B)\subset \inte(A\cup B)$. Thus $\inte(A)\cup \inte(B)\subset \inte(A\cup B)$\\
+\\
+\textbf{Proof of (d).} $A\cap B \subset A, B \implies \inte(A, B) \subset \inte(A), \inte(B)$. Thus $\inte(A\cap B)\subset \inte(A)\cap \inte(B)$
+Suppose $x\in \inte(A)\cap \inte(B)$. Then $\exists \epsilon_A, \epsilon_B > 0$ s.t. $N(x, \epsilon_A)\subset A, N(x, \epsilon_B)\subset B$. Take $\epsilon = \min\{\epsilon_A, \epsilon_B \}/ 2$. Then $N(x, \epsilon) \subset A, B$. Therefore $N(x, \epsilon) \subset A\cap B$, $x\in \inte(A\cap B)$.
+~\\
+\textbf{Example.} $A = \{(x, y):x^2+2y^2<1 \}$. $\inte(A) = A, A' = \{(x, y): x^2+2y^2\leq 1 \}$.\\
+Suppose $(x_0, y_0) \in A$. $x_0^2 + 2y_0^2 = 1-\delta < 1$ for some $\delta >0$. By symmetry, let $x_0, y_0 >0$. From
+$$(x_0+\epsilon)^2 + 2(y_0+\epsilon)^2 = x_0^2 +2y_0^2 + \epsilon(2x_0 + 4y_0 + 3\epsilon) < 1$$
+, we want $\epsilon(2x_0+4y_0+3\epsilon) < \delta$. Set $\epsilon < 1/10$. Then $\epsilon(2x_0 + 4y_0 + 3\epsilon) < \epsilon(2x_0 + 4y_0 +3) < \delta$. Now set $\epsilon = \min\left\{\ds \frac{1}{2 (2x_0+4y_0+3)}, \frac{1}{100}\right\} > 0$.\\ Then $\abs{x - x_0}<\epsilon, \abs{y-y_0}<\epsilon$. $x_0^2+2y_0^2 < (x_0+\epsilon) ^2 + 2(y_0+\epsilon)^2 <1$. $N((x_0, y_0), \epsilon) \subset A$.\\
+Interior points are limit points, and for the points $(x_0, y_0)$ on the border, consider a sequence $(x_0-1/n, y_0-1/n)$. Then the elements are in $A$ and they converge to $(x_0, y_0)$. Thus the border is also included in $A'$.
+\pagebreak

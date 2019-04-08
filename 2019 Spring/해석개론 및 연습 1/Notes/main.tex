@@ -1,0 +1,60 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{titlesec}
+\usepackage{geometry}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+\usepackage{chngcntr}
+\counterwithin*{footnote}{section}
+
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{0em}{}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\numl}[1]{\item[\large\textbf{\sffamily #1.}]}
+\newcommand{\num}[1]{\item[\textbf{\sffamily #1}]}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\renewcommand{\span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\adj}{\text{*}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\inte}{\mathrm{int}}
+\newcommand{\imp}{\implies}
+\newcommand{\bs}{\backslash}
+\newcommand{\diam}{\text{diam}}
+
+\newcommand{\defn}{\textbf{Definition}}
+\newcommand{\rmk}{\textbf{Remark}}
+\newcommand{\ex}{\textbf{Example}}
+\newcommand{\thm}[1]{\textbf{Theorem#1}}
+\newcommand{\pf}{\textbf{Proof}}
+\newcommand{\prop}[1]{\textbf{Prop#1}}
+\newcommand{\prob}[1]{\textbf{Problem#1}}
+
+\begin{document}
+
+\input{./0329.tex}
+\input{./0401.tex}
+\input{./0403.tex}
+\input{./0405.tex}
+\input{./0408.tex}
+
+\end{document}
