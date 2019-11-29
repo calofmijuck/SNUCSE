@@ -1,0 +1,80 @@
+\section*{May 8th, 2019}
+\textbf{3.4 Monotone Function}\\
+For this section, $f:X\ra\R$, $X\subset \R$, $X$ is an interval.\\
+\\
+\defn. $f$ is \textbf{monotonically increasing} if $x<y$ then $ f(x)\leq f(y)$.\footnote{Watch out for the ``$\leq$".} $f$ is \textbf{monotonically decreasing} if $x<y$ then $f(x)\geq f(y)$.\\
+\\
+\defn. $f$ is \textbf{increasing} if $x < y$ then $f(x) < f(y)$, \textbf{decreasing} if $x<y$ then $f(x) > f(y)$.\\
+\\
+\rmk. Monotonically increasing $=$ Weakly increasing. Increasing $=$ Strongly increasing.\\
+\\
+\ex. $f(x) = \begin{cases}
+	\sin \dfrac{1}{\abs{x}} & (x\neq 0)\\
+	0 & (x = 0)
+\end{cases}$ has no left/right limits at $x = 0$.\\
+\\
+\defn. $f:X\ra \R$, $x_0\in X$, $\alpha \in \R$.\footnote{$(x_0, x_0+\delta) \subset X$ condition is necessary. Consider $X=[0, 1]$, the right limit of $x=1$ can be any real number...}
+\begin{enumerate}
+	\item (Right Limit) $\ds \lim_{x\ra x_0+} f(x)= \alpha$, $f(x_0+) = \alpha\iff$ $$\forall \epsilon > 0,\, \exists\,\delta>0 \text{ s.t. }(x_0, x_0 +\delta) \subset X \text{ and }x\in (x_0, x_0+\delta) \imp \abs{f(x)-\alpha} < \epsilon$$
+	\item (Left Limit) $\ds \lim_{x\ra x_0-} f(x)= \alpha$, $f(x_0-) = \alpha\iff$ $$\forall \epsilon > 0,\, \exists\,\delta>0 \text{ s.t. }(x_0 - \delta, x_0 ) \subset X \text{ and }x\in (x_0 - \delta, x_0) \imp \abs{f(x)-\alpha} < \epsilon$$
+\end{enumerate}~\\
+\textbf{Exercise}. $\ds \lim_{x\ra x_0}f(x) = \alpha \iff f(x_0+) = f(x_0-) = \alpha$.\\
+\\
+\defn. (Infinite Limits)
+\begin{enumerate}
+	\item $f(x_0+) = \infty \iff $ $$\forall M>0,\, \exists\,\delta>0 \text{ s.t. } (x_0, x_0+\delta) \subset X \text{ and } x\in (x_0, x_0 + \delta) \imp f(x) > M$$ 
+	\item $f(x_0+) = -\infty \iff $ $$\forall M>0,\, \exists\,\delta>0 \text{ s.t. } (x_0, x_0+\delta) \subset X \text{ and } x\in (x_0, x_0 + \delta) \imp f(x) <-M$$	
+\end{enumerate}~\\
+\rmk. $x_0\in \inte X$, we define
+\begin{center}
+	$\ds\lim_{x\ra x_0} f(x) = \pm \infty \iff f(x_0+) = f(x_0-) = \pm \infty$
+\end{center}~\\
+\thm{ 3.4.1} Suppose $f:X\ra\R$ is monotone on $X = (a, b)$.
+\begin{enumerate}
+	\item $\forall x_0\in (a, b) \imp $ Both $f(x_0+), f(x_0-)$ exist.
+	\item $f(a+), f(b-)$ exist.
+	\item For $a<x<y<b$, if $f$ is monotonically increasing, $$f(a+)\leq f(x-) \leq f(x) \leq f(x+) \leq f(y-) \leq f(y) \leq f(y+)\leq f(b-)$$
+\end{enumerate}
+\pf. WLOG, suppose $f$ is monotonically increasing.
+\begin{enumerate}
+	\item Define $\alpha = \inf\{f(t):t\in (x_0, b) \}$. (the set is bounded below by $f(x_0)$)\\
+	\\
+	\textbf{Claim}. $f(x_0+) = \alpha$.\\
+	\pf. $\forall \epsilon > 0$, $\exists\, x_1\in (x_0, b)$ s.t. $f(x_1) < \alpha + \epsilon$. ($\alpha$ is infimum) Now set $\delta = x_1 - x_0$. Then $(x_0, x_0+\delta) \subset X$. For the second condition, if $x\in (x_0, x_0+\delta) = (x_0, x_1) \imp \alpha \leq f(x) \leq f(x_1)< \alpha + \epsilon$. Thus $\abs{f(x) - \alpha} < \epsilon$.\\
+	\\
+	From the claim we have $f(x_0+) = \inf\{f(t): t\in (x_0, b) \}$, $f(x_0-) = \sup\{f(t): t\in (a, x_0) \}$
+	\item Define $\alpha = \inf\{f(t):t\in (a, b) \}$ if the set is bounded below, $-\infty$ otherwise. Then we have $f(a+) = \alpha$. (Left as exercise)\\
+	Also define $\beta = \sup\{f(t):t\in (a, b) \}$ if the set is bounded above, $\infty$ otherwise. Then we have $f(b-) = \beta$.\footnote{극한값이 $\infty$ 인 경우도 존재한다고 표현하는가?}
+	\item Trivial. Check $f(x+) \leq f(y-)$. ($\frac{x+y}{2}$ is in both $(x, b), (a, y)$)
+	$$f(x+) = \inf\{ f(t): t\in (x, b) \} \leq f\left(\frac{x+y}{2}\right) \leq \sup\{f(t):t\in (a, y) \} = f(y-)$$
+\end{enumerate}~\\
+\textbf{Cor 3.4.2} Suppose $f:X\ra \R$ is monotone and $X$ is an interval. Define $$D=\{x_0\in X: f \text{ is discontinuous at } x_0 \}$$ then $D$ is finite or countable.\\
+\pf. WLOG, suppose $f$ is monotonically increasing.\\
+Suppose $x_0\in D' = D\bs \{\text{two endpoints of } X\}$. By Thm 3.4.1, left, right limits at $x_0$ exist, and $f(x_0+) > f(x_0-)$. (If equality holds, $f$ is continuous at $x_0$)\\
+Define $g: D'\ra \Q$ by $g(x_0) = q_{x_0}\in (f(x_0-), f(x_0+))$ (any rational) Then $g:D'\ra g(D') \subset \Q$ is bijective. Since $g(D')$ is finite or countable (subset of $\Q$), $D'$ is also finite or countable.\\
+\\
+\thm{ 3.4.3} Suppose $f:X\ra\R$ is continuous and $X$ is an interval.\footnote{Note that this is the first time supposing continuity.} The following are equivalent.
+\begin{enumerate}
+	\item $f$ is injective.
+	\item $f$ is strongly increasing or decreasing.
+\end{enumerate}
+\pf. (책과 다름) \textbf{(2\mimp1)} Trivial.\\
+\textbf{(1\mimp2)} Define $D\subset \R^2$, $D = \{(x, y) : x, y\in X, x<y\}$. $g:D\ra \R$, $g(x, y) = f(x) - f(y)$.
+\begin{enumerate}
+	\item $D$ is connected. (Convex) (Check!)
+	\item $g$ is continuous. (Trivial by sequence definition)
+\end{enumerate}
+Thus $g(D)$ is connected, and since it is a subset of $\R$, $g(D)$ is an interval. Also, $0\notin g(D)$ since $x<y$ in the definition of $D$ and $f(x)-f(y)$ is never 0 by injectivity.\\
+Hence $g(D)$ is a subset of $(0, \infty)$ or $(-\infty, 0)$. If $g(D)\subset (0, \infty)$, $f$ is decreasing. $f$ is increasing for the second case.\\
+\\
+\rmk. Suppose $f:X\ra \R$ is continuous and $X$ is an interval. If $f$ is increasing (or decreasing), $f:X\ra f(X)$ is bijective, (injective by Thm 3.4.3) and $f\inv:f(X)\ra X$ is continuous.\\
+\pf. $\delta = \min\{f(x_0) - f(x_0-\epsilon), f(x_0+\epsilon) - f(x_0) \}$
+
+
+
+
+
+
+
+
+\pagebreak

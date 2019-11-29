@@ -1,0 +1,91 @@
+\section*{May 20th, 2019}
+
+\ex. $f(x) = \log(1+x)$, $I=[0, \infty)$ $\overset{?}{\imp} f(x) = \ds \sum_{k=1}^\infty (-1)^k\dfrac{x^k}{k}$\\
+This cannot be done \textit{yet}. (Chap 6)\\
+\\
+\defn. Suppose $f: X\ra \R$ ($X\subset \R^d$).
+\begin{enumerate}
+	\item $f$ has a \textbf{local maximum} $f(x_0)$ at $x_0$ \\
+	$\iff$ Exists $\delta > 0$ s.t. $f(x_0) \geq f(x)$ for all $x\in N(x_0, \delta)\cap X$ 
+	\item $f$ has a \textbf{local minimum} $f(x_0)$ at $x_0$ \\
+	$\iff$ Exists $\delta > 0$ s.t. $f(x_0) \leq f(x)$ for all $x\in N(x_0, \delta)\cap X$ 
+\end{enumerate}~\\
+\thm{.} Suppose $f:[a, b]\ra \R$ is differentiable and has local maximum (minimum) at $c\in [a, b]$.\footnote{Statements for local minimum in brackets.}
+\begin{enumerate}
+	\item If $c\in (a, b)$ then $f'(c) = 0$.
+	\item If $c = a$, $f'(a) \leq 0$ ($\geq 0$)
+	\item If $c = b$, $f'(b) \geq 0$ ($\leq 0$)
+\end{enumerate}
+\pf. (1) : Compare left/right-hand limits. Since they must be the same, $f'(c) = 0$.\\
+(2), (3) : Inspect right-hand and left-hand limits, respectively. Right-hand limit should be negative, left-hand limit should be positive.\\
+\\
+\rmk. Maximum (Minimum) $\imp$ Local Maximum (Minimum)\\
+\\
+\textbf{Recall.} $$f(x) = \begin{cases}
+x^2\sin\dfrac{1}{x} & (x \neq 0)\\
+0 & (x= 0)
+\end{cases}$$
+\\
+\defn. Suppose $F:I\ra \R$ is differentiable. If $F'=f$, $F$ is an \textbf{antiderivative} of $f$.\\
+\\
+\thm{ 4.2.6} \textbf{(Darboux's Theorem)} Suppose $F:I\ra\R$ is a differentiable function defined on a closed interval, and let $F'=f$. If $a, b$ are points in $I$ with $a < b$ and $f(a) < \alpha < f(b)$, then there exists $c\in (a, b)$ s.t. $f(c) = \alpha$.\\
+\pf. Define $G(x) = F(x) - \alpha x$. $G(x)$ is continuous and differentiable on $I$ and has a minimum $G(c)$. $G'(a) = F'(a) - \alpha = f(a) - \alpha < 0$, $G'(b) = F'(b) - \alpha = f(b) - \alpha > 0$. Since $c$ is minimum, it must be a local minimum. If $c = a$, $G'(c) \geq 0$, if $c = b$, $G'(c) \leq 0$. Thus $c \neq a, b$ and $c \in (a, b)$, therefore we have $G'(c) = f(c) - \alpha = 0$. \\
+\\
+\textbf{Cor 4.2.7} Suppose $F:I\ra\R$ is a differentiable function and $F'=f$. For any interval $J\subset I$, $f(J)$ is also an interval.\footnote{Intermediate value property 를 이용하여 구간의 상이 \textbf{연결집합}임을 보일 수 있었다!}\\
+\\
+\ex. Does $f(x) = \begin{cases}
+	x & (x < 0) \\ x + 1 & (x \geq 0)
+\end{cases}$ have an antiderivative ?\\
+No. $f([-1, 1]) = [-1, 0) \cup [1, 2]$, which is not an interval.~\\
+
+\pagebreak
+$$\int_a^b f(x) dx$$
+We learned about Riemann integrals, when $f$ was continuous. There are two generalizations.
+\begin{itemize}
+	\item Riemann-Stieltjes Integrals $\ds \int_a^b f(x) dg(x)$
+	\item Lebesgue Integrals: $\ds \int_a^b f d\mu$ ($\mu$: measure) (Most general)
+\end{itemize}
+미분은 하면 할수록 함수가 안좋아져요, 그런데 적분은 하면 할수록 함수가 좋아져요!\\
+\\
+\\
+\textbf{\large 5. 적분 가능 함수의 성질}\\
+\\
+\textbf{5.1 Riemann Integrals}
+\footnote{If we define integration only with Riemann integrals, there aren't so many integrable functions.}\\
+\defn. 
+\begin{enumerate}
+	\item $P$ is a \textbf{partition} of $[a, b]$ if $P\subset [a, b]$ is a finite subset and $a, b\in P$.
+	\item $\mc{P}[a, b]$ is the \textbf{collection} of all partitions of $[a, b]$. 
+\end{enumerate}~\\
+\ex. Consider $P = \{a = x_0 < x_1 < \cdots < x_n=b \}$. Then we divided $[a, b]$ into $[x_0, x_1]$, $\dots$, $[x_{n-1}, x_n]$.\\
+\\
+\defn. Suppose $f:[a, b]\ra \R$ is bounded.\footnote{$\exists M \geq 0$ s.t. $\abs{f(x)} \leq M$ for all $x\in [a, b]$.} Given $P = \{a = x_0 < x_1 < \cdots < x_n=b \} \in \mc{P}[a, b]$, define
+$$m_i = \inf\{f(t): t\in [x_{i-1}, x_i] \} \qquad M_i = \sup\{f(t): t\in [x_{i-1}, x_i] \}$$
+then we define \textbf{lower/upper Riemann sum}s as\footnote{We define it this way so that Riemann integrals can be defined also for non-continuous functions.}
+\begin{enumerate}
+	\item (Lower) $L(f, P) = \ds \sum_{i=1}^n (x_i-x_{i-1}) m_i$
+	\item (Upper) $U(f, P) = \ds \sum_{i=1}^n (x_i-x_{i-1}) M_i$
+\end{enumerate}~\\
+\prop{ 5.1.1} Suppose $f:[a, b]\ra\R$ is bounded.
+\begin{enumerate}
+	\item $P, Q\in \mc{P}[a, b]$, if $P\subset Q$ ($Q$ is a finer partition than $P$)
+	$$L(f, P) \leq L(f, Q)\leq U(f, Q)\leq U(f, P)$$
+	\item $P, P' \in \mc{P}[a, b] \imp L(f, P)\leq U(f, P')$
+\end{enumerate}
+\pf. (1) : For partition $P$, consider an interval $[x_{i}, x_{i+1}]$. This interval adds $M_{i+1}(x_{i+1}-x_i)$ to the upper sum $U(f, P)$. Meanwhile, in partition $Q$, $[x_i, x_{i+1}]$ can be considered as $[y_a, y_b]$ for some $a, b$ and this interval adds $\sum_{j=a+1}^b M_{j}^Q(y_{j}-y_{j-1})$ to the upper sum $U(f, Q)$.\\
+$$M_{i+1} =\sup\{f(t): t\in [x_i, x_{i+1}]\} \qquad M_{j}^Q = \sup\{f(t): t\in [y_{j-1}, y_j] \}$$
+If $j = a+1, \dots, b$, $M_{j}^Q\leq M_{i+1}$, and thus
+$$
+	\sum_{j=a+1}^b M_j^Q (y_j-y_{j-1}) \leq \sum_{j=a+1}^b M_{i+1}(y_j - y_{j-1}) = M_{i+1}(y_b-y_a) = M_{i+1}(x_{i+1}-x_i)
+$$
+(2) : $L(f, P)\leq L(f, P\cup P') \leq U(f, P\cup P') \leq U(f, P')$\\
+\\
+\\
+\defn. We define the following.
+\begin{itemize}
+	\item Upper Integral $\ds \overline{\int_a^b} f = \inf\{U(f, P): P\in \mc{P}[a, b] \}$
+	\item Lower Integral $\ds \underline{\int_a^b} f = \sup\{L(f, P): P\in \mc{P}[a, b] \}$
+\end{itemize}
+By Prop 5.1.1 (2), $\ds \underline{\int_a^b} f \leq \overline{\int_a^b} f$, and if $$\underline{\int_a^b}f = \overline{\int_a^b}f$$
+we say that $f$ is \textbf{Riemann integrable}.
+\pagebreak

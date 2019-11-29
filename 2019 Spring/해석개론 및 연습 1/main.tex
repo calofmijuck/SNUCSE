@@ -17,6 +17,9 @@
 \usepackage{chngcntr}
 \counterwithin*{footnote}{section}
 
+\usepackage{enumitem}
+\setlist[enumerate,1]{label={(\arabic*)}}
+
 \titleformat{\section}
 {\normalfont\large\bfseries}{\thesection}{0em}{}
 
@@ -38,8 +41,18 @@
 \newcommand{\ds}{\displaystyle}
 \newcommand{\inte}{\mathrm{int}}
 \newcommand{\imp}{\implies}
-\newcommand{\bs}{\backslash}
+\newcommand{\bs}{\setminus}
 \newcommand{\diam}{\text{diam}}
+\newcommand{\dist}{\text{dist}}
+\newcommand{\mimp}{$\implies$}
+\newcommand{\miff}{$\iff$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\lint}[1]{\underline{\int#1}}
+\newcommand{\uint}[1]{\overline{\int#1}}
 
 \newcommand{\defn}{\textbf{Definition}}
 \newcommand{\rmk}{\textbf{Remark}}
@@ -49,12 +62,36 @@
 \newcommand{\prop}[1]{\textbf{Prop#1}}
 \newcommand{\prob}[1]{\textbf{Problem#1}}
 
+\title{\textbf{Introduction to Analysis I}}
+\author{Sungchan Yi}
+\date{Spring 2019}
 \begin{document}
-
-\input{./0329.tex}
-\input{./0401.tex}
-\input{./0403.tex}
-\input{./0405.tex}
-\input{./0408.tex}
+\maketitle
+\input{Notes/0304.tex}
+\input{Notes/0329.tex}
+\input{Notes/0401.tex}
+\input{Notes/0403.tex}
+\input{Notes/0405.tex}
+\input{Notes/0408.tex}
+\input{Notes/0410.tex}
+\input{Notes/0412.tex}
+\input{Notes/0415.tex}
+\input{Notes/0417.tex}
+\input{Notes/0422.tex}
+\input{Notes/0424.tex}
+\input{Notes/0426.tex}
+\input{Notes/0429.tex}
+\input{Notes/0501.tex}
+\input{Notes/0508.tex}
+\input{Notes/0513.tex}
+\input{Notes/0515.tex}
+\input{Notes/0520.tex}
+\input{Notes/0522.tex}
+\input{Notes/0527.tex}
+\input{Notes/0529.tex}
+\input{Notes/0531.tex}
+\input{Notes/0603.tex}
+\input{Notes/0605.tex}
+\input{Notes/0607.tex}
 
 \end{document}

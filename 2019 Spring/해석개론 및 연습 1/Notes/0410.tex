@@ -1,0 +1,92 @@
+\section*{April 10th, 2019}
+\textbf{2.5 Compact Set}\\
+\defn. $\{U_i: i\in I\}$ ($ I $ is the index set, $U_i\subset \bb{R}^d$) is called ``family of sets".
+\begin{enumerate}
+	\item $ \{U_i: i\in I\} $ is a \textbf{cover} of $K\subset \bb{R}^d$ $\iff$ $K\subset \bigcup_{i\in I}U_i$.
+	\item $\{U_i: i\in I\}$ is a \textbf{open cover} $\iff$ $U_i$ are open for $\forall i$.
+	\item $J\subset I$, $\{U_i: i\in J\}$ is called a \textbf{subcover} of $\{U_i: i\in I\}$ $\iff$ $ K \subset \bigcup_{i\in J} U_i$.
+\end{enumerate}~\\
+\defn. $K\subset \bb{R}^d$ is \textbf{compact} $\iff$ Any open cover of $K$ has finite subcover.\\
+\\
+\ex.
+\begin{enumerate}
+	\item $\bb{N}$ is not compact. Set $U_k = (k - 1/2, k+1/2)$, then $\{U_k:k\in \bb{N} \}$ is a (open) cover of $\bb{N}$. But there are no finite subcover.
+	\item $ A=(0, 1) $ is not compact. Set $U_k = (1/k, 1)$, then because $\bigcup_{k=1}^\infty U_k = (0, 1)$, $\{U_k: k\in\bb{N} \}$ is a (open) cover of $A$. But there are no finite subcover. $\bigcup_{i=1}^{m} U_{k_i} = U_{k_m} = (1/k_m, 1)$, which cannot contain $(0, 1)$.
+	\item $A = \{a_1, a_2, \dots, a_m \}\subset \bb{R}^d$ is compact. $ \{U_i: i\in I\} $ be a cover of $A$. There exists $i_1, \dots, i_m\in I$ such that $a_k \in U_{i_k}$ for $k = 1, \dots, m$. Then $\{U_{i_1}, U_{i_2}, \dots, U_{i_m} \}$ is a finite subcover of $A$.
+\end{enumerate}~\\
+Main Theorem: \textbf{Heine-Borel Theorem}
+\begin{center}
+	$K$ is compact $\iff$ $K$ is bounded and closed.	
+\end{center}~\\
+\rmk.
+\begin{enumerate}
+	\item This is a part of Thm 2.5.4
+	\item Proof: Prop 2.5.1, Thm 2.5.2, Prop 2.5.3
+	\item \textbf{Characterization of compact sets in $\bb{R}^d$}.\footnote{Compact Set 을 이 단순한 공간 안에서는 characterize 할 수 있다!}
+\end{enumerate}
+\pagebreak
+\pf.\\
+($\imp$) (Prop 2.5.1)
+\begin{enumerate}
+	\item \textit{Is $K$ bounded?}\\
+	Set $U_k = N(0, k)$. Then $\bigcup_{k=1}^\infty U_k = \bb{R}^d$. Thus $\{U_k: k\in \bb{N} \}$ is an open cover of $K$. There exists a finite subcover $U_{k_1}, \dots, U_{k_m}$ $(k_1<\cdots < k_m)$ of $K$. Then we have $K\subset \bigcup_{i=1}^m U_{k_i} = U_{k_m} = N(0, k_m)$. Therefore $K$ is bounded.
+	\item \textit{Is $K$ closed?}\\
+	Suppose $x\in K^C$. Set $U_k = \{y: \norm{y-x} > 1/k \}$. Then $\bigcup_{k=1}^\infty U_k = \bb{R}^d \bs \{x \}$ $\supset K$. (Open cover) There exists a finite subcover $U_{k_1}, \dots, U_{k_m}$ of $K$. $K\subset \bigcup_{i=1}^m U_{k_i} = U_{k_m}$. Therefore $K^C \supset U_{k_m}^C = \{y:\norm{y-x}\leq 1/k_m \} \supset N(x, 1/k_m)$. Thus $K^C$ is open, $K$ is closed.
+\end{enumerate}~
+($\impliedby$)
+\begin{enumerate}
+	\item (Theorem 2.5.2) \textit{Closed box is compact}. \\
+	$B = I_1\times\cdots\times I_d$, $I_i = [a_i, b_i]$. Let $\{U_i: i\in I \}$ is an open cover of $B$. \\
+	(Contradiction) Suppose there is no finite subcover of $B$.\\
+	\textbf{Claim}. There exists $B = B_1 \supset B_2\supset \cdots$ (closed boxes) such that
+	\begin{itemize}
+		\item $\diam (B_n) = \frac{1}{2^{n-1}}\diam(B_1)$
+		\item There is no finite subcover of $\{U_i:i\in I \}$ covering $B_n$.
+	\end{itemize}
+	By Lemma 2.3.1, there exists $x\in \bigcap_{n=1}^\infty B_n$. Since $x\in B$, $\exists U_i$ such that $x\in U_i$. Then $\exists \epsilon>0$ such that $N(x, \epsilon) \subset U_i$.\footnote{$n$이 충분히 크면 ball 안에 box 가 들어가고 box 는 $U_i$ 안에 있다? Claim 의 2번째에 모순.} Set $\frac{1}{2^{n-1}}\diam (B_1)<\epsilon$. \\
+	If $y\in B_n \imp \norm{x-y} \leq \diam(B_n)<\epsilon\imp y\in N(x, \epsilon)$. Then $B_n \subset N(x , \epsilon)\subset U_i$, contradiction.
+	
+	\item \textit{$K$: compact, $F\subset K$, $F$ is closed $\imp F$: compact.}\\
+	Let $\{U_i: i\in I\}$ be an open cover of $F$. Then $\{U_i: i\in I \} \cup \{F^C\}$ is an open cover of $K$. Because $K$ is compact, there exists a finite subcover of $K$. There are two cases.
+	\begin{enumerate}
+		\item $ \{U_{i_1}, U_{i_2}, \dots, U_{i_m} \} $:
+		This is already a finite subcover of $F$.
+		\item $ \{U_{i_1}, U_{i_2}, \dots, U_{i_m}, F^C \} $:
+		Since $F^C$ does not cover $F$, $U_{i_k}$ must cover $F$.
+	\end{enumerate}
+	\item \textit{Closed and bounded set is compact}.\\
+	Suppose $K$ is bounded and closed. There exists a closed box $B$ that contains $K$. Thus $B$ is compact by (1), $K$ is a closed subset of $B$. Then by (2), $K$ is compact.
+\end{enumerate}~\\
+Theorem 2.5.2 가 가장 non-trivial 한 부분이다.\\
+\pagebreak~\\
+\thm{ 2.5.4} The following are equivalent.
+\begin{enumerate}
+	\item $K$ is compact.
+	\item $K$ is bounded and closed.
+	\item If $A$ is an infinite subset of $K$, $\emptyset \neq A'\subset K$.
+	\item For a sequence $\span{x_n}$ in $K$, there exists a convergent subsequence whose limit is in $K$.
+\end{enumerate}
+\pf. \\
+$(1) \iff (2)$ by Heine-Borel Theorem.\\
+$(2) \imp (3)$ Suppose $A$ is infinite and bounded. ($A\subset K$) By Bolzano-Weierstrass, $A'\neq \emptyset$.\\
+$A'\subset A'\cup A = \overline{A}\subset K$. ($\overline{A}$ is the smallest closed set containing $A$, $A\subset K$.)\\
+$(3) \imp (4)$ Let $A = \{x_1, x_2, \dots \}$
+\begin{enumerate}
+	\item If $A$ is finite, trivial. (Take a constant subsequence, which constant $\in K$.)
+	\item If $A$ is infinite, $x\in A'\subset K$ by (3). ($x\in A'$ by Thm 2.3.4)
+\end{enumerate}
+$(4)\imp (2)$
+\begin{enumerate}
+	\item $K$ is bounded.\\
+	(Contradiction) Suppose $K$ is not bounded. Then $\forall n\in \bb{N}$, there exists $x_n\in K, \norm{x_n}\geq n$. There are no convergent subsequences, contradiction.
+	\item $K$ is closed.\\
+	(Contradiction) Suppose $K$ is not closed.
+	\begin{enumerate}
+		\item $K$: finite $\ra$ $K$: closed $\ra$ Contradiction.
+		\item $K$: infinite $\ra$ $K$: infinite and bounded $\overset{\text{B-W}}{\ra}$ $K'\neq \emptyset$
+	\end{enumerate}
+	\textit{Note.} $K'\subset K \iff K$: closed.\\
+	Then if $K'$ is not a subset of $K$\footnote{Contraposition}, there exists $x\in K'\bs K$. Since $x\in K'$, there exists a sequence $\span{x_n}$ in $K\bs \{x\}$ $(=K)$\footnote{$x\notin K$} converging to $x$. Thus for a subsequence of $\span{x_n}$, its limit must be in $K$. But $x$ is the only possible limit value. $x\in K$. Contradiction.
+\end{enumerate}
+
+\pagebreak

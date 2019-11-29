@@ -1,0 +1,135 @@
+%!TEX encoding = utf-8
+\documentclass[11pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\renewcommand{\span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\adj}{\text{*}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\inte}{\mathrm{int}\,}
+\newcommand{\imp}{\implies}
+\newcommand{\bs}{\setminus}
+\newcommand{\diam}{\text{diam}}
+\newcommand{\dist}{\text{dist}}
+\newcommand{\mimp}{$\implies$}
+\newcommand{\miff}{$\iff$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\d}{\,d}
+\newcommand{\lint}[1]{\underline{\int#1}}
+\newcommand{\uint}[1]{\overline{\int#1}}
+
+\usepackage{enumitem}
+\setlist[enumerate,1]{label={\textbf{\sffamily\arabic*.}}}
+\setlist[enumerate,2]{label={\textbf{\sffamily(\arabic*)}}}
+
+\begin{document}
+\begin{center}
+\textbf{\Large 해석개론 및 연습 1 과제 \#7}\\
+\large 2017-18570 컴퓨터공학부 이성찬
+\end{center}
+\begin{enumerate}
+\item
+\begin{enumerate}
+	\item Let $P = \{a = x_0 < x_1 < \cdots  < x_n = b\}$, $Q = \{a = y_0 < y_1 < \cdots < y_m = b\}$. If $P\subset Q$, there exists a sequence $\span{k(i)}_{i=0}^n$ s.t. $k(0) = 0$ and $k(n) = m$, where $y_{k(i)} = x_i$. Let $X = \{0,1, \dots, n\}, Y = \{0, 1, \dots, m\}$. Then
+	$$\begin{aligned}
+	V(f, P) &= \sum_{i=1}^{n} \abs{f(x_{i})-f(x_{i-1})}=\sum_{i=1}^n \abs{f(y_{k(i)}) - f(y_{k(i-1)})}\\
+	&\leq \sum_{i\in X} \abs{f(y_{k(i)}) - f(y_{k(i-1)})} + \sum_{j \in Y\bs k(X)} \abs{f(y_j) - f(y_{j-1})}\\
+	&=\sum_{i=1}^n \abs{f(y_i) - f(y_{i-1})} = V(f, Q)
+	\end{aligned}$$
+	\item By definition of $V(f)$, for any $\epsilon > 0$, there exists $P_0\in \mc{P}[a, b]$ s.t.
+	$$V(f)-\epsilon < V(f, P_0)$$
+	and by (1), if $P\supset P_0$, $V(f, P_0) \leq V(f, P)$. Also, it is trivial that $V(f, P)\leq V(f) < V(f) + \epsilon$. Thus we have the desired result,
+	$$\abs{V(f, P) - V(f)} < \epsilon$$
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+	\item \textbf{False}. Consider $$f(x) = \begin{cases}
+	 	0 & (a \leq x \leq 0) \\ 1 & (0 < x \leq b)
+	\end{cases}$$
+	Then for $a\leq x\leq 0$, $F(x) = 0$.\\
+	For $0 < x < \delta$, $P\in \mc{P}[a, x]$, define $P = \{a = x_0 < x_1 < \cdots < x_{l-1} \leq 0 < x_l < \cdots < x_n =x\}$. Then $V_a^x(f, P) = \abs{f(x_l)-f(0)} = 1$. Thus for $\epsilon = 1/2$, for any $\delta > 0$, there exists $x$ s.t. $\abs{x} < \delta$ and $ \abs{V_a^x(f, P)} \geq \epsilon $. $F(x)$ is discontinuous at $x = 0$.
+	\item At $x_0 \in X = [a, b]$, for any $\epsilon > 0$, $x < x_0$, there exists $\delta >0$ s.t. $\abs{x-x_0} < \delta, x\in X \imp \abs{f(x) - f(x_0)} < \epsilon/2$.
+	$F(x_0)-F(x) = V_x^{x_0}(f)$ since $f$ is a function of bounded variation. Take $y \in (x_0-\delta, x_0)$ and consider a partition $P\in\mc{P}[y, x_0]$. For $y < x < x_0$,
+	$$V_y^{x_0}(f) < V_y^{x_0}(f, P) + \frac{\epsilon}{2}$$
+	$$V_y^x(f) \geq V_y^{x_0}(f, P) - \abs{f(x_0) - f(x)} = V_y^x(f, P')$$
+	($V_y^{x_0}(f, P) - \abs{f(x_0) - f(x)}$ is another variation on $[x, y]$ for a partition $P'$.) Combining these two gives
+	$$V_x^{x_0}(f) = V_y^{x_0}(f) - V_y^x(f) < V_y^{x_0}(f, P) + \frac{\epsilon}{2} - V_y^{x_0}(f, P) + \abs{f(x)-f(x_0)} < \frac{\epsilon}{2}+\frac{\epsilon}{2} < \epsilon$$
+	We can use a similar argument for $x > x_0$, and this proves that $F(x)$ is continuous.
+\end{enumerate}
+
+\item Let $P = \{a = x_0 < x_1 < \cdots  < x_n = b\}$.
+$$V_a^b(f, P) = \sum_{i=1}^n \abs{f(x_i)-f(x_{i-1})} = \sum_{i=1}^n \abs{f'(t_i)}(x_i-x_{i-1}) \qquad t_i\in (x_{i-1}, x_i)$$
+which is equal to $R(\abs{f'}, P)$. By definition, $R(\abs{f'}, P) = V_a^b(f, P) \leq V_a^b(f)$.
+For all $\epsilon>0$, there exists some partition $P_1$ s.t.
+$$V_a^b(f)-\epsilon < V_a^b(f, P_1) = R(\abs{f'}, P_1)$$
+and if $P\supset P_1$, we have $$\abs{R(\abs{f'}, P) - V_a^b(f)} < \epsilon$$ and since $f'$ is integrable, $\abs{f'}$ is integrable, and $$V_a^b(f) = \int_a^b \abs{f'(t)}\,dt$$
+
+\item $a > b > 0$.\\
+Consider partition $$P = \left\{ \left(\frac{2}{(2n+1)\pi}\right)^{1/b} \right\}_{n=0}^\infty$$
+Then $$V(f, P) = \left(\frac{2}{\pi}\right)^{a/b} + 2 \sum_{i=1}^\infty \left(\frac{2}{(2i+1)\pi}\right)^{a/b} < \infty \iff a > b > 0$$
+
+\item \textsf{\textbf{(1\mimp2)}} $f\in \mc{R}(\alpha)$, $\int_a^b f\d\alpha = A$. There exists $P_1, P_2$ s.t.
+$$U(f, P_1, \alpha) < A+\epsilon \qquad L(f, P_2, \alpha) > A- \epsilon$$
+Setting $P_0 = P_1\cup P_2$, and if $P\supset P_0$,
+$$A-\epsilon < L(f, P_0, \alpha) \leq L(f, P, \alpha) \leq S(f, P, \alpha) \leq U(f, P, \alpha) \leq U(f, P_0, \alpha) < A+ \epsilon$$
+Thus we have
+$$\abs{S(f, P, \alpha) - A} <\epsilon$$
+
+\textsf{\textbf{(2\mimp1)}} For all $\epsilon > 0$, there exists $P_0$ s.t for all $P\supset P_0$, $$A - \frac{\epsilon}{3} < S(f, P, \alpha) < A+\frac{\epsilon}{3}$$
+Take infimum on the left inequality, supremum on the right inequality to get
+$$A-\frac{\epsilon}{3} \leq L(f, P, \alpha) \qquad U(f, P, \alpha) \leq A+\frac{\epsilon}{3}$$
+Therefore
+$$U(f, P, \alpha) - L(f, P, \alpha) < \frac{2\epsilon}{3} <\epsilon \imp f\in \mc{R}(\alpha)$$
+Since
+$$ A - \frac{\epsilon}{3} < L(f, P, \alpha) < \lint{_a^b} f\d\alpha \leq \uint{_a^b}f\d\alpha < U(f, P, \alpha) < A + \frac{\epsilon}{3}$$
+setting $\epsilon\ra 0$ will give $\int_a^b f\d\alpha = A$ since $f\in \mc{R}(\alpha)$.
+
+
+\item 
+\begin{enumerate}
+	\item $\alpha$ is monotone on $[0, 1]$ and $[1, 2]$. Therefore $\alpha$ is of bounded variation on each interval, thus $\alpha$ is of bounded variation on $[0, 2]$.
+	\item Set
+	$$\alpha_1(x) = \begin{cases}
+	0& (x < 1) \\ 3 & (x\geq 1)
+	\end{cases} \quad \alpha_2(x) = x^2 \quad \alpha_3(x) = \begin{cases}
+		0 & (x < 1) \\ 2x^2 & (x \geq 1)
+	\end{cases}$$
+	so that $\alpha_i$ are increasing. (Also BV) Then $$\int_0^2 f\d\alpha = \int_0^2 f \d(\alpha_1 + \alpha_2) - \int_0^2 f\d\alpha_3 = \int_0^2 f \d\alpha_1 + \int_0^2 f \d\alpha_2 - \int_0^2 f\d\alpha_3$$
+	where the last equality holds since $f$ is Stieltjes integrable w.r.t. $\alpha_1, \alpha_2$.
+	Evaluating each integral gives
+	$$\begin{aligned}
+	\int_0^2 f\d\alpha &= \int_0^2 x^3 \d\alpha_1 + \int_0^2 x^3 \d(x^2) - \int_0^2 x^3 \d(2x^2) \\
+	&=f(1) + \int_0^2 x^3\cdot 2xdx  - \int_1^2 x^3\cdot 4xdx\\
+	&=1 + \frac{64}{5} - \frac{124}{5} = -11
+	\end{aligned}$$
+\end{enumerate}
+\end{enumerate}
+\end{document}

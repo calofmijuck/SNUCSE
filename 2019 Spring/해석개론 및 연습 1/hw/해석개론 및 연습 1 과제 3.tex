@@ -1,0 +1,192 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\numl}[1]{\item[\large\textbf{\sffamily #1.}]}
+\newcommand{\num}[1]{\item[\textbf{\sffamily #1}]}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\renewcommand{\span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\adj}{\text{*}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\inte}{\mathrm{int}\,}
+\newcommand{\imp}{\implies}
+\newcommand{\bs}{\backslash}
+\newcommand{\diam}{\text{diam}}
+\newcommand{\mimp}{$\implies$}
+\newcommand{\miff}{$\iff$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\begin{document}
+\begin{center}
+\textbf{\Large 해석개론 및 연습 1 과제 \#3}\\
+\large 2017-18570 컴퓨터공학부 이성찬
+\end{center}
+\begin{enumerate}
+\numl{1}
+\begin{enumerate}
+	\item[(1)]
+	\begin{itemize}
+		\item $\inte A = \{(x, y) \in \R : xy > 1\}$\\
+		$x_0y_0 > 1$ 이라고 하자. $\epsilon < \frac{x_0y_0-1}{\abs{x_0}+\abs{y_0}}$ 에 대해, $\abs{x_0 - x} < \epsilon, \abs{y-y_0}<\epsilon$ 라 하면
+		$$\begin{aligned}
+			xy - 1 &= \abs{xy} - 1 = \abs{x}\abs{y} - 1 \geq (\abs{x_0} - \epsilon)(\abs{y_0} - \epsilon) - 1\\
+			&= \abs{x_0}\abs{y_0} - 1 - \epsilon(\abs{x_0} + \abs{y_0}) + \epsilon^2 > \epsilon^2 > 0
+		\end{aligned}$$
+		이므로 $N((x_0, y_0), \epsilon) \subset A$.
+		\item $A' = \{(x, y) \in \R : xy \geq 1\}$\\
+		$x_0y_0\geq 1$ 라고 하자. $\epsilon>0$에 대하여 $(x_0 + \frac{y_0}{2\abs{y_0}}\epsilon)y_0 = x_0y_0 + \abs{y_0}\epsilon/2 > 1$ 이다. 그러므로 $(x_0+\frac{y_0}{2\abs{y_0}}\epsilon, y_0)\in A$ 이고 이는 $N((x_0, y_0), \epsilon)$ 의 원소이고 $(x_0, y_0)$ 과 다른 점이므로 $N((x_0, y_0), \epsilon) \cap A\bs\{(x_0, y_0) \} \neq \emptyset$.
+		\item $\overline{A} = A$
+	\end{itemize}
+
+	\item[(2)] 
+	\begin{itemize}
+		\item $\inte A = \emptyset$\\
+		$A\subset \Q$ 임은 자명하다. 임의의 $\epsilon>0$, $x\in A$ 에 대하여 $N(x, \epsilon) = (x - \epsilon,  x + \epsilon)$ 에는 무리수가 반드시 존재한다. 따라서 $N(x, \epsilon) \nsubseteq A$ 이므로 $A$ 의 어떠한 점도 내점이 될 수 없다.
+		\item $A' = \{-1, 1\}$\\
+		$\forall \epsilon>0$, $0 < \abs{(-1)^n - (-1)^n \frac{n}{n+1}} < \epsilon$ 인 $n$ 이 존재하는지 확인하면 된다.
+		$$\abs{(-1)^n - (-1)^n \frac{n}{n+1}} = \abs{1 - \frac{n}{n+1}} = \frac{1}{n+1} < \frac{1}{n} < \epsilon$$
+		이 되도록 하는 $n$은 $\lceil1/\epsilon \rceil$ 보다 크기만 하면 된다.
+		\item $\overline{A} = A \cup \{-1, 1\}$
+	\end{itemize}
+
+	\item[(3)]
+	\begin{itemize}
+		\item $\inte A = \emptyset $\\
+		$\alpha = (x_0, y_0, 0) \in A$ 라 하자. $\forall \epsilon>0$, $N(\alpha, \epsilon)$ 에는 $(x_0, y_0, \epsilon/2)$ 이 존재하며 이는 $A$의 원소가 아니다. $N(\alpha, \epsilon) \nsubseteq A$ 이므로 $A$ 의 어떠한 점도 내점이 될 수 없다.
+		\item $A' = \{(x, y, z)\in \R^3: x^2+y^2 \leq 1, z=0 \}$\\
+		$r\in [0, 1], \theta \in [0, 2\pi)$ 에 대해 $r\beta = r(\cos\theta, \sin\theta, 0)\in A$ 이라 두자. 임의의 $\epsilon>0$ 에 대해 $\min\{(r - \epsilon/2), r/2\} \cdot \beta \in N(r\beta, \epsilon)\cap A\bs \{r\beta\}$ 이므로 극한점이 된다.
+		\item $\overline{A} = \{(x, y, z)\in \R^3: x^2+y^2 \leq 1, z=0 \}$
+	\end{itemize}
+
+	\item[(4)]
+	\begin{itemize}
+		\item $\inte A = \emptyset$\\
+		$A$ 의 원소들의 성분은 전부 유리수이다. $\alpha \in A$ 일 때, 임의의 $\epsilon > 0$ 에 대하여 $N(\alpha, \epsilon)$ 에는 반드시 무리수가 존재한다. $N(\alpha, \epsilon) \nsubseteq A$ 이므로 내점이 존재하지 않는다. 
+		\item $A' = \{(x, 0) \in \R^2: x\geq0  \}$\\
+		임의의 $z = (x, 0)$ $(x \geq 0)$, $\epsilon > 0$ 에 대해 $N(z, \epsilon)$ 중 구간 $I_1 = \{(k, 0): x - \epsilon < k <x + \epsilon\}$ 과 $I_2 = \{(x, y): 0 < y < \epsilon \}$ 를 생각하자. \\
+		우선 $I_1$ 에 존재하는 $x$ 가 아닌 양의 유리수 $p/q$ ($\gcd(p, q) = 1$) 을 하나 택한다. 그리고 $\epsilon' = \sqrt{\epsilon^2 - (x - p/q)^2}$ 에 대해, 충분히 큰 $n$ 을 잡는다. \\
+		그러면 $y = 1/n < \epsilon'$ 이 되게 할 수 있다. 이러한 $n$ 을 $n'$ 으로 고정하고, $p/q = m/n'$ 이 되게 하는 $m$을 $n'p/q$ 로 잡아준다. \\
+		그러면 $\left(m/n, 1/n\right) \in N(z, \epsilon)$ 가 된다.\\
+		($\because (x-p/q)^2 + (1/n')^2 < (x-p/q)^2 + \epsilon'^2 = \epsilon^2$) \\
+		그리고 $(m/n, 1/n)\in A\bs \{z\}$ 이므로 이 점은 극한점이 된다.		
+		\item $\overline{A} = A\cup \{(x, 0) \in \R^2: x\geq 0\}$		
+	\end{itemize}
+
+	\item[(5)]
+	\begin{itemize}
+		\item $\inte A = \{(x, y)\in \R^2: \abs{x} < 1, \abs{x+y}<1 \}$\\
+		$z = (x_0, y_0)$ 가 $\abs{x_0} < 1$, $\abs{x_0+y_0} <1$ 을 만족한다고 하자. 임의의 양수 $$0 < \epsilon < \min\left\{1-x_0, x_0 + 1, \frac{1-\abs{x_0+y_0}}{2} \right\}$$
+		에 대하여 $\abs{x-x_0} < \epsilon$, $\abs{y - y_0} < \epsilon$ 를 가정하면 $\abs{x} < 1$ 은 자동으로 얻어진다.\\
+		$$\begin{aligned}
+			\abs{x+y} &= \abs{x - x_0 + y - y_0 + x_0 + y_0} \leq \abs{x-x_0} + \abs{y-y_0} + \abs{x_0+y_0}\\
+			&< 2\epsilon + \abs{x_0+y_0} < 1
+		\end{aligned}$$
+		이므로 $N(z, \epsilon) \subset A$ 이다.
+		\item $A' = \{(x, y)\in \R^2: \abs{x} \leq 1, \abs{x+y} \leq 1 \}$\\
+		$\inte A$ 의 점들은 전부 $A'$ 에 속하므로 $\abs{x+y} = 1$ 인 점들에 대해서 보인다.\\
+		$z = (x_0, y_0)$ 가 $\abs{x_0} \leq 1$, $\abs{x_0+y_0} = 1$ 을 만족한다고 하자.\\
+		$y_0 \neq 0$ 인 경우, $(x_0, y_0 - \frac{y_0}{2\abs{y_0}}\epsilon) \in N(z, \epsilon)$ for $0 < \epsilon < 1$. 그리고 $$\abs{x_0 + y_0 - \frac{y_0}{2\abs{y_0}}\epsilon} + \abs{\frac{y_0}{2\abs{y_0}}\epsilon}\leq \abs{x_0+y_0} = 1$$
+		와 $\abs{\frac{y_0}{2\abs{y_0}}\epsilon} = \epsilon/2$ 로부터 $\abs{x_0 + y_0 - \frac{y_0}{2\abs{y_0}}\epsilon} < 1- \epsilon/2$ 이므로 $(x_0, y_0 - \frac{y_0}{2\abs{y_0}}\epsilon)\in A\bs \{z\}$. 따라서 극한점이 된다. $\epsilon \geq 1$ 의 경우에는 $(x_0, y_0 - \frac{y_0}{2\abs{y_0}})$ 으로 두면 된다.  \\
+		$y_0 = 0$ 인 경우, $x = \pm 1$ 이다. $\forall \epsilon > 0$ 에 대해 $(\pm 1, \pm1 \mp \epsilon)$ 에 속하는 적당한 실수를 잡아주면 $N(z, \epsilon) \cap A\bs \{z\} \neq \emptyset$ 이므로 극한점이 된다. 
+		\item $\overline{A} = \{(x, y)\in \R^2: \abs{x} \leq 1, \abs{x+y} \leq 1 \}$
+	\end{itemize}
+\end{enumerate}
+
+\numl{2}
+\begin{enumerate}
+	\item[(1)] \textbf{거짓}. (반례) $A = (0, 1)\cup (1, 2)$ 를 생각하면 $\inte A = A$ 인데 $\inte\overline{A} = (0, 2)$ 이다.
+	\item[(2)] \textbf{거짓}. $A = \{0\}$ 을 생각하면 $\inte A = \emptyset$ 이므로 $\overline{\inte A} = \emptyset \neq A$. 
+	\item[(3)] \textbf{참}.
+	\item[(4)] \textbf{참}.
+\end{enumerate}
+(3), (4) 를 보이기 위해서는 다음 명제를 보이면 된다.\\
+\\
+\textbf{Claim}. $\overline{A^C} = (\inte A)^C$.\\
+\\
+$(\subset)$ $x\in \overline{A^C}$ 일 때, $x\in A^C$ 라면, $x\notin \inte A$ 이므로 ($\inte A \subset A$) OK.\\
+$x\notin A^C$ 이고 $x\in (A^C)'$ 이라면, 임의의 $\epsilon>0$ 에 대해 $N(x, \epsilon) \cap A^C \bs \{x\}\neq \emptyset$ 이므로 $y\in N(x, \epsilon) \cap A^C \bs \{x\}$ 를 잡을 수 있다. 그러면 $y\in N(x, \epsilon)$ 인데 $y\in A^C$ 이므로 모든 $\epsilon>0$ 에 대해 $N(x, \epsilon)$ 은 $A$ 의 부분집합이 될 수 없다. $x\notin \inte A$.\\
+\\
+$(\supset)$ $x\notin \inte A$ 라 가정하자. 우선 $x\in A^C$ 이면 $x\in \overline{A^C}$ 는 당연하다.\\
+$x\notin A^C$ 를 가정하면, $x$ 가 $A$ 의 내점이 아니므로 임의의 $\epsilon>0$ 에 대해 $N(x,\epsilon)$ 는 $A$ 의 부분집합이 아니다. 따라서 $y\in N(x, \epsilon) \bs A$ 가 존재한다. 이는 곧 $y\in N(x, \epsilon) \cap A^C$ 이며, $A^C = A^C \bs \{x\}$ 이므로 극한점의 정의에 따라 $N(x, \epsilon) \cap A^C\bs \{x\} \neq \emptyset$ 이 되어 $x\in (A^C)'$ 이다. 따라서 $x\in \overline{A^C}$. 
+
+\numl{3}
+\begin{enumerate}
+	\item[(1)] $\span{b_n}$ 이 코시 수열이므로 수렴한다. 수렴하는 수열은 유계이므로, 모든 $n$ 에 대해 $\abs{b_n} < A$ 인 $A\in\R$ 이 존재한다. 이제 다음이 성립한다.
+	$$\sum_{n=1}^\infty \abs{a_nb_n} = \sum_{n=1}^\infty \abs{a_n}\abs{b_n}\leq \sum_{n=1}^\infty A\abs{a_n} < \infty$$
+	따라서 비교판정법에 의해 $\sum_{n=1}^\infty a_nb_n$ 는 절대수렴한다.
+	\item[(2)] $a_n = n!/n^n$ 으로 정의하자.
+	$$\lim_{n\ra\infty} \frac{a_{n+1}}{a_n} = \lim_{n\ra\infty} \frac{1}{(1+1/n)^n} = \frac{1}{e} < 1$$
+	극한값이 존재하며 1 보다 작으므로, $\limsup a_{n+1}/a_n = 1/e < 1$ 이다. 비율판정법에 의해 주어진 급수는 수렴한다.
+\end{enumerate}
+
+\numl{4} $\overline{A}$ 가 유계이고 닫힌집합인지 확인하면 된다.
+\begin{itemize}
+	\item $\overline{A}$ 는 $A$ 를 포함하는 가장 작은 닫힌 집합이다.
+	\item $A$가 유계이므로 $x\in A \Ra \norm{x}<R$ 인 $R\in\R$ 이 존재한다.
+	\begin{enumerate}
+		\item $x\in A$ 이면 $\norm{x}<R$ 이므로 OK.
+		\item $x\in A' - A$ 인 경우\footnote{이러한 원소가 존재하지 않는 경우는 당연히 참이므로 존재한다고 가정한다.} 임의의 $\epsilon > 0$ 에 대해 $N(x, \epsilon) \cap A\bs \{x\} \neq \emptyset$ 이다. $y\in N(x, \epsilon) \cap A$ 에 대하여 $\norm{y-x} < \epsilon$, $\norm{y}<R$ 이므로
+		$$\norm{x} = \norm{x-y+y} \leq \norm{y-x}+\norm{y} <R + \epsilon$$
+		이다. 따라서 이 경우에도 $\norm{x} < R + 1$ 이다.
+	\end{enumerate}
+	따라서 $\overline{A}$ 는 유계이다.
+\end{itemize}
+
+\numl{5} 다음과 같은 집합족 $\{U_k: k\in\N\}$ 을 고려한다.
+$$U_k = \left\{(x, y)\in \R^2: \abs{x}+2\abs{y} < 1-\frac{1}{k} \right\}$$
+\begin{itemize}
+	\item $U_k$ 는 열린집합이다.\\
+	$z = (x_0, y_0) \in U_k$ 라 하면 $\epsilon < \frac{1}{3}(1-\frac{1}{k}-\abs{x_0}-2\abs{y_0})$ 에 대해
+	$$\abs{x - x_0} <\epsilon, \abs{y-y_0}<\epsilon \imp \abs{x}+2\abs{y} < \abs{x_0} + 2\abs{y_0} + 3\epsilon < 1 - \frac{1}{k}$$
+	(삼각부등식: $\abs{x} < \abs{x_0}+\epsilon, \abs{y} < \abs{y_0}+\epsilon$) 이므로 $N(z, \epsilon) \subset U_k$ 임을 알 수 있다.
+	\item 구한 집합족은 cover 가 된다.\\
+	$(x_0, y_0)\in A$ 이면 $\abs{x_0} + 2\abs{y_0} < 1$ 이므로  $$k = \left\lceil \frac{1}{1 -\abs{x_0} - 2\abs{y_0}}\right\rceil$$ 으로 잡으면 $$1-\frac{1}{k} \geq 1 - (1 -\abs{x_0} - 2\abs{y_0}) = \abs{x_0} + 2\abs{y_0}$$ 가 되어 $(x_0, y_0)\in U_k$. 따라서 $A \subset \bigcap_{k = 1}^\infty U_k$.	
+	\item Open finite subcover 가 존재하지 않는다.\\
+	만약 open finite subcover $\{U_{k_1}, \dots, U_{k_m} \}$ ($k_1<k_2<\cdots<k_m$) 이 존재한다면 이들의 합집합은 $U_{k_m}$ 이고, $1 - 1/k_m < 2\abs{y_0} < 1$ 인 실수 $y_0$ 를 잡을 수 있다. 그러면 $(0, y_0) \in A - U_{k_m}$ 이므로 subcover 임에 모순이다. Finite subcover 가 존재하지 않는다.
+\end{itemize}
+
+\numl{6} (귀류법) $\ds \lim_{n\ra\infty} a_n \neq a$ 라고 가정하자.\\
+적당한 $\epsilon > 0$ 에 대하여 $N$ 이 존재해, $\abs{a_n - a} \geq \epsilon$ 인 $n>N$ 이 무수히 많이 존재한다.\\
+만약 위 조건을 만족하는 $n$ 이 유한하다면, 그러한 $n$ 중 최댓값을 $N$ 으로 잡아주면 $\lim a_n = a$ 가 되게 할 수 있다.\\
+따라서 $\abs{a_n-a} \geq \epsilon$ 인 $n$ 들에 대해 차례대로 $n_1 < n_2 < \cdots$ 로 잡으면\footnote{자연수의 집합은 셀 수 있다. 혹은 well-ordering principle 에 의해 최소의 원소가 항상 존재한다.} 이렇게 얻어진 부분수열 $\span{a_{n_k}}$ 는 절대 $a$ 로 수렴 할수 없으므로 모순이다. 
+
+\numl{8} 주어진 관계식을 다음과 같이 변형한다. $$na_{n+1} \leq na_n-ca_n \imp ca_n \leq na_n - na_{n+1} \imp (c-1)a_n\leq (n-1)a_n-na_{n+1}$$
+이제 $b_n := (n-1)a_n / (c - 1)$ $(n\geq 1)$ 으로 정의하면,
+\begin{itemize}
+	\item $a_n>0, c > 1$ 이므로 $b_n \geq0$ 이 되어 아래로 유계이다.
+	\item $b_{n+1} - b_n \geq a_n > 0$ ($c>1$) 에서 $b_n < b_{n+1}$ 이므로 감소수열이다.
+\end{itemize}
+따라서 단조수렴정리에 의해 $b_n$ 은 수렴한다. 그 극한값을 $\beta$ 로 두자. 이제 $k = N, N+1, \dots, n$ 에 대해 부등식을 변변 더하면
+$$\sum_{k=N}^n a_k \leq \sum_{k=N}^n(b_k - b_{k+1}) = b_N-b_{n+1}$$ 를 얻고 $n\ra \infty$ 인 극한을 취하면 다음 식을 얻는다.
+$$0 < \sum_{k=N}^\infty a_k \leq b_N-\lim_{n\ra \infty} b_{n+1} = b_N-\beta $$
+$\sum_{k=N}^\infty a_k$ 는 비교판정법에 의해 수렴하며, 항을 유한개 더한 $\sum_{n=1}^\infty a_n$ 도 수렴한다.
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,56 @@
+\section*{May 31st, 2019}
+\thm{ 5.3.1} Suppose $f:[a, b]\ra\R$ is bounded and Riemann integrable.
+$$F(x) = \int_a^x f(t)dt \quad (a\leq x\leq b)$$
+is uniformly continuous. If $f$ is continuous then $F$ is differentiable.\\
+\\
+\prob{ 5.3.1} $F$: differentiable does not imply that $f$ is continuous.\\
+\\
+\prob{ 5.3.2} $f(x) = \ds\int_{x^2}^x \sqrt{1+t^2}dt$ $\imp$ $f'(x) = \sqrt{1+x^2}-2x\sqrt{1+x^4}$\\
+\\
+\prob{ 5.6.2} If $f, g$ are integrable, $\max\{f, g\}, \min\{f, g\} $ are also integrable.\\
+\pf. Use $\max\{a, b\} = \frac{a + b}{2} + \frac{\abs{a-b}}{2}$.\\
+\\
+\prob{ 5.6.3} If $f, g$ are integrable, $fg$ is integrable.\\
+\pf.
+\begin{enumerate}
+	\item $0\leq \sup\{\abs{f(x)}: a \leq x\leq b\} = M < \infty$. For given $\epsilon>0$, $\exists\, P = \{a = x_0 < x_1 < \cdots < x_n=b\}$ s.t.
+	$$\sum_{i=1}^n(x_{i}-x_{i-1})(M_i-m_i) < \frac{\epsilon}{2M+1}$$
+	Since $$\abs{f(x)^2 - f(y)^2} \leq \abs{f(x)-f(y)}(\abs{f(x)} + \abs{f(y)}) \leq 2M\abs{f(x)-f(y)}$$
+	, let $\widetilde{M_i}, \widetilde{m_i}$ be supremum and infimum of $f^2$ in $[x_{i-1}, x_i]$. Then $$\widetilde{M_i} - \widetilde{m_i} \leq 2M(M_i-m_i)$$
+	Thus $$ \sum_{i=1}^n(x_{i}-x_{i-1})(\widetilde{M_i} - \widetilde{m_i}) \leq \sum_{i=1}^n (x_{i} - x_{i-1}) 2M(M_i -m_i) \leq 2M \cdot \frac{\epsilon}{2M+1} < \epsilon $$
+	and $f^2$ is integrable.
+	\item Now write $fg = \frac{1}{4}[(f+g)^2-(f-g)^2]$ to observe that $fg$ is integrable.
+\end{enumerate}~\\
+\prob{ 5.6.4} $f:[a, b]\ra\R$ is integrable. Prove that
+$$\lim_{n\ra\infty} \sum_{k=1}^n \frac{b-a}{n}f\left(a + \frac{b-a}{n}k\right) = \int_a^b f(x)dx$$
+\pf. $f$: integrable. $\forall \epsilon > 0$, $\exists\,\delta > 0$ s.t. $\norm{P} < \delta \imp \abs{R(f, P) - \ds \int_a^b f} < \epsilon$.\\
+Take $N$ so that $\dfrac{b-a}{N} < \delta$. Then for $n\geq N$, $$\abs{\sum_{k=1}^n \frac{b-a}{n}f\left(a + \frac{b-a}{n}k\right) - \int_a^b f} < \epsilon$$
+Converse: False. $f:[0, 1]\ra \R$. $f(x) = 1$ if $x\in \Q$, $0$ otherwise. $f$ is not integrable, but the Riemann sum above equals $1$.
+\\
+\prob{} 
+\begin{enumerate}
+	\item $\ds \lim_{n\ra\infty} \sum_{k=1}^n \frac{n}{n^2+k^2} = \int_0^1 \frac{1}{1+t^2}\,dt = \frac{\pi}{4}$ 
+	\item $\ds \lim_{n\ra\infty} \sum_{k=1}^n \frac{1}{\sqrt{k^2+n^2}} = \int_0^1 \frac{1}{\sqrt{1+t^2}}\,dt = \sinh\inv(1)$
+\end{enumerate}~\\
+\prob{ 5.6.5} $f:[0, 1]\ra\R$, continuous and $f\geq 0$. If $\int_0^1 f(x)dx = 0$, show that $f \equiv 0$.\\
+\pf. (Contradiction) Suppose $\exists\,a\in[0, 1]$ s.t. $f(a) > 0$.\\
+For $a\in (0, 1)$, $\exists\,\delta > 0$ s.t. $[a-\delta, a +\delta] \subset [0, 1]$ and $\abs{f(x) - f(a)} < \frac{f(a)}{2}$ if $x\in [a-\delta, a+\delta]$.
+$$0 =\int_0^1 f = \int_0^{a-\delta} f + \int_{a-\delta}^{a+\delta} f+ \int_{a+\delta}^1 f \geq 0 + \int_{a-\delta}^{a+\delta} \frac{f(a)}{2} + 0 = 2\delta \cdot \frac{f(a)}{2} > 0$$
+\\
+\prob{ 5.6.9} $f:\R\ra\R$, continuous and bounded. If for all $[a, b]$, $\int_a^b f = 0$ then $f\equiv 0$.
+\pf. Similar to 5.6.5. (Contradiction) WLOG $f(a) > 0$ ...\\
+\\
+\prob{ 5.6.6} $f:[a, b]\ra\R$ is continuous. Show that
+$$\lim_{n\ra\infty} \left(\int_a^b \abs{f(x)}^n dx\right)^{1/n} = \max\{\abs{f(x)}: x\in [a, b] \}$$
+\pf. WLOG $f\geq 0$. Let $M = \max\{\abs{f(x)}: x\in [a, b]\}$
+\begin{enumerate}
+	\item[($\leq$)] For all $n$, $\ds \left(\int_a^b \abs{f(x)}^n dx\right)^{1/n} \leq (M^n (b-a))^{1/n} = M(b-a)^{1/n}$.\\
+	Take $\limsup$ on both sides to get (LHS) $\leq M$.
+	\item[($\geq$)] $\exists\,c\in[a, b]$ s.t. $f(c) = M$.\\
+	$\forall\epsilon > 0$, we want to show that $$\liminf_{n\ra\infty} \left(\int_a^b \abs{f(x)}^ndx\right)^{1/n} \geq M - \epsilon$$
+	$\exists\,\delta >0$ s.t. $[c-\delta, c+\delta]\subset [a, b]$, and $x\in [c-\delta, c+\delta] \imp M - \epsilon \leq \abs{f(x)} \leq M$.
+	$$\left(\int_a^b \abs{f(x)}^ndx\right)^{1/n} \geq \left(\int_{c-\delta}^{c+\delta} \abs{f(x)}^n dx\right)^{1/n} \geq (2\delta)^{1/n} (M-\epsilon)$$
+	Take $\liminf$ on both sides to show the desired inequality.
+\end{enumerate}
+
+\pagebreak

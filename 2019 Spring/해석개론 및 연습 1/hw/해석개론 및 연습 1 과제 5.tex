@@ -1,0 +1,149 @@
+%!TEX encoding = utf-8
+\documentclass[11pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\renewcommand{\span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\adj}{\text{*}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\inte}{\mathrm{int}\,}
+\newcommand{\imp}{\implies}
+\newcommand{\bs}{\backslash}
+\newcommand{\diam}{\text{diam}}
+\newcommand{\dist}{\text{dist}}
+\newcommand{\mimp}{$\implies$}
+\newcommand{\miff}{$\iff$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\usepackage{enumitem}
+\setlist[enumerate,1]{label={\textbf{\sffamily\arabic*.}}}
+\setlist[enumerate,2]{label={\textbf{\sffamily(\arabic*)}}}
+
+\begin{document}
+\begin{center}
+\textbf{\Large 해석개론 및 연습 1 과제 \#5}\\
+\large 2017-18570 컴퓨터공학부 이성찬
+\end{center}
+\begin{enumerate}
+\item Fix $x < y$. Since $f$ is a $C^1$-function on $[a, b]$, by Mean Value Theorem, there exists $c\in (a, b)$ s.t.
+$$\frac{f(y) - f(x)}{y-x} = f'(c)$$
+and since $f'(c) > 0$, $f(y) -f(x) > 0$. Thus $f$ is increasing.
+
+\item With the same conditions given in the problem, we prove the following.
+\begin{itemize}
+	\item $\big(f(x)g(x)\big)' = f'(x)g(x) + f(x)g'(x)$\\
+	$$\begin{aligned}
+		\lim_{h\ra0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}&= 
+		\lim_{h\ra0} \left\{g(x+h)\frac{f(x+h)-f(x)}{h} + f(x)\frac{g(x+h)-g(x)}{h}\right\}\\
+		&=f'(x)g(x)+f(x)g'(x)
+	\end{aligned}$$
+	(Since $f(x), g(x)$ is differentiable and continuous)
+	\item $\big(1/g(x)\big)'=-g'(x) / g(x)^2$\\
+	$$\begin{aligned}
+		\lim_{h\ra0} \frac{1/g(x+h)-1/g(x)}{h} &= \lim_{h\ra0} \frac{g(x)-g(x+h)}{h g(x)g(x+h)}\\
+		&= -\frac{1}{g(x)^2}\lim_{h\ra0} \frac{g(x+h)-g(x)}{h} = -\frac{g'(x)}{g(x)^2}
+	\end{aligned}$$
+\end{itemize}
+Now combining these two result gives $$\left(\frac{f(x)}{g(x)}\right)' = \left(f(x) \cdot \frac{1}{g(x)}\right)' = f'(x) \cdot \frac{1}{g(x)} + f(x) \cdot \frac{-g'(x)}{g(x)^2} = \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}$$
+
+\item 
+\begin{enumerate}
+	\item The following can be proved easily by induction. $$f^{(i)}(x) = \sum_{k=i}^{n} \frac{k!}{(k-i)!} c_k x^{k-i}\quad (i=0, \dots, n)$$
+	($f^{(i+1)}(x) = \sum_{k=i+1}^{n} \frac{k!}{(k-i)!}c_k(k-i)x^{k-i-1} = \sum_{k=i+1}^n \frac{k!}{(k-i-1)!}c_kx^{k-i-1}$)\\
+	And for $i > n$, $f^{(i)}(x) = 0$. Since $f^{(i)}(0) = i! \cdot c_i$ $(i =0, \dots, n)$ we have
+	$$f(x) = \sum_{k=0}^{\infty}\frac{f^{(k)}(0)}{k!}x^k=\sum_{k=0}^n \frac{k!c_k}{k!}x^k + 0 = \sum_{k=0}^n c_kx^k $$
+	
+	\item By induction, $$f^{(n)}(x) = 2^n e^{2x+1}$$
+	($(2^n e^{2x+1})' = 2^{n+1}e^{2x+1} = f^{(n+1)}(x)$)\\
+	Thus $f^{(n)}(0) = e \cdot 2^n$, and
+	$$f(x) = \sum_{k=0}^\infty \frac{e\cdot 2^k }{k!}x^k$$
+	\item Consider the $(2n+1)$-th degree Taylor expansion. By Taylor's Theorem, there exists $x_*$ between $0$ and $x$ such that
+	$$\abs{\cos x - \sum_{k=0}^n \frac{(-1)^k x^{2k}}{(2k)!}} = \abs{\cos x_*}\frac{\abs{x}^{2n+2}}{(2n+2)!} \leq \frac{\abs{x}^{2n+2}}{(2n+2)!}$$
+	Now substitute $x^2$ in $x$. Since Taylor polynomials are unique (For two $n$-th degree polynomials, if their difference is in $o(x^n)$, they are equal) we have
+	$$\abs{\cos(x^2) - \sum_{k=0}^n \frac{(-1)^k x^{4k}}{(2k)!}} \leq \frac{\abs{x}^{4n+4}}{(2n+2)!}$$
+	and as $n\ra \infty$, RHS $\ra0$.
+	$$\cos(x^2) = \sum_{k=0}^\infty (-1)^k \frac{x^{4k}}{(2k)!}$$
+\end{enumerate}
+
+\item Use the Mean Value Theorem on $(a, c)$ and $(c, b)$. Then there exists $c_1\in (a, c)$ and $c_2\in (c, b)$ such that 
+$$\frac{f(c)-f(a)}{c-a}=f'(c_1)\qquad \frac{f(b)-f(c)}{b-c} = f'(c_2)$$
+Since $(a, f(a)), (b, f(b)), (c, f(c))$ are on the same line, the slope is equal and $f'(c_1)=f'(c_2)$. By Rolle's Theorem, there exists $d\in (c_1, c_2)\subset [a, b]$ s.t. $f''(d) =0$.
+
+\item 
+\begin{enumerate}
+	\item $$e^x = \sum_{n=0}^\infty \frac{x^n}{n!} \geq \frac{x^n}{n!} \quad (x \geq 0)$$ 
+	\item It is enough to check for $x= 0$. Check the left/right derivative.
+	$$f_+'(0) = \lim_{h\ra0^+} \frac{f(h) - f(0)}{h} = \lim_{h\ra0^+} \frac{e^{-1/h^2}}{h} \overset{(*)}{=} 0$$
+	$$f'_-(0) = \lim_{h\ra0^-}\frac{f(h)-f(0)}{h} = 0$$
+	Thus $f$ is differentiable on $\R$.\\
+	$(*)$: From (1), $$0\leq e^{-h} \leq \frac{n!}{h^n} \imp 0\leq e^{-1/h^2} \leq n!\cdot h^{2n} \imp 0\leq \frac{e^{-1/h^2}}{h} \leq n!\cdot h^{2n-1}$$
+	By Squeeze Theorem, the wanted limit approaches 0 as $h\ra 0$.
+	\item (Induction) For $n =1$, $f'(x) = \frac{2}{x^3}e^{-1/x^2}$, thus $Q_1(t) = 2t^3$, leading coefficient is positive, $\deg Q_1 = 3$.
+	Suppose for $n$ $(\geq 1)$, $f^{(n)}(x) = Q_n(1/x)e^{-1/x^2}$, leading coefficient is positive, and $\deg Q_n = 3n$.
+	$$f^{(n+1)}(x) = \left(-\frac{1}{x^2} Q_n'\left(\frac{1}{x}\right) +\frac{2}{x^3} Q_n\left(\frac{1}{x}\right)\right)e^{-1/x^2} \quad (x>0)$$
+	Let $$P\left(\frac{1}{x}\right) = -\frac{1}{x^2} Q_n'\left(\frac{1}{x}\right) +\frac{2}{x^3} Q_n\left(\frac{1}{x}\right)$$
+	Then $P(t) = -t^2 Q_n'(t) + 2t^3 Q_n(t)$. $\deg -t^2 Q'_n(t) = 3n+1$ and $\deg 2t^3 Q_n(t) = 3n+3$. Therefore $P(t) = Q_{n+1}(t)$, with positive leading coefficient and degree $3n+3$.
+	\item For any $n$, we show that $f^{(n)}(x)$ is differentiable. From (3), we have
+	$$f^{(n)}(x) = \begin{cases}
+		Q_n(1/x)e^{-1/x^2} & (x > 0) \\ 0 & ( x < 0)
+	\end{cases}$$
+	We will show that $f^{(n)}(0) = 0$ by induction to complete the proof. (2) handles the case for $n=1$, and suppose $f^{(n)}(0) = 0$ for $n \geq 1$. The left hand derivative is obviously 0, and for the right hand derivative,
+	$$f_+^{(n+1)}(0) = \lim_{h\ra0^+} \frac{f^{(n)}(0) - f^{(n)}(0)}{h} = \lim_{h\ra0^+} \frac{Q_n(1/h)}{h}e^{-1/h^2}$$
+	Let $Q(t) = \sum_{i=0}^{3n} q_i t^i$. Then $Q(1/h) = \sum_{i=0}^{3n} q_i/t^i$ and
+	$$e^{x} \geq \frac{x^{2n}}{(2n)!} \imp (2n)!\cdot x^{4n} \geq e^{-1/x^2}
+	\imp 0 \leq \frac{Q_n(1/h)e^{-1/h^2}}{h} \leq (2n)! \sum_{i=0}^{3n} q_i h^{4n-i-1}$$
+	Applying the Squeeze Theorem here gives us $f_+^{(n+1)}(0) =0$. Therefore $f(x) \in$ $C^\infty$.
+	\item Define $g(x) = f(1+x)f(1-x)$. Then we immediately have $g(x) = 0$ for $\abs{x}\geq 1$. Since $f(x) > 0$, we also have $f(1+x)f(1-x) > 0$ for $\abs{x} < 1$. Finally, since $f(x)\in C^\infty$, its product $g(x)$ is also in $C^\infty$.
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+	\item As $h\ra 0$, denominator/numerator both approach 0. And we have
+	$$\begin{aligned}
+		\lim_{h\ra0} \frac{\big(f(x+h)+f(x-h)-2f(x)\big)'}{(h^2)'} &= \lim_{h\ra0} \frac{f'(x+h)+f'(x-h)}{2h} 
+		\\&= \lim_{h\ra0} \frac{f'(x+h)-f'(x) + f'(x)+f'(x-h)}{2h} \\
+		&= \frac{1}{2}f''(x) + \frac{1}{2}f''(x) = f''(x) 
+	\end{aligned}$$
+	By L'Hospital's Rule, the original limit is equal to $f''(x)$.
+
+	\item As $h\ra 0$, denominator/numerator both approach 0. Thus we would like to calculate
+	$$\lim_{h\ra0}\frac{2f'(x+2h)-3f'(x+h)+f'(x-h)}{3h^2} $$
+	For this limit, denominator/numerator also approach 0 as $h\ra 0$. So instead we calculate
+	$$\lim_{h\ra0} \frac{4f''(x+2h) -3f''(x+h)-f''(x-h)}{6h}$$
+	, hoping to use L'Hospital's Rule. The actual value is
+	$$\begin{aligned}
+	&=\lim_{h\ra0} 4\cdot \frac{f''(x+2h)-f''(x)}{6h} - \lim_{h\ra0} 3\cdot \frac{f''(x+h)-f''(x)}{6h}  + \lim_{h\ra0} \frac{f''(x)-f''(x-h)}{6h} \\
+	&= \frac{4}{3}f'''(x) - \frac{1}{2}f'''(x) + \frac{1}{6}f'''(x) = f'''(x) 
+	\end{aligned}$$
+	The original limit is equal to $f^{(3)}(x)$ by L'Hospital's Theorem.
+\end{enumerate}
+
+\end{enumerate}
+\end{document}

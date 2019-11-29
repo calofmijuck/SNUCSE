@@ -1,0 +1,96 @@
+\section*{May 27th, 2019}
+Currently: We are given bounded $f: [a, b]\ra\R$. For $P\in \mc{P}[a, b]$, we defined $U(f, P)$ and $L(f, P)$. Then we defined $\uint{_a^b} f$ and $\lint{_a^b}$, and $f$ was Riemann Integrable when these two values were the same.\\
+\\
+\thm{ 5.1.5} If $f:[a, b]\ra\R$ is Riemann Integrable, then $\abs{f}$ is also Riemann Integrable. Also, the following holds.$$ \int_a^b \abs{f} \leq\abs{\int_a^b f} $$
+\pf. From $\abs{\abs{f(x)} - \abs{f(y)}} \leq \abs{f(x)-f(y)}$, and for $\epsilon > 0$, $$U(\abs{f}, P) - L(\abs{f}, P) \leq U(f, P) - L(f, P) < \epsilon$$
+Thus $\abs{f}$ is integrable, and $-\abs{f}\leq f \leq \abs{f}$ gives the inequality.\\
+\\
+\textbf{5.2 Riemann Integrable Functions}\\
+\thm{ 5.2.1} Suppose $f:[a, b]\ra\R$ is \underline{continuous}. Then $f$ is Riemann Integrable.\\
+\pf. Given $\epsilon > 0$, our objective is finding a  partition $P$ s.t. $U(f, P) - L(f, P) < \epsilon$.
+\begin{enumerate}
+	\item Our first observation is that $f$ is uniformly continuous, since the domain is compact.
+	Thus there exists $\delta >0$ s.t. $$\abs{x-y} < \delta \imp \abs{f(x) - f(y)} < \frac{\epsilon}{b-a}$$
+	\item Now we set a partition as $P = \{a=x_0 < x_1  < \cdots < x_n =b\}$ s.t. $x_i-x_{i-1} < \delta$ for all $i$.
+	\item From EVT, for each closed interval $[x_{i-1}, x_i]$, there exists maximum and minimum $f(u_i), f(v_i)$. Thus $M_i = f(u_i)$, $m_i = f(v_i)$.
+	\item Now we have 
+	$$\begin{aligned}
+		U(f, P) - L(f, P) &= \sum_{i=1}^n (M_i-m_i)(x_i - x_{i-1}) = \sum_{i=1}^n (f(u_i) - f(v_i)) (x_i -x_{i-1}) \\&< \sum_{i=1}^n \frac{\epsilon}{b-a} (x_i - x_{i-1}) = \epsilon	
+	\end{aligned}$$
+\end{enumerate}
+~\\
+\thm{ 5.2.2} Suppose $f:[a, b]\ra\R$ is \underline{monotone}. Then $f$ is Riemann Integrable.\\
+\pf. WLOG, suppose $f$ is increasing.\\
+Given $\epsilon > 0$, we want to find a partition $P$. Take $n\in \N$ s.t. $$n > \frac{(b-a)(f(b)-f(a))}{\epsilon}$$
+Consider a partition as $$x_i = a+ \frac{b-a}{n}i \imp P = \{a =x_0 < x_1 < \cdots < x_n = b \}$$
+Now 
+$$\begin{aligned}
+	U(f, P) - L(f, P) &= \sum_{i=1}^n (M_i-m_i)(x_i - x_{i-1})  = \sum_{i=1}^n (f(x_i) - f(x_{i-1})) \frac{b-a}{n}\\
+	&=\frac{b-a}{n} (f(x_n)-f(x_0)) = \frac{(b-a)(f(b)-f(a))}{n} < \epsilon
+\end{aligned}$$
+\\
+\defn. For $P = \{a = x_0 < x_1 < \cdots < x_n = b \}\in \mc{P}[a, b]$, define the \textbf{norm} of $P$ as\footnote{기존에 알고있던 norm 의 성질을 만족하지는 않는다. 좋은 이름은 아니다.}
+$$\norm{P} = \max_{1\leq i \leq n} \{x_i - x_{i-1}\}$$
+And we say that $P$ is finer than $Q$ if $\norm{P} \leq \norm{Q}$. Also, if $P\subset Q$, $\norm{Q}\leq \norm{P}$.\\
+\\
+\defn. \textbf{Riemann Sum} $R(f, P)$ is defined as
+$$R(f, P) = \sum_{i=1}^n f(t_i)(x_i-x_{i-1}) \quad (t_i\in [x_{i-1}, x_i])$$
+\rmk. 
+\begin{enumerate}
+	\item $R(f, P) = R(f, P, t_1, t_2, \dots, t_n)$
+	\item $$U(f, P) = \sup_{t_1, \dots, t_n} R(f, P)
+	\qquad L(f, P) = \inf_{t_1, \dots, t_n} R(f, P)$$
+	\item $$L(f, P) \leq R(f, P) \leq U(f, P)$$
+\end{enumerate}~
+\\
+\\
+\thm{ 5.2.3} Characterization of Riemann Integral via Riemann sums.\\
+The following are equivalent for bounded $f:[a, b]\ra \R$.
+\begin{enumerate}
+	\item $f$ is Riemann Integrable and $\ds \int_a^b f = A$.
+	\item $\forall \epsilon > 0$, $\exists\,\delta >0$ s.t. $$\norm{P} < \delta \imp \abs{R(f, P)-A} < \epsilon \quad (\forall t_1, \dots, t_n)$$
+	This is also written as $\ds \lim_{\norm{P}\ra0} R(f, P) = A$.
+	\item $\forall\epsilon> 0$, $\exists\, P_0\in\mc{P}[a, b]$ s.t.
+	$$P\supset P_0 \imp \abs{R(f, P) - A}  < \epsilon$$
+\end{enumerate}
+\pf. \textbf{(1\mimp2)}\\
+\textbf{Claim}. 
+\begin{enumerate}
+	\item[(i)] $\exists\,\delta_1 > 0$ s.t. $\norm{P} < \delta_1 \imp U(f, P) < A + \epsilon$
+	\item[(ii)] $\exists\,\delta_2 > 0$ s.t. $\norm{P} < \delta_2 \imp L(f, P) > A - \epsilon$
+\end{enumerate}
+Setting $\delta = \min \{\delta_1, \delta_2\}$ will prove (2) since
+$$ A-\epsilon < L(f, P) \leq R(f, P) \leq U(f, P) < A+\epsilon $$
+\textbf{Proof of (i)}. ((ii) is similar)
+\begin{enumerate}
+	\item $f > 0$\\
+	$\exists\,P_0\in \mc{P}[a, b]$ s.t. $U(f, P_0) < A+\epsilon / 2$ (By Riemann Integrability of $f$)\\
+	Set $P_0= \{a = x_0 < x_1 < \cdots < x_n = b\}$, $M$ as the upper bound of $f$. Now set $$\delta_1 = \frac{\epsilon}{2Mn}$$
+	Now $P = \{a = y_0 < y_1 <\cdots < y_m=b \}$, with $\norm{P} <\delta_1$. Define
+	$$ I = \{i: x_j \in (y_{i-1}, y_{i}) \text{ for some }j\} \qquad J = \{i:[y_{i-1}, y_i]\subset [x_{j-1}, x_j] \text{ for some } j \}$$
+	Then
+	$$U(f, P) = \overbrace{\sum_{i\in I} M_i(y_i - y_{i - 1})}^{\ds \leq M \cdot \delta_1\cdot n}+ \overbrace{\sum_{i\in J} M_i(y_i - y_{i-1})}^{\ds \leq U(f, P_0)} \leq U(f, P_0) + \delta_1 \cdot nM < A+ \epsilon$$
+	\item For general $f$: Set $g = f+c$ where $c$ is a positive constant large enough that $g > 0$.\\
+	Then $\exists\, \delta_1$ s.t.
+	$$\norm{P} < \delta_1 \imp U(g, P) < \int_a^b g + \epsilon \quad (*)$$
+	Note that $$U(g, P) = \sum_{i=1}^n M_i^g (x_i -x_{i-1}) = \sum_{i=1}^{n} (M_i^f + c)(x_i-x_{i-1}) = U(f, P) + c(b-a)$$
+	Also
+	$$\int_a^b g = \int_a^b (f+c) = \int_a^b f + \int_a^b c = A + c(b-a)$$
+	Thus inequality $(*)$ is equivalent to
+	$$U(f, P) + c(b-a) < A + c(b-a) + \epsilon$$
+	and canceling $c(b-a)$ gives the desired inequality.
+\end{enumerate}
+\textbf{(2\mimp3)} Let $P_0$ be any partition s.t. $\norm{P_0} < \delta$. If $P_0\subset P$, $\norm{P} \leq \norm{P_0}<\delta$. Therefore we have $\abs{R(f, P) - A} < \epsilon$.\\
+\\
+\textbf{(3\mimp1)} $\forall \epsilon > 0$, $\exists\,P_0$ s.t. $P_0\subset P$ s.t. $\abs{R(f, P) - A} < \epsilon / 3$. Then
+$$A  - \frac{\epsilon}{3} < R(f, P) < A + \frac{\epsilon}{3}$$
+Taking $\inf_{t_1, \dots, t_n}$ and $\sup_{t_1, \dots, t_n}$ on left/right inequalities respectively gives
+$$ U(f, P) \leq A + \frac{\epsilon}{3} \quad L(f, P) \geq A - \frac{\epsilon}{3}$$
+Therefore
+$$U(f, P) - L(f, P) \leq \frac{2\epsilon}{3} <\epsilon$$
+and $f$ is Riemann Integrable. Also,
+$$ A - \frac{\epsilon}{3} \leq L(f, P) \leq U(f, P) \leq A+\frac{\epsilon}{3}$$
+We can infer that
+$$A - \frac{\epsilon}{3} \leq \lint{_a^b} f = \int_a^b f = \uint{_a^b} f \leq A +\frac{\epsilon}{3}$$
+and taking $\epsilon\ra0$ gives $\ds \int_a^b f= A$.
+\pagebreak

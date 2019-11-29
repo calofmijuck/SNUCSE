@@ -1,0 +1,59 @@
+\section*{April 24th, 2019}
+연속함수의 기본적 성질\\
+\prop{ 3.1.2} Suppose $f, g:X\ra \R^n$ are continuous on $X$.
+\begin{enumerate}
+	\item $af+bg$: continuous
+	\item ($n= 1$) $fg$: continuous
+	\item $\dfrac{f}{g}$: continuous ($g\neq 0$ on $X$)
+\end{enumerate}
+\pf. (2) Given $\epsilon >0$, $\exists\,\delta_1$ s.t. $\abs{x- x_0}<\delta \imp \abs{f(x) - f(x_0)} < \frac{\epsilon}{2\abs{g(x_0)} + 1}$, $\exists\,\delta_2$ s.t. $\abs{x-x_0} < \delta_2 \imp \abs{g(x) - g(x_0)} < \dfrac{\epsilon}{2(\abs{f(x_0)} + \frac{\epsilon}{2\abs{g(x_0)} + 1})}$. Then we have $$\begin{aligned}
+	\abs{f(x)g(x) - f(x_0)g(x_0)} &= \abs{f(x)(g(x)-g(x_0)) + g(x_0)(f(x) - f(x_0))}\\
+	&\leq \abs{f(x)}\abs{g(x)-g(x_0)} + \abs{g(x_0)}\abs{f(x) - f(x_0)} < \frac{\epsilon}{2} + \frac{\epsilon}{2} < \epsilon
+\end{aligned}$$
+Thus we have continuity.\\
+\pf\textbf{ 2}. By sequential definition, exists $\span{x_n} \ra x_0$ in $X$ such that $f(x_n) \ra f(x_0), g(x_n)\ra g(x_0)$. Then we have $f(x_n)g(x_n) \ra f(x_0)g(x_0)$.\\
+\\
+\prop{ 3.1.4} Suppose we have two continuous functions $f: X\ra Y$, $g: Y\ra Z$. If $f$ is continuous at $x_0\in X$, and if $g$ is continuous at $f(x_0)$, then $g\circ f$ is continuous at $x_0$.\\
+\pf. Given $\epsilon > 0$, $\exists\, \delta_1 > 0$ s.t. $\norm{y - f(x_0)} < \delta_1 \imp \norm{g(y) - g(f(x_0))} < \epsilon$. Also, $\exists\,\delta_2 > 0$ s.t. $\norm{x-  x_0} <\delta_2 \imp \norm{f(x) - f(x_0)} < \delta_1$. Now we automatically have $\norm{g(f(x)) - g(f(x_0))}  = \norm{(g\circ f)(x) - (g\circ f)(x_0)}< \epsilon$.\\
+\\
+\rmk. Suppose $f$: continuous $X$, $g$: continuous on $Y$ (or on $f(X)$). Then $g\circ f$ is continuous on $X$.\\
+\\
+\ex.
+\begin{enumerate}
+	\item Polynomials are continuous. Use continuity of $f(x)=x$.
+	\item $f(x) = \sqrt{x}$.
+	\item $f(x) = \sqrt{x^4+1}$ is continuous.
+	\item $f(x) = \begin{cases}
+		1 & (x\in \Q)\\
+		0 & (x\in \R\bs\Q)
+	\end{cases}$ is not continuous.\\
+	\pf. $x_0\in \R$. Suppose there exists a sequence $\span{x_n}$ in $\Q$ converging to $x_0$. Then $\span{f(x_n)}\ra 1$. ($x_n = \lfloor nx_0 \rfloor / n$) But there also exists a sequence $\span{x_n}$ in $\R\bs\Q$ converging to $x_0$. Then $\span{f(x_n)} \ra 0$. ($x_n = \lfloor \sqrt{2}nx_0\rfloor / \sqrt{2}n$) $f(x)$ cannot be continuous anywhere.
+\end{enumerate}
+\textbf{3.2 Extreme Value Theorem \& Intermediate Value Theorem}\\
+\thm{ 3.2.1} If $f:X\ra Y$ is continuous, surjective and $X$: compact, then $Y$: compact.\\
+\pf. Suppose $\{U_i: i\in I\}$ is an open cover of $Y$. $V_i = U_i \cap Y$ is an open set in $Y$, and $\{V_i: i\in I\}$ is also an open cover of $Y$. Consider $\{f\inv (V_i):i\in I \}$, which is an open cover of $X$. Since $X$ is compact, there exists a finite subcover $\{f\inv(V_i): i \in J\}$ ($J\subset I$) of $X$. Then $\{V_i: i\in J\}$ is a finite subcover of $Y$. $$Y = f(X) = f\left(\bigcup_{i\in J} f\inv(V_i)\right) = \bigcup_{i\in J} f(f\inv(V_i)) \subset \bigcup_{i\in J} V_i$$
+We have a finite subcover of $Y$. Thus $Y$ is compact.\\
+\\
+\textbf{Check}. $\forall A\subset X$. $f$: surjective $\imp $, $f(f\inv(A)) = A$. $f$: injective $\imp f\inv(f(A)) = A$.\\
+\\
+\rmk.
+\begin{enumerate}
+	\item $f: \R^m\ra \R^n$, $f$: continuous. If $K\subset \R^m$ is compact, $f(K)$ is compact.\\
+	Set $f: K\ra f(K)$.
+	\item Image of compact set is compact.
+\end{enumerate}~\\
+\textbf{Cor 3.2.2} Suppose $X$ is compact. $f:X\ra \R \imp f$ has maximum and minimum.\\
+\pf. Set $f: X\ra f(X)$, then $f$ is surjective and $f(X)$ is compact. Check that if $K\subset \R$, $K$: compact, then $\inf K, \sup K \in K$ and $\inf K = \min K$, $\sup K = \max K$.\\
+\\
+\textbf{Cor 3.2.4} \textbf{(Extreme Value Theorem)} If $f$ is a continuous function defined on $[a, b]$, $f$ has a maximum and minimum.\\
+\pf. $[a, b]$ is compact.\\
+\\
+\textbf{Cor 3.2.3} Suppose $X$ is compact and $f:X\ra \R$ is continuous. If $f(x) > 0$ for all $x\in X$, then $\exists\, \delta > 0$ s.t. $f(x)\geq \delta >0$ for all $x\in X$.\\
+\pf. Let $\delta = \min f(X) = f(u) > 0$ for some $u$.\\
+\\
+\rmk. $X = [1, \infty)$, $f(x) = 1/x$. ($X$ is not compact.)\\
+\\
+\textbf{Cor 3.2.5} Suppose $X$ is compact and $f:X\ra Y$ is bijective and continuous. Then $f\inv$ is continuous.\\
+\\
+\textbf{Check}. $f:X\ra Y$. $A\subset X, B\subset Y$. Image: $f(A)$, pre-image: $f\inv (B)$. We must check if image of $B$ on $f\inv$ is equal to the pre-image of $B$. (Well-definedness!)
+\pagebreak

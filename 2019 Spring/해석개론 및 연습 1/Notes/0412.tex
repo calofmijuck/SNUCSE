@@ -1,0 +1,29 @@
+\section*{April 12th, 2019}
+
+\prob{ 2.4.7} (바) $ \ds \sum \frac{1}{n^p-n^q} $ $(0 < q < p)$\\
+$ 0< n^p-n^q \leq n^p $ 이므로 $ 1/n^p \leq 1/(n^p-n^q) $ 가 되어 $p \leq 1$ 이면 발산한다.\\
+충분히 큰 $N$에 대하여 $n\geq N$ 일 때마다 $n^p-n^q\geq n^p/2$ 가 되게 할수 있다. (이 때 $n^p/2\geq n^q$ 이므로 $n^{p-q}\geq 2$ 가 되어 $N$ 을 잡을 수 있다) 비교판정법에 의해 수렴한다.\\
+\\
+\prob{ 2.7.12} Given $\span{a_n}$ such that $\lim a_n = a$, show that $\sigma_n = \dfrac{a_1+\dots+a_n}{n}$ also converges to $a$.\\
+\\
+\prob{ 2.7.13} $ r < 1 $, $ \norm{x_{n+2} - x_{n+1}}\leq r \norm{x_{n+1} - x_n} $. Show that $\span{x_n}$ is a Cauchy sequence.\\
+\pf. $\norm{x_{n+1} - x_n} \leq r^{n-1} \norm{x_2-x_1} = r^{n-1} A$, for $A\in \bb{R}$. Given $\epsilon>0$, exists $N$ such that for all $n\geq N$, $\norm{x_{n+1}-x_n} < Ar^{n-1}<\epsilon$. Then we have $$\begin{aligned}
+m > n\geq N \Rightarrow \norm{x_n - x_m} &\leq \norm{x_m-x_{m-1}} + \cdots + \norm{x_{n+1}- x_n}\\& \leq \norm{x_{n+1}-x_n} (1+r+r^2+ \cdots) < \frac{\epsilon}{1-r}
+\end{aligned} $$ 
+\rmk. Counterexample for $\norm{x_{n+2} - x_{n+1}} < \norm{x_{n+1}-x_n}$. $x_n = \sum_{k=1}^{n} \frac{1}{k}$\\
+\\
+\prob{ 2.7.14} $x_n\ra x$, $A_k=\{x_i: i\geq k \}$. Show that $\bigcap_{k=1}^\infty \overline{A_k} = \{ x\}$.\\
+\pf. Given $\epsilon > 0$, there exists $N$ such that $n\geq N \Rightarrow x_n\in (x-\epsilon, x+\epsilon)$. Either $x_n = x$, or $x_n \in (x-\epsilon, x + \epsilon) \bs \{x\}$. Thus $x\in \overline{A_k}$ for all $k$. $\{x\}\subset \bigcap_{k=1}^\infty \overline{A_k}$.\\
+For $y\in \bb{R}\bs \{x\}$, we want to show that $y\notin \bigcap_{k=1}^\infty \overline{A_k}$. Then we want to find $N$ such that $y\notin \overline{A_N}$. Since $ \norm{x-y}>0 $, set $\epsilon = \frac{1}{3}\norm{x-y}$. There exists $N$ such that $\norm{x_n-x}<\epsilon$. Then $\forall x_n \notin N(y, \epsilon)$. $\overline{A_N} = \{x_N, x_{N+1}, \dots \}$, and $y$ cannot be in $\overline{A_N}$. $\{x\}^C\subset \left(\bigcap_{k=1}^\infty \overline{A_k}\right)^C \Rightarrow \bigcap_{k=1}^\infty \overline{A_k}\subset \{x\}$.\\
+\\
+\prob{ 2.7.15} $ \sum a_n $ converges absolutely.
+\begin{enumerate}
+	\item $\ds \sum a_n^2 $\\
+	\pf. $a_n^2 < \abs{a_n}$ for large $n$. Converges by comparison test.
+	\item $\ds \sum \frac{a_n}{1+a_n}$\\
+	\pf. Since $a_n\ra 0$, exists $N$ such that $n\geq N \Rightarrow \abs{a_n}<1/3$. Then for $n\geq N$, $\abs{1+a_n} \geq 1-\abs{a_n} > 2/3 > 1/3$, $1/\abs{1+a_n} < 3$. We have $\abs{\frac{a_n}{1+a_n}} < 3\abs{a_n}$. Converges by comparison test.
+	\item $\ds \sum \frac{a_n^2}{1+a_n^2}$\\
+	\pf. Trivial from 1, 2.
+\end{enumerate}
+
+\pagebreak

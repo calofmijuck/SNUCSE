@@ -1,0 +1,80 @@
+\section*{April 22nd, 2019}
+\textbf{\large 3. Continuous Functions}\\
+\\
+\textbf{3.1 Limit of a Function \& Continuous Functions}\\
+특별한 언급이 없으면 다음과 같은 가정을 한다.\footnote{치역이 중요하지 공역은 뭐...} $$f:X\ra Y \quad ( X\subset \R^m, Y\subset \R^n )$$
+\defn. For $x_0\in X'$, $\ds \lim_{x\ra x_0} f(x) = y_0$ $\iff$ $$\forall \epsilon >0, \exists\, \delta > 0 \text{ s.t. } \big(\mathbf{0 <} \norm{x-x_0} < \delta \Rightarrow \norm{f(x) - y_0} < \epsilon\big)$$
+\rmk. Why $X'$? $X = [0, 1]\cup \{2\}$, consider $f(x) = 2x$ on $X$. $\ds \lim_{x\ra 2} f(x)$ is nonsense.\\
+\\
+\ex.
+\begin{enumerate}
+	\item $f(x)=\begin{cases}
+		x^2 & (x\neq 0)\\ 1 & (x = 0)
+	\end{cases}$, $\ds \lim_{x\ra 0} f(x) = 0$.\footnote{특별한 언급이 없으면 $X = f$ 가 정의되는 곳, $Y = \R^n$ 으로 생각한다.}\\
+	For $\epsilon >0$, set $\delta = \sqrt{\epsilon}$. Then $0 < \abs{x - 0} < \delta \Rightarrow \abs{f(x) - 0} = \abs{x^2} < \delta^2 = \epsilon$.
+	\item $\ds \lim_{x\ra 2} \frac{x^2-4}{x-2} =4$. ($X = \R\bs \{2\}, Y = \R$, $2 \in X'$)\\
+	For $\epsilon > 0$, set $\delta = \epsilon$. Then $0<\abs{x - 2} < \delta \Rightarrow \abs{f(x) - 4} = \abs{x -2} < \delta = \epsilon$.
+\end{enumerate}~\\
+\prop{ 3.1.1} $f, g: X\ra Y$, $x_0\in X'$\footnote{책에 $X$로 되어있는데 이는 오타.}. If $\ds \lim_{x\ra x_0} f(x) = y_0$, $\ds \lim_{x\ra x_0} g(x) = z_0$, then
+\begin{enumerate}
+	\item $\ds \lim_{x\ra x_0} af(x) + bg(x) = ay_0+bz_0$
+	\item $\ds \lim_{x\ra x_0} f(x)g(x) = y_0z_0$
+	\item $\ds \lim_{x\ra x_0} \frac{f(x)}{g(x)} = \frac{y_0}{z_0} \;(z_0\neq 0)$
+\end{enumerate}~\\
+연속을 3가지로 정의한다. 세 정의들이 서로 \textbf{동치}임을 이해하는 것이 중요하다.\\
+\defn. Let $f: X\ra Y$, $x_0\in X$. $f$ is \textbf{continuous} at $x_0$ $\iff$ $$\forall \epsilon>0, \exists\,\delta>0 \text{ s.t. } \big(\norm{x-x_0} < \delta \Rightarrow \norm{f(x) - f(x_0)} < \epsilon\big)$$
+\rmk. $\norm{x - x_0} < \delta$ should be satisfied for $x\in X$. The $0 <$ condition is omitted here since the inequality holds trivially for $x_0$.
+\begin{enumerate}
+	\item $x_0\in X'$: $f$ is continuous at $x_0 \iff \ds \lim_{x\ra x_0} f(x) = f(x_0)$.
+	\item $x_0\in X \bs X'$ (isolated point): $f$ is continuous at $x_0$. 
+\end{enumerate}~\\
+\defn.
+\begin{enumerate}
+	\item $A\subset X, f:X\ra Y$. If $f$ is continuous at $x_0$ for all $x\in A \implies f$ is continuous on $A$.
+	\item If $f$ is continuous on $X \imp f$ is continuous.
+\end{enumerate}~\\
+\prop{ 3.1.3} The following are equivalent for $f:X\ra Y$.
+\begin{enumerate}
+	\item $f$: continuous at $x_0\in X$.
+	\item If there exists a sequence $\span{x_n}$ in $X$ converging to $x_0$ $\implies\ds \lim_{n\ra\infty} f(x_n) = f(x_0)$.
+\end{enumerate}
+\pf.\\
+\textbf{(1\mimp2)} Given $\epsilon >0$,
+\begin{enumerate}
+	\item[(i)] $\exists\, \delta>0$ s.t. $\norm{x-x_0} < \delta \imp \norm{f(x) - f(x_0)} < \epsilon$
+	\item[(ii)] Since $x_n\ra x_0$, $\exists\, N$ s.t. for $n\geq N \imp \norm{x_n-x_0} < \delta$.
+\end{enumerate}
+Therefore, $n\geq N \imp$ $\norm{x_n-x_0} < \delta \imp \norm{f(x_n) - f(x_0)} < \epsilon$.\\
+\\
+\textbf{(2\mimp1)} (Contradiction) Suppose there exists $\epsilon_0 > 0$ such that no $\delta$ statisfies $\norm{x-x_0} < \delta \!\imp\! \norm{f(x) - f(x_0)} < \epsilon_0$. (i.e. For all $\delta> 0$, $\exists\, x\in X$ s.t. $\norm{x - x_0} < \delta$ and $\norm{f(x) - f(x_0)} \geq \epsilon_0$)\\
+\\
+Thus for all $n\in \N$, there exists $x_n\in X$ s.t. $\norm{x_n - x_0} < 1/n$ and $\norm{f(x_n)-f(x_0)} \geq \epsilon_0$. ($\delta = 1/n$) Then we have $\ds\lim_{n\ra\infty} x_n = x_0$, but $\ds \lim_{n\ra\infty} f(x_n) \neq f(x_0)$. Contradiction.\\
+\\
+\defn. $f:X\ra Y$, $A\subset X$, $B\subset Y$. Define $$f(A) = \{f(x): x\in A\} \quad f\inv (B)=\{x\in X: f(x)\in B \}$$
+\\
+\rmk.
+\begin{enumerate}
+	\item $A \subseteq f\inv(f(A))$\\
+	$x \in A$ and let $y  =f(x)$. Then $y\in f(A)$, thus $x\in f\inv(f(A))$.
+	\item $f(f\inv(B)) \subseteq B$\\
+	$y\in f(f\inv(B))$ then $y = f(x)$ for some $x\in f\inv(B)$. Thus we have $x\in f\inv(B) \iff f(x)\in B$. $\therefore y = f(x)\in B$.
+\end{enumerate}
+Also remember the counterexamples where the equality does not hold. (1) doesn't hold if $f$ is not injective, (2) doesn't hold if $f$ is not surjective.\\
+\\
+\thm{ 3.1.5} The following are equivalent for $f:X\ra Y$.
+\begin{enumerate}
+	\item $f$ is continuous on $X$.
+	\item $B$: open set in $Y$ $\imp f\inv(B)$: open in $X$.
+	\item $B$: closed in $Y \imp f\inv(B)$: closed in $X$.
+\end{enumerate}
+\pf. \textbf{(2\miff3)} Trivial. Check $f\inv(B^C)$.\\
+\textbf{(1\mimp2)} Observation. $f$ is continuous at $x_0$ $\iff$ $\forall \epsilon>0$, $\delta > 0$ s.t. $\norm{x-x_0} < \delta \imp \norm{f(x)-f(x_0)} < \epsilon$. Re-write the last two inequality as $x\in N_X(x, \delta)$ and $f(x)\in N_Y(f(x_0), \epsilon)$. Then continuity condition is equivalent to $$\forall \epsilon>0, \exists\,\delta > 0 \text{ s.t. } f(N_X(x, \delta)) \subset N_Y(f(x_0), \epsilon)$$  
+Now suppose $x_0\in f\inv(B)\!\!\iff\!\! f(x_0) \in B$. Since $B$ is open, there exists $\epsilon>0$ s.t. $N_Y(f(x_0),\epsilon)\subset B$. Then there exists $\delta>0$ s.t. $f(N_X(x_0, \delta)) \subset N_Y(f(x_0), \epsilon) \subset B$. Take $f\inv$ on both sides. $N_X(x_0, \delta)\subset f\inv(f(N_X(x_0, \delta))) \subset f\inv (B)$. Thus $f\inv (B)$ is open in $X$.\\
+\\
+\textbf{(2\mimp1)} $x_0\in X$, $f(x_0)\in Y$. Given $\epsilon>0$, $N_Y(f(x_0), \epsilon)$ is open in $Y$. By (2), $f\inv(N_Y(f(x_0), \epsilon))$ is open in $X$. Observe that this set always contains $x_0$. Then  $\exists\,\delta$ s.t. $N_X(x_0, \delta) \subset f\inv(N_Y(f(x_0), \epsilon))$. Now take $f$ on both sides. $f(N_X(x_0, \delta)) \subset f(f\inv(N_Y(f(x_0), \epsilon))) \subset N_Y(f(x_0), \epsilon)$. Thus $f$ is continuous at $x_0$.
+
+
+
+
+
+\pagebreak

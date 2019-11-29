@@ -1,0 +1,61 @@
+\section*{April 29th, 2019}
+\textbf{3.2 EVT \& IVT}\\
+\thm{ 3.2.1} Suppose $f: X\ra Y$ is continuous and surjective.\footnote{Not necessarily. Adjust $ Y $ to be $ f(X) $.} If $X$ is compact, $Y$ is also compact.\\
+\\
+\rmk. $f:X\ra Y$ continuous, $K\subset X:$ compact $\imp f(K):$ compact. Inverse does not hold. Consider $f(x) = \sin x $. Image is $[0, 1]$ (compact), but pre-image is $\R$ (not bounded).\\
+\\
+\defn. Function $f:X\ra \R$ has \textbf{maximum} $M$ if there exists $u\in X$ s.t. $f(u) = M$, and $\forall x\in X$, $f(x) \leq M$.\\
+\\
+\textbf{Cor 3.2.5} Suppose $f:X\ra Y$ is continuous and bijective. If $X$ is compact, $f\inv: Y\ra X$ is continuous.\footnote{Thm 3.1.5 was about the pre-image of an open set. In this corollary, we must show that the image of an open set is also open.}\\
+\pf. Let $f\inv = g: Y\ra X$. For any open set $U$ in $X$, it is enough to show that $g\inv(U)$ is open in $Y$. But $g\inv(U) = (f\inv)\inv(U) = f(U)$. Check that $Y\bs f(U) = f(X\bs U)$. Since a closed subset of a compact set is compact, $Y\bs f(U) = f(X\bs U)$ is compact, and hence closed in $\R^d$. Then $f(U) = (Y\bs f(U))^C \cap Y$ is open in $Y$.\\
+\\
+\ex. $f: X = \{0\}\cup (1, 2)\ra Y = [0, 1)$. $f(0) = 0$, $f(x) = x - 1$ on $(1, 2)$. By definition, $f$ is continuous on $X$. Consider $f\inv$. $f\inv(0) = 0$, $f\inv(x) = x + 1$ on $(0, 1)$. $f\inv$ is not continuous.\footnote{수학적으로 장난질 치는게 아니라 본질적인 의미가 있는 예시입니다.}\\
+\\
+\textbf{Application}. (Distance between sets) Define $\dist$ as follows. $$A, B\subset \R^d,\quad \dist(A, B) = \inf \{\norm{x-y}:x\in A, y\in B \}$$
+\ex. $A = \{(x, y): x\leq 0\}$, $B = \{(x, y):xy\geq 1, x, y>0 \}$. $\dist(A, B) \leq \norm{(0, n) - (\frac{1}{n}, n)} = 1/n$ for all $n$. Thus $\dist(A, B) = 0$.\\
+\thm. $A:$ compact, $B:$ closed. $A\cap B = \emptyset \imp \dist(A, B)>0$.\\
+\pf. $f:A\ra \R$, $f(x) = \dist(\{x\}, B)$ ($x\in A$).
+\begin{enumerate}
+	\item[(i)] $f(x) > 0$ for all $x\in A$.\\
+	$\because N(x, \epsilon)\subset B^C$ (open) $\imp \dist(\{x\}, B) \geq \epsilon > 0$.
+	\item[(ii)] $f$: continuous, $b\in B$. For $x, y\in A$, $\norm{x - b} \leq \norm{x-y} + \norm{y-b}$. Take infimum over $b\in B$. Then we have $f(x) \leq \norm{x-y} + f(y)$. Similarly we have $f(y) \leq \norm{x - y} + f(x)$. Hence $\norm{f(x) - f(y)} \leq \norm{x -y}$. (Continuity follows easily by setting $\delta = \epsilon$)\\
+	\textbf{Lipschitz Continuous}: $\norm{f(x) - f(y)} \leq k\norm{x - y}$ for some $k\geq 0$ (Set $\delta = \epsilon / k$ to show continuity)\\
+	\textbf{Contraction}: Lipschitz continuous and $k = 1$.
+\end{enumerate}
+By Cor 3.2.3, $\exists\,\delta > 0$ s.t. $f(x) \geq \delta > 0$ for all $x\in A$. Then $\dist(A, B) \geq \delta > 0$.\\
+\\
+\thm{ 3.2.8} Suppose $f:X\ra Y$ is continuous and surjective. If $X$ is connected, $Y$ is also connected.\\
+\pf.\footnote{책과 약간 다릅니다. 책의 증명도 읽어보세요.} (Contradiction) Assume $Y$ is disconnected. Then there exists non-empty sets $U, V$ that are open in $Y$, and $U\cap V = \emptyset$, $U\cup V = Y$. Consider $f\inv(U), f\inv(V)$. We will show that $X$ is disconnected. Since $f$ is surjective, $f\inv(U), f\inv(V)$ are non-empty. Decomposition conditions can be checked easily, (use theorems from assignment) and openness holds by continuity.\\
+\\
+\rmk. Suppose $f:X\ra Y$ is continuous. If $C\subset X$ is connected, $f(C)$ is also connected.\\
+\\
+\textbf{Cor 3.2.9} Suppose $f:I\ra \R$ is continuous where $I$ is any interval of $\R$. Then $f(I)$ is also an interval and hence connected.\footnote{이런 집합을 구간으로만 이해를 하면 우리가 아무것도 못 해요. 그런데 얘를 연결집합으로 이해하면 뭔가 할 것들이 생기고 여기서 중간값 정리가 바로 나오죠.}\\
+\\
+\textbf{Cor 3.2.10} \textbf{(Intermediate Value Theorem)} Suppose $f:[a, b] \ra \R$ is continuous. If $\alpha$ is in between $f(a)$ and $f(b)$,\footnote{$(f(a) - \alpha)(f(b) - \alpha) < 0$} then $\exists\,c\in [a, b]$ s.t. $f(c) = \alpha$.\footnote{이 정리를 위해 달려온 것...}\\
+\pf. $f([a, b])$ is an \textbf{interval} (Cor 3.2.9) which includes $f(a), f(b)$. Then it must include $\alpha$.\footnote{구간은 볼록집합임을 이용해도 $\alpha$ 를 포함함을 보일 수 있다.}\\
+\\
+\textbf{Cor 3.2.11} Suppose $f:[a, b] \ra \R$ is continuous. Then $f([a, b])$ is a closed interval.\\
+\pf. $f([a, b])$ is an interval (Cor 3.2.9) and compact (Thm 3.2.1).\\
+\\
+\textbf{Cor 3.2.12} Suppose $f:[a, b]\ra [a, b]$ is continuous. Then $\exists\, c\in [a, b]$ s.t. $f(c)=c$. We call such $c$ a fixed point.\\
+\pf. Apply IVT on $g(x) = x - f(x)$, set $\alpha = 0$. Then we have $$g(a) = a - f(a) \leq 0 = \alpha = 0 \leq b - f(b) = g(b)$$ and the result follows directly.\\
+\\
+\textbf{Application}. (\textbf{Path-Connected Set})\\
+\\
+\rmk. $x, y\in \R^d \imp [x, y] = \{tx + (1-t)y :0\leq t\leq 1 \}$ (convex combination)\\
+Set $f:[0, 1]\ra [x, y]$ as $f(t) = tx + (1-t)y$. Then $f$ is continuous. (Lipschitz continuity can be easily checked and $f$ is surjective)\\
+\\
+\defn. Let $a, b\in \R$, $a<b$. Suppose $f:[a, b]\ra \R^d$ is continuous. Then $f([a, b])$ is called a \textbf{path}.\\
+\\
+\rmk. Define $f:[a, b] \ra \R^3$ as $f(t) = (\sin t, \cos t, \frac{1}{1+t^2})$ (Parameterized curve)\\
+Also note that a path is compact and connected. ($[a, b]$ is compact and connected)\\
+\\
+\defn. $C\subset \R^d$ is called \textbf{path-connected} if for any $x, y\in C$, there exists a path\textbf{ in $C$} connecting $x$ and $y$.\\
+\\
+\thm. Path-connected $\imp$ Connected\\
+\pf. (Contradiction) Assume $X$ is path-connected but disconnected. Then there exists sets $U, V$ such that satisfy disconnectedness for $X$. Let $x\in U$, $y\in V$. From path-connected condition, there exists $f:[a, b]\ra X$ s.t. $f$ is continuous, $f(a) = x$, and $f(b) = y$. Let $Y = f([a, b]) \subset X$. Then $Y$ can be decomposed into $Y\cap U$ and $Y\cap V$. These two sets satisfy the disconnectedness condition, (check) hence $Y$ is disconnected. But since paths are always connected, contradiction.\\
+\\
+\rmk. The converse of the above theorem is \textbf{false}. Consider $f(x) = \sin \frac{1}{x}$ $(x>0)$. Set $A = \{(x, \sin\frac{1}{x}): x\in (0, 1) \}\subset \R^2$. $A$ is a path and therefore connected.\\
+But the problem arises when we consider $\overline{A}$. We can easily check that the closure of a connected set is connected. We can also check that $\overline{A} = A \cup \{(0, t): t\in[-1, 1] \}$, which is not path-connected.\footnote{We need a jump from $x=0$ to $x>0$...}
+
+\pagebreak

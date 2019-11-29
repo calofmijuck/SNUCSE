@@ -23,7 +23,7 @@ If $\alpha < 1$, $\sum a_n$ converges. If $\alpha>1$, $\sum a_n$ diverges.\\
 	\item $\alpha > 1$. Take $\epsilon >0$ such that $\alpha > \alpha - \epsilon > 1$. Then $\abs{a_n}^{1/n} > \alpha-\epsilon$ for infinitely many $n$. Then $\abs{a_n} > (\alpha -\epsilon)^n > 1$. Therefore $\lim a_n \neq 0$. $\sum a_n$ diverges.
 \end{enumerate}
 \prop{ 2.4.5} (Ratio Test) Suppose $a_n \neq 0$. Let $\beta = \limsup \abs{a_{n+1}/a_n}$, $\gamma = \liminf \abs{a_{n+1}/a_n}$.\\
-If $\beta < 1$, $\sum a_n$ converges. If $\beta > 1$, $\sum a_n$ diverges.\\
+If $\beta < 1$, $\sum a_n$ converges. If $\gamma > 1$, $\sum a_n$ diverges.\\
 \pf.
 \begin{enumerate}
 	\item $\beta < 1$. Take $\epsilon>0$ such that $\beta < \beta + \epsilon < 1$. Then $\exists N$ s.t. $\abs{a_{n+1}/a_n} < \beta + \epsilon$ for $n\geq N$. $\imp \abs{a_n} = \abs{a_N} \abs{a_{N+1}/a_N} \cdots \abs{a_n/a_{n-1}} < \abs{a_N}(\beta+\epsilon)^{n-N}$.\\

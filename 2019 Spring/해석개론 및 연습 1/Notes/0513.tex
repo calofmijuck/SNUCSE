@@ -1,0 +1,82 @@
+\section*{May 13th, 2019}
+\textbf{\large 4. 미분가능함수의 성질}\\
+\textbf{4.1 Differentiability}\\
+For this section, suppose $f: I \ra \R$, $I = (a, b), (-\infty, b), (a, \infty), (-\infty,\infty )$.\\
+\\
+\defn. $f$ is \textbf{differentiable} at $x_0 \in I$ $\iff$ $$\lim_{h\ra 0} \frac{f(x_0 + h) - f(x_0)}{h} = \alpha \in \R$$
+\rmk.
+\begin{enumerate}
+	\item Denote $\alpha = f'(x_0)$. (\textbf{Derivative} of $f$ at $x_0$)
+	\item Differentiability is defined point-wise.
+	\item $f$ is differentiable on $I$ $\iff$ $f$ is differentiable at all $x_0\in I$
+\end{enumerate}
+\prop{ 4.1.1} The following are equivalent for $f:I\ra \R$, $x_0\in I$.
+\begin{enumerate}
+	\item $f$ is differentiable at $x_0$.
+	\item $\exists\,\alpha\in \R, \exists\,\eta : N(0, \delta) \setminus \{0\} \ra \R$ s.t.
+	\begin{enumerate}
+		\item $f(x_0+h) - f(x_0) = \alpha h + \abs{h}\cdot \eta(h)$.\footnote{$\abs{h}$ 로 정의한 이유는 벡터 함수를 다루기 위함!}
+		\item $\ds \lim_{h\ra 0} \eta(h) = 0$.
+	\end{enumerate}
+\end{enumerate}
+\pf. (\textbf{1\mimp2}) Define $$\eta(h) := \frac{f(x_0+h)-f(x_0) - f'(x_0)h}{\abs{h}} \quad (h\neq 0)$$
+Now check if (b) is satisfied. Then
+$$f(x_0+h) - f(x_0) = f'(x_0) h + \abs{h}\cdot \eta(h)$$
+(\textbf{2\mimp1}) $$\frac{f(x_0+h)-f(x_0)}{h} =\alpha + \frac{\abs{h}}{h} \eta(h) \ra \alpha = f'(x_0)$$
+since $\abs{\abs{h} \eta(h)/h}\ra 0$ as $h\ra 0$.\\
+\\
+\ex. Define $$f(x) = \begin{cases}
+	x^2\sin\dfrac{1}{x} & (x \neq 0)\\
+	0 & (x= 0)
+\end{cases}$$
+$f$ is differentiable at $x = 0$.\footnote{미분가능성의 장점을 거의 사용할 수 없는 (쓸데 없는) 함수...}\\
+\pf. $f(h) - f(0) = h^2\sin\frac{1}{h} - 0 = 0\cdot h + \abs{h}\abs{h}\sin\frac{1}{h}$, and set $\eta(h) = \abs{h}\sin\frac{1}{h}$.\\
+Note that $$f'(x) = \begin{cases}
+	2x\sin\dfrac{1}{x} - \cos \dfrac{1}{x} & (x \neq 0)\\
+	0 & (x = 0)
+\end{cases}$$
+and $f'$ is not continuous at 0.\\
+\\
+\defn. Suppose $n\in \N$, $f: I\ra \R$.\footnote{$f^{(n)}$: 다들 아실테니까 정의 안하고 쓸게요!}
+\begin{center}
+	$f\in C^n \iff f$ is differentiable $n$ times,
+	 $f^{(n)}$ is continuous on $I$  
+\end{center}
+~\\
+\rmk. Differentiable at $x = x_0$ $\imp$ Continuous at $x = x_0$.\\
+\\
+\rmk. $f$ is \textbf{nowhere differentiable} if $f:I\ra \R$ is continuous, and $f$ is not differentiable at all $x_0\in I$. $f$ exists, and it describes Brownian motion.\\
+\\
+\prop{ 4.1.3} Suppose $f, g:I\ra \R$ are differentiable at $x_0\in I$. Then $f+g$, $fg$, $f/g$ are also differentiable at $x_0$, and
+\begin{enumerate}
+	\item $(f+g)'(x_0) = f'(x_0) + g'(x_0)$
+	\item $(fg)'(x_0) = f'(x_0)g(x_0) + f(x_0)g'(x_0)$
+	\item $\left(f/g\right)'(x_0) = \dfrac{f'(x_0)g(x_0) - f(x_0)g'(x_0)}{g(x_0)^2}$ ($g(x_0) \neq 0$)
+\end{enumerate}~\\
+\prop{ 4.1.4} \textbf{(Chain Rule)} Suppose $f:I\ra J$, $g:J\ra\R$, $x_0\in I$, $y_0 = f(x_0) \in J$.\\
+$f$ is differentiable at $x_0$ and $g$ is differentiable at $y_0$ $\imp g\circ f$ is differentiable at $x_0$, and $$(g\circ f)'(x_0) = g'(f(x_0))\cdot f'(x_0)$$
+\pf. By Prop 4.1.1, there exists $\alpha(h), \beta(h)$ s.t. $$g(y_0 + h) - g(y_0) = g'(y_0)\cdot h + \abs{h} \alpha(h)$$
+$$f(x_0+h) - f(x_0) = f'(x_0)\cdot h + \abs{h} \beta(h) $$
+Then we have $$\begin{aligned}
+g(f(x_0 + h)) - g(f(x_0)) =& g(y_0 + [f(x_0 +h) - f(x_0)]) - g(y_0)\\ =& g'(y_0)(f(x_0+h)-f(x_0))+ \abs{f(x_0 + h) - f(x_0)} \alpha(f(x_0+h) - f(x_0)) \\
+=& g'(f(x_0))(f'(x_0) h + \abs{h}\beta(h)) \\
+&\qquad + \abs{f(x_0 + h) - f(x_0)}\alpha(f(x_0+h) - f(x_0)) 
+\end{aligned}$$
+Therefore we set $$\eta(h) = \beta(h) g'(f(x_0)) + \abs{\frac{f(x_0+h)-f(x_0)}{h}} \alpha(f(x_0+h) - f(x_0)) $$
+and check if $\eta(h)\ra 0$ as $h\ra 0$. Use $\ds \lim_{h\ra 0}\alpha(h) = \lim_{h\ra0}\beta(h) = 0$.\\
+\\
+\rmk.
+\begin{enumerate}
+	\item In $g(y_0 + h) - g(y_0) = g'(y_0) \cdot h + \abs{h}\alpha(h)$, 0 was not in the domain of $\alpha$. But defining $\alpha(0) = 0$ will solve the problem. 
+	\item If $f:[a, b]\ra \R$ define right and left derivative at $x=a, b$ as $$f'(a) = \lim_{h\ra 0^+} \frac{f(a+h)-f(a)}{h}\qquad f'(b) = \lim_{h\ra 0^-} \frac{f(b+h)-f(b)}{h}$$ if they exist.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\pagebreak

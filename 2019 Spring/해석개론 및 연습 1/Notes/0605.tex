@@ -1,0 +1,82 @@
+\section*{June 5th, 2019}
+\textbf{5.5 Stieltjes Integral}\\
+$f, \alpha:[a, b]\ra\R$, we want to define $ \int f \,d\alpha$. We define this for cases where $\alpha$ is monotonically increasing, and of bounded variation.\\
+\\
+$\alpha$: Monotonically Increasing Case\\
+\defn. Given bounded function $f:[a, b]\ra\R$, monotonically increasing $\alpha:[a, b]\ra\R$, and a partition $P = \{a=x_0<x_1<\cdots<x_n=b  \}$, define
+$$U(f, P, \alpha) = \sum_{i=1}^n M_i (\alpha(x_i) - \alpha(x_{i-1})) \quad L(f, P, \alpha) = \sum_{i=1}^n m_i (\alpha(x_i) - \alpha(x_{i-1}))$$
+Also, Prop 5.1.1 holds.\footnote{Setting $\alpha(x) = x$ will give the definition of Riemann Integrals.}
+\begin{enumerate}
+	\item For $P, Q\in \mc{P}[a, b]$, if $P\subset Q$,
+	$$ U(f, P, \alpha) \geq U(f, Q, \alpha) \geq L(f, Q, \alpha) \geq L(f, P, \alpha) $$
+	\item $P, Q\in \mc{P}[a, b]$ $ \imp U(f, P, \alpha) \geq L(f, Q, \alpha)$.
+\end{enumerate}
+\pf. (1): For $t\in [x_{i-1}, x_i]$, define $X = [x_{i-1}, t]$ and $Y = [t, x_i]$. We only need to check $$M_i (\alpha(x_i)-\alpha(x_{i-1})) \geq M_{i}^X(\alpha(t) - \alpha(x_{i-1})) + M_{i}^Y(\alpha(x_{i}) - \alpha(t))$$
+This inequality holds because $\alpha$ is monotonically increasing.\\
+\\
+We can also define
+$$\uint{_a^b}f\,d\alpha = \inf\left\{ U(f, P, \alpha): P\in\mc{P}[a, b] \right\} \quad \lint{_a^b}f\,d\alpha = \sup\left\{ L(f, P, \alpha): P\in\mc{P}[a, b] \right\} $$
+and if these two values are the same, $f$ is \textbf{Stieltjes Integrable} w.r.t. $\alpha$. We write $f\in \mc{R}(\alpha)$, and $$\int_a^b f\,d\alpha = \int_a^b f(x)\,d\alpha(x) = \uint{_a^b}f\,d\alpha = \lint{_a^b}f\,d\alpha $$
+\\
+\thm{ 5.5.1} Suppose $f, g:[a, b]\ra\R$ is bounded and given monotonically increasing $\alpha, \beta:[a, b]\ra\R$, $c\in \R$.
+\begin{enumerate}
+	\item If $f, g \in \mc{R}(\alpha)$, $f+g, cf \in \mc{R}(\alpha)$ and $$\int_a^b (f+g)\, d\alpha = \int_a^b f\,d\alpha + \int_a^b g\,d\alpha \quad \int_a^b cf\,d\alpha = c\int_a^b f\,d\alpha$$	\item $a<p<b$. If $f\in \mc{R}(\alpha)$ on $[a, b]$ $\iff$ $f\in \mc{R}(\alpha)$ on $[a, p]$ and $[p, b]$, and
+	$$\int_a^b f\,d\alpha = \int_a^p f\,d\alpha + \int_p^b f\,d\alpha$$
+	\item If $f\in \mc{R}(\alpha), \mc{R}(\beta)$, then $f\in \mc{R}(\alpha + \beta), \mc{R}(c\alpha)$ for $c\geq0$. And
+	$$\int_a^b f\, d(\alpha+\beta) = \int_a^b f\,d\alpha + \int_a^b f\,d\beta\quad \int_a^b f\, d(c\alpha) = c\int_a^b f\,d\alpha$$
+\end{enumerate}~\\
+\thm{ 5.5.2 (1/2)} The following are euqivalent for bounded $f$ and monotonically increasing $\alpha$.
+\begin{enumerate}
+	\item $f\in \mc{R}(\alpha)$
+	\item $\forall\epsilon>0$, $\exists\,P\in \mc{P}[a, b]$ s.t. $U(f, P, \alpha) - L(f, P, \alpha) < \epsilon$
+\end{enumerate}
+Note that the above theorem could only be used for testing integrability. So to calculate the value of the integral, we define a Stieltjes Sum by
+$$S(f, P, \alpha) = \sum_{i=1}^n f(t_i) (\alpha(x_i) - \alpha(x_{i-1})) \qquad (t_i \in [x_{i-1}, x_i])$$
+Also note that on the proof of 5.2.3 (2) $\alpha(x) = x$ was heavily used.\\
+\\
+\thm{ 5.5.2 (2/2)} 
+\begin{enumerate}
+	\item $\ds\int_a^b f\,d\alpha = A$
+	\item $\forall\epsilon > 0$, $\exists \,P_0\in\mc{P}[a, b]$ s.t. $P_0\subset P \imp \abs{S(f, P, \alpha) - A } < \epsilon$
+\end{enumerate}~\\
+Why is Stieltjes integral important?
+\begin{enumerate}
+	\item Intermediate object between Riemann Integral and Lebesgue Integral.
+	\item Ex. $E(f(X)) = \int_a^b f \, dF$ ($F$: cumulative distribution function)
+\end{enumerate}~\\
+\rmk. 5.5.2 (2/2) $\imp$ $\alpha \in C^1$ then $\ds \int_a^b f\,d\alpha = \int_a^b f(x)\,\alpha'(x)\,dx$\\
+\\
+\ex. $\alpha(x) = \begin{cases}
+	0 & (x\leq 0) \\ 1 & (x > 0)
+\end{cases}$. Calculate $\ds \int_{-1}^1 f\, d\alpha$ for bounded $f:[-1, 1]\ra\R$, $\ds \lim_{x\ra0^{+}} f(x) = f(0)$.\\
+$\forall \epsilon > 0$, $\exists\,\delta > 0$ s.t. $x\in [0, \delta] \imp \abs{f(x)-f(0)} < \epsilon$ since $\lim_{x\ra0^{+}} f(x) = f(0)$.\\
+Set $P = \{-1, 0, \delta, 1\}$. Check that
+$$U(f, P, \alpha) = M_2 \quad L(f, P, \alpha) = m_2$$
+and $M_2 = \sup\{f(x): x\in [0, \delta]\} < f(0) + \epsilon$, $m_2 = \inf\{f(x):x\in [0, \delta]\} > f(0) - \epsilon$. Therefore $U(f, P, \alpha) - L(f, P, \alpha) < 2\epsilon$ and $f$ is Stieltjes Integrable. Take $\epsilon\ra0$. The answer is $f(0)$.\\\\
+This is counter-intuitive... \textit{Dirac delta function}...
+\begin{center}
+	$\therefore$ $\ds\lim_{x\ra0^{+}} f(x) = f(0)$ $\ds \imp f\in \mc{R}(\alpha), \int_{-1}^1 f\,d\alpha = f(0)$
+\end{center}~\\
+\rmk. Consider this as $\int_{-1}^1 f(x)\alpha'(x) dx$. For our $\alpha$, $\alpha'(x) = \infty$ at $x=0$, 0 otherwise.\\
+Also consider $f(x) = 2$ for $x\geq 0$, 0 otherwise. Then setting $x_{i-1} < 0 < x_{i}$, with $\norm{P} < \delta$ will give $S(f, P, \alpha) = f(t_i)$, which might be either 0 or 2 depending on $t_i$'s sign. Thus we cannot say that $\ds \lim_{\norm{P}\ra0} S(f, P, \alpha) = \int_a^b f\,d\alpha$.\\
+\\
+\\
+$\alpha$: Bounded Variation Case\\
+\defn. Suppose $f:[a, b]\ra\R$ is bounded and $\alpha:[a, b]\ra\R$ is of bounded variation. If $\alpha = \alpha_1-\alpha_2$ for some monotonically increasing functions $\alpha_1, \alpha_2$, and $f\in \mc{R}(\alpha_1)$, $f\in \mc{R}(\alpha_2)$
+$$\imp \int_a^b f\, d\alpha = \int_a^b f\,d\alpha_1 - \int_a^b f\,d\alpha_2$$
+Well-Definedness!\\
+If $\alpha = \alpha_1-\alpha_2 = \beta_1-\beta_2$,
+$$\int_a^b f\,d\alpha_1 - \int_a^b f\,d\alpha_2 = \int_a^b f\,d\beta_1 - \int_a^b f\,d\beta_2$$
+holds because of Thm 5.5.1 (1)\\
+\\
+\thm{ 5.5.3} If $f:[a, b]\ra\R$ is \textbf{continuous} and $\alpha:[a, b]\ra\R$ is BV, $f\in \mc{R}(\alpha)$.\\
+\pf. Enough to show for monotonically increasing $\alpha$.\\
+For $\epsilon > 0$, $\exists\,\delta>0$ s.t. $\abs{x-y}<\delta \imp \abs{f(x)-f(y)} <\frac{\epsilon}{M (\alpha(b)-\alpha(a))}$,
+where $M$ is an upper bound of $\abs{f}$. For $P\in \mc{P}[a, b]$ s.t. $\norm{P}<\delta$,
+$$U(f, P, \alpha) - L(f, P, \alpha) = \sum_{i=1}^n (M_i-m_i)(\alpha(x_i)-\alpha(x_{i-1})) = \sum_{i=1}^n (f(u_i)-f(v_i))(\alpha(x_i)-\alpha(x_{i-1}))$$
+for some $u_i, v_i$, since $f$ is continuous. (EVT)
+But setting $u_i, v_i \in [x_{i-1}, x_i] \imp \abs{u_i-v_i} < \delta$. Thus
+$$\leq \frac{\epsilon}{M(\alpha(b)-\alpha(a))}\sum_{i=1}^n (\alpha(x_i)-\alpha(x_{i-1})) < \frac{\epsilon}{M}$$\\
+Now if $\alpha$ is BV, $\alpha = \alpha_1-\alpha_2$ for monotonically increasing $\alpha_1, \alpha_2$.
+Then $f\in \mc{R}(\alpha_1)$, $f\in \mc{R}(\alpha_2)$. Then $f\in \mc{R}(\alpha)$ and $\int_a^b f\, d\alpha = \int_a^b f\,d\alpha_1 - \int_a^b f\,d\alpha_2$ by definition.
+\pagebreak

@@ -1,0 +1,115 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\numl}[1]{\item[\large\textbf{\sffamily #1.}]}
+\newcommand{\num}[1]{\item[\textbf{\sffamily #1}]}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\renewcommand{\span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\adj}{\text{*}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+\begin{center}
+\textbf{\Large 해석개론 및 연습 1 과제 \#1}\\
+\large 2017-18570 컴퓨터공학부 이성찬
+\end{center}
+\begin{enumerate}
+\numl{1} 먼저 $ m\in S $ 이므로 $ \inf{S}\geq m $ 임은 당연하다. 이제 $ m $이 $S$의 최대 하계임을 보이자. $\forall \epsilon >0$ 에 대해, $m+\epsilon$ 이 $S$의 하계라고 가정하면 $\forall x\in S$ 에 대하여 $m+\epsilon \leq x$ 이다. 그런데 $m\in S$ 이므로 $m+\epsilon \leq m$ 이고 이는 $\epsilon > 0$ 에 모순이다. 따라서 $\inf S = m$.
+	
+\numl{2} \textbf{Claim 1}. \textit{Suppose that a subset $S$ of $\bb{R}$ contains a maximum $m\in \bb{R}$. Then $\sup S = m$.}\\
+\textbf{Proof}. $m\in S$ 이므로 $\sup S \leq m$ 임은 당연하다. 이제 $m$이 $S$의 최소 상계임을 보이자. $\forall \epsilon >0$ 에 대해, $m - \epsilon$ 이 $S$의 상계라고 가정하면 $\forall x\in S$ 에 대하여 $m-\epsilon \geq x$ 이다. 그런데 $m\in S$ 이므로 $m-\epsilon \geq m$ 이고 이는 $\epsilon >0$ 에 모순이다. 따라서 $\sup S = m$.
+\begin{enumerate}
+	\num{(1)} Let $ A = (1, 2) $. $\forall x\in A$ 에 대하여 $x<2$ 이므로 $\sup A \leq 2$. 이제 2 가 $A$의 최소 상계임을 보이자. $\forall \epsilon > 0$ 에 대해, $2-\epsilon$ 이 $A$의 상계라고 하면 $\forall x \in A$ 에 대하여 $2-\epsilon \geq x$ 이다. 그런데 $2 - \epsilon / 2 \in A$ 이므로 $2-\epsilon \geq 2 - \epsilon /2$ 이고 정리하면 $\epsilon \leq 0$ 이 되어 모순이다. 따라서 $\sup A = 2$.\\
+	$\forall x\in A$ 에 대하여 $x> 1$ 이므로 $\inf A \geq 1$. 이제 1 이 $A$의 최대 하계임을 보이자. $\forall \epsilon > 0$ 에 대해, $1+\epsilon$ 이 $A$의 하계라고 하면 $\forall x \in A$ 에 대하여 $1+\epsilon \leq x$ 이다. 그런데 $1+\epsilon / 2 \in A$ 이므로 $1+\epsilon \leq 1+ \epsilon /2$ 이고 정리하면 $\epsilon \leq 0$ 이 되어 모순이다. 따라서 $\inf A = 2$.
+	\num{(2)} Let $ B = \left\{\frac{1}{1 + n^2}\,:\,n\in\bb{N}\right\} $. \\
+	먼저 $f(n) = \frac{1}{1+n^2}$ 이 감소함을 보이자. $1 + n^2 < 1+ (n+1)^2$ 이므로 $f(n) > f(n+1)$.\\
+	따라서 $B$의 최댓값은 $n=1$ 일 때인 1/2 이다. 이제 Claim 1 에 의하여 $\sup B = 1/2$.\\
+	우선 $B$의 모든 원소들은 양수이므로 $\inf B\geq 0$. 만약 $\epsilon > 0$ 이 $B$의 하계라고 하면, $n > \sqrt{1/\epsilon} $ 인 모든 $n\in \bb{N}$ 에 대하여 $$n^2 > \frac{1}{\epsilon} > \frac{1}{\epsilon} - 1,\quad n^2+1>\frac{1}{\epsilon}$$ 이므로 $\epsilon > \frac{1}{1 + n^2}$ 가 되어 $\epsilon$ 이 하계라는 가정에 모순이다. 따라서 $\inf B = 0$.
+	\num{(3)} Let $C = \{(-1)^n + (-1/2)^m\,:\,n, m\in \bb{N}\}$. $C$의 최댓값과 최솟값을 찾자. $$-1\leq (-1)^n\leq 1, \quad -\frac{1}{2}\leq \left(-\frac{1}{2}\right)^m \leq \frac{1}{4}$$ 이므로 $$\forall x \in C, \quad -\frac{3}{2} \leq x \leq \frac{5}{4}$$ 이다. 최댓값은 $(n, m) = (2, 2)$ 일 때 $5/4$, 최솟값은 $(n, m) = (1, 1)$ 일 때 $-3/2$ 이다. $C\subset \bb{R}$ 이므로 Claim 1 과 1번 문제의 결과에 의해 $\sup C = 5/4$, $\inf C = -3/2$. 
+\end{enumerate}
+
+\numl{3}
+\begin{enumerate}
+	\num{(1)} $A$, $B$가 유계이므로 적당한 실수 $a, b, c, d$ 가 존재하여 모든 $x \in A$, $y\in B$ 에 대해 다음이 성립한다. $$a\leq x\leq b, \qquad c\leq y\leq d$$ 따라서 다음이 성립하고 $$a-d\leq x-y\leq b-c$$ $A-B$ 또한 유계임을 알 수 있다.
+	\num{(2)} \textbf{Claim}. $\sup(A-B) = \sup A-\inf B$.\\ \textbf{Proof}. 우선 다음과 같이 적을 수 있다. $$\inf A\leq x\leq \sup A, \qquad \inf B\leq y\leq \sup B$$ 모든 $u \in A-B$ 에 대해 $u \leq \sup A - \inf B$ 이므로 $\sup(A-B) \leq \sup A - \inf B$.\\ 이제 $k = \sup A - \inf B$ 가 $A-B$ 의 최소 상계임을 보인다. $\forall \epsilon > 0$, $k - \epsilon$ 가 $A-B$ 의 상계라고 가정하자. 그런데, 상한과 하한의 정의로부터 다음을 만족하는 $x \in A, y \in B$ 가 존재한다. $$\sup A - \frac{\epsilon}{2} < x \leq \sup A, \qquad \inf B \leq y < \inf B + \frac{\epsilon}{2}$$ 따라서 $k - \epsilon < x-y \leq k$ 가 되어 상계라는 가정에 모순이므로 원하는 등식을 얻는다.
+\end{enumerate}
+
+\numl{4} $\ds \lim_{n \ra \infty} a_n = 0$ 이므로 임의의 주어진 $\epsilon > 0$ 에 대해 $N\in\bb{N}$ 이 존재하여 $n>N$ 인 모든 $n\in \bb{N}$ 에 대해 $\abs{a_n} < \epsilon$ 이다. $n>N$ 일 때도 $0\leq\abs{s_n-s} < a_n$ 이므로 $\abs{s_n-s} < \abs{a_n} <\epsilon$ 이다. 따라서 $\ds \lim_{n \ra \infty} s_n = s$.
+
+\numl{5}
+\begin{enumerate}
+	\num{(1)} Given $\forall \epsilon > 0$, take $N = \ds \frac{49}{16\epsilon^2}$. 그러면 $n>N$ 인 모든 $n\in\bb{N}$ 에 대하여\\
+	$$\abs{\frac{\sqrt{n}}{2\sqrt{n}+7} - \frac{1}{2}} = \abs{\frac{7}{4\sqrt{n}+14}} < \frac{7}{4\sqrt{n}} < \epsilon \qquad \left(\because \sqrt{n} > \frac{7}{4\epsilon}\right)$$
+	이므로 $\ds \lim_{n \ra \infty} \frac{\sqrt{n}}{2\sqrt{n}+7} = \frac{1}{2}$.
+	
+	\num{(2)} Given $\forall \epsilon > 0$, take $N = \ds \sqrt[5]{\frac{3}{\epsilon}}$. 그러면 $n>N$ 인 모든 $n\in\bb{N}$ 에 대하여\\
+	$$\begin{aligned}
+		\abs{\frac{2n^5 +\cos(n^8 +1)}{n^5+1} - 2} &= \abs{\frac{\cos(n^8+1) - 2}{n^5+1}} \leq \frac{\abs{\cos(n^8+1)} + 2}{n^5+1} \\&< \frac{3}{n^5+1} < \frac{3}{n^5} < \epsilon \qquad \left(\because n^5 > \frac{3}{\epsilon}\right)
+	\end{aligned}$$
+	이므로 $\ds \lim_{n \ra \infty} \frac{2n^5 +\cos(n^8 +1)}{n^5+1} = 2$.
+	\num{(3)} Given $\forall \epsilon > 0$, take $N = \max\left\{\dfrac{2}{\epsilon}, 6\right\}$. 그러면 $n>N$ 인 모든 $n\in\bb{N}$ 에 대하여\\
+	$$\begin{aligned}
+		\abs{\frac{3n^2+n(-1)^n}{n^2+2} - 3} &= \abs{\frac{n(-1)^n - 6}{n^2+2}} \leq \frac{n\abs{(-1)^n} + 6}{n^2+2} \\&< \frac{n+6}{n^2} < \frac{2n}{n^2} = \frac{2}{n} < \epsilon
+	\end{aligned}$$
+	이므로 $\ds \lim_{n \ra \infty} \frac{3n^2+n(-1)^n}{n^2+2} = 3$.
+\end{enumerate}
+
+\numl{6} 수열 $\{a_n\}$ 이 수렴하여 $\ds \lim_{n \ra \infty} a_n = c \in \bb{R}$ 이라 하자. 그러면, $\forall \epsilon > 0$ 에 대해 $N$이 존재하여 $n > \max\{N, 1\}$ 인 모든 $n\in \bb{N}$ 에 대해 $$\abs{\frac{(-2)^n+n}{2^n} - c} < \epsilon$$ 를 만족한다. $\epsilon = 1/2$ 라고 해보자.\\$m\in \bb{N}$ 에 대하여 $n = 2m$ 일 때, 만족해야 하는 부등식은 $$\abs{\frac{2m}{2^{2m}}-c+1}<\frac{1}{2}$$ 이고, $n = 2m+1$ 일 때 만족해야 하는 부등식은 $$\abs{\frac{2m+1}{2^{2m+1}} - c - 1} < \frac{1}{2}$$ 이다. 변변 더하면
+$$\begin{aligned}
+	1 &> \abs{\frac{2m+1}{2^{2m+1}} - c - 1} + \abs{\frac{2m}{2^{2m}}-c+1} = \abs{-\frac{2m+1}{2^{2m+1}} + c + 1} +  \abs{\frac{2m}{2^{2m}}-c+1} \\ &> \abs{2 + \frac{2m}{2^{2m}} - \frac{2m+1}{2^{2m+1}}} = \abs{2 + \frac{2m-1}{2^{2m+1}}} > 2
+\end{aligned}$$
+이 되어 모순이다. 따라서 주어진 수열은 발산한다.
+
+\numl{7} 수렴하는 수열은 유계임을 이용한다. $\{s_n\}$ 이 수렴하므로 $\abs{s_n} < A$ 인 실수 $A$가 존재한다.
+\begin{enumerate}
+	\num{(1)} $\forall \epsilon > 0$ 에 대하여, $n>N$ 인 모든 $n\in\bb{N}$ 에 대해 $\abs{s_n-s} <\dfrac{\epsilon}{A + \abs{s} + 4}$ 가 되게 하는 $N$이 존재한다. 그러므로 그 $N$ 에 대하여 $n>N$ 일 때마다 다음이 성립한다.
+	$$\begin{aligned}
+		\abs{s_n^2 + 4s_n+5 - (s^2+4s+5)} &= \abs{s_n^2-s^2 + 4(s_n-s)} = \abs{s_n-s}\abs{s_n + s + 4} \\ &<\abs{s_n-s}(\abs{s_n} + \abs{s} + 4) \\&< \frac{\epsilon}{A + \abs{s} +4} \cdot (A + \abs{s} + 4) = \epsilon
+	\end{aligned}$$
+	따라서 $\ds\lim_{n \ra \infty} f(s_n) = f(s)$.
+	\num{(2)} $\forall \epsilon > 0$ 에 대하여, $n>N$ 인 모든 $n\in\bb{N}$ 에 대해 $\abs{s_n-s} <\dfrac{2\epsilon}{A + \abs{s}}$ 가 되게 하는 $N$이 존재한다. 그러므로 그 $N$ 에 대하여 $n>N$ 일 때마다 다음이 성립한다.
+	$$\begin{aligned}
+		\abs{\sqrt{\frac{1}{1+s_n^2}}-\sqrt{\frac{1}{1+s^2}}} &= \frac{\abs{\sqrt{1+s_n^2} - \sqrt{1+s^2}}}{\sqrt{1+s_n^2}\sqrt{1+s^2}} < \abs{\sqrt{1+s_n^2} -\sqrt{1+s^2}} \\ &= \frac{\abs{1+s_n^2 - 1 - s^2}}{\sqrt{1+s_n^2} + \sqrt{1+s^2}} < \frac{\abs{s_n^2-s^2}}{2} \\ &= \frac{\abs{s_n-s}\abs{s_n+s}}{2} \leq \frac{\abs{s_n-s}(\abs{s_n} + \abs{s})}{2} \\ &< \frac{2\epsilon}{A + \abs{s}}\frac{A + \abs{s}}{2} = \epsilon
+	\end{aligned}$$
+	첫 번째 부등호는 $\sqrt{1+x^2}> 1$ ($x\in \bb{R}$) 으로부터 얻고, 두 번째 부등호는 $x^2 \geq 0$ ($x\in\bb{R}$) 으로부터 얻는다. 따라서 $\ds\lim_{n \ra \infty} f(s_n) = f(s)$.
+	\num{(3)} Let $B = \max\{A, \abs{s}\}$. $\forall \epsilon > 0$ 에 대하여, $n>N$ 인 모든 $n\in\bb{N}$ 에 대해 $\abs{s_n-s} <\frac{\epsilon}{2019B^{2018}}$ 가 되게 하는 $N$이 존재한다. 그러므로 그 $N$ 에 대하여 $n>N$ 일 때마다 다음이 성립한다.
+	$$\begin{aligned}
+		\abs{s_n^{2019} - s^{2019}} &= \abs{s_n-s}\abs{\sum_{i=0}^{2018} s_n^{2018-i}s^i} < \abs{s_n-s}\sum_{i=0}^{2018} \abs{s_n}^{2018-i}\abs{s}^i \\ &<\abs{s_n-s}\sum_{i=0}^{2018} B^{2018} < \frac{\epsilon}{2019B^{2018}} 2019B^{2018} = \epsilon
+	\end{aligned}$$
+	 따라서 $\ds\lim_{n \ra \infty} f(s_n) = f(s)$.
+\end{enumerate}
+
+\numl{8} 주어진 명제는 \textbf{거짓}이다.\\
+\textbf{[반례]} $a_n = (-1)^n$ 일 때\footnote{수열 $(-1)^n$이 발산함은 연습시간에 보였다.}, $b_n = \ds \frac{1}{n}\sum_{k=1}^n (-1)^k$ 은 0 으로 수렴한다.\\
+\textbf{Claim}. $\ds\sum_{k=1}^n (-1)^k = \frac{(-1)^n-1}{2}$, $b_n = \ds\frac{(-1)^n-1}{2n}$\\
+\textbf{Proof}. $n$이 짝수일 때, 좌변, 우변 모두 0이다. $n$이 홀수일 때, 좌변, 우변 모두 $-1$ 이다.\\\\
+이제 $b_n$이 0으로 수렴함을 보이자.\\
+Given $\forall \epsilon >0$, take $N = 1/\epsilon$. 그러면 $n>N$ 인 모든 $n\in \bb{N}$ 에 대해 다음이 성립한다.
+$$\abs{\frac{(-1)^n - 1}{2n} - 0} \leq \frac{\abs{(-1)^n} + 1}{2n} \leq \frac{1}{n} < \epsilon$$
+따라서 $\ds\lim_{n \ra \infty}b_n = 0$ 이다.
+
+\end{enumerate}
+\end{document}

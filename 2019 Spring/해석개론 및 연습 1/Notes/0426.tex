@@ -1,0 +1,38 @@
+\section*{April 26th, 2019}
+Assignment 3.5 \#3: Check and remember.
+\begin{enumerate}
+	\item[(2)] $\ds f\left(\bigcap_{i\in \mc{I}}A_i\right) \subset \bigcap_{i\in \mc{I}}f(A_i)$
+\end{enumerate}~\\
+\prob{ 3.1.2} $f:X\ra \R^n$, $f(x) = \big(f_1(x), \dots, f_n(x)\big)$ $(x\in X)$. The following are equivalent.
+\begin{enumerate}
+	\item $f$ is continuous at $x$.
+	\item For all $i$, $f_i: X\ra \R$ is continuous at $x$.
+\end{enumerate}
+\pf. \textbf{(1\mimp2)} $\forall \epsilon >0$, $\exists\,\delta > 0$ s.t. $\norm{y-x} < \delta \imp \norm{f(y)-f(x)} < \epsilon$. Then we have $\norm{f_i(y)-f_i(x)} \leq \norm{f(y) -f(x)} < \epsilon$, for any $i$.\\
+\textbf{(2\mimp1)} $\forall \epsilon > 0$, $\exists\,\delta > 0$ s.t. $\norm{x - y} < \delta \imp \norm{f_i(x) - f_i(y))} < \epsilon /\sqrt{n}$. Then $$\norm{x - y} < \delta \imp \norm{f(x) - f(y)}  = \sqrt{\sum_{i = 1}^n\norm{f_i(x) - f_i(y)}^2} < \sqrt{n\cdot \frac{\epsilon^2}{n}} = \epsilon$$
+\\
+\prop{ 3.1.2} (3) $f, g$: continuous $\imp$ $f/g$: continuous ($g \neq 0$ on $X$)\\
+\pf. $\forall \epsilon > 0$, $\exists\,\delta > 0$ s.t. for all $x_0\in X$,\\
+$\abs{x - x_0} < \delta \imp \abs{g(x)-g(x_0)} < \min\{ \frac{1}{2}\abs{g(x_0)}, \frac{1}{4}\frac{\abs{g(x_0)}^2\epsilon}{\abs{f(x_0)}+1} \}$, $\abs{f(x)-f(x_0)} < \frac{1}{4} \abs{g(x_0)}\epsilon$.
+$$\begin{aligned}
+	\abs{\frac{f(x)}{g(x)} - \frac{f(x_0)}{g(x_0)}} &\leq \frac{\abs{g(x_0)}\abs{f(x)-f(x_0)} + \abs{f(x_0)}\abs{g(x)-g(x_0)}}{\abs{g(x)}\abs{g(x_0)}}\\
+	&\leq \frac{\abs{g(x_0)}\frac{1}{4}\abs{g(x_0)}\epsilon + \abs{f(x_0)}\frac{1}{4}\frac{\abs{g(x_0)}^2\epsilon}{\abs{f(x_0)} + 1}}{\frac{1}{2}\abs{g(x_0)}^2} < \frac{\frac{1}{4}\abs{g(x_0)}^2\epsilon+\frac{1}{4}\abs{g(x_0)}^2\epsilon}{\frac{1}{2}\abs{g(x_0)}^2}=\epsilon
+\end{aligned}$$
+\\
+\\
+\ex. $g(x) = \begin{cases}
+	0 & (x = 0, 1 \text{ or } x\in \R\bs\Q)\\
+	1/q & (x = p/q, \text{irreducible fraction})
+\end{cases}$
+\begin{enumerate}
+	\item[(i)] $x_0\in \Q\cap (0, 1)$ then $g(x_0) > 0$. Set $\epsilon = \frac{1}{2}g(x_0) > 0$. For all $\delta >0$, $\exists\,y\in \Q^C\cap[0, 1]$ s.t. $\abs{y-x_0} < \delta$, but $\abs{g(y) - g(x_0)} = g(x_0) \geq \epsilon$. Thus $f$ is not continuous at $x_0$.
+	\item[(ii)] $x_0 \in \Q^C\cup \{0, 1\}$. $g(x_0) = 0$. $\forall \epsilon > 0$, $\exists\,N\geq 1$ s.t. $1/N < \epsilon$. Then there are finitely many $y$ such that $g(y) \geq 1/N$. ($\frac{1}{N}, \frac{1}{N-1},\dots, \frac{1}{2}$ is finite) Let them be $y_1, \dots, y_k$ and set $\delta = \ds\min_{1\leq i\leq k}\abs{y_i - x_0} > 0$. If $\norm{y - x_0} < \delta$, then $0\leq g(y) < 1/N < \epsilon$. $\abs{g(y) - g(x_0)} = g(y)<\epsilon$.
+\end{enumerate}~\\
+\\
+\prob{ 3.5.1}
+\begin{enumerate}
+	\item $f(x) = 0$, $f(\R) = \{0\}$ (closed)
+	\item[(3)] $f(x)= e^x$, $f(\R) = (0, \infty)$ (open)
+\end{enumerate}
+
+\pagebreak

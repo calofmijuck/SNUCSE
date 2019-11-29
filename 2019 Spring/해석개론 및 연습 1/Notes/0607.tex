@@ -1,0 +1,107 @@
+\section*{June 7th, 2019}
+\rmk. If $\alpha = \alpha_1 - \alpha_2$, (BV) $$S(f, P, \alpha) = \sum_{t_i\in [x_{i-1}, x_i]}f(t_i)(\alpha(x_i)-\alpha(x_{i-1})) = S(f, P, \alpha_1) - S(f, P, \alpha_2)$$
+\\
+\thm{ 5.5.4} Thm 5.5.2 holds for BV function $\alpha$.\footnote{리만 적분에서는 norm 이 작기만 하면 되었는데, 스틸체스는 그렇지 않아요. 예를 들어 $\alpha$ 가 불연속점을 가질 때 불연속을 포함하게 자르면 안 됐죠. 그니까 어떤 잘 써는 partition $P_0$ 에 대해 그거 보다 저 잘 썰면 스틸체스합이 수렴한다는 뜻입니다.}\\
+\pf. Define $V(x) = V_a^x(\alpha)$ as \textbf{variation of $\alpha$ on $ [a, x] $}. Let $\alpha = V - (V-\alpha)$ where $V$ is monotonically increasing. Note that $\alpha$, $V-\alpha$ are both monotonically increasing.\\
+\\
+\textbf{(1\mimp2)} Exists monotonically increasing $\alpha_1, \alpha_2$ s.t. $f\in \mc{R}(\alpha_1)$, $f\in \mc{R}(\alpha_2)$. Let $\int_a^b f\,d\alpha_1 = A_1$, $\int_a^b f\,d\alpha_2 = A_2$. Then $A = A_1-A_2$. By Thm 5.5.2, there exists $P_1$ s.t. $\abs{S(f, P, \alpha_1) - A_1} < \frac{\epsilon}{2}$ if $P_1\subset P$. Also, there exists $P_2$ s.t. $\abs{S(f, P, \alpha_2) - A_2} < \frac{\epsilon}{2}$ if $P_2\subset P$. Now set $P_0 = P_1\cup P_2$, and for $P \supset P_0$, 
+$$\abs{S(f, P, \alpha) - A} = \abs{S(f, P, \alpha_1)- A_1 -(S(f, P, \alpha_2) - A_2)} \leq \frac{\epsilon}{2} + \frac{\epsilon}{2}  =\epsilon$$\\
+\textbf{(2\mimp1)} \textbf{Claim}. (2) implies
+\begin{enumerate}
+	\item[(i)] $f\in \mc{R}(V)$, $\int_a^b f\,dV = A_1$.
+	\item[(ii)] $f\in \mc{R}(V-\alpha)$, $\int_a^b f\,d(V-\alpha) = A_1 - A$.
+\end{enumerate}
+(i)\mimp(ii): $S(f, P, V-\alpha) = S(f, P, V) - S(f, P, \alpha)$.
+$\exists\,P_0$ s.t. $\abs{S(f,P, \alpha) -A} < \frac{\epsilon}{2}$ if $P\supset P_0$ (By (2)). And $\exists\,P_1$ s.t. $\abs{S(f, P, V)-A_1} < \frac{\epsilon}{2}$ if $P\supset P_1$ (By (i), Thm 5.5.2). Set $P_2 = P_0 \cup P_1$, and for $P\supset P_2$,
+$$\abs{S(f, P, V-\alpha) - (A_1-A)} \leq \abs{S(f, P, V) - A_1} + \abs{S(f, P, \alpha) - A} < \frac{\epsilon}{2} + \frac{\epsilon}{2} < \epsilon$$
+Since $V-\alpha$ is increasing, by Thm 5.5.2 (ii) holds.\\
+\\
+(i), (ii)\mimp (1): $f\in \mc{R}(V)$, $f\in \mc{R}(V-\alpha)$, $V, V-\alpha$ are monotonically increasing. Thus $f\in\mc{R}(V-(V-\alpha)) =\mc{R}(\alpha)$, and $$\int_a^b f\,d\alpha = \int_a^b f\,dV - \int_a^b f\,d(V-\alpha) = A_1-(A_1-A)=A$$
+\\
+\textbf{Proof of (i)}. $\forall \epsilon > 0$, we try to find a $P$ s.t. $U(f, P, V) - L(f, P, V) < \epsilon$. Note that $V(b) = V_a^b(\alpha)$.
+There exists $P_1$ s.t. $P\supset P_1 \imp \abs{V(\alpha, P) - V(\alpha)} < \epsilon'$.\footnote{Check as assignment.}\\
+By (2), $\forall \epsilon > 0$, $\exists \,P_0$ s.t. $\abs{S(f, P, \alpha) - A} < \epsilon'$ if $P\supset P_0$. Set $P = P_0\cup P_1$, then $P\supset P_0$ and $P\supset P_1$.
+$$\begin{aligned}
+U(f, P, V) - L(f, P, V) =& \sum (M_i-m_i)(V(x_i)-V(x_{i-1}))\\
+=&\sum (M_i-m_i)(V(x_i)-V(x_{i-1}) - \abs{\alpha(x_i) - \alpha(x_{i-1})}) \quad \cdots \quad c_1\\
+&+\sum (M_i-m_i)\abs{\alpha(x_i)-\alpha(x_{i-1})} \quad \cdots \quad c_2
+\end{aligned}$$
+Let $M$ be an upper bound of $\abs{f}$ on $[a, b]$.
+$$ 0\leq c_1\leq 2M \sum_{i=1}^n \{ V(x_{i})-V(x_{i-1}) - \abs{\alpha(x_i) - \alpha(x_{i-1})} \} = 2M \{V_a^b(\alpha) - V(\alpha, P)\} < 2M\epsilon'$$, since $P\supset P_1$. Now for $c_2$,
+$$M_i=\sup\{f(t):t\in [x_{i-1}, x_i]\} \imp \exists\,u_i \text{ s.t. } f(u_i) > M_i - \epsilon'$$
+$$m_i=\inf\{f(t):t\in [x_{i-1}, x_i]\} \imp \exists\,v_i \text{ s.t. } f(v_i) < m_i + \epsilon'$$
+therefore
+$f(u_i)-f(v_i) > M_i - m_i - 2\epsilon'$ and $M_i-m_i < f(u_i)-f(v_i) + 2\epsilon'$. Define
+$$(t_i, s_i) = \begin{cases}
+	(u_i, v_i) & \text{ if }\alpha(x_i) - \alpha(x_{i-1}) \geq 0 \\
+	(v_i, u_i) & \text{ if } \alpha(x_i) - \alpha(x_{i-1}) < 0
+\end{cases}$$
+Then
+$$\begin{aligned}
+c_2 \leq& \sum_{i=1}^n \big(f(u_i) - f(v_i)+2\epsilon'\big)\abs{\alpha(x_i) - \alpha(x_{i-1})}\\
+=& \sum_{i=1}^n \big(f(u_i) - f(v_i)\big)\abs{\alpha(x_i) - \alpha(x_{i-1})} + 2\epsilon'V(\alpha, P)\\
+\leq& \sum_{i=1}^n \big(f(t_i) - f(s_i)\big)\abs{\alpha(x_i) - \alpha(x_{i-1})} + 2\epsilon'V(\alpha)\\
+=& S_1(f,P, \alpha, t_1, \dots, t_n) - S(f, P, \alpha, s_1, \dots, s_n) + 2\epsilon'V(\alpha)
+\end{aligned}$$
+Now we use (2), for $P\supset P_0$,\footnote{이 $P_0$ 는 어디서 왔을까?}
+$$\begin{aligned}
+\abs{S_1(f, P, \alpha) - S_2(f, P, \alpha)} \leq \abs{S_1(f, P, \alpha) - A} + \abs{S_2(f, P, \alpha) - A} < \epsilon' + \epsilon' = 2\epsilon'
+\end{aligned}$$
+Overall, $$U(f, P, V)-L(f, P, V) = c_1+c_2 \leq 2M\epsilon' + 2\epsilon' + 2\epsilon'V(\alpha) = \epsilon'(2M+2+2V(\alpha))$$
+$\epsilon = \epsilon'(2M+2V(\alpha) + 2)$ will show what we wanted.\\
+\\
+\thm{ 5.5.4} The following are equivalent for BV $\alpha$.
+\begin{enumerate}
+	\item $f\in \mc{R}(\alpha)$, $\ds \int_a^b f\,d\alpha = A$.
+	\item $\forall \epsilon > 0$, $\exists \, P_0\in \mc{P}[a, b]$ s.t. $\abs{S(f, P, \alpha) - A} < \epsilon$ for all $P \supset P_0$.
+\end{enumerate}~\\
+\rmk. $f\in \mc{R}(\alpha) \imp f\in \mc{R}(V)$ !!\\
+\\
+\thm{ 5.5.5} Suppose $\alpha \in C_1 : [a, b]\ra\R$. If $f \in \mc{R}(\alpha)$,
+$f\alpha'$ is Riemann Integrable, and
+$$\int_a^b f \,d\alpha = \int_a^b f(x)\alpha'(x)\,dx = \int_a^b f \alpha'$$
+\pf. $S(f, P, \alpha) = \sum_{i=1}^n f(t_i)(\alpha(x_i) - \alpha(x_{i-1})) = \sum_{i=1}^n f(t_i)\alpha'(s_i)(x_i-x_{i-1})$ for $s_i\in(x_{i-1}, x_i)$ by MVT, and 
+$R(f\alpha', P) = \sum_{i=1}^n f(t_i)\alpha'(t_i)(x_{i}-x_{i-1})$
+\begin{enumerate}
+	\item $\exists\,P_0$ s.t. $P\supset P_0 \imp \abs{S(f, P, \alpha) -A} < \frac{\epsilon}{2}$ (Thm 5.5.4)
+	\item $\exists\,\delta > 0$ s.t. $\abs{x-y} < \delta \imp \abs{\alpha'(x) - \alpha'(y)} < \frac{\epsilon}{2M(b-a)}$ (Uniform continuity of $\alpha$ on $[a, b]$)
+\end{enumerate}
+Set $P_1$ as any superset of $P_0$ s.t. $\norm{P_1} < \delta$. If $P = \{a =x_0<x_1<\cdots <x_n=b \} \supset P_1$,
+$$\begin{aligned}
+\abs{R(f\alpha', P) - A} &\leq \abs{R(f\alpha', P)-S(f, P, \alpha)} + \abs{S(f, P, \alpha) - A} \\ 
+&\leq \sum_{i=1}^n \abs{f(t_i)} \abs{\alpha'(s_i) - \alpha'(t_i)} (x_i-x_{i-1}) + \frac{\epsilon}{2}\\
+&< M\frac{\epsilon}{2M(b-a)} \sum_{i=1}^n (x_i-x_{i-1}) + \frac{\epsilon}{2} = \frac{\epsilon}{2} + \frac{\epsilon}{2} < \epsilon
+\end{aligned}$$
+now $f\alpha'$ is Riemann Integrable and the integral is equal to $A$.\\
+\\
+\ex.
+\begin{enumerate}
+	\item $\int_{-1}^1 x^3\,d(x^2) = \int_{-1}^1 x^3 \cdot 2xdx = \frac{4}{5}$, since $x^2$ is $C^1$ (\mimp Lipschitz\mimp BV)
+	\item $\int_{-1}^1 x^3 \,d\abs{x}$.\footnote{You can show that $\abs{x}$ is Lipschitz continuous then it is BV.} \\
+	$\abs{x} = \alpha_1 - \alpha_2$ where
+	$$\alpha_1(x) = \begin{cases}
+		0 & (x < 0) \\ x & (x \geq 0)
+	\end{cases} \quad \alpha_2(x) = \begin{cases}
+		x & (x < 0) \\ 0 & (x\geq 0)
+	\end{cases}$$
+	These are both increasing, then splitting the integral and a simple calculation yields $\frac{1}{2}.$
+	\item $\int_{-1}^1 x^3\,d\alpha$ for $\alpha(x) = \begin{cases}
+		-x & (-1\leq x\leq 0) \\ x+1 & (0 < x\leq 1)
+	\end{cases}$.\\
+	Let $\alpha=\beta_1 + \beta_2$ s.t. $\beta_1(x) = \abs{x}$ and $\beta_2(x) = 1$ for $x > 0$, 0 otherwise. $\beta_1, \beta_2$ are both BV, and their sum $\alpha$ is BV.\\
+	$$\int_{-1}^1 f\,d\alpha = \int_{-1}^1 f\,d\beta_1 +  \int_{-1}^1 f\,d\beta_2 = \frac{1}{2} + f(0) = \frac{1}{2}$$
+	(Check the first equality for BV functions)
+\end{enumerate}~\\
+\thm{ 5.5.6} Suppose $f, \alpha:[a, b]\ra \R$ and $f, \alpha$ is BV. If $f\in \mc{R}(\alpha)$, then $\alpha\in \mc{R}(f)$ and
+$$\int_a^b \alpha\,df = f(b)\alpha(b) - f(a)\alpha(a) - \int_a^b f\,d\alpha$$
+\pf. Let $\int_a^b f\,d\alpha = A$. Then by Thm 5.5.4 $\forall\epsilon > 0$, $\exists\,P_0$ s.t. $P\supset P_0 \imp \abs{S(f, P, \alpha) - A} < \epsilon$.
+$$S(\alpha, P, f) = \sum_{i=1}^n \alpha(t_i)(f(x_i) - f(x_{i-1}))$$
+Rewrite $$f(b)\alpha(b) - f(a)\alpha(b) = \sum_{i=1}^n \big(\alpha(x_i)f(x_i) - \alpha(x_{i-1})f(x_{i-1})\big)$$
+And for $P\supset P_0$,
+$$\begin{aligned}
+	&\abs{S(\alpha, P, f) - \big( f(b)\alpha(b)-f(a)\alpha(a) - A \big)} \\
+	&= \abs{\sum_{i=1}^n f(x_i) [\alpha(x_i)-\alpha(t_i)] + \sum_{i=1}^n f(x_{i-1})[\alpha(t_i)-\alpha(x_{i-1})] - A}\\
+	&= \abs{S(f, Q, \alpha) - A} < \epsilon
+\end{aligned}$$
+where $Q = \{a=x_0 \leq t_0 \leq x_1 \leq t_1 \leq x_2 \leq \cdots \leq t_n \leq x_n = b \} = P\cup \{t_1,\cdots, t_n\} \supset P\supset P_0$.
+\pagebreak

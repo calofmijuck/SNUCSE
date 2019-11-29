@@ -1,0 +1,47 @@
+\section*{April 17th, 2019}
+\defn. $S\subset \R^d$: \textbf{disconnected} \miff There exists \textbf{non-empty} sets $U, V$ such that \begin{enumerate}
+	\item $U\cap V = \emptyset$
+	\item $U\cup V = S$
+	\item $U$ and $V$ are open in $S$\\
+\end{enumerate}
+Last time we characterized all connected sets of $\R$.\\
+\\
+\thm{ 2.6.2} Suppose $\{C_i: i\in I\}$ is a family of connected sets.\footnote{활용 보다도 증명이 중요하니 꼭 기억해 두자.}
+$$\bigcap_{i\in I} C_i \neq \emptyset \imp \bigcup_{i\in I} C_i  \text{ is connected}$$
+\pf. (Routine) Assume $C = \bigcup_{i\in I} C_i$ is disconnected. $C$ can be decomposed into 2 sets $U, V$ (that satisfy condition (1), (2), (3) from the definition). Let $$U_i = C_i\cap U, \quad V_i = C_i\cap V \quad (\forall i)$$ then $U_i, V_i$ are open in $C_i$.\footnote{$U$: open in $X$ and $Y\subset X$ \mimp $U\cap Y$: open in $Y$.} Now $U_i, V_i$ satisfy (2) and (3) for $C_i$. Since $C_i$ is connected, (1) should not hold, in other words, either $U_i$ or $V_i$ must be $\emptyset$.\\
+Define: $I_1 = \{i\in I:U_i = \emptyset, V_i =C_i \}$, $I_2 = \{i\in I:U_i =C_i, V_i = \emptyset \}$. If $I_1 = \emptyset \imp I_2 = I \imp V_i = \emptyset\; (\forall i)$ $\imp V = \bigcup_{i\in I} V_i = \emptyset$\footnote{Check!}, contradiction. Similarly if $I_2 = \emptyset$, contradiction.\\
+Select $i_1 \in I_1, i_2 \in I_2$. Then $C_{i_1} = V_{i_1} \subset V$, $C_{i_2} = U_{i_2}\subset U$. Therefore $C_{i_1}\cap C_{i_2} = \emptyset$. Contradiction.\\
+\\
+\ex.
+\begin{enumerate}
+	\item $x, y\in \R^d$, $[x, y] = \{tx+(1-t)y: t\in[0, 1]\}$ is connected. (Proof similar to Prop 2.6.1)
+	\item $\ds N(x, r) = \bigcup_{y\in N(x, r)} [x, y]$ is connected by the theorem above. ($\bigcap_{y\in N(x, r)}[x, y] = \{x\} \neq \emptyset$)
+	\item $\R^d = \ds \bigcup_{y\in \R^d} [0, y]$ is connected.
+	\item Convex sets are connected. $A = \ds\bigcup_{y\in A}[x, y]$.
+\end{enumerate}
+\defn. Set $A$ is \textbf{convex} \miff $x, y\in A \imp [x, y]\subset A$.\\
+\\
+\textbf{Comment}. Homework problem: Show that $S = \{(x, y):xy>1 \}$ is open.\\
+\pf. 1. Show that $N(z, \epsilon) \subset S$ for all $z\in S$.\\
+2. Instead show that $F = \{(x, y) : xy \leq1\}$ is closed.\\
+Use Thm 2.2.3 (4). Let $(x_n, y_n)$ be a sequence in $F$ that converges to $(x, y)$. $$xy = \lim x_n \lim y_n = \lim x_ny_n \leq 1 \imp (x, y)\in F$$
+\\
+\ex. $A\subset \R^n$, $B\subset \R^m$, define $A\times B \subset \R^{n+m}$ as $$A\times B = \{(x, y) : a\in A, b\in B\}$$
+If $m=n=1$, $A\times B$ is a rectangular box in $\R^2$.\\
+If $A, B$ is open/closed/compact/connected, $A\times B$ is open/closed/compact/connected.\\
+\pf.
+\begin{enumerate}
+	\item (Open) $(a, b)\in A\times B$. There exists $\epsilon_1, \epsilon_2 >0$ such that $N(a, \epsilon_1)\subset A$, $N(b, \epsilon_2)\subset B$. Choose $\epsilon = \min \{\epsilon_1, \epsilon_2\}$. If $(x, y)\in N((a, b), \epsilon) \subset \bb{R}^{n+m}$,\footnote{Do not write as $\R^{m+n}$. Fist coordinate is $n$-dimension, second is $m$-dimension.} we have $$ \epsilon^2 > \norm{(x, y) - (a, b)}^2 = \norm{x-a}^2 + \norm{y - b}^2$$
+	$\norm{x-a} < \epsilon < \epsilon_1$ and $\norm{y - b} <\epsilon < \epsilon_2$. $x\in A$, $y\in B$.\\
+	Therefore $(x, y)\in A\times B$, and $N((a, b), \epsilon) \subset A\times B$.
+	\item (Closed) $(x_k, y_k)$: sequence in $A\times B$. ($x_k \in A, y_k\in B$) \\
+	Suppose $(x_k, y_k) \ra (x, y)$ ($x_k\ra x, y_k\ra y$). Since $A$ is closed and $x_k$ is a sequence in $A$, $x\in A$. Similarly, $y\in B$. Thus $(x, y)\in A\times B$, and $A\times B$ is closed.
+	\item (Compact) $A, B$ are closed and bounded. Closed is proven by (2).\\
+	Since $A, B$ are bounded, $\exists\, M_1, M_2$ such that $\norm{a}\leq M_1$, $\norm{b}\leq M_2$ for all $a\in A$, $b\in B$. For all $(a, b)\in A\times B$, $$\norm{(a, b)} = \sqrt{\norm{a}^2 +\norm{b}^2} \leq \sqrt{M_1^2+M_2^2}$$ Therefore $A\times B$ is bounded. Thus compact.
+	\item (Connected)
+	$a\in A \imp \{a\}\times B$ is connected. $b\in B \imp A \times \{b\}$ is connected.\\
+	Proof. If the set is disconnected, exists $\{a\} \times U$, $\{a\} \times V$ such that splits $B$.\\
+	Since $(A\times \{b\}) \cap (\{a\}\times B) = \{(a, b)\}\neq \emptyset$, $(A\times \{b\}) \cup (\{a\}\times B)$ is connected by Thm 2.6.2. Now fix $a\in A$, and define $C_b = (A\times \{b\}) \cup (\{a\}\times B)$.\\
+	Then $\{C_b:b\in B\}$ is a family of connected sets, and $\bigcap_{b\in B} = \{a\}\times B \neq \emptyset$. $A\times B = \bigcup_{b\in B} C_b$ is connected by Thm 2.6.2.
+\end{enumerate}
+\pagebreak

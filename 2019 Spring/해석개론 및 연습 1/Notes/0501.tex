@@ -1,0 +1,48 @@
+\section*{May 1st, 2019}
+\textbf{3.3 Uniform Continuity}\\
+\defn. $f:X\ra Y$ is \textbf{uniformly continuous} $\iff \forall \epsilon>0, \exists\,\delta>0$ s.t. $x, y\in X$, $\norm{x - y} < \delta \imp \norm{f(x) - f(y)} < \epsilon$.\\
+\\
+\rmk. ``$f:X\ra Y$ is continuous at $x_0\in X$" meant that $\forall \epsilon > 0, \exists\,\delta > 0$ s.t. $\norm{x - x_0} < \delta \imp \norm{f(x) - f(x_0)} < \epsilon$. In this definition, $\delta$ was a function of $x_0$. But in the definition of uniform continuity, $\delta$ is only dependent of $\epsilon$.\\
+\\
+\ex.
+\begin{enumerate}
+	\item $f:\R\ra\R$, $f(x) = x^2$ (Not uniformly continuous)\\
+	For $\epsilon = 1$, suppose we have $\delta > 0$. Set $x = 1/\delta + \delta /2$, $y = 1/\delta$. Then $\abs{x - y} = \delta / 2 < \delta$, but $\abs{f(x) - f(y)} = \abs{x^2-y^2} = 1 + \delta^2/4 > \epsilon$.
+	\item $f:[0, 1]\ra \R$, $f(x) = x^2$ (Uniformly continuous \& Lipschitz continuous)\footnote{함수의 성질일 뿐만 아니라 domain 의 성질이기도 하다? Domain 도 중요한 역할을 한다.}\\
+	Given $\epsilon > 0$, $\delta = \epsilon / 2$. If $\abs{x - y} < \delta$ then $\abs{f(x) - f(y)} = \abs{x + y} \abs{x - y} < 2\delta =\epsilon$.
+	\item Lipschitz Continuity $\imp$ Uniform Continuity\\
+	Suppose $\forall x, y\in X$, $\exists\,k>0$ s.t. $\norm{f(x) - f(y)} \leq k\norm{x -y}$. Then set $\delta = \epsilon / k$ to show uniform continuity.
+	\item \textbf{Lipschitz $\imp$ Uniform $\imp$ Continuous}\\
+	$f:[0, \infty) \ra \R$, $f(x) = \sqrt{x}$.
+	\begin{enumerate}
+		\item Not Lipschitz continuous.\\
+		$\abs{f(x) - f(y)} = \frac{\abs{x-y}}{\sqrt{x}+\sqrt{y}} \leq k\abs{x - y}$ for all $x, y\in X$? Impossible.
+		\item Uniform continuous.\\
+		Set $\delta = \epsilon^2$. $\abs{f(x) - f(y)} = \abs{\sqrt{x} - \sqrt{y}} \leq \sqrt{\abs{x - y}} < \sqrt{\delta} = \epsilon$
+	\end{enumerate}
+\end{enumerate}~\\
+\thm{ 3.3.1} (Heine's Theorem) Suppose $f:X\ra Y$ is continuous. If $X$ is compact, $f$ is uniformly continuous.\\
+\pf. Given $\epsilon > 0$, $x\in X$, $\exists\, \delta(x)>0$ s.t. $\norm{y-x} < \delta(x) \imp \norm{f(y) - f(x)} < \epsilon / 2$. \\
+Define $U_x = N(x, \delta(x) / 2)$. Then $\{U_x:x\in X\}$ is a open cover of $X$. By compactness, there exists a finite subcover $\{U_{x_i} \}_{i=1}^n$. Set $\delta =\frac{1}{2}\min \{\delta(x_1), \dots, \delta(x_n) \}$.\\
+Suppose $\norm{x - y}< \delta$. For some $k$, $x\in U_{x_k}$, and then $y\in N(x_k, \delta(x_k))$. This is because $$\norm{x - x_k} < \delta(x_k) / 2, \quad \norm{y - x_k} \leq \norm{y - x} + \norm{x - x_k} < \delta + \delta(x_k) / 2 < \delta(x_k)$$ Then we have $$\norm{f(x) - f(y)} \leq \norm{f(x) - f(x_k)} + \norm{f(x_k) - f(y)} < \epsilon / 2 + \epsilon/ 2 = \epsilon$$ by continuity of $f$. Thus $f$ is uniformly continuous.\\
+\\
+\thm{ 3.3.2} Suppose $f:X\ra Y$ is uniformly continuous. If $\span{x_n}$ is a Cauchy sequence in $X$, $\span{f(x_n)}$ is also a Cauchy sequence.\\
+\pf. Given $\epsilon > 0$, $\exists\,\delta >0$ s.t. $\norm{x - y} < \delta \imp \norm{f(x) - f(y)} < \epsilon$. For this $\delta$, $\exists\,N$ s.t. $m, n\geq N\imp \norm{x_m-x_n} < \delta$. Then we have $$m, n\geq N \imp \norm{x_m-x_n} < \delta \imp \norm{f(x_m) - f(x_n)} < \epsilon$$
+\rmk. If $f:X\ra Y$ is continuous, $\span{x_n} \ra x$ then $\span{f(x_n)} \ra f(x)$. In this case, $\span{x_n}, x$ must be in $X$, $\span{f(x_n)}, f(x)$ must be in $Y$.\\
+Consider $f:(0, 1)\ra \R$, $f(x) = 1/x$. $x_n = 1/n$ converges, and is a Cauchy sequence. But $f(x_n) = n$ is not Cauchy. The limit value of $\span{x_n}$ does not have to be in $X$ for a uniform continuous function.\\
+\\
+\defn. Suppose $f:X\ra Y$ is continuous, $X\subset A, Y\subset B$. If $g:A\ra B$ satisfies $g(x) = f(x)$ for $x\in X$, and if $g$ is continuous on $A$, we say that $g$ is a \textbf{continuous extension} of $f$ to $ A $.\\
+\\
+\ex.
+\begin{enumerate}
+	\item $f:(0, 1)\ra \R$, $f(x) = x$.\\
+	Consider $A = (0, 2)$. $g(x) = x$ on $(0, 2)$ is a continuous extension, $h(x) = x$ on $(0, 1)$, $h(x) = 1$ on $[1,2)$ is also a continuous extension.\\
+	Consider $A = [0 ,1]$. Then $g(0) = 0, g(1)=1$, $g(x) = x$ on $(0, 1)$ is a unique continuous extension of $f$.
+	\item $f:(0, 1)\ra\R$, $f(x) = 1/x $.\\
+	Consider $A = [0, 1)$. It is impossible to find a continuous extension.
+\end{enumerate}~\\
+\textbf{Cor 3.3.3} Suppose $f:X\ra Y$ is uniformly continuous. Then there exists a unique continuous extension of $f$ to $\overline{X}$.\footnote{$Y$ is assumed to be extended to $\R^d$.}\\
+\pf. Take $x_0\in \overline{X}\bs X$. Set $g(x) = f(x)$ for $x\in X$. Now for $g(x_0)$, recall that $x_0\in \overline{X}$, so there exists a sequence $\span{x_n}$ in $X$ s.t. $x_n\ra x_0$. Since $\span{x_n}$ is convergent, $\span{x_n}$ is Cauchy sequence and by Thm 3.3.2, $\span{f(x_n)}$ is also a Cauchy sequence. Thus $\span{f(x_n)}$ converges. Define $g(x_0)$ as the limit of $f(x_n)$.\\
+Now we must check if $g(x_0)$ is well-defined. In other words: For any two sequence $\span{x_n}, \span{y_n}$ that converge to $x_0$, does $f(x_n), f(y_n)$ converge to the same value?\\
+Consider $\span{z_n} = x_1, y_1, x_2, y_2, \dots$. It is trivial that $z_n\ra x_0$. Since $\span{z_n}$ is Cauchy, $\span{f(z_n)}$ is also Cauchy by uniform continuity. Let its limit be $\gamma$. Then $\span{f(x_n)}, \span{f(y_n)}$ is a subsequence of $\span{f(z_n)}$, thus they both must converge to $\gamma$. Uniqueness directly follows from this proof, and we can easily check that $g$ is continuous.
+\pagebreak

@@ -1,0 +1,76 @@
+\section*{May 29th, 2019}
+\thm{ 5.3.1 + 5.3.3} \textbf{(Fundamental Theorem of Calculus)} Suppose $f:[a, b]\ra\R$ is bounded and Riemann Integrable.
+\begin{enumerate}
+	\item Suppose $F(x) = \ds \int_a^x f(t)dt$, and $f$ is continuous at $x_0$. Then $F$ is differentiable at $x_0$ and $F'(x_0) = f(x_0)$.
+	\item If $F' = f$ on $[a, b]$, $\ds \int_a^b f(t) dt = F(b)-F(a)$.
+\end{enumerate}
+\rmk.
+\begin{enumerate}
+	\item (For 1) If $f$ is continuous on $[a, b]$, $F' = f$ on $[a, b]$, and thus continuous functions have an antiderivative.
+	\item Consider $f(x) = \begin{cases}
+		0 & (0\leq x < 1) \\ 1 & (1 \leq x \leq 2)
+	\end{cases}$ then $F$ is not differentiable at $x = 1$.
+	\item (For 1) $F$ is Lipschitz continuous.\\
+	$\because$ $\abs{f(x)} \leq M$. For $x > y$, $$\abs{F(x) - F(y)} = \abs{\int_a^x f - \int_a^y f} = \abs{\int_y^x f} \leq \int_y^x \abs{f} \leq M(x-y)$$
+\end{enumerate}
+\pf.
+\begin{enumerate}
+	\item $\forall\epsilon > 0$, $\exists\,\delta > 0$ s.t. $\abs{x-x_0} < \delta \imp \abs{f(x) - f(x_0)} < \epsilon$.\\
+	If $x > x_0$, we want to show that $\abs{\frac{F(x)-F(x_0)}{x-x_0} - f(x_0)}\ra 0$.
+	$$\begin{aligned}
+		\abs{\frac{F(x)-F(x_0)}{x-x_0} - f(x_0)} &= \abs{\frac{1}{x-x_0}\int_{x_0}^x f(t)dt - \frac{1}{x-x_0} \int_{x_0}^xf(x_0)dt}\\
+		&=\frac{1}{\abs{x-x_0}} \abs{\int_{x_0}^x \big(f(t)-f(x_0)\big) dt} \\ &\leq \frac{1}{\abs{x-x_0}} \int_{x_0}^x \abs{f(t)-f(x_0)}dt\\
+		&< \frac{1}{\abs{x-x_0}}\int_{x_0}^x \epsilon \,dt = \epsilon \quad (\because \abs{t-x_0} < \delta \imp \abs{f(t) - f(x_0)} < \epsilon)
+	\end{aligned}$$
+	Therefore the right derivative of $F$ at $x_0$ is $f(x_0)$. The proof is similar for the left derivative.
+	\item Take any $P = \{a = x_0 < x_1 < \cdots < x_n = b\}\in \mc{P}[a, b]$.
+	$$\begin{aligned}
+		F(b)-F(a) &= F(x_n) - F(x_0) = \sum_{k=1}^{n} \big(F(x_k) - F(x_{k-1})\big) \\ &\overset{\text{MVT}}{=} \sum_{k=1}^n (x_k - x_{k-1}) f(t_k) \quad(\exists\, t_k \in (x_{k-1}, x_k)) \\
+		&=R(f, P)
+	\end{aligned}$$
+	Now since $f$ is Riemann Integrable, $\ds\int_a^b f(t)dt = F(b)-F(a)$
+\end{enumerate}~\\
+\textbf{Cor 5.3.2} \textbf{(Mean Value Theorem for Integrals)} Suppose $f:[a, b]\ra\R$ is continuous. Then there exists $c\in (a, b)$ such that
+$$\frac{1}{b-a}\int_a^b f(t)dt = f(c)$$
+\pf. Consider $F(x) = \ds\int_a^x f(t)dt$. $F$ is differentiable and apply MVT.\\
+\\
+\\
+\prop{ 5.3.4} \textbf{(Substitution Rule)} Suppose $g:[a, b]\ra[c, d]$ is a $C^1$-function and $f:[a, b]\ra\R$ is continuous. Then
+$$\int_{g(a)}^{g(b)}f(x)dx = \int_a^b f(g(t))\,g'(t)\,dt$$
+\\
+\pf. $\ds H(y) = \int_{g(a)}^y f(t)dt$. Then $H$ is differentiable and $H'=f$. Set $$F_1(x) = \int_{g(a)}^{g(x)}f(t)dt = H(g(x)) \quad F_2(x) = \int_a^x f(g(t))g'(t)dt$$
+Then $F_1'(x) = H'(g(x))g'(x) = f(g(x))g'(x) = F_2'(x)$. Thus $F_1(x) - F_2(x) = c$ (constant), and evaluating this at $x=0$ gives $c = 0$.
+\\
+\\
+\prop{ 5.3.5} \textbf{(Integration by Parts)} Suppose $f, g:[a, b]\ra\R$ are $C^1$-functions. Then\footnote{모든 미분가능한 함수 $f$ 에 대해 부분적분 식을 만족하면 $g'$ 을 $g$ 의 도함수로 정의하기도 한다. `미분 가능'의 범위를 넓히는 개념. 극한으로 정의하면 넓힐 방법이 없다...}
+$$\int_a^b f(x)g'(x) dx = \left[f(x)g(x)\right]_a^b - \int_a^b f'(x)g(x)dx$$
+\pf. Use $(fg)' = fg' + f'g$.
+\\\\\\
+\textbf{5.4 Function of Bounded Variation (BV function)}\\
+Given $\alpha: [a, b]\ra\R$, $$\sum_{i=1}^n f(t_i)(\alpha(x_i) - \alpha(x_{i-1})) \underset{\norm{P}\ra 0}{\longrightarrow} \int_a^b f d\alpha $$
+If this limit exists, $f$ is Stieltjes Integrable w.r.t $\alpha$. Here, $\alpha$ must be at least of bounded variation.\\
+\\
+\defn. For $f:[a, b]\ra\R$, $P = \{a=x_0 < x_1 < \cdots < x_n=b\} \in \mc{P}[a, b]$. Define $$V(f, P) = \sum_{i=1}^n \abs{f(x_i) - f(x_{i-1})}$$
+and the \textbf{total variation} of $f$ over $[a, b]$ by
+$$V_a^b(f) = \sup \left\{V(f, P): P \in \mc{P}[a, b]\right\}$$
+And $f$ is said to be of \textbf{bounded variation} if the total variation is finite. $V_a^b(f) < \infty$.\\
+\\
+\ex. $f(x) = \begin{cases}
+	x\sin \dfrac{1}{x} & (x \neq 0) \\ 0 & (x = 0)
+\end{cases}$ is not BV. Consider
+$$P_n = \left\{0 = x_0 <\frac{2}{(2n+1)\pi} <\frac{2}{(2n-1)\pi} < \cdots < \frac{2}{3\pi} < \frac{2}{\pi} < 1 \right\}$$
+Then $f(\frac{2}{(2k+1)\pi}) = \frac{2}{(2k+1)\pi} (-1)^k$ and $$\abs{f\left(\frac{2}{(2k+1)\pi}\right) - f\left(\frac{2}{(2k-1)\pi}\right)} = \frac{2}{(2k+1)\pi} + \frac{2}{(2k-1)\pi} > \frac{2}{(2k-1)\pi}$$
+Then the total variation diverges. $$V(f, P_n) > \frac{2}{(2n+1)\pi} + \frac{2}{(2n-1)\pi} + \cdots + \frac{2}{\pi} = \frac{2}{\pi} \left(1+\frac{1}{3} + \frac{1}{5} + \cdots + \frac{1}{2n+1}\right) \ra \infty$$.\\
+\\
+\ex. $f:[a, b]\ra\R$.
+\begin{enumerate}
+	\item $f$: monotone $\imp$ $f$ is of bounded variation.\\
+	\pf. WLOG suppose $f$ is increasing. Then $V(f, P) = f(b)-f(a)$.
+	\item $f$: Lipschitz continuous $\imp$ $f$ is of bounded variation.\\
+	\pf. $\exists\, M$ s.t. $\abs{f(x) - f(y)} \leq M\abs{x-y}$. Then $V(f, P) \leq M(b-a)$.
+	\item $f\in C^1$, $f'$ is bounded $\imp$ $f$: Lipschitz continuous $\imp $ $f$: Bounded variation.
+	\item $f$: continuous does not imply that $f$ is of bounded variation. (Counterexample above)
+\end{enumerate}~\\
+\textbf{Lemma}. If $f:[a, b]\ra\R$ is of bounded variation, $f$ is bounded.\\
+\pf. Let $x\in[a, b]$. $P = \{a, x, b\}$.$$\abs{f(x)} \leq \abs{f(a)} + \abs{f(x)-f(a)} \leq \abs{f(a)} + \overbrace{\abs{f(x) - f(a)} + \abs{f(b)-f(x)}}^{V(f, P)} \leq \abs{f(a)} + \abs{V(f)}$$
+\pagebreak

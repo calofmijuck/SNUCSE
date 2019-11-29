@@ -1,0 +1,106 @@
+\section*{June 3rd, 2019}
+$f:[a, b]\ra\R$, $P = \{a=x_0 < x_1 < \cdots < x_n=b\}\in\mc{P}[a, b]$\\
+$V(f, P) = V_a^b(f, P) = \sum_{i=1}^{n} \abs{f(x_i)-f(x_{i-1})}$\\
+If $\{V(f, P): P\in \mc{P}[a, b] \}$ is bounded above, $f$ is a function of bounded variation. And we write the total variation of $f$ over $[a, b]$ as $V(f) = V_a^b (f) = \sup \{V(f, P): P\in \mc{P}[a, b] \}$\\
+\\
+\rmk.
+\begin{enumerate}
+	\item For two partitions $P, Q$ s.t. $P\subset Q$, then $V(f, P) \leq V(f, Q)$.
+	\item $f(x) = \begin{cases}
+		x\sin \dfrac{1}{x} &(x\neq 0) \\ 0  &(x = 0)
+	\end{cases}$ is not BV.
+	\item $f\in C^1[a, b]$ $\imp$ $f$: differentiable, $f'$: bounded $\imp$ $f$: Lipschitz continuous $\imp$ $f$: BV
+	\item $f$: BV $\imp$ $f$: bounded.
+\end{enumerate}~\\
+\prop{ 5.4.1} Suppose $f, g:[a, b]\ra\R$ is BV. Also, $\exists\, M_f, M_g$ s.t. $\abs{f} \leq M_f, \abs{g}\leq M_g$.\footnote{Now we see that any linear combination of BV functions are BV.}
+\begin{enumerate}
+	\item $f+g$ is BV, $V(f+g) \leq V(f) + V(g)$.
+	\item $fg$ is BV, $V(fg) \leq M_f \cdot V(g) + M_g\cdot V(f)$.
+	\item $\alpha f$ is BV, $V(\alpha f) = \abs{\alpha}V(f)$.
+\end{enumerate}
+\pf.
+\begin{enumerate}
+	\item We know that $f+g$ is BV by $$\begin{aligned}
+	V(f + g, P) &= \sum_{i=1}^n \abs{f(x_i) + g(x_i) - f(x_{i-1}) - g(x_{i-1})} \\&\leq V(f, P) + V(g, P)
+	\leq V(f) + V(g)
+	\end{aligned}$$
+	and taking $\sup$ over all $P\in\mc{P}[a, b]$ gives $V(f+g)\leq V(f)+V(g)$.
+	\item Sum the following inequality from $i=1$ to $n$.
+	$$\begin{aligned}
+		\abs{f(x_i)g(x_i) - f(x_{i-1})g(x_{i-1})} &= \abs{f(x_i)(g(x_{i-1})-g(x_{i-1})) + g(x_{i-1})(f(x_{i}) - f(x_{i-1}))} \\&\leq M_f \abs{g(x_i) - g(x_{i-1})} + M_g \abs{f(x_i)-f(x_{i-1})}
+	\end{aligned}
+	$$
+	Thus $V(fg, P)\leq M_f \cdot V(g, P) + M_g \cdot V(f, P) \leq M_f \cdot V(g) + M_g \cdot V(f)$ and $fg$ is BV. Taking $\sup$ over all $P\in\mc{P}[a, b]$ gives $V(fg)\leq M_f \cdot V(g) + M_g \cdot V(f)$.
+	\item Exercise.
+\end{enumerate}~\\
+\prop{ 5.4.2} Suppose $f:[a, b]\ra\R$, $c\in (a, b)$. The following are equivalent.
+\begin{enumerate}
+	\item $f$ is of bounded variation on $[a, b]$.
+	\item $f$ is of bounded variation on $[a, c]$ and $[c, b]$.
+\end{enumerate}
+Moreover, if (1), (2) both hold, then $$V_a^b(f) = V_a^c(f) + V_c^b(f)$$
+\pf.
+\begin{itemize}
+	\item Show that $(1) \imp [(2), V_a^c(f) + V_c^b(f) \leq V_a^b(f)]$\\
+	For $Q\in \mc{P}[a, c]$, $R\in \mc{P}[c, b]$ define $P  = Q\cup R\in \mc{P}[a, b]$. By definition and (1),
+	$$ \begin{aligned}
+		V_a^c (f, Q) + V_c^b(f, R) = V_a^b(f, P) \leq V_a^b(f)
+	\end{aligned}$$
+	Since $V(*)$ is positive, (2) holds by
+	$$V_a^c(f, Q) \leq V_a^b(f) \quad V_c^b(f, R) \leq V_a^b(f)$$
+	and taking sup over partitions of $[a, c]$, $[c, b]$ will give the desired inequality.
+	\item Show that $(2) \imp [(1), V_a^c(f) + V_c^b(f) \geq V_a^b(f)]$\\
+	Let $P = \{a = x_0 < x_1 < \cdots < x_n = b\}\in \mc{P}[a, b]$. set $c\in [x_{l-1}, x_l]$. Define
+	$$Q = \{a = x_0 < x_1 < \cdots< x_{l-1} \leq c\}\in \mc{P}[a, c]  \quad R = \{c \leq x_{l} < \cdots< x_{n} = b\}\in \mc{P}[c, b]$$
+	Then $$
+	\begin{aligned}
+		&V_a^c(f, Q) + V_c^b(f, R)\\&= \sum_{i=1}^{l-1} \abs{f(x_{i-1}) - f(x_{i})} + \abs{f(x_{l-1}) - f(c)} + \abs{f(c) - f(x_l)} +\sum_{i=l+1}^{n} \abs{f(x_{i-1}) - f(x_{i})}\\
+		&\geq \sum_{1\leq i \leq n, i\neq l} \abs{f(x_{i - 1}) - f(x_i)} + \abs{f(x_{l-1}) - f(x_l)} \geq \sum_{i=1}^n \abs{f(x_{i-1}) - f(x_i)} = V_a^b (f, P)
+	\end{aligned}
+	$$
+	$$
+	V_a^b(f, P)\leq V_a^c(f, Q) + V_c^b(f, R)\leq V_a^c(f) + V_c^b(f)
+	$$
+	Thus $f$ is BV on $[a, b]$ and $V_a^b(f)\leq V_a^c(f) + V_c^b(f)$.
+\end{itemize}~\\
+\thm{ 5.4.2} The following are equivalent for $f:[a, b]\ra\R$.
+\begin{enumerate}
+	\item $f$ is of bounded variation.
+	\item There exists monotonically increasing functions $g, h:[a, b]\ra\R$ s.t. $f = g-h$.
+\end{enumerate}
+\pf. \textbf{(2\mimp1)} Monotonic $\imp$ BV. Thus $g-f$ is BV.\\
+\textbf{(1\mimp2)} Consider $g(x) = V_a^x(f)$ and $h(x) = g(x) - f(x)$. Then $g$ is obviously monotonically increasing and $f = g-h$. Now we show that $h$ is monotonically increasing.
+$$\begin{aligned}
+h(y) - h(x) &= g(y) - g(x) - [f(y) - f(x)] = V_x^y(f) -[(f(y) - f(x)] \\&\geq V_x^y(f, P) - [f(y) - f(x)] \geq \abs{f(y) -f(x)} - [f(y)-f(x)]\geq 0
+\end{aligned}$$\\
+\rmk.
+\begin{enumerate}
+	\item In (2), $g, h$ are not unique, and setting $G(x) = g(x) + x$, $H(x) = h(x) + x$ gives strictly increasing functions that satisfy $f = G-H$.
+	\item However, $f = \widehat{g} - \widehat{h}$ and if $\widehat{g}, \widehat{h}$ are monotonically increasing, $\widehat{g}(a) = 0$. \\
+	Then $\widehat{g}(x)\geq V_a^x(f)$ for all $x\in [a, b]$.
+\end{enumerate}~\\
+\textbf{Why is BV important?} 1. Length of Curve. 2. Stieltjes Integral.\\
+\\
+\defn. \textbf{(Length of Curve)} For curve $\alpha: [a, b]\ra \R^m$. For any partition
+$P = \{a = x_0 < x_1 < \cdots < x_n = b\} \in \mc{P}[a, b]$, define
+$$\Lambda(\alpha, P) = \sum_{i=1}^n\norm{\alpha(x_i) - \alpha(x_{i-1})}$$
+. If $\{\Lambda(\alpha, P): P \in \mc{P}[a, b]\}$ is bounded above, we define the supremum of this set as the \textbf{length of curve} $\alpha$ and denote it as $\Lambda(\alpha)$.\\
+\\
+\thm{ 5.4.4 + 5.4.5} Suppose $\alpha:[a, b]\ra \R^m$, $\alpha(t) = \big(\alpha_1(t) , \dots, \alpha_m(t)\big)$.
+\begin{enumerate}
+	\item $\Lambda(\alpha)  < \infty$ $\iff$ $\alpha_i$ is BV for all $i$.
+	\item For all $i$, if $\alpha_i \in C^1([a, b]) \imp \Lambda(\alpha) = \ds\int_a^b \sqrt{\alpha'_1(t)^2 +\cdots +  \alpha'_m(t)^2} \,dt$
+\end{enumerate}
+\pf.
+\begin{enumerate}
+	\item We use that fact that $$\begin{aligned}
+		 V(\alpha_i, P) \leq \Lambda(\alpha, P) = \sum_{i=1}^n \norm{\alpha(x_i) - \alpha(x_{i-1})} \leq \sum_{j=1}^m \sum_{i=1}^n \abs{\alpha_j (x_i) - \alpha_j(x_{i-1})} = \sum_{j=1}^m V(\alpha_j, P)
+	\end{aligned}
+	$$
+	Thus if $\Lambda(\alpha) <\infty$, $V(\alpha_i, P)\leq \Lambda(\alpha)$ and $\alpha_i$ is BV.\\
+	Also, if $\alpha_i$ are BV, $\Lambda(\alpha, P)$ is upper bounded by $V(\alpha_j, P) \leq V(\alpha_j)$. Thus $\Lambda(\alpha)$ is finite.
+	\item Apply MVT for each component of $\alpha(x_i) - \alpha(x_{i-1})$.
+	$$\Lambda(\alpha, P) = \sum_{i=1}^n \norm{\alpha(x_i) - \alpha(x_{i-1})} = \sum_{i=1}^n (x_i-x_{i-1}) \sqrt{\sum_{j=1}^m \alpha'_j(s_j)^2}$$
+	where $s_j \in (x_{i-1}, x_i)$ for each $j$. Use uniform continuity to bound... (omitted here)
+\end{enumerate}
+\pagebreak

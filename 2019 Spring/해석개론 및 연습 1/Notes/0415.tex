@@ -1,0 +1,82 @@
+\section*{April 15th, 2019}
+$K$: compact \miff Exists an open cover of $ K $ that has \textit{finite} subcover.\\
+\\
+\thm{ 2.5.4} (Heine-Borel) For $\R^d$, $K$: compact \miff $K$ is bounded and closed.\\
+\\
+\thm{ 2.5.5} (Cantor's Intersection Theorem)\footnote{축소구간정리의 가장 일반적인 형태}\\
+Given family of \textbf{compact} sets $\{K_i:i\in I\}$, for all \textbf{finite} $ J \subset I$, $\bigcap_{i\in J} K_i\neq \emptyset$. Then $$\bigcap_{i\in I} K_i\neq \emptyset$$
+\pf. (Contradiction) $\bigcap_{i\in I} K_i = \emptyset$ \mimp $\bigcup_{i\in I} K^C = \R^d$. (Complement)\\
+Take any $K_a$ ($a\in I$), then $K_a \subset \bigcup_{i\in I} K_i^C(=\R^d)$ \mimp $\{ K_i^C: i\in I\}$ is an open cover of $K_a$. Then there exists a finite subcover, $\{K_i^C: i\in J \}$ ($K_a$ is compact) Now we can write $K_a\subset \bigcup_{i\in J} K_i^C$. Take complement on both sides to get $K_a^C\supset \bigcap_{i\in J}K_i$. Then $K_a\cap \bigcap_{i\in J} K_i = \emptyset$, contradiction.\\
+\\
+\rmk. Let $K_i = [a_i, b_i]$ (Compact in $\R$) and set $K_1\supset K_2\supset \cdots$\\
+\mimp For $J = \{j_1, \dots, j_m\}$ ($j_1 < \cdots < j_m$), $\bigcap_{i\in J} K_i = K_{j_m} \neq \emptyset$\\
+\mimp $\bigcap_{i=1}^\infty K_i \neq \emptyset$ (축소구간정리)\\
+\\
+\\
+\textbf{2.6 Connected Set}\\
+p46-p47 (Section 2.2)\\
+\\
+\defn. $ X\subset \R^d $, $x\in X$. Define $$N_X(x, r) = \{y\in X: \norm{y - x} < r \} = N(x, \epsilon) \cap X$$
+\defn. $U\subset X$ is open in $X$ \miff $x\in U, \exists\, \epsilon > 0$ such that $N_X(x, \epsilon) \subset U$.\\
+\\
+\ex.
+\begin{itemize}
+	\item $U = \{3\}$. $U$ is open in $X = \N$. $N_\N(3, 1/10) = {3} \subset U$. (But not open in $\R$)
+	\item For $X = [0, 10]$, $ U = [0, 1)$.
+	$x\in U$, $N(x, 1-x) = (2x - 1, 1)$, and this might not be subset of $U$. But $$N_X(x, 1-x) = \begin{cases}
+		(2x-1, 1) & (x > 1/2)\\
+		[0, 1) & (x\leq 1/2)
+	\end{cases}$$
+	For both cases $N_X(x, 1-x) \subset U$.
+\end{itemize}
+\prop{ 2.2.5} $U$ is open in $X$ \miff $U = X\cap V$ for some open set $V$ in $\R^d$.\\
+\\
+\rmk. First example: $\{3\} = \N \cap (2.9, 3.1)$, Second example: $[0, 1) = [0, 10] \cap (-1, 1)$.\\
+Some references may write this definition as ``\textit{relatively}" open in $X$.\\
+\\
+\pf\textbf{ of 2.2.5}\\
+(\mimp) $x\in U$, $\exists\, \epsilon_x >0$ such that $N_X(x, \epsilon_x) \subset U$. Select $V = \bigcup_{x\in U} N(x, \epsilon_x)$, which is open.\footnote{$N(x, \epsilon)$ is open and union of open sets are always open.}\\
+Then we have $X \cap V = \bigcup_{x\in U} X\cap N(x, \epsilon_x) = \bigcup_{x\in U} N_X(x, \epsilon_x)$, which is exactly equal to $U$.\\
+\\
+($\impliedby$) $x\in U = X\cap V$ \mimp $x\in V$. Thus $\exists\, \epsilon>0$ such that $N(x, \epsilon)\subset V$. Then $$N_X(x, \epsilon) = X\cap N(x, \epsilon) \subset X\cap V = U$$ Thus $U$ is open in $X$.\\
+\\
+\textbf{Cor}. $U$: open in $X$, $Y\subset X$. \mimp $U\cap Y$: open in $Y$.\\
+\pf. $U = X\cap V$ ($V$: open) \mimp $U\cap Y = X\cap V\cap Y = V \cap (X\cap Y) = V\cap Y$.\\
+\\
+\defn. $S\subset \R^d$: \textbf{disconnected} \miff There exists \textbf{non-empty} sets $U, V$ such that \begin{enumerate}
+	\item $U\cap V = \emptyset$
+	\item $U\cup V = S$
+	\item $U$ and $V$ are open in $S$
+\end{enumerate}
+$S\subset \R^d$: \textbf{connected} \miff $S$ is not disconnected.\\
+\\
+\textbf{Question}. Find all $A\subset \R^d$ such that $A$ is open and closed.\\
+\pf. The only possible sets are $A = \emptyset, \R^d$.\\
+If $A$ is open and closed \mimp $A$: open, $A^C$: open. Then $\R^d = A\cup A^C$, and $\R^d$ is disconnected. But $\R^d$ is connected. Contradiction if either $A$ or $A^C$ is empty.\\
+\\
+\\
+\thm{}. The following are equivalent for $S\subset \R$.
+\begin{enumerate}
+	\item $S$ is connected.
+	\item $\forall a, b\in S$ s.t. $a<b$, and $c\in (a, b)$ \mimp $c\in S$.
+	\item $S = [a, b]$ or $[a, b)$ or $(a, b]$ or $(a, b)$ ($a, b$ can be $\pm\infty$)
+\end{enumerate} 
+\rmk. Prop 2.5.1 (1'\miff 2') + Disscussion above (2\miff 3)\\
+\pf.\\
+\textbf{(1\mimp 2)} (Contradiction) Assume $a, b\in S, c\notin S$ for some $a<c<b$. Set $U = (-\infty, c)\cap S$, $V = (c, \infty)\cap S$. $U, V$ are non-empty.\footnote{Always check! $a\in U, b\in V$.} $U \cap V = \emptyset$ and $U\cup V = S$. (Note that $c\notin S$) And $U, V$ are open in $S$. (Prop 2.2.5) Then $S$ is disconnected.\\
+\\
+\textbf{(2\mimp 1)} (Contradiction) Assume $S$ is disconnected. There exists $U, V$ that satisfy the definition of disconnected set. For $a\in U, b\in V$, (WLOG $a<b$). By (2), $[a, b]\subset S$.\\
+Let $c = \sup([a, b]\cap U)$.\\
+\underline{Case I)} $c\in U$. Then $c\neq b$ \mimp $c\in [a, b) = Y$ \mimp $c\in U\cap Y$.\\
+Since $U$ is open in $S$ and $Y\subset S$ \mimp $U\cap Y$ is open in $Y$. (Cor of 2.2.5)\\
+\mimp $\exists\, \epsilon>0$ such that $N_Y(c, \epsilon) \subset U\cap Y \subset U\cap [a, b]$.
+$$Y\cap N(c, \epsilon) = [a, b)\cap (c-\epsilon, c+\epsilon)\supset [c, b)\cap [c, c+\epsilon) = [c, \min\{b, c+\epsilon\})$$
+Therefore, we have $$[c, \min\{b, c+\epsilon\}) \subset N_Y(c, \epsilon) \subset U\cap [a, b]$$
+and since $c$ was the supremum, contradiction. 
+\\
+\underline{Case II)} $c\in V$. Similarly, contradiction.\\
+\\
+\textbf{(2\mimp 3)} $\inf S = u$, $\sup S = v$. (If $S$ is not bounded below, $u = -\infty$, if $S$ is not bounded above, $v = \infty$). Then if $c\in (u, v) \imp c\in S$. There exists $a, b\in S$ such that $u \leq a < c < b \leq v$, meaning that $S$ must be one of $[u, v], [u, v), (u, v], (u, v)$.\\
+\\
+\textbf{(3\mimp 2)} Trivial.
+\pagebreak
