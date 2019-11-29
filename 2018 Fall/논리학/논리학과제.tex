@@ -1,0 +1,110 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+
+\begin{document}
+\begin{center}
+	~\\~\\~\\~\\~\\~\\~\\
+\textbf{\Huge 논리학 중간 과제}\\~\\~\\~\\~\\~\\
+\textbf{\large 문제 제공자} \\~\\
+\begin{tabular}{rl}
+	\textbf{학과/이름 :}& 컴퓨터공학부 이성찬\\
+	\textbf{전화 번호 :}& 010-4030-6402\\
+	\textbf{이메일 :}& calofmijuck@snu.ac.kr\\
+\end{tabular}
+~\\~\\~\\~\\~\\~\\
+\textbf{\large 문제 풀이자} \\~\\
+\begin{tabular}{rl}
+	\textbf{학과/이름 :}& \underline{\qquad\qquad\qquad\qquad\qquad}\\
+	\textbf{전화 번호 :}& \underline{\qquad\qquad\qquad\qquad\qquad}\\
+	\textbf{이메일 :}& \underline{\qquad\qquad\qquad\qquad\qquad}\\
+\end{tabular}
+
+\end{center}
+\pagebreak
+
+\section*{1. 예문 1} 
+세 명의 교수가 식당에 앉아 있습니다. 웨이터가 와서 다음과 같이 말했습니다.
+\begin{center}
+	``세 분 \textbf{모두} 커피를 주문하시는군요."
+\end{center}
+그랬더니 첫 번째 교수는 다음과 같이 답했습니다.
+\begin{center} 
+	``잘 모르겠습니다."
+\end{center}
+두 번째 교수는 다음과 같이 답했습니다.
+\begin{center} 
+	``잘 모르겠습니다."
+\end{center}
+마지막으로, 세 번째 교수가 말했습니다.
+\begin{center} 
+	``아니요, 모두가 커피를 원하지는 않습니다."
+\end{center}
+웨이터는 주문을 받고 돌아와 커피를 주문한 교수님들께 커피를 드렸습니다. \footnote{출처: http://math.zxcvber.com/problems/2018.html, 생성 날짜 2018/10/10, 방문 날짜 2018/11/10.} \\
+\pagebreak
+
+\section*{2. 논증 1}
+웨이터의 질문 ``세 분 \textbf{모두} 커피를 주문하시는군요." 에 대하여, 다음과 같은 논증을 생각하자.\\~\\
+$p$: 첫 번째 교수가 커피를 주문했다. \\
+$q$: 두 번째 교수가 커피를 주문했다. \\
+$s$: 잘 모르겠다고 대답했다.\\~\\
+첫 번째 교수가 커피를 주문하지 않았다면, 잘 모르겠다고 대답하지 않았을 것이다.($\sim p \supset \sim s$)\\
+두 번째 교수가 커피를 주문하지 않았다면, 잘 모르겠다고 대답하지 않았을 것이다.($\sim q \supset \sim s$)\\
+---------------------------------------------------------\\
+두 번째 교수는 커피를 주문하지 않았다.($\sim q$)\\~\\
+위 논증이 타당한지 \textbf{완전 진리표 방법}을 이용해 조사하고, 커피를 주문한 교수님들이 누구인지 조사하시오.
+\pagebreak
+
+\section*{3. 논증 2}
+위 논증 1 에서 얻은 결론을 바탕으로 다음 논증을 생각해 보자.\\~\\
+$p$: 말을 끝까지 들었다. \\
+$q_1$: 첫 번째 교수님이 웨이터의 질문에 대한 답을 알고 있다.\\
+$q_2$: 두 번째 교수님이 웨이터의 질문에 대한 답을 알고 있다.\\
+$q_3$: 세 번째 교수님이 웨이터의 질문에 대한 답을 알고 있다.\\~\\
+첫 번째 교수님은 말을 끝까지 듣지 않아 모르겠다고 대답했다. ($\sim p \supset \sim q_1$)\\
+두 번째 교수님은 말을 끝까지 듣지 않아 모르겠다고 대답했다. ($\sim p \supset \sim q_2$)\\
+세 번째 교수님은 말을 끝까지 들었기에 모르겠다고 대답하지 않았다. ($\sim p \supset q_3$)\\
+---------------------------------------------------------\\
+말을 끝까지 들어봐야 한다. ($p$)\\~\\
+이 논증은 타당한가?
+\pagebreak
+
+\section*{4. 예문 2}
+옛날 한 마을에 어머니와 오누이가 살았어요.\\하루는 어머니가 산 너머 잔칫집에 일하러 가야 됐어요.\\
+``호랑이가 노리고 있을지도 모르니 절대로 문을 열어 주면 안 된다. 알겠지?"\\
+어머니는 하루 종일 잔칫일을 거들고 서둘러 산을 넘어 집으로 향했지요.\\그런데 고개 하나를 넘자 호랑이가 나타났어요.\\
+``\textbf{떡 하나 주면 안 잡아먹지.}"\\
+그래서 어머니는 떡을 주었고, 고개를 무사히 넘어갔어요.\\
+그런데 고개가 여러 개 였는데, 고개를 넘을 때마다 호랑이가 나타나지 뭐예요.\\
+결국 호랑이는 떡을 모조리 먹어치우고 어머니까지 꿀꺽 하고 삼켜버렸어요.\\
+(후략) \footnote{해와 달이 된 오누이 - 출처: https://blog.naver.com/wjdgywls48/220661758083, 생성 날짜 2016/3/22, 방문 날짜 2018/11/10.}\\
+\pagebreak
+
+\section*{5. 논증 3}
+다음과 같은 논증을 생각하자.\\~\\
+$p$: 어머니가 고개를 만난다.\\
+$q$: 어머니가 떡을 하나 잃어버린다.\\
+$r$: 어머니가 떡이 없다.\\
+$s$: 호랑이가 어머니를 잡아먹는다.\\~\\
+어머니가 고개를 만나면 떡을 하나 잃어버린다. ($p \supset q$) \\
+어머니가 고개를 만났는데 떡이 없으면 호랑이에게 잡아먹힌다. ($p\cdot r \supset s$)\\
+호랑이가 어머니를 잡아먹었다. ($s$)\\
+---------------------------------------------------------\\
+어머니가 고개를 만났을 때 떡이 없었다. ($p\cdot r$)\\~\\
+이 논증은 타당한가?
+\end{document}

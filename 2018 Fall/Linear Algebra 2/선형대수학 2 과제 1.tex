@@ -1,0 +1,171 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\numl}[1]{\item[\large\textbf{#1}]}
+\newcommand{\num}[1]{\item[\textbf{#1}]}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\trans}{^{\mathrm{\mathbf{t}}}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\aparen}[1]{\left\langle #1 \right\rangle}
+\newcommand{\im}{\text{im}\:}
+\newcommand{\aster}{\text{*}}
+
+
+\begin{document}
+\begin{center}
+\textbf{\Large선형대수학 2 숙제 \#1}\\
+\large 2017-18570 컴퓨터공학부 이성찬
+\end{center}
+
+\begin{itemize}
+\numl{9.3.11}
+	\begin{itemize}
+		\num{(가)} Let $S = \text{diag}(-1, 1, \dots, 1) \in \mf{M}_{n, n}(\mbb{R})$. Then $S\cdot S\trans = I_n$ 이고 $\det S = -1$. 따라서 $S \in \rmbf{O}(n) - \rmbf{SO}(n)$ 이고 $\rmbf{O}(n) - \rmbf{SO}(n) \neq \emptyset$ 이다.
+		\num{(나)} $S\cdot \rmbf{SO}(n)$ 의 정의로부터 $\lambda_S$ 가 surjection 인 것은 자명. $\det S = -1 \neq 0$ 이므로 $S$ 는 가역이다. 따라서 $\lambda_S(A) = \lambda_S(B) \: (A, B\in \rmbf{SO}(n))$ 이면 양변의 왼쪽에 $S^{-1}$ 을 곱하여 $A=B$ 를 얻게 되므로 $\lambda_S$ 는 injection. 따라서 $\lambda_S$ 는 bijection.
+		\num{(다)} $R\in \rmbf{O}(n) - \rmbf{SO}(n)$ 이면, $S^{-1}R \in \rmbf{SO}(n)$ 이므로 $R = S(S^{-1}R) \in S\cdot\rmbf{SO}(n)$. 그리고 $SA \in S\cdot \rmbf{SO}(n)$ ($A\in \rmbf{SO}(n)$) 이면,   $(SA)\trans(SA) = A\trans S\trans SA = I$ 이지만 $\det(SA) = \det S\cdot \det A = -1$ 이므로 $SA \in \rmbf{O}(n) - \rmbf{SO}(n)$. 두 집합이 서로가 서로를 포함하므로 $\rmbf{O}(n) - \rmbf{SO}(n) = S\cdot \rmbf{SO}(n)$.
+		\num{(라)} $S\cdot \rmbf{SO}(n)$ 의 원소들은 전부 행렬식의 값이 $-1$ 이고, $\rmbf{SO}(n)$ 의 원소들은 전부 행렬식의 값이 $1$ 이므로 두 집합은 disjoint. $\rmbf{O}(n) = \rmbf{SO}(n) \cup (\rmbf{O}(n) - \rmbf{SO}(n))$ 이고 (다)의 등식에 의해 $\rmbf{O}(n) = \rmbf{SO}(n) \amalg (S\cdot \rmbf{SO}(n))$.
+	\end{itemize}
+
+\numl{9.5.6} (계산으로 증명, 반각공식) $\mbb{R}^2$ 의 basis $\{(1, 0)\trans, (0, 1)\trans\}$ 에 대해 $S_\theta$ 와 $S_{Y_\theta}$ 의 함숫값이 같음을 보이면 Linear Extension Theorem 에 의해 두 operator 가 같다. $S_{Y_\theta}(1, 0)\trans = (1, 0)\trans - 2(-\sin(\theta/2))(-\sin(\theta/2), \cos(\theta/2))\trans = (1 - 2\sin^2(\theta/2), 2\sin(\theta/2)\cos(\theta/2))\trans = (\cos\theta, \sin\theta)\trans$. $S_{Y_\theta}(0, 1)\trans = (0, 1)\trans - 2\cos(\theta/2)(-\sin(\theta/2), \cos(\theta/2))\trans = (2\sin(\theta/2)\cos(\theta/2), 1-2\cos^2(\theta/2))\trans = (\sin\theta, -\cos\theta)\trans$. \footnote{$\sin^2\frac{\theta}{2} = \frac{1-\cos\theta}{2}, \cos^2\frac{\theta}{2} = \frac{1+\cos\theta}{2}, \sin\theta = 2\sin\frac{\theta}{2}\cos\frac{\theta}{2}$} 이므로 함숫값이 같다. 따라서 $S_\theta = S_{Y_\theta}$.
+
+\numl{9.5.12} $\frac{1}{\norm{Y}}Y = \left(-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right)\trans = \left(-\sin\frac{\pi/2}{2}, \cos\frac{\pi/2}{2}\right)\trans, \frac{1}{\norm{Z}}Z = \left(-\frac{1}{2}, \frac{\sqrt{3}}{2}\right)\trans = \left(-\sin\frac{\pi/3}{2}, \cos\frac{\pi/3}{2}\right)\trans$. \\따라서 구하는 각 $\theta = \frac{\pi}{2} - \frac{\pi}{3} = \frac{\pi}{6}$. (보기 9.5.11 이용)
+
+\numl{9.6.6}
+	\begin{itemize}
+		\num{(가)} $\aparen{Z}^\perp = \aparen{X}\oplus\aparen{Y} = \aparen{X'}\oplus\aparen{Y'}$ 이므로, ($\{X, Y\}, \{X', Y'\}$ 는 $\aparen{Z}^\perp$ 의 basis)$$\left[I\right]_{\mf{B}}^{\mf{B'}} = \bigg(\left[I(Z)\right]_{\mf{B}}, \left[I(X')\right]_{\mf{B}}, \left[I(Y')\right]_{\mf{B}}\bigg) = \bigg(\left[Z\right]_{\mf{B}}, \left[X'\right]_{\mf{B}}, \left[Y'\right]_{\mf{B}}\bigg)$$ 이다. $\left[Z\right]_{\mf{B}}$ 는 $(1, 0, 0)\trans$ 이고, $\left[X'\right]_{\mf{B}}, \left[Y'\right]_{\mf{B}}$ 의 $Z$-방향으로의 성분은 $0$ 이므로 ($X', Y'\in \aparen{Z}^\perp$) $\left[I\right]_{\mf{B}}^{\mf{B'}}$ 의 첫 행은 $(1, 0, 0)$ 이다. 따라서 $\left[I\right]_{\mf{B}}^{\mf{B'}} = \text{diag}(1, U)$ 인 $U\in\mf{M}_{2, 2}(\mbb{R})$ 이 존재한다.
+		\num{(나)} $\left[I\right]_{\mf{B}}^{\mf{B'}} = \left[I\right]_{\mf{B}}^{\mc{E}}\cdot \left[I\right]_{\mc{E}}^{\mc{E}}\cdot \left[I\right]_{\mc{E}}^{\mf{B'}}$. 우변의 세 행렬 모두 $\rmbf{SO}(3)$ 의 원소이므로 그 곱도 $\rmbf{SO}(3)$ 의 원소이다. 이제 $\left[I\right]_{\mf{B}}^{\mf{B'}}$ 의 세 column 이 $\mbb{R}^3$ 의 orthonormal basis 가 되려면 $U \in \rmbf{O}(2)$. 또 행렬식이 $1$ 이므로 $U \in \rmbf{SO}(2)$. (따라서 회전변환이므로 $U = R_\eta$ 로 둘 수 있다. 이를 (다)에서 이용한다.)
+		\num{(다)} Change of Bases 에 의해 첫번째 등식은 자명. 그리고 $\left[I\right]_{\mf{B}}^{\mf{B'}}$ 와 $\left[I\right]_{\mf{B'}}^{\mf{B}}$ 은 서로 역행렬 이고 $\left[I\right]_{\mf{B}}^{\mf{B'}} = \text{diag}(1, R_\eta)$ 이므로 $\left[I\right]_{\mf{B'}}^{\mf{B}} = \text{diag}(1, R_{-\eta})$. 따라서 $[R'_{Z, \theta}] _{\mf{B}}^{\mf{B}} = \text{diag}(1, R_{\eta}) \cdot \text{diag}(1, R_{\theta}) \cdot \text{diag}(1, R_{-\eta}) = \text{diag}(1, R_{\eta +\theta -\eta}) = \text{diag}(1, R_{\theta}) = [R_{Z, \theta}] _{\mf{B}}^{\mf{B}}$.
+	\end{itemize}
+
+\numl{9.6.8}
+	\begin{itemize}
+		\num{(가)} 선형사상 $L$ 에 대응하는 행렬 $A$ 를 생각하자. $\det(A+I)=0$ 을 보이자. $\det(A+I) = \det(A+A\cdot A\trans) = \det A \cdot \det(I+A\trans) = -\det(I+A)\trans = -\det(I+A)$ 이므로 $\det(A+I)=0$ 이고 $L$ 은 eigenvalue $-1$ 을 갖는다. 따라서 $L(Z)=-Z$ 인 unit vector $Z$ 가 존재한다.
+		\num{(나)} 이제 $\mbb{R}^3$ 의 orthonormal basis $\mf{B}$ 를 찾아주면 된다. 
+			$[L_A]_\mf{B}^\mf{B} = \left(\begin{array}{c|c}
+				-1 & \begin{matrix}a&b\end{matrix} \\ \hline
+				\begin{matrix} 0\\0\end{matrix} & B\\
+			\end{array}\right)$ 가 orthogonal matrix 가 되려면, $a=b=0$, $B\in \rmbf{O}(2)$ 이어야 하고, 행렬식 값 $\det([L_A]_\mf{B}^\mf{B}) = -1$ 으로부터 $\det B=1$ 이므로 $B\in \rmbf{SO}(2)$ 가 되어 $B=R_\theta$ 인 $\theta \in \mbb{R}$ 가 존재한다. Orthonormal basis 도 존재한다.
+	\end{itemize}
+
+\numl{10.2.13}
+	\begin{itemize}
+		\num{(라)} $\norm{1} = \int_0^1 1 dt = 1$. $\norm{\sqrt{12}(t-\frac{1}{2})} = \int_0^1 12(t-\frac{1}{2})^2 dt = \left[4(t-\frac{1}{2})^3\right]_0^1 = 1$. 이므로 각 vector 는 unit vector 이다. 이제 두 벡터가 수직임을 보이자.
+		$$\aparen{1, \sqrt{12}\paren{t-\frac{1}{2}}} = \int_0^1 1\cdot \sqrt{12}\paren{t-\frac{1}{2}} dt= 0$$
+		따라서 주어진 집합은 $\mc{P}_1(\mbb{R})$ 의 orthonormal basis. 
+		\num{(마)} $$\norm{f_n(x)} = \frac{1}{2\pi}\int_0^{2\pi} e^{\rmbf{i}nx}\overline{e^{\rmbf{i}nx}}dx = \frac{1}{2\pi}\int_0^{2\pi} e^{\rmbf{i}nx}e^{\rmbf{-i}nx} dx = 1$$
+		$$\aparen{f_n(x), f_m(x)} = \frac{1}{2\pi} \int_0^{2\pi} e^{\rmbf{i}nx}\overline{e^{\rmbf{i}mx}}dx = \frac{1}{2\pi} \int_0^{2\pi} \left[\cos(n-m)x + \rmbf{i}\sin(n-m)x\right]dx$$
+		(단 $i\neq j$) 이를 적분하면 $$= \frac{1}{2\pi} \left[\frac{\sin(n-m)x}{n-m} + \rmbf{i} \frac{-\cos(n-m)x}{n-m}\right]_0^{2\pi} = 0$$
+		이므로 $\{f_n\}_{n\in\mbb{Z}}$ 는 $C^0\left[0, 2\pi\right]$ 의 orthonormal subset. 
+	\end{itemize}
+
+\numl{10.3.2}
+	\begin{itemize}
+		\num{(가)} 먼저 첫 번째 vector 를 그 크기인 $\sqrt{2}$ 로 나누어 $w_1=(1/\sqrt{2}, 1/\sqrt{2}, 0)\trans$ 로 두자. 두 번째 vector 는
+		$(-1, 0, 2)\trans - \aparen{(-1, 0, 2)\trans, w_1}w_1 = (-1/2, 1/2, 2)\trans$ 이므로 크기로 나누어 주면 $w_2 = (-\sqrt{2}/6, \sqrt{2}/6, 2\sqrt{2}/3)\trans$. 세 번째 vector 는 $(2, 1, 1)\trans - \aparen{(2, 1, 1)\trans, w_2}w_2 - \aparen{(2, 1, 1)\trans, w_1}w_1 = (2/3, -2/3, 1/3)\trans$ 이고 unit vector 이다. 따라서 $$\left\{\left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0\right)\trans, \left(-\frac{\sqrt{2}}{6}, \frac{\sqrt{2}}{6}, \frac{2\sqrt{2}}{3}\right)\trans , \left(\frac{2}{3}, -\frac{2}{3}, \frac{1}{3}\right)\trans \right\}$$
+		\num{(라)} $1$ 은 크기가 $1$ 이므로 그대로 둔다. 두 번째 vector 는 $t - \aparen{t, 1}\cdot1 = t - 1/2$. 크기인 $\int_0^1 (t-1/2)^2dt = 1/12$ 의 양의 제곱근으로 나눠주면 $\sqrt{12}(t-1/2)$. 세 번째 vector 로는 $t^2 - \aparen{t^2, \sqrt{12}(t-1/2)}\cdot \sqrt{12}(t-1/2) - \aparen{t^2, 1}\cdot 1 = t^2-t+1/6 = t^2-t+1/6$ 이고 크기가 $1/\sqrt{180}$ 이므로 나누어 주면 $6\sqrt{5}(t^2-t+1/6)$ 을 얻는다. 따라서 $$\left\{1, \sqrt{12}\paren{t-\frac{1}{2}}, 6\sqrt{5}\paren{t^2-t+\frac{1}{6}}\right\}$$
+	\end{itemize}
+
+\numl{10.3.6}
+	\begin{itemize}
+		\num{(가)} $W \leq (W^\perp)^\perp$ 임을 보였다. 이제 $\dim V = \dim W + \dim W^\perp = \dim W^\perp + \dim (W^\perp)^\perp$ 에서 $\dim W = \dim (W^\perp)^\perp$ 를 얻는다. Dimension argument 에 의해 $W = (W^\perp)^\perp$.
+		\num{(나)} $x\in (U+W)^\perp$ 라고 하자. 그러면 모든 $u\in U, w\in W$ 에 대해, $x \perp (u + w)$. $U, W$ 는 $0$ 을 원소로 가지므로 $u = 0, w = 0$ 으로 각각 두면 $x \perp u, x \perp w$ 를 각각 얻으므로 $x\in U^\perp \cap W^\perp$. $(U+W)^\perp \subseteq U^\perp \cap W^\perp$. \\ $x\in U^\perp \cap W^\perp$ 라고 하자. 그러면 $x \perp u, x \perp w$ ($u\in U, w\in W$) 이므로 $x \perp (u+w)$ 가 되어 $x\in (U+W)^\perp$. $ U^\perp \cap W^\perp\subseteq (U+W)^\perp$. 따라서 $(U+W)^\perp = U^\perp \cap W^\perp$ 를 얻는다.
+		\num{(다)} (나) 의 양변에 orthogonal complement 를 취하면 $U + W = (U^\perp \cap W^\perp)^\perp$ 임을 알 수 있다. 따라서 $U^\perp + W^\perp = ((U^\perp)^\perp \cap (W^\perp)^\perp)^\perp = (U \cap W)^\perp$ 이다. ((가)를 이용)
+	\end{itemize}
+
+\numl{10.3.9} (증명 완성) 보기 10.3.8 의 notation 을 그대로 사용한다.
+	\begin{itemize}
+		\num{(2), (3) $\Rightarrow$ (1)} Rank Theorem 에 의해 $\dim W =$ [row rank of $A$] = [column rank of $A$] $=\dim \im L_A$ 이다. 그리고 보기 10.3.8 에서 $W^\perp = \ker L_A$. 이제 Perp Theorem 으로부터 $n = \dim \mbb{R}^n = \dim W + \dim W^\perp = \dim \im L_A + \dim \ker L_A$.
+		\num{(1), (3) $\Rightarrow$ (2)} [column rank of $A$] = $\dim \im L_A = \dim \mbb{R}^n - \dim \ker L_A$. (Dimension Theorem) 이고, $\ker L_A = W^\perp$ 이므로 $\dim \mbb{R}^n - \dim \ker L_A = \dim \mbb{R}^n - \dim W^\perp = \dim W$. (Perp Theorem) 그리고 $\dim W =$ [row rank of $A$] 이므로 row rank 와 column rank 가 같음을 보였다.
+	\end{itemize}
+
+\numl{10.4.6}
+	\begin{itemize}
+		\num{(가)} $\aparen{f, f_0} = \frac{1}{2\pi}\int_0^{2\pi}xdx = \frac{1}{2\pi}\cdot 2\pi^2 = \pi$. $n \neq 0$ 인 경우에는 
+		$$\begin{aligned}
+			\aparen{f, f_n} &= \frac{1}{2\pi} \int_0^{2\pi} x e^{-\rmbf{i}nx}dx \\ &= \frac{1}{2\pi} \left[ \frac{x}{n}\sin nx + \rmbf{i} \frac{x}{n} \cos nx \right]_0^{2\pi} - \frac{1}{2\pi n} \int_0^{2\pi}\left(\sin nx+\rmbf{i}\cos nx \right) dx \\ &= \frac{\rmbf{i}}{n}-0 = \frac{\rmbf{i}}{n}
+		\end{aligned}$$
+		\num{(나)} $$\norm{f}^2 = \frac{1}{2\pi}\int_0^{2\pi}x^2 dx = \frac{4}{3}\pi^2$$
+		\num{(다)} 주어진 부등식에 (가), (나) 에서 구한 값을 대입하면 $$\frac{4}{3}\pi^2 = \norm{f}^2 \geq \sum_{n=-k}^{-1} \left|\frac{\rmbf{i}}{n}\right|^2 + \pi^2 + \sum_{n=1}^k\left|\frac{\rmbf{i}}{n}\right|^2 = 2\sum_{n=1}^k \frac{1}{n^2} + \pi^2$$
+		이를 정리하면 $\sum_{n=1}^k \frac{1}{n^2} \leq \frac{\pi^2}{6}$ 을 얻고 $k \rightarrow \infty$ 일 때 $\sum_{n=1}^\infty \frac{1}{n^2} \leq \frac{\pi^2}{6}$.
+	\end{itemize}
+
+
+\numl{10.5.8}
+	\begin{itemize}
+		\num{(가)} $X = (a_1+\rmbf{i}b_1, \dots, a_n+\rmbf{i}b_n)\trans, Y = (c_1+\rmbf{i}d_1, \dots, c_n+\rmbf{i}d_n)\trans \in \mbb{C}^n$ 라고 하자. ($a_i, b_i, c_i, d_i \in \mbb{R}$) $k\in \mbb{R}$ 일때, 
+		$$\begin{aligned}
+			\gamma\left(X+kY\right) &= \left(a_1+kc_1, b_1 + kd_1, \cdots, a_n+kc_n, b_n + kd_n\right)\trans  \\ & = (a_1, b_1, \cdots, a_n, b_n)\trans + k(c_1, d_1, \cdots, c_n, d_n)\trans\\ & = \gamma(X) + k\gamma(Y)
+			\end{aligned}$$ 이므로 linear 이다. $\gamma(X) = \gamma(Y)$ 이면 $a_i = c_i, b_i = d_i$ for all $i$ 이므로 $X=Y$ 가 되어 $\gamma$ 는 injection 이고, 임의의 $(a_1, b_1, \cdots, a_n, b_n)\trans$ 에 대해 $(a_1+\rmbf{i}b_1, \dots, a_n+\rmbf{i}b_n)\trans$ 를 복원할 수 있으므로 $\gamma$ 는 surjection. 따라서 $\gamma$ 는 bijection. 따라서 $\gamma$ 는 $\mbb{R}$-vector space isomorphism.			
+		\num{(나)} $X, Y$ 를 (가)에서와 같이 두자. 
+			$$\begin{aligned}\norm{\gamma(X) - \gamma(Y)}^2 &= \norm{\left(a_1-c_1, b_1 -d_1, \cdots, a_n -c_n, b_n -d_n\right)\trans}^2 \\ &=\sum_{i=1}^n \left\{(a_i-c_i)^2 + (b_i-d_i)^2\right\} \\ &= \sum_{i=1}^n \left|(a_i - c_i) + \rmbf{i} (b_i-d_i)\right|^2 = \norm{X-Y}^2 \end{aligned}$$
+		\num{(다)} Rigid motion 의 합성도 rigid motion 이므로, $\gamma \circ M \circ \gamma^{-1} : \mbb{R}^{2n} \rightarrow \mbb{R}^{2n}$ 은 rigid motion. 그리고 $\mbb{R}^n$ 의 rigid motion 은 bijection 이고 $\gamma$ 도 bijection 이므로 $M$ 은 bijection.
+	\end{itemize}
+
+\numl{10.6.14} ($\rmbf{U}(2)$ 관련 부분 제외)
+	\begin{itemize}
+		\num{(가)} $A\aster\cdot A = A \cdot A\aster = I$ 를 계산한다. $A = \left(\begin{array}{cc} a & c \\ b & d \end{array}\right) \in \mf{M}_{2, 2}(\mbb{C})$ 로 두고 계산하면 \begin{align}\left|a\right|^2 + \left|b\right|^2 = 1 \\ \left|a\right|^2 + \left|c\right|^2 = 1 \\ \left|b\right|^2 + \left|d\right|^2 = 1 \\ \left|c\right|^2 + \left|d\right|^2 = 1 \\ a\overline{b}+c\overline{d} = 0 \\ \overline{a}c + \overline{b}d = 0\end{align}
+		(1), (2) 로부터, (1), (3) 으로부터 $|a|=|d|, |b|=|c|$ 를 얻는다. 복소수의 크기가 같으므로 일반성을 잃지 않고 $c = \overline{b}e^{\rmbf{i}\theta_1}, d = \overline{a}e^{\rmbf{i}\theta_2}$ 로 둘 수 있다. (conjugate 해도 편각의 차이만 존재하므로 $\theta_i$ 의 값을 조절하면 된다.) 이를 (6) 에 대입하면 $a\overline{b}(1+e^{\rmbf{i}(\theta_1-\theta_2)}) = 0$ 을 얻는다. 여기서 $a, b$ 는 임의의 복소수가 될 수 있으므로 $1+e^{\rmbf{i}(\theta_1-\theta_2)} = 0$ 이어야 한다. 따라서 $\theta_1-\theta_2 = (2n+1)\pi \: (n\in \mbb{Z})$. 이제 $\theta_1 = \theta_2 + (2n+1)\pi$ 로 두면 $c = \overline{b}e^{\rmbf{i}(\theta_2 + (2n+1)\pi)} = -\overline{b}e^{\rmbf{i}\theta_2}$. 이제 $\det A = ad-bc =  (|a|^2 + |b|^2)e^{\rmbf{i}\theta_2} = e^{\rmbf{i}\theta_2} = 1$ 으로부터 $\theta_2 = 0$ 으로 잡는다. 그러면 $$\rmbf{SU}(2) = \left\{ \left.\left(\begin{array}{cc} \alpha & -\overline{\beta} \\ \beta & \overline{\alpha} \end{array}\right) \in \mf{M}_{2, 2}(\mbb{C})  \right\rvert \alpha, \beta \in \mbb{C}, \left|a\right|^2 + \left|b\right|^2 = 1\right\}$$ 와 같이 표현할 수 있다.
+		\num{(나)} $A\in \rmbf{SU}(2)$ 라고 하자. eigenvalue $\lambda \in\mbb{C}$ 로 두고, $\det(A-\lambda I) = 0$ 을 풀어본다. $$\begin{aligned} \det(A-\lambda I) &= (\alpha - \lambda)(\overline{\alpha} - \lambda) + \beta\overline{\beta} = \lambda^2 - (\alpha + \overline{\alpha})\lambda + |\alpha|^2 + |\beta|^2\\&= \lambda^2 - (\alpha + \overline{\alpha})\lambda + 1 = 0\end{aligned}$$
+		Eigenvalue 가 모두 distinct 이면 diagonalizable 이므로 위 이차방정식이 중근인 경우만 고려하면 된다. 중근이 될 조건은 $\alpha + \overline{\alpha} = 2\mf{Re}(\alpha) = \pm 2$ 인 경우이다. 그런데 이 경우에는 $|\alpha|^2 = \mf{Re}(\alpha)^2 + \mf{Im}(\alpha)^2 = 1 + \mf{Im}(\alpha)^2$ 이므로 $\left|a\right|^2 + \left|b\right|^2 = 1$ constraint 를 만족시키려면 $\alpha = \pm 1, \beta = 0$ 이다. 이 경우 이미 diagonal matrix 이므로 당연히 diagonalizable. 따라서 $A$ 는 diagonalizable.
+	\end{itemize}
+
+\numl{10.7.5} 주어진 문제를 행렬로 바꾸면
+$
+	\left(\begin{array}{cc}
+		1 & 1 \\
+		1 & 2 \\
+		1 & 3 \\
+		1 & 4 \\
+	\end{array}\right) 
+	\left(\begin{array}{c}
+		c_0 \\
+		c_1 \\
+	\end{array}\right) = 
+		\left(\begin{array}{c}
+		1 \\ 3 \\ 3 \\ 2
+	\end{array}\right) 
+$ 이 되므로 $(A\aster \cdot A) X = A\aster \cdot B$ 를 계산하면 $
+	\left(\begin{array}{cc}
+		4 & 10 \\
+		10 & 30 \\
+	\end{array}\right) 
+	\left(\begin{array}{c}
+		c_0 \\
+		c_1 \\
+	\end{array}\right) = 
+		\left(\begin{array}{c}
+		9 \\ 24
+	\end{array}\right) 
+$ 이다. 역행렬을 왼쪽에 곱하면 $c_0 = 1.5, c_1 = 0.3$. 따라서 $y = 1.5 + 0.3x$.
+
+
+
+
+
+
+
+
+
+
+      
+\end{itemize}
+\end{document}

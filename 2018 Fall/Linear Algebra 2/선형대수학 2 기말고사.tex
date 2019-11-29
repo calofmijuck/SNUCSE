@@ -1,0 +1,82 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{subfig}
+\geometry{
+	top = 25mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 25mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.5}
+\newcommand{\numl}[1]{\item[\textbf{#1}]}
+\newcommand{\num}[1]{\item[{#1}]}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\trans}{^{\mathrm{\mathbf{t}}}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\renewcommand{\span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\im}{\text{im}\:}
+\newcommand{\rk}{\text{rk}}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\diag}{\text{diag}}
+\newcommand{\adj}{\text{*}}
+\renewcommand{\inv}{^{-1}}
+\newcommand{\tperp}{^\text{\sffamily perp}}
+\newcommand{\nsub}{\mathrel{\unlhd}}
+\newcommand{\pnsub}{\mathrel{\lhd}}
+
+\begin{document}
+\begin{center}
+\textbf{\large 선형대수학 2} (2018. 12. 8.)
+\end{center}
+
+\begin{itemize}
+\numl{0.} 아래의 모든 벡터공간은 유한차원이라고 가정한다.
+
+\numl{1.} (10점) $(V, B)$ 가 quadratic space 이고 $\mf{B}$ 가 $V$ 의 기저일 때, 왜 ``$B$ 의 행렬 $[B]_\mf{B}$ 가 $B$ 에 관한 모든 정보를 갖고 있다"고 말할 수 있는가?
+ 
+\numl{2.} (10점) (가) $\rmbf{O}(1, 1) / \rmbf{SO}(1, 1) \approx \mu_2$ 임을 보여라.\\
+(나) $\rmbf{O}(1, 1)$ 은 $\rmbf{O}(3, 1)$ 의 subgroup 과 isomorphic 함을 보여라.
+ 
+\numl{3.} (10점) (가) $L\in \mf{L}(V, W)$ 의 dual map $L^\ast$ 의 정의를 써라.\\
+(나) $L^{\ast \ast} = L$ 의 뜻을 설명하고 증명하라.
+
+\numl{4.} (10점) $\{v_1, \dots, v_n\}$ 이 non-degenerate quadratic space $(V, B)$ 의 기저일 때, 다음 $$B(v_i, w_j) = \delta_{ij}, \qquad (1\leq i, j\leq n)$$ 을 만족시키는 $V$ 의 ``\textit{dual basis}" $\{w_1, \dots, w_n\}$ 이 존재함을 보여라.
+
+\numl{5.} (10점) $(V, B)$ 와 $(W, C)$ 가 non-degenerate quadratic space 일 때,\\
+(가) $L\in \mf{L}(V, W)$ 의 transpose map $L\trans$ 의 정의를 써라.\\
+(나) 모든 $v\in V, w\in W$ 에 대해 $C(Lv, w) = B(v, L\trans w)$ 임을 증명하라. \textit{(이 (나)항을 이용해 (가)항에서 $L\trans$ 를 정의하는 꼼수 금지.)}
+
+\numl{6.} (10점) $J = \diag(1, -1)$ 일 때, quadratic space $\left(\bb{R}^2, B_\mc{E}^J\right)$ 에서 $L:\bb{R}^2\rightarrow \bb{R}^2$ 를 $$L\big((x, y)\trans\big) = (x+y, x-y)\trans, \qquad (x, y\in \bb{R})$$
+로 정의하자. $L\trans\big((x, y)\trans\big) \in \bb{R}^2$ 를 구하라.
+
+\numl{7.} (10점) V 가 inner product space over $\bb{C}$ 일 때, 모든 normal operator $L\in \mf{L}(V, V)$ 는 대각화 가능함을 (\textbf{간략히}) 설명하라.
+
+\numl{8.} (10점) $A\in \mf{M}_{n, n}(\bb{R})$ 이 symmetric matrix 이면, $A$ 의 real eigen-value 가 존재함을 보여라.
+
+\numl{9.} (10점) $(V, B)$ 가 quadratic space over $\bb{R}$ 이고, $\mf{B}$ 는 $V$ 의 기저일 때, 다음 조건\\
+$~~~~$(1) $B(v, v)\geq 0$ for all $v\in V$.\\
+$~~~~$(2) $[B]_\mf{B}$ 의 모든 eigen-value 는 non-negative real number.\\
+$~~~~$(3) $[B]_\mf{B} = A\trans\cdot A$ 인 $A\in \mf{M}_{n, n}(\bb{R})$ 존재.\\
+은 동치임을 보여라.
+
+\numl{10.} (10점) State the ``Spectral Theorem for $\rmbf{O}(n)$". (증명 필요 없음.)
+
+
+\end{itemize}
+
+\end{document}

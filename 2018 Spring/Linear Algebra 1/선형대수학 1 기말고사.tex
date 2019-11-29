@@ -1,0 +1,54 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+	\geometry{
+		top = 30mm,
+		left = 30mm,
+		right = 30mm,
+		bottom = 30mm
+	}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.1}
+\newcommand*{\trans}{^{\mathrm{\mathbf{t}}}}%
+\newcommand*{\tr}{\mathrm{tr}}%
+\newcommand*{\basisB}{\mathfrak{B}}%
+\newcommand*{\basisC}{\mathfrak{C}}%
+\newcommand*{\basisD}{\mathfrak{D}}%
+\newcommand*{\matrixM}{\mathfrak{M}}%
+\newcommand*{\im}{\text{im}\:}%
+\newcommand*{\rk}{\mathrm{rk}\:}%
+\newcommand\tab[1][5mm]{\hspace*{#1}}
+
+\begin{document}
+\begin{center}
+\textbf{선형대수학 1}\\
+2018. 6. 9.
+\end{center}
+
+\begin{itemize}
+\item[\textbf{1.}] (10점) 임의의 $L\in \mathfrak{L}(V, W)$ 에 대한 Dimension Theorem 은 $L_A \in \mathfrak{L}(F^n, F^m)$ 의 경우에만 증명하면 충분하다 (단, $V, W$는 f.d.v.s. 이고, $A\in\matrixM_{m, n}(F)$). 그 이유를 설명하는 commutative diagram 을 그려라. (증명 불필요.)
+\\  
+\item[\textbf{2.}] (10점) $n \geq 1$ 일 때, $A_n=(a_{ij})\in\matrixM_{n, n}(F)$ 가 $a_{ij} = \begin{cases}\hfil2&(\text{if } i = j)\\-1&(\text{if } |i-j|=1)\\\hfil0&(\text{otherwise})\end{cases}$ 으로 주어졌을 때, $\det(A_n)$ 을 구하라.
+\\
+\item[\textbf{3.}] (10점) $A = \begin{pmatrix}0.9&0.02\\0.1&0.98\end{pmatrix}\in \matrixM_{2, 2}(\mathbb{R})$ 을 대각화하고, $\lim_{m\rightarrow \infty}A^m$ 을 구하라.
+\\
+\item[\textbf{4.}] (10점) $A\in \matrixM_{n, n}(F)$ 가 nilpotent 이면, $\phi_A(t)=t^n$ 임을 보여라.
+\\
+\item[\textbf{5.}] (10점) $T\in\mathfrak{LM}$ 의 minimal polynomial $m_T(t)$ 를 정의하고, 그의 유일성을 보여라. (존재성 증명 불필요.)
+\\
+\item[\textbf{6.}] (10점) $A\in \matrixM_{n, n}(F)$ 이고, $\lambda\in F$ 일 때, $\dim E_\lambda^A = \dim E_\lambda^{A\trans}$ 임을 보여라 (단, $E_\lambda^A$ 는 eigen-space of $A$ with eigen-value $\lambda$).
+\\
+\item[\textbf{7.}] (10점) $A= \begin{pmatrix}0&I_n\\I_n&0\end{pmatrix}\in\! \matrixM_{2n, 2n}(F)$ 일 때, $A$ 의 eigen-space decomposition 을 구하라. 또, $\;$$\phi_A(t)$ 와 $m_A(t)$ 를 구하라.
+\\
+\item[\textbf{8.}] (10점) $A=\begin{pmatrix}1&0&1&0&0&1\\0&1&0&1&0&0\\0&0&1&0&1&0\\0&0&0&1&0&1\\0&0&0&0&1&0\\0&0&0&0&0&1\end{pmatrix}$ 의 Jordan canonical form 을 구하라.
+\\
+\item[\textbf{9.}] (10점) Google matrix 의 정의를 써라. (Google matrix 는 positive Markov.)
+
+\end{itemize}
+\end{document}

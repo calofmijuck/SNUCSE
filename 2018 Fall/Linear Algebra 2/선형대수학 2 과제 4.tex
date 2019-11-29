@@ -1,0 +1,171 @@
+%!TEX encoding = utf-8
+\documentclass[12pt]{report}
+\usepackage{kotex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{subfig}
+\geometry{
+	top = 20mm,
+	left = 20mm,
+	right = 20mm,
+	bottom = 20mm
+}
+\geometry{a4paper}
+
+\pagenumbering{gobble}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\numl}[1]{\item[\large\textbf{\sffamily #1}]}
+\newcommand{\num}[1]{\item[\textbf{\sffamily #1}]}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\rmbf}[1]{\mathrm{\mathbf{#1}}}
+\newcommand{\trans}{^{\mathrm{\mathbf{t}}}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\renewcommand{\span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\im}{\text{im}\:}
+\newcommand{\rk}{\text{rk}\:}
+\newcommand{\tr}{\text{tr}\:}
+\newcommand{\diag}{\text{diag}}
+\newcommand{\adj}{\text{*}}
+\renewcommand{\inv}{^{-1}}
+\newcommand{\tperp}{^\text{\sffamily perp}}
+\newcommand{\nsub}{\mathrel{\unlhd}}
+\newcommand{\pnsub}{\mathrel{\lhd}}
+\newcommand{\mat}[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix}}
+\captionsetup[subfigure]{labelformat=empty}
+\begin{document}
+\begin{center}
+\textbf{\Large 선형대수학 2 숙제 \#4}\\
+\large 2017-18570 컴퓨터공학부 이성찬
+\end{center}
+
+\begin{itemize}
+\numl{14.3.3}
+	\begin{itemize}
+		\num{(나)} $\{w_j\}$ 가 $W$ 의 basis 일 때, $\{\varphi_H^V(w_j)\}$ 가 $\varphi_H^V(W)$ 의 basis 임을 보인다.
+		\begin{equation}
+			\overline{c_1}\varphi_H^V(w_1) + \cdots + \overline{c_n}\varphi_H^V(w_n) = 0 \iff \varphi_H^V(c_1w_1+\cdots+c_nw_n) = 0
+		\end{equation}
+		이제 $v\in V$ 에서 evaluate 하면, $$H(v, c_1w_1+\cdots+c_nw_n) = 0$$ 인데 $H$ 가 non-degenerate 이므로 $c_1w_1+\cdots+c_nw_n=0$ 이다. $\{w_j\}$ 가 basis 이므로 $c_j = 0$ for all $j$. (일차독립)\\
+		$\varphi_H^V(W)$ 를 생성하는 것은 (1)으로부터 $\{w_j\}$ 가 $W$ 의 basis 이므로 당연하다.
+	\end{itemize}
+
+\numl{14.3.18}
+	\begin{itemize}
+		\num{(가)} $w\in \ker L^\star \iff L^\star (w)= 0$. $$0 =\varphi_H^V( L^\star w)= (\varphi_H^V \circ L^\star) (w)= (L^\ast \circ \varphi_K^W)(w) = \varphi_K^W(w)\circ L$$ Evaluate at $v\in V$. $$0 = (\varphi_K^W(w)\circ L)(v) = \varphi_K^W(w)(Lv) = K(Lv, w)$$
+		$\iff w\in (\im L)^\perp$. ($v$ 가 $V$ 전체를 다 움직이면 $Lv$ 는 $\im L$ 전체를 다 움직이므로)
+		\num{(나)} $v\in \im L^\star$ $\iff$ $v=L^\star w$ for some $w\in W$. $x\in \ker L$ 이면, $$H(x, v) = H(x, L^\star w) = K(Lx, w) = 0$$
+		따라서 $v\in (\ker L)^\perp$. $\im L^\star \leq (\ker L)^\perp$.\\
+		이제 $v\in (\im L^\star)^\perp$ 라고 하면, 모든 $w\in W$ 에 대하여
+		$$0 = H(L^\star w, v) = K(w, Lv)$$
+		이고 $K$ 가 non-degenerate 이므로 $Lv = 0$, $v\in \ker L$. $(\im L^\star)^\perp \leq \ker L$. 양변에 $\perp$ 를 취하면 $\im L^\star = (\ker L)^\perp$.
+	\end{itemize}
+
+\numl{15.2.10} $\det (\alpha U) = 1$ 이 되도록 하는 $\alpha$ 를 찾으면 충분하다. $\det$ 는 alternating $k$-linear form 이므로 $\det(\alpha U) = \alpha^n \det U = 1$, $\alpha^n = 1/\det U$. ($U\in \rmbf{U}(n)$ 이므로 $\left|\det U\right|=1 \neq 0$.) $\alpha = \sqrt[n]{1/\det U} \in \bb{C}$ 로 잡으면 성립한다. (복소수 범위에서 $n$-차 다항식은 $n$-개의 일차식으로 인수분해가 가능하다.)
+
+\numl{15.2.14} $A$ 의 eigenvalue 와 그에 대응하는 서로 수직인 eigenvector 를 찾아주면 $$\lambda_1 = 1+\rmbf{i}, v_1 = (1, 1)\trans \qquad \lambda_2 = 1 -\rmbf{i}, v_2 = (-1, 1)\trans$$ 이제 $U\inv A U = 1/\sqrt{2}\cdot \diag(1 + \rmbf{i}, 1-\rmbf{i})$ 로 두고 eigenvector 의 크기가 1이 되도록 한다. 
+$$\begin{pmatrix}
+	1/\sqrt{2} & -1/\sqrt{2} \\ 1/\sqrt{2} & 1/\sqrt{2}
+\end{pmatrix}^{-1}\cdot \frac{1}{\sqrt{2}} \begin{pmatrix}
+	1 & \rmbf{i} \\ \rmbf{i} & 1
+\end{pmatrix}\cdot \begin{pmatrix}
+1/\sqrt{2} & -1/\sqrt{2} \\ 1/\sqrt{2} & 1/\sqrt{2}
+\end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+	1+\rmbf{i} & 0 \\ 0 & 1-\rmbf{i}
+\end{pmatrix} \in \rmbf{T}_{\rmbf{SU}(2)}$$ 따라서 $U = \begin{pmatrix}
+1/\sqrt{2} & -1/\sqrt{2} \\ 1/\sqrt{2} & 1/\sqrt{2}
+\end{pmatrix} \in \rmbf{SU}(2)$.
+
+\numl{15.3.9}
+	\begin{itemize}
+		\num{(가)} $J = \mat{2}{-\sqrt{2}}{-\sqrt{2}}{3}$ 로 잡고 eigenvalue 를 구하면 $\lambda = 1, 4$. 서로 수직인 두 eigenvector 를 구해 크기가 $1$ 이 되도록 하면 $$\mf{B} = \left\{\frac{1}{\sqrt{3}}\begin{pmatrix}
+		\sqrt{2} \\ 1
+		\end{pmatrix}, \frac{1}{\sqrt{3}}\begin{pmatrix}
+		-1 \\ \sqrt{2}
+		\end{pmatrix}\right\}, U = \frac{1}{\sqrt{3}}\mat{\sqrt{2}}{-1}{1}{\sqrt{2}}$$
+		$$U\inv J U = \diag(1, 4)$$ 
+		따라서 $(x, y)\trans = U(x', y')\trans$ 로 치환하면 $$(x')^2 +4(y')^2 = 4$$ 를 얻는다. 이 이차곡선은 $U$ 의 두 column 들을 각각 $x', y'$-축으로 하며, 타원이다. 
+		\begin{figure}[h]
+			\includegraphics[width=8cm]{(1)}
+			\centering
+			\caption*{Plot of $2x^2-2\sqrt{2}xy+3y^2=4$}
+		\end{figure}
+		\num{(나)} (가)와 과정이 같다.\\
+		$J =\mat{1}{-3}{-3}{1}$ 로 잡고 eigenvalue 를 구해주면 $\lambda = -2, 4$ 를 얻는다. 마찬가지로 eigenvector 를 구하면,
+		$$\mf{B} = \left\{\frac{1}{\sqrt{2}}\begin{pmatrix}
+		1 \\ 1
+		\end{pmatrix}, \frac{1}{\sqrt{2}}\begin{pmatrix}
+		1 \\ -1
+		\end{pmatrix}\right\}, U = \frac{1}{\sqrt{2}}\mat{1}{1}{1}{-1}$$ $$U\inv J U = \diag(-2, 4)$$ 마찬가지로 $(x, y)\trans = U(x', y')\trans$ 로 치환하면
+		$$2(y')^2-(x')^2=1$$
+		\begin{figure}[h]
+			\centering
+			\subfloat[Plot of $x^2-6xy+y^2=1$]{\includegraphics[width=7cm]{(2)}}
+			\quad
+			\subfloat[Plot of $11x^2+24xy+y^2=15$]{\includegraphics[width=7.5cm]{(3)}}
+		\end{figure}
+		이 된다. 이 이차곡선은 쌍곡선이다.
+		\num{(다)} (가)와 과정이 같다.\\
+		$J =\mat{11}{12}{12}{1}$ 로 잡고 eigenvalue 와 eigenvector 를 구해준다. $\lambda = 19, -7$. $$\mf{B} = \left\{\frac{1}{\sqrt{13}}\begin{pmatrix}
+		3 \\ 2
+		\end{pmatrix}, \frac{1}{\sqrt{13}}\begin{pmatrix}
+		-2 \\ 3
+		\end{pmatrix}\right\}, U = \frac{1}{\sqrt{13}}\mat{3}{-2}{2}{3}$$ 
+		$$U\inv J U = \diag(19, -7)$$
+		마찬가지로 $(x, y)\trans = U(x', y')\trans$ 로 치환하면
+		$$19(x')^2-7(y')^2=15$$
+		이 된다. 이 이차곡선은 쌍곡선이다.
+		
+	\end{itemize}
+
+\numl{15.3.11} Let $J = [B]_\mf{B}$.\\
+{\sffamily (1) $\Rightarrow$ (2)}: $J$ 의 eigenvalue 를 $\lambda$, 그에 대응하는 eigenvector 를 $v$ 라고 하자. $J[v]_\mf{B} = \lambda [v]_\mf{B}$. $$B(v, v) = ([v]_\mf{B})\trans \cdot J \cdot[v]_\mf{B} = ([v]_\mf{B})\trans \cdot \lambda \cdot [v]_\mf{B} = \lambda \norm{[v]_\mf{B}}^2>0$$ 이므로 $\lambda > 0$ 인 실수이어야 한다.\\
+{\sffamily (2) $\Rightarrow$ (1)}: $J$ 가 real symmetric matrix 이므로 Spectral Theorem 에 의해 $J$ 의 eigenvector 들로 이루어진 $V$ 의 orthonormal basis $\mf{B}=\{v_1, \dots, v_n\}$ 가 존재한다. 이제 $v\in V$ 에 대하여 $v = c_1v_1 +\cdots + c_nv_n$ 으로 적고, ($c_i\in \bb{R}$)
+$$B(v_i, v_j) = ([v_i]_\mf{B})\trans \cdot J \cdot [v_j]_\mf{B} = (\rmbf{e}_i)\trans\cdot \lambda_j \rmbf{e}_j = \lambda_j \delta_{ij}$$
+이므로 $[B]_\mf{B} = \big(B(v_i, v_j)\big)_{n\times n} = \diag(\lambda_1, \dots, \lambda_n)$ 이다. ($\lambda_i$ 는 $v_i$ 에 대응하는 eigenvalue)
+$$\begin{aligned}
+\therefore B(v, v) &= ([v]_\mf{B})\trans \cdot [B]_\mf{B}\cdot [v]_\mf{B} = \begin{pmatrix}
+c_1 & \cdots & c_n
+\end{pmatrix}\cdot \diag(\lambda_1, \dots, \lambda_n) \cdot \begin{pmatrix}
+c_1\\\vdots\\c_n
+\end{pmatrix} \\&= \lambda_1 c_1^2+\cdots +\lambda_nc_n^2>0	
+\qquad (\lambda_i > 0, v\neq 0) \end{aligned} $$
+
+\numl{15.3.12} 15.3.11에 magic bar 만 몇 개 붙이면 된다. Let $J = [H]_\mf{B}$.\\
+{\sffamily (1) $\Rightarrow$ (2)}: $J$ 의 eigenvalue 를 $\lambda$, 그에 대응하는 eigenvector 를 $v$ 라고 하자. $J[v]_\mf{B} = \lambda [v]_\mf{B}$. 
+$$H(\overline{v}, \overline{v}) = ([v]_\mf{B})^\ast \cdot J \cdot [v]_\mf{B} = ([v]_\mf{B})^\ast \cdot \lambda \cdot [v]_\mf{B} = \lambda \norm{[v]_\mf{B}}^2>0$$ 이므로 $\lambda > 0$ 인 실수이어야 한다.\\
+{\sffamily (2) $\Rightarrow$ (1)}: $J$ 가 self-adjoint matrix 이므로 Spectral Theorem 에 의해 $J$ 의 eigenvector 들로 이루어진 $V$ 의 orthonormal basis $\mf{B}=\{v_1, \dots, v_n\}$ 가 존재한다.\footnote{Spectral Theorem: Positive Definite Hermitian Case 를 증명할 때 $\lambda$ 가 $T$ 의 eigenvalue 이면 $\overline{\lambda}$ 가 $T^\ast$ 의 eigenvalue 임을 보이기 위해 positive definite condition 을 사용했었다. 하지만 (2)의 가정의 경우에는 self-adjoint 이므로 $T$ 의 eigenvalue 만 아는 것으로 충분히 Spectral Theorem 을 증명할 수 있다.} 이제 $v\in V$ 에 대하여 $v = c_1v_1 +\cdots + c_nv_n$ 으로 적고, ($c_i\in \bb{C}$)
+$$H(v_i, v_j) = ([v_i]_\mf{B})\trans \cdot J \cdot \overline{[v_j]_\mf{B}} = (\rmbf{e}_i)\trans\cdot \lambda_j \overline{\rmbf{e}_j} = \lambda_j \delta_{ij}$$
+이므로 $[H]_\mf{B} = \big(H(v_i, v_j)\big)_{n\times n} = \diag(\lambda_1, \dots, \lambda_n)$ 이다. ($\lambda_i$ 는 $v_i$ 에 대응하는 eigenvalue)
+$$\begin{aligned}
+\therefore H(v, v) &= ([v]_\mf{B})\trans \cdot [H]_\mf{B}\cdot [v]_\mf{B} = \begin{pmatrix}
+c_1 & \cdots & c_n
+\end{pmatrix}\cdot \diag(\lambda_1, \dots, \lambda_n) \cdot \begin{pmatrix}
+c_1\\\vdots\\c_n
+\end{pmatrix} \\&= \lambda_1 c_1^2+\cdots +\lambda_nc_n^2>0	
+\qquad (\lambda_i > 0, v\neq 0) \end{aligned} $$
+
+\numl{15.4.8}
+	\begin{itemize}
+		\num{(가)} $U\inv A U = \diag(1, -1, -1)$ 이 되도록 만들어 본다. $U = \diag(B, 1)$ ($B$ 는 $2\times 2$-matrix) 로 생각하면 $U\in \rmbf{SO}(3)$ 가 되기 위해 $B$ 는 rotation 이어야 하므로 $R_\theta$ 로 둘 수 있다. 이제 다음 등식을 만족하는 $\theta$ 를 찾으면,
+		$$R_{-\theta}\mat{0}{1}{1}{0}R_\theta = \diag(1, -1) $$
+		$\cos\theta \sin\theta = 1/2$, $\cos^2\theta = \sin^2\theta$ 로부터 $\theta = \pi/4$ 가 되어 $U=\begin{pmatrix}
+		1/\sqrt{2} & -1/\sqrt{2} & 0 \\ 1/\sqrt{2} & 1/\sqrt{2} & 0 \\ 0 & 0 & 1
+		\end{pmatrix}$ 를 얻는다.
+		\num{(나)} 우선 $U\inv A U = \diag(-1, -1, 1, 1)$ 이 되도록 한다. 주어진 행렬의 characteristic polynomial 은 $(\lambda-1)^2(\lambda+1)^2$ 이므로 각 eigenvalue 에 대하여 eigenvector 를 구해준다. (중근이므로 각각 2개씩 구한다) $$\lambda = -1 \qquad v_1 = \frac{1}{\sqrt{2}}(0, 0, 1, 1)\trans, v_2 = \frac{1}{\sqrt{2}}(-1, 1, 0, 0)\trans$$
+		$$\lambda = 1 \qquad v_3 = \frac{1}{\sqrt{2}}(0, 0, -1, 1)\trans, v_4 = \frac{1}{\sqrt{2}}(1, 1, 0, 0)\trans$$ 
+		와 같이 잡으면 eigenvector 로 이루어진 orthonormal basis 가 된다. 그러므로 $U = (v_1, v_2, v_3, v_4)$ 가 된다.
+		$$U = \frac{1}{\sqrt{2}}\begin{pmatrix}
+			0 & -1 & 0 & 1 \\ 0 & 1 & 0 & 1 \\ 1 & 0 & -1 & 0 \\1 & 0 & 1 & 0
+		\end{pmatrix}\quad U^{-1}AU = \diag(-I_2, I_2) \in \rmbf{T}_{\rmbf{SO}(4)}$$
+		
+	\end{itemize}  
+\end{itemize}
+\end{document}
